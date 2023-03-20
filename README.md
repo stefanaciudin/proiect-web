@@ -1,1 +1,1 @@
-# proiect-web
+# Proiect tehnologii web
