@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
+$background-color: #d0c3c5;
+$font-family: 'Asap', sans-serif;
+$font-size: 14px;
+
+
+@mixin infos($fontcolor: #798c96) {
+    color: $fontcolor;
+    text-align: center;
+    font-family: 'Asap', sans-serif;
+    font-size: 1.25vw;
+}
+
+@mixin account($fontcolor: #967388) {
+    position: relative;
+    font-family: 'Dancing Script', cursive;
+    text-align: center;
+    color: $fontcolor;
+    font-size: 3.25vw;
+}
+
+body {
+    background: $background-color;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #a57f96;
+    font-family: $font-family;
+    font-size: $font-size;
+}
+
+select {
+    width: 100%;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-family: $font-family;
+    color: #414b50;
+    font-size: $font-size;
+
+    &:focus {
+        outline: none;
+        font-family: $font-family;
+    }
+}
+
+.account {
+    @include account;
+}
+
+.info {
+    @include infos;
+}

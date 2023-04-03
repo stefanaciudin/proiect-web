@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap");
+body {
+  background: #d0c3c5;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #a57f96;
+  font-family: "Asap", sans-serif;
+  font-size: 14px;
+}
+
+select {
+  width: 100%;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 15px;
+  font-family: "Asap", sans-serif;
+  color: #414b50;
+  font-size: 14px;
+}
+select:focus {
+  outline: none;
+  font-family: "Asap", sans-serif;
+}
+
+.account {
+  position: relative;
+  font-family: "Dancing Script", cursive;
+  text-align: center;
+  color: #967388;
+  font-size: 3.25vw;
+}
+
+.info {
+  color: #798c96;
+  text-align: center;
+  font-family: "Asap", sans-serif;
+  font-size: 1.25vw;
+}/*# sourceMappingURL=profile.css.map */

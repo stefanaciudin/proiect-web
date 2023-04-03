@@ -1,0 +1,92 @@
+$background-color: #d0c3c5;
+$font-family: 'Asap', sans-serif;
+$font-size: 15px;
+
+@mixin button($fontcolor: #FAFAFA) {
+    font-family: 'Asap', sans-serif;
+    font-size: 15px;
+    outline: 0;
+    border: 0;
+    width: 100%;
+    padding: 15px;
+    background: #a57f96;
+    color: $fontcolor;
+    border-radius: 25px;
+    text-transform: capitalize;
+    text-decoration: none;
+    display: inline-block;
+}
+
+@mixin message($fontcolor: #90A4AE) {
+    color: $fontcolor;
+    text-align: center;
+    font-family: 'Asap', sans-serif;
+    font-size: 1vw;
+}
+
+@mixin input($bkgnd: #F5F5F5) {
+    font-family: $font-family;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    outline: 0;
+    font-size: $font-size;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 25px;
+    background: $bkgnd;
+}
+
+body {
+    font-family: $font-family;
+    background: $background-color;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    padding: 8% 0 0;
+    position: relative;
+    margin-left: auto;
+    margin-top: 5%;
+}
+
+.form {
+    border-radius: 25px;
+    position: relative;
+    width: 20%;
+    margin: 0 auto;
+    padding: 40px;
+    background: #FFFFFF;
+}
+
+.form {
+    input {
+        @include input;
+    }
+
+    .button {
+        @include button;
+
+        &:hover {
+            background-color: #967388;
+        }
+    }
+
+    .button a {
+        text-decoration: none;
+    }
+
+    .message {
+        @include message;
+
+        a {
+            text-decoration: none;
+            color: #a98e9b;
+        }
+    }
+
+}

@@ -1,0 +1,68 @@
+body {
+  font-family: "Asap", sans-serif;
+  background: #d0c3c5;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  padding: 8% 0 0;
+  position: relative;
+  margin-left: auto;
+  margin-top: 5%;
+}
+
+.form {
+  border-radius: 25px;
+  position: relative;
+  width: 20%;
+  margin: 0 auto;
+  padding: 40px;
+  background: #FFFFFF;
+}
+
+.form input {
+  font-family: "Asap", sans-serif;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  outline: 0;
+  font-size: 15px;
+  text-align: center;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background: #F5F5F5;
+}
+.form .button {
+  font-family: "Asap", sans-serif;
+  font-size: 15px;
+  outline: 0;
+  border: 0;
+  width: 100%;
+  padding: 15px;
+  background: #a57f96;
+  color: #FAFAFA;
+  border-radius: 25px;
+  text-transform: capitalize;
+  text-decoration: none;
+  display: inline-block;
+}
+.form .button:hover {
+  background-color: #967388;
+}
+.form .button a {
+  text-decoration: none;
+}
+.form .message {
+  color: #90A4AE;
+  text-align: center;
+  font-family: "Asap", sans-serif;
+  font-size: 1vw;
+}
+.form .message a {
+  text-decoration: none;
+  color: #a98e9b;
+}/*# sourceMappingURL=login.css.map */
