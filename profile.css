@@ -37,4 +37,50 @@ select:focus {
   text-align: center;
   font-family: "Asap", sans-serif;
   font-size: 1.25vw;
+}
+
+.avatar {
+  position: absolute;
+  top: 0;
+  right: 1%;
+  margin-top: 20px;
+  /* adjust the margin as needed */
+}
+
+.user-icon {
+  font-size: 0.75em;
+  /* change font size should change size of icon */
+}
+
+.user-icon {
+  border-radius: 4em;
+  border: 1px solid #967388;
+  height: 6em;
+  width: 6em;
+  background: none;
+  padding: 0.1em;
+}
+
+.user-icon::before {
+  content: " ";
+  display: block;
+  height: 2em;
+  width: 2em;
+  background: #967388;
+  position: relative;
+  left: 2em;
+  top: 0.8em;
+  border-radius: 2em;
+}
+
+.user-icon::after {
+  content: " ";
+  display: block;
+  height: 2em;
+  width: 4em;
+  background: #967388;
+  position: relative;
+  left: 1em;
+  top: 1em;
+  border-radius: 2em 2em 0 0;
 }/*# sourceMappingURL=profile.css.map */
