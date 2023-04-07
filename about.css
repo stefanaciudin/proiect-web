@@ -31,7 +31,6 @@ header {
 }
 
 .topnav a {
-	/*float: right;*/
 	display: inline-block;
 	color: #f2f2f2;
 	text-align: center;
@@ -103,16 +102,7 @@ header {
     overflow:auto;
     margin-top: 50px;
 }
-/* .box a {
-	border-radius: 5%;
-	width: 50%;
-	height: auto;
-	font-size: 20px;
-	background-color: #a46e94;
-	color: #fff;
-	border-color: #412c3b;
-    
-} */
+
 .button {
     display: inline-block;
     border-radius: 4px;
