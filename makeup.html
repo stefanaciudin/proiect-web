@@ -6,23 +6,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="makeup.css">
     <title>Make-up</title>
-    <script>
-        function myFunction() {
-            var x = document.getElementById("myTopnav");
-            if (x.className === "topnav") {
-                x.className += " responsive";
-            } else {
-                x.className = "topnav";
-            }
-
-            var y = document.getElementById("left-menu");
-            if (y.style.display === "block") {
-                y.style.display = "none";
-            } else {
-                y.style.display = "block";
-            }
-        }
-    </script>
 </head>
 <body>
 <header>
@@ -47,11 +30,7 @@
 </header>
 
 <div id="page">
-    <div id="left-menu" class="burger_menu">
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
-        </a>
-
+    <div class="left_menu" id="my_left_menu">
         <p>Tip de machiaj:</p>
         <select name="tip_machiaj" id="tip_machiaj">
             <option value="machiaj_zi">Machiaz zi</option>
