@@ -169,12 +169,14 @@ nav ul li a:hover {
         flex-direction: column-reverse;
         margin: 50px 0;
         width: 90%;
+        border-radius: 25px;
     }
 
     .container a{
         width: 80%;
         margin: auto;
         font-size: 22px;
+        border-radius: 25px;
     }
 
 }

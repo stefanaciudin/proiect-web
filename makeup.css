@@ -103,41 +103,77 @@ select:focus {
 }
 
 #content #tutoriale{
-    border: 2px black solid;
+
 }
 
 .videos{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 #content #products{
-    border: 2px black solid;
+
 }
 
-#products .container {
+.container {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     /*flex-wrap: wrap;*/
 }
 
-#products .container a {
-    width: 23%;
-    padding: 10px;
-    border-color: black;
-    border-width: 1px;
+.container a {
+    width: 25%;
+    border-color: #967388;
+    border-width: 2px;
     border-style: solid;
+    border-radius: 25px;
+    padding: 10px;
 }
 
-#products .container a p {
+.container a p {
     text-align: center;
-    color: #000000;
+    color: #000d33;
     padding: 5px;
+    border-radius: 25px;
 }
 
-#products .container a img{
+.container img{
     max-width: 100%;
-    max-height: 100%;
+    border-radius: 25px;
+}
+
+@media only screen and (max-width: 700px) {
+
+    #left-menu{
+        visibility: hidden;
+    }
+
+    #content{
+        left: 0;
+        width: 100%;
+    }
+
+    .videos{
+        flex-direction: column;
+    }
+
+    .videos iframe{
+        width: 90%;
+    }
+
+    .container{
+        flex-direction: column;
+    }
+
+    .container a{
+        position: center;
+        width: 90%;
+    }
+
+    .container p{
+        font-size: 26px;
+    }
+
 }
