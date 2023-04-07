@@ -1,0 +1,127 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #b88dab;
+}
+
+nav {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 10px;
+    font-size: 20px;
+}
+
+nav ul li a {
+    display: block;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+
+nav ul li a:hover {
+    background-color: #a46e94;
+}
+
+.logo{
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+
+/*----------------------------------------*/
+
+#page{
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+}
+
+#left-menu{
+    left: 0;
+    top: 20%;
+    /*
+    height: 100%;
+    */
+    width: 16%;
+    background-color: #b88dab;
+    border-top: 2px white solid;
+    display: flex;
+    flex-direction: column;
+}
+
+#left-menu p{
+    color: white;
+    font-size: 22px;
+    margin-left: 5px;
+}
+
+select {
+    width: 80%;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-family: "Asap", sans-serif;
+    color: #414b50;
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+select:focus {
+    outline: none;
+    font-family: "Asap", sans-serif;
+}
+
+.products{
+    background-color: #d0c3c5;
+    left: 16%;
+    width: 83%;
+    top:20%;
+    /*height: 100%;*/
+    padding: 10px;
+}
+
+
+.products .container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    /*flex-wrap: wrap;*/
+}
+
+.products .container a {
+    width: 23%;
+    padding: 10px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.products .container a p {
+    text-align: center;
+    color: #000000;
+    padding: 5px;
+}
+
+.products .container a img{
+    max-width: 100%;
+    max-height: 100%;
+}
