@@ -1,5 +1,5 @@
 header {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
@@ -74,7 +74,6 @@ nav ul li a:hover {
     justify-content: center;
     text-align: center;
     flex-direction: column;
-    border-radius: 25px;
 }
 
 .second-text {
@@ -87,13 +86,11 @@ nav ul li a:hover {
     display: flex;
     justify-content: space-around;
     flex-direction: row;
-    border-radius: 25px;
 }
 
 .model_style_1 .second-photo {
     max-width: 100%;
     width: 60%;
-    border-radius: 25px;
 }
 
 .model_style_1 .text {
@@ -116,15 +113,11 @@ nav ul li a:hover {
     border-style: solid;*/
     padding: 20px;
 }
-.container a img{
-    border-radius: 25px;
-}
 
 .container p {
     text-align: center;
     color: #000d33;
     padding: 5px;
-    text-decoration: none;
 }
 
 
