@@ -97,6 +97,10 @@ header {
 }
 /*------------------------------------*/
 
+.sort_filter{
+    display: none;
+}
+
 #page{
     display: flex;
     justify-content: space-around;
@@ -214,6 +218,21 @@ header {
 }
 
 @media only screen and (max-width: 700px) {
+
+    .sort_filter{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 95%;
+        padding: 5px;
+    }
+
+    .sort_filter div{
+        border: 2px solid #967388;
+        padding: 10px;
+        font-size: 20px;
+        border-radius: 25px;
+    }
 
     .left_menu{
         display: none;

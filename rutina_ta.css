@@ -52,6 +52,7 @@ header {
 .topnav .icon {
     display: none;
 }
+
 /*
 --------------------------------
 */
@@ -105,6 +106,7 @@ body {
     max-width: 100%;
     width: 60%;
     border-radius: 25px;
+    border: 2px solid #967388;
 }
 
 .model_style_1 .text {
@@ -122,18 +124,17 @@ body {
 
 .container a {
     width: 30%;
-    /*border-color: black;
-    border-width: 1px;
-    border-style: solid;*/
     padding: 20px;
 }
 .container a img{
+    border: 2px solid #967388;
     border-radius: 25px;
+    max-height: 100%;
 }
 
 .container p {
     text-align: center;
-    color: #000d33;
+    color: black;
     padding: 5px;
     text-decoration: none;
 }
@@ -214,6 +215,7 @@ body {
 }
 
 @media only screen and (max-width: 700px) {
+
     #introduction{
         font-size: 24px;
     }
@@ -229,7 +231,7 @@ body {
 
     .model_style_1 .second-photo{
         width: 90%;
-        border: solid 2px black;
+        border: 2px solid #967388;
         margin: auto;
     }
 
