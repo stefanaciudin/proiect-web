@@ -105,24 +105,26 @@ select:focus {
 }
 
 .container a {
-    width: 25%;
+    width: 20%;
+    /*border-color: black;
+    border-width: 1px;
+    border-style: solid;*/
+    padding: 20px;
     border-color: #967388;
     border-width: 2px;
     border-style: solid;
     border-radius: 25px;
-    padding: 10px;
+}
+.container a img{
+    border-radius: 25px;
+    max-width: 100%;
 }
 
-.container a p {
+.container p {
     text-align: center;
     color: #000d33;
     padding: 5px;
-    border-radius: 25px;
-}
-
-.container img{
-    max-width: 100%;
-    border-radius: 25px;
+    text-decoration: none;
 }
 
 @media only screen and (max-width: 700px) {
@@ -143,10 +145,6 @@ select:focus {
         margin: auto;
         font-size: 22px;
         border-radius: 25px;
-    }
-    
-    .container a img{
-
     }
 
 }

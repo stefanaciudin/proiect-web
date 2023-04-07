@@ -119,40 +119,35 @@ select:focus {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    padding: 5px;
     /*flex-wrap: wrap;*/
 }
 
 .container a {
-    width: 25%;
+    width: 20%;
+    /*border-color: black;
+    border-width: 1px;
+    border-style: solid;*/
+    padding: 20px;
     border-color: #967388;
     border-width: 2px;
     border-style: solid;
     border-radius: 25px;
-    padding: 10px;
+}
+.container a img{
+    border-radius: 25px;
+    max-width: 100%;
 }
 
-.container a p {
+.container p {
     text-align: center;
     color: #000d33;
     padding: 5px;
-    border-radius: 25px;
+    text-decoration: none;
 }
-
-.container img{
-    max-width: 100%;
-    border-radius: 25px;
-}
-
 @media only screen and (max-width: 700px) {
 
     #left-menu{
-        visibility: hidden;
-        width: 0;
-    }
-
-    #content{
-        width: 100%;
+        width: 35%;
     }
 
     .videos{
@@ -165,20 +160,16 @@ select:focus {
     }
 
     .container{
-        flex-direction: column;
+        flex-direction: column-reverse;
+        margin: 50px 0;
         width: 90%;
         border-radius: 25px;
     }
 
     .container a{
         width: 80%;
+        margin: auto;
         font-size: 22px;
-        border-radius: 25px;
-    }
-
-    .container a img{
-        border: 3px red solid;
-        max-width: 100%;
         border-radius: 25px;
     }
 
