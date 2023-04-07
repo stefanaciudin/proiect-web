@@ -20,7 +20,7 @@ header {
 
 .topnav {
 	overflow: hidden;
-	position: fixed;
+	position: relative;
 	padding-top: 20px;
 	width: 100%;
 	justify-content: center;
@@ -80,6 +80,7 @@ header {
 	justify-content: space-around;
 	flex-flow:wrap ; */
 }
+
 .section-footer-left {
 	width: 100%;
 	justify-content: left;
@@ -197,13 +198,19 @@ header {
 }
 
 @media screen and (max-width: 1000px) {
+	.topnav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+	}
+
 	.topnav a:not(:first-child) {
 		display: none;
 	}
 
 	.topnav a.icon {
 		display: block;
-		
 	}
 
 	.responsive {
@@ -212,7 +219,7 @@ header {
 
 	.topnav.responsive {
 		position: relative;
-		z-index: 9999;
+		height: auto;
 	}
 
 	.topnav.responsive .icon {
@@ -225,8 +232,6 @@ header {
 		float: none;
 		display: block;
 		text-align: left;
-		position: relative;
-		z-index: 9999;
 	}
 }
 

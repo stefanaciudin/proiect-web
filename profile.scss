@@ -47,8 +47,13 @@ select {
     .account {
         font-size: 25px;
     }
-    .info{
-        font-size: 18px;
+
+    .info {
+        font-size: 13px;
+    }
+
+    select {
+        padding: 5px;
     }
 
 }

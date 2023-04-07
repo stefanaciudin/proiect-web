@@ -33,6 +33,9 @@ select:focus {
     font-size: 25px;
   }
   .info {
-    font-size: 18px;
+    font-size: 13px;
+  }
+  select {
+    padding: 5px;
   }
 }/*# sourceMappingURL=profile.css.map */

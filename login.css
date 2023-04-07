@@ -11,7 +11,7 @@ body {
 
 .form {
   border-radius: 25px;
-  position: relative;
+  position: absolute;
   width: 20%;
   margin: 0 auto;
   padding: 40px;
@@ -114,7 +114,13 @@ body {
   }
   .form {
     width: 40%;
-    padding: 25px;
+    padding: 10px;
+  }
+  .form input {
+    padding: 5px;
+  }
+  .form .button {
+    padding: 5px;
   }
   .logo-image img {
     max-width: 25%;
