@@ -47,7 +47,8 @@ nav ul li a:hover {
     justify-content: center;
 }
 
-/*----------------------------------------*/
+/*------------------------------------*/
+
 
 #page{
     display: flex;
@@ -90,24 +91,39 @@ select:focus {
     font-family: "Asap", sans-serif;
 }
 
-.products{
+#content{
     background-color: #d0c3c5;
     left: 16%;
     width: 83%;
     top:20%;
     /*height: 100%;*/
     padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
+#content #tutoriale{
+    border: 2px black solid;
+}
 
-.products .container {
+.videos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#content #products{
+    border: 2px black solid;
+}
+
+#products .container {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     /*flex-wrap: wrap;*/
 }
 
-.products .container a {
+#products .container a {
     width: 23%;
     padding: 10px;
     border-color: black;
@@ -115,13 +131,13 @@ select:focus {
     border-style: solid;
 }
 
-.products .container a p {
+#products .container a p {
     text-align: center;
     color: #000000;
     padding: 5px;
 }
 
-.products .container a img{
+#products .container a img{
     max-width: 100%;
     max-height: 100%;
 }
