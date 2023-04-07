@@ -132,15 +132,21 @@ select:focus {
     }
 
     .container{
-        flex-direction: column;
+        flex-direction: column-reverse;
+        margin: 50px 0;
+        width: 90%;
+        border-radius: 25px;
     }
 
     .container a{
-        width: 90%;
+        width: 80%;
+        margin: auto;
+        font-size: 22px;
+        border-radius: 25px;
     }
+    
+    .container a img{
 
-    .container p{
-        font-size: 26px;
     }
 
 }

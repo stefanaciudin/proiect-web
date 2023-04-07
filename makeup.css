@@ -103,7 +103,7 @@ select:focus {
 }
 
 #content #tutoriale{
-
+    padding: 20px;
 }
 
 .videos{
@@ -113,13 +113,13 @@ select:focus {
 }
 
 #content #products{
-
 }
 
 .container {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+    padding: 5px;
     /*flex-wrap: wrap;*/
 }
 
@@ -148,10 +148,10 @@ select:focus {
 
     #left-menu{
         visibility: hidden;
+        width: 0;
     }
 
     #content{
-        left: 0;
         width: 100%;
     }
 
@@ -161,19 +161,25 @@ select:focus {
 
     .videos iframe{
         width: 90%;
+        padding: 10px;
     }
 
     .container{
         flex-direction: column;
+        width: 90%;
+        border-radius: 25px;
     }
 
     .container a{
-        position: center;
-        width: 90%;
+        width: 80%;
+        font-size: 22px;
+        border-radius: 25px;
     }
 
-    .container p{
-        font-size: 26px;
+    .container a img{
+        border: 3px red solid;
+        max-width: 100%;
+        border-radius: 25px;
     }
 
 }
