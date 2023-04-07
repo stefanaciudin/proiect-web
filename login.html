@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="profile.css">
-    <link rel="stylesheet" href="menu.css">
     <link rel="stylesheet" href="index.css">
 
 
@@ -19,20 +19,21 @@
         <div class="logo">
             <img src="src/img/logo.png" alt="Logo" width="125" height="100">
         </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="rutina_ta.html">Rutina Mea</a></li>
-                <li><a href="general_products.html">Recomandari Generale</a></li>
-                <li><a href="makeup.html">Make Up</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="register.html">Register</a></li>
-                <li><a href="profile.html">My Account</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="topnav" id="myTopnav">
+            <a href="index.html">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="rutina_ta.html">Rutina Mea</a>
+            <a href="general_products.html">Recomandari Generale</a>
+            <a href="#">Make Up</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <a href="profile.html">My Account</a>
+            <a href="#">Contact</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
     </header>
     <div class="form">
         <div class="account">
@@ -46,25 +47,27 @@
             <p class="message"><b>User nou?<a href="register.html"> Creați un cont aici.</a></b></p>
         </form>
     </div>
-    <footer>
-        <div class="section-footer">
-            <div class="section-footer-left">
-                <div class="footer-box">
-                    <p>Phone:076755775</p>
-                </div>
-            </div>
-            <div class="section-footer-center">
-                <div class="footer-box">
-                    <p>Email: web@gmail.com</p>
-                </div>
-            </div>
-            <div class="section-footer-right">
-                <div class="footer-box">
-                    <p>locatio: online</p>
-                </div>
-            </div>
+    <div class="footer" style="position: absolute; bottom: 0;">
+        <div class="left">
+            <p>Phone:076755775</p>
         </div>
-    </footer>
+        <div class="center">
+            <p>Email: web@gmail.com</p>
+        </div>
+        <div class="right">
+            <p>location: online</p>
+        </div>
+    </div>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
 </body>
 
 </html>

@@ -52,7 +52,7 @@ body {
 
 .form {
     border-radius: 25px;
-    position: fixed;
+    position: relative;
     width: 20%;
     margin: 0 auto;
     padding: 40px;
@@ -87,20 +87,51 @@ body {
 
 }
 
-.logo-image {
+.footer {
     display: flex;
-    list-style: none;
-    justify-content: start;
-}
-
-footer {
-    width: 100%;
-    text-align: center;
-    position: absolute;
+    left: 0;
     bottom: 0;
+    width: 100%;
     background-color: #b88dab;
+    color: white;
+    text-align: center;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-flow: wrap;
 }
 
+.left {
+    width: 33%;
+    height: auto;
+    box-sizing: border-box;
+}
+
+.center {
+    width: 33%;
+    height: auto;
+    box-sizing: border-box;
+}
+
+.right {
+    width: 33%;
+    height: auto;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width:800px) {
+    .center {
+        width: 60%;
+    }
+
+    .left {
+        width: 60%;
+    }
+
+    .right {
+        width: 60%;
+    }
+
+}
 
 @media screen and (max-width: 768px) {
     body {
