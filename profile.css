@@ -1,15 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap");
-body {
-  background: #d0c3c5;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #a57f96;
-  font-family: "Asap", sans-serif;
-  font-size: 14px;
-}
-
 select {
   width: 100%;
   border: none;
@@ -28,8 +17,8 @@ select:focus {
   position: relative;
   font-family: "Dancing Script", cursive;
   text-align: center;
-  color: #967388;
-  font-size: 3.25vw;
+  color: #b88dab;
+  font-size: 3.5vw;
 }
 
 .info {
@@ -39,48 +28,11 @@ select:focus {
   font-size: 1.25vw;
 }
 
-.avatar {
-  position: absolute;
-  top: 0;
-  right: 1%;
-  margin-top: 20px;
-  /* adjust the margin as needed */
-}
-
-.user-icon {
-  font-size: 0.75em;
-  /* change font size should change size of icon */
-}
-
-.user-icon {
-  border-radius: 4em;
-  border: 1px solid #967388;
-  height: 6em;
-  width: 6em;
-  background: none;
-  padding: 0.1em;
-}
-
-.user-icon::before {
-  content: " ";
-  display: block;
-  height: 2em;
-  width: 2em;
-  background: #967388;
-  position: relative;
-  left: 2em;
-  top: 0.8em;
-  border-radius: 2em;
-}
-
-.user-icon::after {
-  content: " ";
-  display: block;
-  height: 2em;
-  width: 4em;
-  background: #967388;
-  position: relative;
-  left: 1em;
-  top: 1em;
-  border-radius: 2em 2em 0 0;
+@media only screen and (max-width: 768px) {
+  .account {
+    font-size: 25px;
+  }
+  .info {
+    font-size: 18px;
+  }
 }/*# sourceMappingURL=profile.css.map */

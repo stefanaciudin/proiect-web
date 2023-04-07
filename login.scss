@@ -9,7 +9,7 @@ $font-size: 15px;
     border: 0;
     width: 100%;
     padding: 15px;
-    background: #a57f96;
+    background: #b88dab;
     color: $fontcolor;
     border-radius: 25px;
     text-transform: capitalize;
@@ -47,21 +47,16 @@ body {
     align-items: center;
 }
 
-.container {
-    padding: 8% 0 0;
-    position: relative;
-    margin-left: auto;
-    margin-top: 5%;
-}
 
 .form {
     border-radius: 25px;
-    position: relative;
+    position: fixed;
     width: 20%;
     margin: 0 auto;
     padding: 40px;
     background: #FFFFFF;
 }
+
 
 .form {
     input {
@@ -85,8 +80,33 @@ body {
 
         a {
             text-decoration: none;
-            color: #a98e9b;
+            color: #b88dab;
         }
     }
 
+}
+
+.logo-image {
+    display: flex;
+    list-style: none;
+    justify-content: start;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 18px;
+        min-height: 110vh;
+    }
+
+    .message b {
+        font-size: 2.8vw;
+    }
+
+    .form {
+        width: 40%;
+        padding: 25px;
+    }
+    .logo-image img{
+        max-width: 25%;
+    }
 }
