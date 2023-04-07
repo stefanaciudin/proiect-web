@@ -1,45 +1,13 @@
-$background-color: #d0c3c5;
-$font-family: 'Asap', sans-serif;
-$font-size: 15px;
-
-@mixin button($fontcolor: #FAFAFA) {
-    font-family: 'Asap', sans-serif;
-    font-size: 15px;
-    outline: 0;
-    border: 0;
-    width: 100%;
-    padding: 15px;
-    background: #b88dab;
-    color: $fontcolor;
-    border-radius: 25px;
-    text-transform: capitalize;
-    text-decoration: none;
-    display: inline-block;
-}
-
-@mixin message($fontcolor: #90A4AE) {
-    color: $fontcolor;
-    text-align: center;
-    font-family: 'Asap', sans-serif;
-    font-size: 1vw;
-}
-
-@mixin input($bkgnd: #F5F5F5) {
-    font-family: $font-family;
-    width: 100%;
-    border: 0;
-    margin: 0 0 15px;
-    padding: 15px;
-    outline: 0;
-    font-size: $font-size;
-    text-align: center;
-    box-sizing: border-box;
-    border-radius: 25px;
-    background: $bkgnd;
-}
+$color_1: #FAFAFA;
+$color_2: #90A4AE;
+$color_3: #b88dab;
+$color_4: white;
+$font-family_1: "Asap", sans-serif;
+$background-color_1: #967388;
+$background-color_2: #b88dab;
 
 body {
-    font-family: $font-family;
+    font-family: $font-family_1;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -56,34 +24,55 @@ body {
     margin: 0 auto;
     padding: 40px;
     background: #FFFFFF;
-}
 
-.form {
     input {
-        @include input;
+        font-family: $font-family_1;
+        width: 100%;
+        border: 0;
+        margin: 0 0 15px;
+        padding: 15px;
+        outline: 0;
+        font-size: 15px;
+        text-align: center;
+        box-sizing: border-box;
+        border-radius: 25px;
+        background: #F5F5F5;
     }
 
     .button {
-        @include button;
+        font-family: $font-family_1;
+        font-size: 15px;
+        outline: 0;
+        border: 0;
+        width: 100%;
+        padding: 15px;
+        background: #b88dab;
+        color: $color_1;
+        border-radius: 25px;
+        text-transform: capitalize;
+        text-decoration: none;
+        display: inline-block;
 
         &:hover {
-            background-color: #967388;
+            background-color: $background-color_1;
         }
-    }
-
-    .button a {
-        text-decoration: none;
-    }
-
-    .message {
-        @include message;
 
         a {
             text-decoration: none;
-            color: #b88dab;
         }
     }
 
+    .message {
+        color: $color_2;
+        text-align: center;
+        font-family: $font-family_1;
+        font-size: 1vw;
+
+        a {
+            text-decoration: none;
+            color: $color_3;
+        }
+    }
 }
 
 .footer {
@@ -91,8 +80,8 @@ body {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #b88dab;
-    color: white;
+    background-color: $background-color_2;
+    color: $color_4;
     text-align: center;
     flex-direction: row;
     justify-content: space-around;
@@ -117,7 +106,7 @@ body {
     box-sizing: border-box;
 }
 
-@media screen and (max-width:800px) {
+@media screen and (max-width: 800px) {
     .center {
         width: 60%;
     }
@@ -129,7 +118,6 @@ body {
     .right {
         width: 60%;
     }
-
 }
 
 @media screen and (max-width: 768px) {
@@ -138,8 +126,10 @@ body {
         min-height: 110vh;
     }
 
-    .message b {
-        font-size: 2.8vw;
+    .message {
+        b {
+            font-size: 2.8vw;
+        }
     }
 
     .form {
@@ -155,7 +145,9 @@ body {
         }
     }
 
-    .logo-image img {
-        max-width: 25%;
+    .logo-image {
+        img {
+            max-width: 25%;
+        }
     }
 }

@@ -1,46 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
-$background-color: #d0c3c5;
-$font-family: 'Asap', sans-serif;
-$font-size: 14px;
+$color_1: #414b50;
+$color_2: #b88dab;
+$color_3: #798c96;
+$font-family_1: "Asap", sans-serif;
+$font-family_2: "Dancing Script", cursive;
 
-
-@mixin infos($fontcolor: #798c96) {
-    color: $fontcolor;
-    text-align: center;
-    font-family: 'Asap', sans-serif;
-    font-size: 1.25vw;
-}
-
-@mixin account($fontcolor: #b88dab) {
-    position: relative;
-    font-family: 'Dancing Script', cursive;
-    text-align: center;
-    color: $fontcolor;
-    font-size: 3.5vw;
-}
-
+@import "https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap";
 
 select {
     width: 100%;
     border: none;
     padding: 10px 15px;
     border-radius: 15px;
-    font-family: $font-family;
-    color: #414b50;
-    font-size: $font-size;
+    font-family: $font-family_1;
+    color: $color_1;
+    font-size: 14px;
 
     &:focus {
         outline: none;
-        font-family: $font-family;
+        font-family: $font-family_1;
     }
 }
 
 .account {
-    @include account;
+    position: relative;
+    font-family: $font-family_2;
+    text-align: center;
+    color: $color_2;
+    font-size: 3.5vw;
 }
 
 .info {
-    @include infos;
+    color: $color_3;
+    text-align: center;
+    font-family: $font-family_1;
+    font-size: 1.25vw;
 }
 
 @media only screen and (max-width: 768px) {
@@ -55,5 +48,4 @@ select {
     select {
         padding: 5px;
     }
-
 }
