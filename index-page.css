@@ -20,7 +20,7 @@ header {
 
 .topnav {
 	overflow: hidden;
-	position: relative;
+	position: absolute;
 	padding-top: 20px;
 	width: 100%;
 	justify-content: center;
@@ -199,7 +199,6 @@ header {
 
 @media screen and (max-width: 1000px) {
 	.topnav {
-		position: fixed;
 		top: 0;
 		left: 0;
 		width: 100%;
