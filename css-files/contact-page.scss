@@ -8,9 +8,6 @@ $background-color_3: #04AA6D;
 $background-color_4: #a46e94;
 $background-color_5: #412c3b;
 
-/* header */
-/* main */
-/* footer */
 body {
 	margin: 0;
 	padding: 0;
@@ -57,66 +54,52 @@ header {
 		display: none;
 	}
 }
-.box-button {
-	margin-top: 50px;
+.container-center {
+	img {
+		width: 70%;
+		border-radius: 20%;
+	}
+	p {
+		font-size: 20px;
+	}
+	float: left;
+	width: 33%;
+	padding: 0 20px;
 	text-align: center;
-	width: 100%;
+}
+.container-left {
+	img {
+		width: 70%;
+		border-radius: 20%;
+	}
+	float: left;
+	width: 33%;
+	text-align: center;
+	padding: 20px;
+	p {
+		font-size: 20px;
+	}
+}
+.container-right {
+	img {
+		width: 70%;
+		border-radius: 20%;
+	}
+	p {
+		font-size: 20px;
+	}
+	float: right;
+	width: 33%;
+	margin-top: 7px;
+	padding: 20px;
+	text-align: center;
 }
 .container {
 	margin-top: 150px;
 }
 .section {
-	background: linear-gradient(to bottom, white, #e3d1dd);
-	img {
-		width: 100%;
-		height: auto;
-	}
-}
-.section-photo {
-	display: flex;
-}
-.section-left {
-	width: 20%;
-	justify-content: left;
-	text-align: center;
-}
-.section-center {
-	display: flex;
-	justify-content: center;
-	width: 100%;
-	height: auto;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	flex-flow: wrap;
-}
-.section-center-left {
-	justify-content: left;
-}
-.section-center-right {
-	justify-content: right;
-	img {
-		width: 100%;
-		height: auto;
-	}
-}
-.section-right {
-	width: 20%;
-	justify-content: right;
-}
-.box {
-	width: 40%;
-	height: auto;
-	margin: 10px;
-	box-sizing: border-box;
-	h1 {
-		margin-top: 100px;
-	}
-	img {
-		border-radius: 30%;
-		width: 80%;
-		height: auto;
-	}
+	overflow: auto;
+	margin-top: 50px;
 }
 .button {
 	display: inline-block;
@@ -133,6 +116,14 @@ header {
 	&:hover {
 		background-color: $background-color_5;
 	}
+}
+.box {
+	margin-top: 50px;
+	text-align: center;
+	width: 100%;
+}
+* {
+	box-sizing: border-box;
 }
 .footer {
 	display: flex;
@@ -160,26 +151,6 @@ header {
 	width: 33%;
 	height: auto;
 	box-sizing: border-box;
-}
-@media screen and (max-width:1200px) {
-	.box {
-		width: 70%;
-		img {
-			width: 100%;
-		}
-		button {
-			font-size: 15px;
-		}
-		h1 {
-			margin-top: 20px;
-		}
-	}
-	.section-left {
-		width: 10%;
-	}
-	.section-right {
-		width: 10%;
-	}
 }
 @media screen and (max-width: 1000px) {
 	.topnav {
@@ -209,24 +180,15 @@ header {
 		}
 	}
 }
-@media screen and (max-width:600px) {
-	.box {
+@media only screen and (max-width: 800px) {
+	.container-left {
 		width: 100%;
-		img {
-			width: 100%;
-		}
-		button {
-			font-size: 15px;
-		}
-		h1 {
-			margin-top: 20px;
-		}
 	}
-	.section-left {
-		width: 10%;
+	.container-center {
+		width: 100%;
 	}
-	.section-right {
-		width: 10%;
+	.container-right {
+		width: 100%;
 	}
 }
 @media screen and (max-width:800px) {
