@@ -96,7 +96,7 @@ header {
 }
 
 .products {
-  background-color: #d0c3c5;
+  background: linear-gradient(to bottom, #e3d1dd, white);
   left: 16%;
   width: 83%;
   top: 20%;
