@@ -1,0 +1,153 @@
+$color_1: #FAFAFA;
+$color_2: #90A4AE;
+$color_3: #b88dab;
+$color_4: white;
+$font-family_1: "Asap", sans-serif;
+$background-color_1: #967388;
+$background-color_2: #b88dab;
+
+body {
+    font-family: $font-family_1;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 0;
+    padding-bottom: 50px;
+}
+
+.form {
+    border-radius: 25px;
+    position: static;
+    width: 20%;
+    margin: 0 auto;
+    padding: 40px;
+    background: #FFFFFF;
+
+    input {
+        font-family: $font-family_1;
+        width: 100%;
+        border: 0;
+        margin: 0 0 15px;
+        padding: 15px;
+        outline: 0;
+        font-size: 15px;
+        text-align: center;
+        box-sizing: border-box;
+        border-radius: 25px;
+        background: #F5F5F5;
+    }
+
+    .button {
+        font-family: $font-family_1;
+        font-size: 15px;
+        outline: 0;
+        border: 0;
+        width: 100%;
+        padding: 15px;
+        background: #b88dab;
+        color: $color_1;
+        border-radius: 25px;
+        text-transform: capitalize;
+        text-decoration: none;
+        display: inline-block;
+
+        &:hover {
+            background-color: $background-color_1;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    }
+
+    .message {
+        color: $color_2;
+        text-align: center;
+        font-family: $font-family_1;
+        font-size: 1vw;
+
+        a {
+            text-decoration: none;
+            color: $color_3;
+        }
+    }
+}
+
+.footer {
+    display: flex;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: $background-color_2;
+    color: $color_4;
+    text-align: center;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-flow: wrap;
+}
+
+.left {
+    width: 33%;
+    height: auto;
+    box-sizing: border-box;
+}
+
+.center {
+    width: 33%;
+    height: auto;
+    box-sizing: border-box;
+}
+
+.right {
+    width: 33%;
+    height: auto;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 800px) {
+    .center {
+        width: 60%;
+    }
+
+    .left {
+        width: 60%;
+    }
+
+    .right {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 18px;
+        min-height: 110vh;
+    }
+
+    .message {
+        b {
+            font-size: 2.8vw;
+        }
+    }
+
+    .form {
+        width: 40%;
+        padding: 10px;
+
+        input {
+            padding: 5px;
+        }
+
+        .button {
+            padding: 5px;
+        }
+    }
+
+    .logo-image {
+        img {
+            max-width: 25%;
+        }
+    }
+}
