@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="makeup.css">
+    <title>Make-up</title>
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img src="src/img/logo.png" alt="Logo" width="125" height="100">
+    </div>
+    <div class="topnav" id="myTopnav">
+        <a href="index.html">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="rutina_ta.html">Rutina Mea</a>
+        <a href="general_products.html">Recomandari Generale</a>
+        <a href="#">Make Up</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="profile.html">My Account</a>
+        <a href="#">Contact</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+</header>
+
+<div id="page">
+    <div class="left_menu" id="my_left_menu">
+        <p>Tip de machiaj:</p>
+        <select name="tip_machiaj" id="tip_machiaj">
+            <option value="machiaj_zi">Machiaz zi</option>
+            <option value="machiaj_seara">Machiaj seara</option>
+        </select>
+        <p>Varsta:</p>
+        <select name="varsta" id="varsta">
+            <option value="mai putin de 18">Mai putin de 18</option>
+            <option value="18-25">18-25</option>
+            <option value="25-30">25-30</option>
+            <option value="30-40">30-40</option>
+            <option value="40-50">40-50</option>
+            <option value="50-60">50-60</option>
+            <option value="mai mult de 60">Mai mult de 60</option>
+        </select>
+        <p>Tip de ten:</p>
+        <select name="ten" id="ten">
+            <option value="ten_normal">Ten normal</option>
+            <option value="ten_mixt">Ten mixt</option>
+            <option value="ten_gras">Ten gras</option>
+            <option value="ten_uscat">Ten uscat</option>
+        </select>
+        <p>Particularitati ale tenului:</p>
+        <select name="probleme_ten" id="probleme_ten">
+            <option value="ten_acneeic">Ten acneeic</option>
+            <option value="ten_sensibil">Ten sensibil</option>
+        </select>
+        <p>Ochi</p>
+        <select name="ochi" id="ochi">
+            <option value="albastri">Albastri</option>
+            <option value="verzi">Verzi</option>
+            <option value="caprui">Caprui</option>
+        </select>
+        <p>Brand:</p>
+        <select name="brand" id="brand">
+            <option value="Cerave">Cerave</option>
+            <option value="bioderma">Bioderma</option>
+            <option value="la_roche_posay">La Roche Posay</option>
+            <option value="vichy">Vichy</option>
+            <option value="ordinary">Ordinary</option>
+        </select>
+    </div>
+
+    <div id="content">
+        <div class="sort_filter">
+            <div>Sorteaza</div>
+            <div>Filtreaza</div>
+        </div>
+        <div id="tutoriale">
+            <div class="videos">
+                <iframe  src="https://www.youtube.com/embed/sDErfOvnUfg"
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                <iframe  src="https://www.youtube.com/embed/3x6FjMB1EdU"
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+            </div>
+        </div>
+        <div id="products">
+            <div class="container">
+
+                <a href="https://www.sephora.ro/p/double-wear-stay-in-place-makeup-spf10---fond-de-ten-rezistent-la-transfer-P38211.html">
+                    <img src="src/img/prod5.avif" alt="">
+                    <p>Double Wear Stay-In-Place SPF 10 Fond De Ten SPF 10</p>
+                </a>
+                <a href="https://www.sephora.ro/p/match-stix-matte-skinstick---fond-de-ten-stick-P3079032.html">
+                    <img src="src/img/prod6.avif" alt="">
+                    <p>Match Stix Matte Skinstick Fond De Ten Stick</p>
+                </a>
+                <a href="https://www.sephora.ro/p/moisturizing-lip-balm---balsam-hidratant-de-buze-P10027013.html">
+                    <img src="src/img/prod7.avif" alt="">
+                    <p>Moisturizing Lip Balm Balsam Hidratant De Buze</p>
+                </a>
+                <a href="https://www.sephora.ro/p/nude-obsessions-eyeshadow-palette---mini-paleta-de-farduri-de-pleoape-P3889096.html">
+                    <img src="src/img/prod8.avif" alt="">
+                    <p>Nude Obsessions Eyeshadow Palette Mini Paleta De Farduri De Pleoape</p>
+                </a>
+
+            </div>
+            <div class="container">
+
+                <a href="https://www.sephora.ro/p/hydro-grip-primer-travel-size---baza-de-machiaj-P3988085.html">
+                    <img src="src/img/prod9.avif" alt="">
+                    <p>Hydro Grip Primer Travel Size Baza De Machiaj</p>
+                </a>
+                <a href="https://www.sephora.ro/p/dipbrow-pomade---crema-gel-pentru-sprancene-P2678015.html">
+                    <img src="src/img/prod10.avif" alt="">
+                    <p>Dipbrow Pomade Crema-Gel Pentru Sprancene</p>
+                </a>
+                <a href="https://www.sephora.ro/p/stunna-lip-paint---ruj-de-buze-lichid-P3169001.html">
+                    <img src="src/img/prod11.avif" alt="">
+                    <p>Stunna Lip Paint Ruj De Buze Lichid</p>
+                </a>
+                <a href="https://www.sephora.ro/p/rose-quartz-eyeshadow-palette---paleta-pentru-pleoape-P10022118.html">
+                    <img src="src/img/prod12.avif" alt="">
+                    <p>Rose Quartz Paleta Pentru Pleoape</p>
+                </a>
+
+            </div>
+            <div class="container">
+
+                <a href="https://www.sephora.ro/p/brow-gel---gel-de-fixare-pentru-sprancene-P10010191.html">
+                    <img src="src/img/prod1.avif" alt="">
+                    <p>Brow Gel Gel De Fixare Pentru Sprancene</p>
+                </a>
+                <a href="https://www.sephora.ro/p/soft-pinch-liquid-blush---fard-de-obraz-P10017094.html">
+                    <img src="src/img/prod2.avif" alt="">
+                    <p>Soft Pinch Liquid Blush Fard De Obraz</p>
+                </a>
+                <a href="https://www.sephora.ro/p/positive-light-silky-touch-highlighter---iluminator-P10045917.html">
+                    <img src="src/img/prod3.avif" alt="">
+                    <p>Positive Light Silky Touch Highlighter Iluminator</p>
+                </a>
+                <a href="https://www.sephora.ro/p/positive-light-liquid-luminizer---iluminator-P10017093.html">
+                    <img src="src/img/prod4.avif" alt="">
+                    <p>Positive Light Liquid Luminizer Iluminator</p>
+                </a>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="left">
+        <p>Phone: 076755775</p>
+    </div>
+    <div class="center">
+        <p>Email: web@gmail.com</p>
+    </div>
+    <div class="right">
+        <p>Locatie: online</p>
+    </div>
+</div>
+</body>
+</html>

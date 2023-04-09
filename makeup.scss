@@ -1,0 +1,255 @@
+$color_1: #f2f2f2;
+$color_2: black;
+$color_3: white;
+$color_4: #414b50;
+$color_5: #000d33;
+$font-family_1: "Asap", sans-serif;
+$background-color_1: #b88dab;
+$background-color_2: #ddd;
+$background-color_3: #04AA6D;
+$background-color_4: #d0c3c5;
+$border-color_1: #967388;
+
+/* *------------------------------------- header */
+/*------------------------------------left-menu */
+/*------------------------------------ */
+/*-----------------------header */
+body {
+	margin: 0;
+	padding: 0;
+}
+.logo {
+	display: flex;
+	list-style: none;
+	justify-content: center;
+}
+header {
+	position: sticky;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: $background-color_1;
+	display: flex;
+}
+.topnav {
+	overflow: hidden;
+	position: fixed;
+	padding-top: 20px;
+	width: 100%;
+	justify-content: center;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	a {
+		display: inline-block;
+		color: $color_1;
+		text-align: center;
+		padding: 14px 16px;
+		text-decoration: none;
+		font-size: 17px;
+		&:hover {
+			background-color: $background-color_2;
+			color: $color_2;
+		}
+	}
+	a.active {
+		background-color: $background-color_3;
+		color: $color_3;
+	}
+	.icon {
+		display: none;
+	}
+}
+.left_menu {
+	overflow: hidden;
+	display: flex;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	left: 0;
+	top: 20%;
+	width: 16%;
+	background-color: $background-color_1;
+	border-top: 2px white solid;
+	border-bottom: 2px white solid;
+	flex-direction: column;
+	p {
+		color: $color_3;
+		font-size: 20px;
+		margin-left: 5px;
+	}
+	select {
+		width: 80%;
+		border: none;
+		padding: 10px 15px;
+		border-radius: 15px;
+		font-family: $font-family_1;
+		color: $color_4;
+		font-size: 16px;
+		margin-left: 5px;
+		&:focus {
+			outline: none;
+			font-family: $font-family_1;
+		}
+	}
+}
+.sort_filter {
+	display: none;
+}
+#page {
+	display: flex;
+	justify-content: space-around;
+	margin: auto;
+}
+#content {
+	background-color: $background-color_4;
+	left: 16%;
+	width: 83%;
+	top: 20%;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	#tutoriale {
+		padding: 20px;
+	}
+}
+.videos {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	iframe {
+		width: 45%;
+		height: 300px;
+	}
+}
+.container {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	a {
+		width: 20%;
+		padding: 20px;
+		border-color: $border-color_1;
+		border-width: 2px;
+		border-style: solid;
+		border-radius: 25px;
+		img {
+			border-radius: 25px;
+			max-width: 100%;
+		}
+	}
+	p {
+		text-align: center;
+		color: $color_5;
+		padding: 5px;
+		text-decoration: none;
+	}
+}
+.footer {
+	display: flex;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: $background-color_1;
+	color: $color_3;
+	text-align: center;
+	flex-direction: row;
+	justify-content: space-around;
+	flex-flow: wrap;
+}
+.left {
+	width: 33%;
+	height: auto;
+	box-sizing: border-box;
+}
+.center {
+	width: 33%;
+	height: auto;
+	box-sizing: border-box;
+}
+.right {
+	width: 33%;
+	height: auto;
+	box-sizing: border-box;
+}
+@media screen and (max-width: 800px) {
+	.center {
+		width: 60%;
+	}
+	.left {
+		width: 60%;
+	}
+	.right {
+		width: 60%;
+	}
+}
+@media screen and (max-width: 1000px) {
+	.topnav {
+		a {
+			&:not(:first-child) {
+				display: none;
+			}
+		}
+		a.icon {
+			display: block;
+		}
+	}
+	.responsive {
+		display: block;
+	}
+	.topnav.responsive {
+		position: relative;
+		.icon {
+			position: absolute;
+			right: 0;
+			top: 0;
+		}
+		a {
+			float: none;
+			display: block;
+			text-align: left;
+		}
+	}
+}
+@media only screen and (max-width: 700px) {
+	.sort_filter {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		width: 95%;
+		padding: 5px;
+		div {
+			border: 2px solid #967388;
+			padding: 10px;
+			font-size: 20px;
+			border-radius: 25px;
+		}
+	}
+	.left_menu {
+		display: none;
+	}
+	#content {
+		width: 100%;
+		#tutoriale {
+			width: 95%;
+		}
+	}
+	.videos {
+		flex-direction: column;
+		iframe {
+			width: 90%;
+			padding: 10px;
+		}
+	}
+	.container {
+		flex-direction: column-reverse;
+		margin: 50px 0;
+		width: 100%;
+		border-radius: 25px;
+		a {
+			width: 80%;
+			margin: auto;
+			font-size: 22px;
+			border-radius: 25px;
+		}
+	}
+}
