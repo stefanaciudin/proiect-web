@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="login.css">
-    <link rel="stylesheet" href="profile.css">
-    <link rel="stylesheet" href="index-page.css">
+    <link rel="stylesheet" href="css-files/login.css">
+    <link rel="stylesheet" href="css-files/profile.css">
+    <link rel="stylesheet" href="css-files/index-page.css">
 </head>
 
 <body style="background: linear-gradient(to bottom, #e3d1dd, white);">
@@ -38,10 +38,10 @@
         </div>
         <div class="info">
             <p>
-                Georgescu Georgica
+                <?php echo $_GET['name']; //tofix ?>
             </p>
             <p>
-                @georgy123
+                <?php echo $_GET['username']; ?>
             </p>
         </div>
         <p>

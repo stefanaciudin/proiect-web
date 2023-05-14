@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css-files/contact-page.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="src/img/logo.png" alt="Logo" width="125" height="100">
+        </div>
+        <div class="topnav" id="myTopnav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="rutina_ta.html">Rutina Mea</a>
+            <a href="general_products.html">Recomandari Generale</a>
+            <a href="makeup.html">Make Up</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <a href="profile.html">My Account</a>
+            <a href="contact.html">Contact</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="section">
+                <h1 style="text-align: center; color: #bb8eab;">Cum folosești aplicația?</h1>
+            </div>
+            <div class="section">
+                <div class="container-left">
+                    <img src="src/img/log.PNG" alt="">
+                </div>
+                <div class="container-center">
+                    <h2 style="text-align: center; color: #bb8eab;">Înregistrarea e gratuită!</h2>
+                    <p>Aplicația noastra este foarte ușor de folosit. Tot ce trebuie să faci este să te duci la
+                        sectiunea de Register si să iți creezi un cont
+                        dacă nu ai deja unul.
+                    </p>
+                    <p> Dacă ai deja un cont trebuie să accesezi secțiunea Log In și să te loghezi în aplicație. </p>
+                    <div class="box">
+                        <a href="login.html" class="button">Log In</a>
+                        <a href="register.html" class="button">Register</a>
+                    </div>
+                </div>
+
+                <div class="container-right">
+                    <img src="src/img/register.PNG" alt="">
+                </div>
+            </div>
+            <div class="section">
+                <div class="container-left">
+                    <h2 style="text-align: center; color: #bb8eab;">Poți modifica oricând datele contului!</h2>
+                    <p>Avem o soluție și în cazul în care, cu timpul, ți-ai dat seama că anumite trăsături ale tenului
+                        tău s-au schimbat sau nu au fost percepute corect de la bun început în crearea contului.</p>
+                    <p>În această situație, poți oricând accesa secțiunea "My Account" și să modifici datele contului
+                        tău
+                        pentru a putea primi cele mai bune și corecte recomandări pentru tenul tau!</p>
+                </div>
+
+                <div class="container-center">
+                    <img src="src/img/my_account.PNG" alt="">
+                </div>
+
+                <div class="container-right">
+                    <h2 style="text-align: center; color: #bb8eab;">De ce este important să introduci datele corect?
+                    </h2>
+                    <p>Algoritmul nostru are nevoie de datele corecte pentru a putea oferi cele mai bune sfaturi și
+                        produse.</p>
+                    <p>În acest caz, algoritmul nostru, dezvoltat în colaborare cu cei mai buni dermatologi și cei mai
+                        căutați
+                        Makeup Artiști va generea cele mai portivite nuanțe si combinații de substanțe pentru tenul tău!
+                    </p>
+                </div>
+            </div>
+            <div class="section">
+                <div class="container-left">
+                    <img src="src/img/makeup-1.png" alt="">
+                </div>
+                <div class="container-center">
+                    <h2 style="text-align: center; color: #bb8eab;">Make Up</h2>
+                    <p>Pentru a descoperi cele mai noi tendințe în Make up te invităm să accesezi din meniu secțiunea
+                        Make Up și să îți selectezi din multitudinea de filtre , cele mai potrivite ție pentru a obține
+                        cele mai bune sfaturi și tutoriale de Make Up!</p>
+                    <div class="box">
+                        <a href="makeup.html" class="button">Make Up</a>
+                    </div>
+                </div>
+
+                <div class="container-right">
+                    <img src="src/img/makeup2.png" alt="">
+                </div>
+            </div>
+            <div class="section">
+                <div class="container-left">
+                    <h2 style="text-align: center; color: #bb8eab;">Rutina ta</h2>
+                    <p>În funcție de preferințele tale, am creat un algoritm care, cu ajutorul informațiilor de la
+                        dermatologii noștri care, în urma unor cercetări, au descoperit formulele ideale pentru fiecare
+                        tip de ten în parte. </p>
+                    <p>Astfel, generăm o rutină personalizata nevoilor voastre!</p>
+                </div>
+
+                <div class="container-center">
+                    <img src="src/img/rutina.png" alt="">
+                </div>
+
+                <div class="container-right">
+                    <h2 style="text-align: center; color: #bb8eab;">Pentru orice nelamurire vă stăm la dispoziție:
+                    </h2>
+                    <p>Phone:076755775</p>
+                    <p>Email: web@gmail.com</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <div class="footer">
+        <div class="left">
+            <p>Phone:076755775</p>
+        </div>
+        <div class="center">
+            <p>Email: web@gmail.com</p>
+        </div>
+        <div class="right">
+            <p>Location: online</p>
+        </div>
+    </div>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
+</body>
+
+</html>
