@@ -21,7 +21,10 @@ $user = new User($name, $surname, $username, $email, $password);
 
 // save the user to the database
 if ($user->save()) {
-    echo "User saved successfully";
+    session_start();
+    header('Location: ../profile.html');
+    //$_SESSION['user_id'] = $user->getUserId(); ???
+    exit();
 } else {
     echo "Error while saving user";
 }

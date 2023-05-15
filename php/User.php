@@ -3,12 +3,12 @@ include_once 'bd.php';
 
 class User
 {
-    private mixed $user_id;
-    private mixed $name;
-    private mixed $surname;
-    private mixed $username;
-    private mixed $email;
-    private mixed $password;
+    protected mixed $user_id;
+    protected mixed $name;
+    protected mixed $surname;
+    protected mixed $username;
+    protected mixed $email;
+    protected mixed $password;
 
     public function __construct($name, $surname, $username, $email, $password)
     {
@@ -128,11 +128,63 @@ class User
         }
     }
 
+    public static function findUserByUsername(bool|mysqli_stmt $stmt, $username): ?User
+    {
+        $stmt->bind_param("s", $username);
+        return self::findUser($stmt);
+    }
+
+    public static function findByUsername($username): ?User
+    {
+        global $conn;
+        $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
+        return self::findUserByUsername($stmt, $username);
+    }
+
+    public static function findUsernameById($id): ?User
+    {
+        global $conn;
+        $stmt = $conn->prepare("SELECT username FROM users WHERE user_id = ?");
+        $stmt->bind_param("i", $id);
+        return self::findUser($stmt);
+    }
+
+    public static function findByEmail($email): ?User
+    {
+        global $conn;
+        $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+        return self::findUserByUsername($stmt, $email);
+    }
+
+    public static function getAllUsers(): array
+    {
+        global $conn;
+        $stmt = $conn->prepare("SELECT * FROM users");
+        return self::executeAndFetchUsers($stmt);
+    }
+
+    private static function executeAndFetchUsers(bool|mysqli_stmt $stmt): array
+    {
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $users = array();
+        while ($row = $result->fetch_assoc()) {
+            $user = new User(
+                $row["name"],
+                $row["surname"],
+                $row["username"],
+                $row["email"],
+                $row["password"]
+            );
+            $user->user_id = $row["user_id"];
+            $users[] = $user;
+        }
+        return $users;
+    }
     public static function findUser(bool|mysqli_stmt $stmt): ?User
     {
         $stmt->execute();
         $result = $stmt->get_result();
-        // check if a user was found
         if ($result->num_rows == 0) {
             return null;
         }
@@ -148,29 +200,8 @@ class User
         return $user;
     }
 
-    public static function getUser(bool|mysqli_stmt $stmt, $username): ?User
+    public function __toString(): string
     {
-        $stmt->bind_param("s", $username);
-        return self::findUser($stmt);
-    }
-
-    public static function findByUsername($username): ?User
-    {
-        global $conn;
-        $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
-        return self::getUser($stmt, $username);
-    }
-    public static function findUsernameById($id):?User
-    {
-        global $conn;
-        $stmt = $conn->prepare("SELECT username FROM users WHERE user_id = ?");
-        $stmt->bind_param("i", $id);
-        return self::findUser($stmt);
-    }
-    public static function findByEmail($email): ?User
-    {
-        global $conn;
-        $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
-        return self::getUser($stmt, $email);
+        return "User: " . $this->name . " " . $this->surname . " " . $this->username . " " . $this->email . " " . $this->password;
     }
 }

@@ -18,6 +18,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user && password_verify($password, $user->getPassword())) {
         // password is correct, log in user
         $_SESSION['user_id'] = $user->getUserId();
+        $_SESSION['username'] = $user->getUsername();
+        $_SESSION['name'] = $user->getName();
+
         header('Location: ../profile.html');
         exit();
     } else {
