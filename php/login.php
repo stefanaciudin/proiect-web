@@ -1,6 +1,6 @@
 <?php
 require_once 'bd.php';
-require_once 'User.php';
+require_once 'UserRepository.php';
 
 session_start();
 
@@ -11,9 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // retrieve user from database
     $user = null;
     if (filter_var($username, FILTER_VALIDATE_EMAIL)) {
-        $user = User::findByEmail($username);
+        $user = UserRepository::findByEmail($username);
     } else {
-        $user = User::findByUsername($username);
+        $user = UserRepository::findByUsername($username);
     }
     if ($user && password_verify($password, $user->getPassword())) {
         // password is correct, log in user

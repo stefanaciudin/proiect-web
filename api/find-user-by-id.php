@@ -2,15 +2,16 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-include_once '../php/bd.php';
-include_once '../php/User.php';
+include_once '../php/UserRepository.php';
 if (isset($_GET['id'])) {
     $userId = $_GET['id'];
-    $user = User::findUsernameById($userId);
+    $user = UserRepository::findUserById($userId);
     if ($user) {
         $response = array(
             'username' => $user->getUsername(),
             'name' => $user->getName(),
+            'surname' => $user->getSurname(),
+            'email' => $user->getEmail(),
             'message' => 'User found.'
         );
         echo json_encode($response);

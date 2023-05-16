@@ -1,6 +1,6 @@
 <?php
 include_once 'bd.php';
-include_once 'User.php';
+include_once 'UserRepository.php';
 
 $name = $_POST['firstname'];
 $surname = $_POST['lastname'];
@@ -20,7 +20,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 $user = new User($name, $surname, $username, $email, $password);
 
 // save the user to the database
-if ($user->save()) {
+if (UserRepository::save($user)) {
     session_start();
     header('Location: ../profile.html');
     //$_SESSION['user_id'] = $user->getUserId(); ???
