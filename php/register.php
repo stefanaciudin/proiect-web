@@ -22,10 +22,13 @@ $user = new User($name, $surname, $username, $email, $password);
 // save the user to the database
 if (UserRepository::save($user)) {
     session_start();
+    //$_SESSION['user_id'] = $user->getUserId(); this returns an error
+    $_SESSION['username'] = $user->getUsername();
+    $_SESSION['name'] = $user->getName();
+
+// redirect the user to the profile page
     header('Location: ../profile.html');
-    //$_SESSION['user_id'] = $user->getUserId(); ???
     exit();
 } else {
     echo "Error while saving user";
 }
-

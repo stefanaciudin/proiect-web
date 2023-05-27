@@ -24,7 +24,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: ../profile.html');
         exit();
     } else {
-        $error_message = 'Invalid username or password';
-        echo($error_message);
+        $_SESSION['error_message'] = 'Invalid username or password';
+        //print in the console the error message
+        error_log($_SESSION['error_message']);
+        header('Location: ../login.html');
+        exit();
     }
 }
