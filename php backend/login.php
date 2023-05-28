@@ -21,13 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['username'] = $user->getUsername();
         $_SESSION['name'] = $user->getName();
 
-        header('Location: ../profile.html');
-        exit();
+        header('Location: ../profile_page.php');
     } else {
         $_SESSION['error_message'] = 'Invalid username or password';
         //print in the console the error message
         error_log($_SESSION['error_message']);
         header('Location: ../login.html');
-        exit();
     }
+    exit();
 }

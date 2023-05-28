@@ -24,7 +24,7 @@
         <a href="general_products.html">Recomandari Generale</a>
         <a href="makeup.html">Make Up</a>
         <a href="login.html">Login</a>
-        <a href="register.html">Register</a>
+        <a href="register_page.php">Register</a>
         <a href="profile.html">My Account</a>
         <a href="contact.html">Contact</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -110,7 +110,7 @@
         }
     };
     var user_id = "<?php echo $_SESSION['user_id']; ?>"; //?????
-    xhr.open("GET", "http://127.0.0.1:8000/api/find-user-by-id.php?id=" + user_id, true);
+    xhr.open("GET", "http://127.0.0.1:8000/api/find-user-by-id.php?id=5",true);
     console.log("user id" + user_id);
     xhr.send();
 
