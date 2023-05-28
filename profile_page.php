@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+session_start();
+
+// check if the logout button was clicked
+if (isset($_POST['logout'])) {
+    // clear all session variables
+    session_unset();
+    // destroy the session
+    session_destroy();
+    // redirect to login page
+    header('Location: login_page.php');
+    exit();
+}
+?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,9 +37,9 @@
         <a href="rutina_ta.html">Rutina Mea</a>
         <a href="general_products.html">Recomandari Generale</a>
         <a href="makeup.html">Make Up</a>
-        <a href="login.html">Login</a>
+        <a href="login_page.php">Login</a>
         <a href="register_page.php">Register</a>
-        <a href="profile.html">My Account</a>
+        <a href="profile_page.php">My Account</a>
         <a href="contact.html">Contact</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i>
@@ -78,6 +92,11 @@
         <option value="australia">Australia</option>
         <option value="antarctica">Antarctica</option>
     </select>
+    <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="logout-form">
+        <p>
+            <button type="submit" name="logout" class="button">Logout</button>
+        </p>
+    </form>
 </div>
 <div class="footer" style="position: absolute; bottom: 0;">
     <div class="left">
@@ -109,9 +128,9 @@
             }
         }
     };
-    var user_id = "<?php echo $_SESSION['user_id']; ?>"; //?????
-    xhr.open("GET", "http://127.0.0.1:8000/api/find-user-by-id.php?id=5",true);
-    console.log("user id" + user_id);
+    var user_id = "<?php
+        error_log($_SESSION['user_id']);echo $_SESSION['user_id']; ?>";
+    xhr.open("GET", "http://127.0.0.1:8000/api/find-user-by-id.php?id=" + user_id, true);
     xhr.send();
 
     function myFunction() {

@@ -23,9 +23,9 @@
         <a href="rutina_ta.html">Rutina Mea</a>
         <a href="general_products.html">Recomandari Generale</a>
         <a href="makeup.html">Make Up</a>
-        <a href="login.html">Login</a>
-        <a href="register.html">Register</a>
-        <a href="profile.html">My Account</a>
+        <a href="login_page.php">Login</a>
+        <a href="register_page.php">Register</a>
+        <a href="profile_page.php">My Account</a>
         <a href="contact.html">Contact</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i>
@@ -37,8 +37,7 @@
         Register
     </div>
     <p></p>
-
-    <form name="register-form" action="php/register.php" method="POST" class="login-form"
+    <form name="register-form" action="php backend/register.php" method="POST" class="login-form"
           onsubmit="return validateForm()">
         <input type="email" name="email" placeholder="Adresă email" required>
         <input type="text" name="firstname" placeholder="Nume" required>
@@ -49,8 +48,22 @@
                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
                title="Password must be at least 6 characters long, contain at least one lowercase letter, one uppercase letter, and one number">
         <input type="password" name="password_retype" id="password_retype" placeholder="Reintroduceți parola" required>
-        <div id="password-error"></div>
         <button type="submit" class="button">Register</button>
+        <?php
+        session_start();
+        if (isset($_SESSION['email_error'])) {
+            echo '<p class="message">' . $_SESSION['email_error'] . '</p>';
+            unset($_SESSION['email_error']);
+        }
+        if (isset($_SESSION['username_error'])) {
+            echo '<p class="message">' . $_SESSION['username_error'] . '</p>';
+            unset($_SESSION['username_error']);
+        }
+        if (isset($_SESSION['error_message'])) {
+            echo '<p class="message">' . $_SESSION['error_message'] . '</p>';
+            unset($_SESSION['error_message']);
+        }
+        ?>
     </form>
 </div>
 <div class="footer" style="position: absolute; bottom: 0;">

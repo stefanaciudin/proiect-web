@@ -1,9 +1,7 @@
 <?php
 require_once 'bd.php';
 require_once 'UserRepository.php';
-
 session_start();
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -20,13 +18,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['user_id'] = $user->getUserId();
         $_SESSION['username'] = $user->getUsername();
         $_SESSION['name'] = $user->getName();
-
+        session_write_close();
         header('Location: ../profile_page.php');
     } else {
-        $_SESSION['error_message'] = 'Invalid username or password';
-        //print in the console the error message
+        $_SESSION['error_message'] = 'Username sau parolă incorecte';
         error_log($_SESSION['error_message']);
-        header('Location: ../login.html');
+        session_write_close();
+        header('Location: ../login_page.php');
     }
     exit();
 }

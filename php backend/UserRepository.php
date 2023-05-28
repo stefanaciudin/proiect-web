@@ -22,6 +22,16 @@ class UserRepository
         }
     }
 
+    public static function returnMaxId(): int
+    {
+        global $conn;
+        $stmt = $conn->prepare("SELECT MAX(user_id) as max_id from users");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row['max_id'];
+    }
+
     public static function findByUsername($username): ?User
     {
         global $conn;
