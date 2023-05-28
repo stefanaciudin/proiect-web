@@ -37,7 +37,7 @@
         Register
     </div>
     <p></p>
-    <form name="register-form" action="php backend/register.php" method="POST" class="login-form"
+    <form name="register-form" action="php/register.php" method="POST" class="login-form"
           onsubmit="return validateForm()">
         <input type="email" name="email" placeholder="Adresă email" required>
         <input type="text" name="firstname" placeholder="Nume" required>

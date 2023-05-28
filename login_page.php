@@ -39,7 +39,7 @@
         Login
     </div>
     <p></p>
-    <form action="php%20backend/login.php" method="POST" class="login-form">
+    <form action="php/login.php" method="POST" class="login-form">
         <input type="text" name="username" placeholder="Username / Email" required>
         <input type="password" name="password" placeholder="Parolă" required>
         <button type="submit" class="button">Login</button>
