@@ -130,7 +130,8 @@ if (isset($_POST['logout'])) {
     };
     var user_id = "<?php
         error_log($_SESSION['user_id']);echo $_SESSION['user_id']; ?>";
-    xhr.open("GET", "http://127.0.0.1:8000/api/find-user-by-id.php?id=" + user_id, true);
+    xhr.open("GET", "https://makeup-web-assistant.azurewebsites.net/api/find-user-by-id.php?id=" + user_id, true);
+    //https://makeup-web-assistant.azurewebsites.net/api/find-user-by-id.php?id=1
     xhr.send();
 
     function myFunction() {
