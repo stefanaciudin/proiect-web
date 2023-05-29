@@ -9,6 +9,10 @@ class User
     protected mixed $username;
     protected mixed $email;
     protected mixed $password;
+    protected mixed $age;
+    protected mixed $gender;
+    protected mixed $skin_type;
+    protected mixed $location;
 
     public function __construct($name, $surname, $username, $email, $password)
     {
@@ -114,6 +118,71 @@ class User
     {
         $this->password = $password;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAge(): mixed
+    {
+        return $this->age;
+    }
+
+    /**
+     * @param mixed $age
+     */
+    public function setAge(mixed $age): void
+    {
+        $this->age = $age;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGender(): mixed
+    {
+        return $this->gender;
+    }
+
+    /**
+     * @param mixed $gender
+     */
+    public function setGender(mixed $gender): void
+    {
+        $this->gender = $gender;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSkinType(): mixed
+    {
+        return $this->skin_type;
+    }
+
+    /**
+     * @param mixed $skin_type
+     */
+    public function setSkinType(mixed $skin_type): void
+    {
+        $this->skin_type = $skin_type;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLocation(): mixed
+    {
+        return $this->location;
+    }
+
+    /**
+     * @param mixed $location
+     */
+    public function setLocation(mixed $location): void
+    {
+        $this->location = $location;
+    }
+
 
     public function __toString(): string
     {

@@ -9,4 +9,3 @@ mysqli_real_connect($conn, 'coolmakeupserver.mysql.database.azure.com', $user, $
 // } else {
 //    echo "Successfully connected to DB ";
 // }
-

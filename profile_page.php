@@ -62,21 +62,25 @@ if (isset($_POST['logout'])) {
         <label class="message" for="age"><b>Vârstă:</b></label>
     </p>
     <select name="age" id="age">
-        <option value="younger_than_18">mai puțin de 18</option>
-        <option value="18-25" selected>18-25</option>
-        <option value="25-30">25-30</option>
-        <option value="30-40">30-40</option>
-        <option value="40-50">40-50</option>
-        <option value="50-60">50-60</option>
-        <option value="60+">peste 60</option>
+        <option value="18-35" selected>Ten tânăr: 18-35 de ani</option>
+        <option value="35+">Ten matur: peste 35 de ani</option>
+        <option value="not-spec">Nu doresc să specific</option>
     </select>
 
+    <p>
+        <label class="message" for="gender"><b>Gen:</b></label>
+    </p>
+    <select name="gender" id="gender">
+        <option value="fem" selected>Feminin</option>
+        <option value="masc">Masculin</option>
+        <option value="not-spec">Nu doresc să specific</option>
+    </select>
     <p>
         <label class="message" for="skin_type"><b>Tip de ten:</b></label>
     </p>
     <select name="skin_type" id="skin_type">
-        <option value="oily" selected>Ten gras</option>
-        <option value="normal">Ten normal</option>
+        <option value="oily">Ten gras</option>
+        <option value="normal" selected>Ten normal</option>
         <option value="dry">Ten uscat</option>
         <option value="combination">Ten mixt</option>
     </select>
@@ -110,29 +114,70 @@ if (isset($_POST['logout'])) {
     </div>
 </div>
 <script type="text/javascript">
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                var response = JSON.parse(xhr.responseText);
+    // Fetch user profile information on page load
+    var profileXhr = new XMLHttpRequest();
+    profileXhr.onreadystatechange = function() {
+        if (profileXhr.readyState === XMLHttpRequest.DONE) {
+            if (profileXhr.status === 200) {
+                var response = JSON.parse(profileXhr.responseText);
                 var username = response.username;
                 var name = response.name;
                 var surname = response.surname;
-                // update the placeholder with the actual username
+
+                // Update the placeholder with the actual username
                 document.getElementById("name-placeholder").innerHTML = name + " " + surname;
                 document.getElementById("username-placeholder").innerHTML = "@" + username;
+
+                // Populate the form with the retrieved user profile information
+                document.getElementById("age").value = response.age;
+                document.getElementById("gender").value = response.gender;
+                document.getElementById("skin_type").value = response.skin_type;
+                document.getElementById("location").value = response.location;
             } else {
                 // Handle error case
-                var errorMessage = "Error: " + xhr.status + " - " + xhr.statusText;
+                var errorMessage = "Error: " + profileXhr.status + " - " + profileXhr.statusText;
                 console.error(errorMessage);
             }
         }
     };
-    var user_id = "<?php
-        error_log($_SESSION['user_id']);echo $_SESSION['user_id']; ?>";
-    xhr.open("GET", "https://makeup-web-assistant.azurewebsites.net/api/find-user-by-id.php?id=" + user_id, true);
-    //https://makeup-web-assistant.azurewebsites.net/api/find-user-by-id.php?id=1
-    xhr.send();
+
+    var user_id = "<?php echo $_SESSION['user_id']; ?>";
+    profileXhr.open("GET", "http://127.0.0.1:8000/api/find-user-by-id.php?id=" + user_id, true);
+    profileXhr.send();
+
+    // Update profile information on form submission
+    document.getElementById('age').addEventListener('change', updateProfile);
+    document.getElementById('gender').addEventListener('change', updateProfile);
+    document.getElementById('skin_type').addEventListener('change', updateProfile);
+    document.getElementById('location').addEventListener('change', updateProfile);
+
+    function updateProfile() {
+        var age = document.getElementById('age').value;
+        var gender = document.getElementById('gender').value;
+        var skinType = document.getElementById('skin_type').value;
+        var location = document.getElementById('location').value;
+
+        var updateXhr = new XMLHttpRequest();
+        updateXhr.onreadystatechange = function() {
+            if (updateXhr.readyState === XMLHttpRequest.DONE) {
+                if (updateXhr.status === 200) {
+                    // Handle success case
+                    console.log('Profile updated successfully.');
+                } else {
+                    // Handle error case
+                    var errorMessage = 'Error: ' + updateXhr.status + ' - ' + updateXhr.statusText;
+                    console.error(errorMessage);
+                }
+            }
+        };
+
+        var updateUrl = 'http://127.0.0.1:8000/api/update-user-profile.php?id=' + user_id;
+        var params = 'age=' + encodeURIComponent(age) + '&gender=' + encodeURIComponent(gender) + '&skin_type=' + encodeURIComponent(skinType) + '&location=' + encodeURIComponent(location);
+
+        updateXhr.open('POST', updateUrl, true);
+        updateXhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        updateXhr.send(params);
+    }
 
     function myFunction() {
         var x = document.getElementById("myTopnav");

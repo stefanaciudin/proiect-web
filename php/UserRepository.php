@@ -21,6 +21,22 @@ class UserRepository
             return false;
         }
     }
+    public static function update(User $user, int $userId): bool
+    {
+        global $conn;
+        $stmt = $conn->prepare("UPDATE users SET age = ?, gender = ?, skintype_id = ?, location = ? WHERE user_id = ?");
+        $age = $user->getAge();
+        $gender = $user->getGender();
+        $skin_type = $user->getSkinType();
+        $location = $user->getLocation();
+        $stmt->bind_param("isisi", $age, $gender, $skin_type, $location, $userId);
+        if ($stmt->execute()) {
+            error_log("User updated successfully");
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public static function returnMaxId(): int
     {
@@ -100,4 +116,6 @@ class UserRepository
         $user->setUserId($row["user_id"]);
         return $user;
     }
+
+
 }
