@@ -52,15 +52,15 @@
         <?php
         session_start();
         if (isset($_SESSION['email_error'])) {
-            echo '<p class="message">' . $_SESSION['email_error'] . '</p>';
+            echo '<p class="message"><b>' . $_SESSION['email_error'] . '</b></p>';
             unset($_SESSION['email_error']);
         }
         if (isset($_SESSION['username_error'])) {
-            echo '<p class="message">' . $_SESSION['username_error'] . '</p>';
+            echo '<p class="message"><b>' . $_SESSION['username_error'] . '</b></p>';
             unset($_SESSION['username_error']);
         }
         if (isset($_SESSION['error_message'])) {
-            echo '<p class="message">' . $_SESSION['error_message'] . '</p>';
+            echo '<p class="message"><b>' . $_SESSION['error_message'] . '</b></p>';
             unset($_SESSION['error_message']);
         }
         ?>

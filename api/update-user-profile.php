@@ -9,7 +9,6 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// retrieve from database
 $user = UserRepository::findUserById($user_id);
 
 if (!$user) {
@@ -18,13 +17,11 @@ if (!$user) {
     exit();
 }
 
-// Update info based on form values
 $age = $_POST['age'];
 $gender = $_POST['gender'];
 $skinType = $_POST['skin_type'];
 $location = $_POST['location'];
 
-// Modify values based on requirements
 if ($age === '18-35') {
     $age = 18;
 } elseif ($age === '35+') {

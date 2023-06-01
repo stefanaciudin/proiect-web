@@ -51,9 +51,6 @@ if (isset($_POST['logout'])) {
         My Account
     </div>
     <div class="info">
-        <p id="name-placeholder">
-            Name
-        </p>
         <p id="username-placeholder">
             @username
         </p>
@@ -101,6 +98,11 @@ if (isset($_POST['logout'])) {
             <button type="submit" name="logout" class="button">Logout</button>
         </p>
     </form>
+    <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="logout-form">
+        <p>
+            <button type="submit" name="delete" class="button">Delete Account</button>
+        </p>
+    </form>
 </div>
 <div class="footer" style="position: absolute; bottom: 0;">
     <div class="left">
@@ -114,9 +116,38 @@ if (isset($_POST['logout'])) {
     </div>
 </div>
 <script type="text/javascript">
+    function deleteUser() {
+        // confirm the deletion
+        if (confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
+            // create an XMLHttpRequest object
+            var deleteXhr = new XMLHttpRequest();
+            deleteXhr.onreadystatechange = function() {
+                if (deleteXhr.readyState === XMLHttpRequest.DONE) {
+                    if (deleteXhr.status === 200) {
+                        // user deleted successfully
+                        alert("User deleted successfully.");
+                        // redirect to the login page
+                        window.location.href = "login_page.php";
+                    } else {
+                        // error occurred while deleting the user
+                        alert("Error deleting the user.");
+                    }
+                }
+            };
+
+            var user_id = "<?php echo $_SESSION['user_id']; ?>";
+            var deleteUrl = "http://127.0.0.1:8000/api/delete-user-by-id.php?id=" + user_id;
+            deleteXhr.open("GET", deleteUrl, true);
+            deleteXhr.send();
+        }
+    }
+
+    // Add the click event listener to the delete button
+    var deleteButton = document.querySelector('button[name="delete"]');
+    deleteButton.addEventListener("click", deleteUser);
     // Fetch user profile information on page load
     var profileXhr = new XMLHttpRequest();
-    profileXhr.onreadystatechange = function() {
+    profileXhr.onreadystatechange = function () {
         if (profileXhr.readyState === XMLHttpRequest.DONE) {
             if (profileXhr.status === 200) {
                 var response = JSON.parse(profileXhr.responseText);
@@ -125,8 +156,7 @@ if (isset($_POST['logout'])) {
                 var surname = response.surname;
 
                 // Update the placeholder with the actual username
-                document.getElementById("name-placeholder").innerHTML = name + " " + surname;
-                document.getElementById("username-placeholder").innerHTML = "@" + username;
+                document.getElementById("username-placeholder").innerHTML = name + " " + surname + ", " + "@" + username;
 
                 // Populate the form with the retrieved user profile information
                 document.getElementById("age").value = response.age;
@@ -158,7 +188,7 @@ if (isset($_POST['logout'])) {
         var location = document.getElementById('location').value;
 
         var updateXhr = new XMLHttpRequest();
-        updateXhr.onreadystatechange = function() {
+        updateXhr.onreadystatechange = function () {
             if (updateXhr.readyState === XMLHttpRequest.DONE) {
                 if (updateXhr.status === 200) {
                     // Handle success case

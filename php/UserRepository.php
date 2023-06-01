@@ -21,6 +21,7 @@ class UserRepository
             return false;
         }
     }
+
     public static function update(User $user, int $userId): bool
     {
         global $conn;
@@ -114,8 +115,59 @@ class UserRepository
             $row["password"]
         );
         $user->setUserId($row["user_id"]);
+        $user->setAge(self::mapAgeFromDatabase($row['age']));
+        $user->setGender(self::mapGenderFromDatabase($row['gender']));
+        $user->setSkinType(self::mapSkinTypeFromDatabase($row['skintype_id']));
+        $user->setLocation($row['location']);
         return $user;
     }
 
+    public static function deleteUser(int $userId): bool
+    {
+        global $conn;
+        $stmt = $conn->prepare("DELETE FROM users WHERE user_id = ?");
+        $stmt->bind_param("i", $userId);
 
+        if ($stmt->execute()) {
+            // user deleted successfully
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    private static function mapAgeFromDatabase($ageFromDatabase): string
+    {
+        if ($ageFromDatabase === 18) {
+            return '18-35';
+        } elseif ($ageFromDatabase === 35) {
+            return '35+';
+        } else {
+            return 'not-spec';
+        }
+    }
+
+
+    private static function mapGenderFromDatabase(mixed $genderFromDatabase): string
+    {
+        if ($genderFromDatabase === 'm') {
+            return 'masc';
+        } elseif ($genderFromDatabase === 'f') {
+            return 'fem';
+        } else {
+            return 'not-spec';
+        }
+    }
+
+    private static function mapSkinTypeFromDatabase(mixed $skinTypeFromDatabase): string
+    {
+        return match ($skinTypeFromDatabase) {
+            2 => 'normal',
+            1 => 'oily',
+            3 => 'combination',
+            4 => 'dry',
+            default => 'not-spec',
+        };
+    }
 }

@@ -46,7 +46,7 @@
         <?php
         session_start();
         if (isset($_SESSION['error_message'])) {
-            echo '<p class="message">' . $_SESSION['error_message'] . '</p>';
+            echo '<p class="message"><b>' . $_SESSION['error_message'] . '</b></p>';
             unset($_SESSION['error_message']);
         }
         ?>

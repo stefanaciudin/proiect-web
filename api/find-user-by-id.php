@@ -12,6 +12,10 @@ if (isset($_GET['id'])) {
             'name' => $user->getName(),
             'surname' => $user->getSurname(),
             'email' => $user->getEmail(),
+            'age' => $user->getAge(),
+            'gender' => $user->getGender(),
+            'skin_type' => $user->getSkinType(),
+            'location' => $user->getLocation(),
             'message' => 'User found.'
         );
         echo json_encode($response);
