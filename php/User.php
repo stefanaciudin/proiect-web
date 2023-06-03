@@ -1,5 +1,5 @@
 <?php
-include_once 'bd.php';
+
 
 class User
 {
@@ -9,10 +9,11 @@ class User
     protected mixed $username;
     protected mixed $email;
     protected mixed $password;
-    protected mixed $age=0;
-    protected mixed $gender=0;
-    protected mixed $skin_type=2;
-    protected mixed $location=0;
+    protected mixed $age = 0;
+    protected mixed $gender = 0;
+    protected mixed $skin_type = 2;
+    protected mixed $location = 0;
+
 
     public function __construct($name, $surname, $username, $email, $password)
     {
@@ -22,6 +23,7 @@ class User
         $this->email = $email;
         $this->password = $password;
     }
+
     /**
      * @return mixed
      */

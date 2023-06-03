@@ -22,7 +22,7 @@
     <div class="topnav" id="myTopnav">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
-        <a href="rutina_ta.html">Rutina Mea</a>
+        <a href="rutina_ta.php">Rutina Mea</a>
         <a href="general_products.html">Recomandari Generale</a>
         <a href="makeup.html">Make Up</a>
         <a href="login_page.php">Login</a>

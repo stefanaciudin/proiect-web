@@ -50,9 +50,13 @@ $user->setAge($age);
 $user->setGender($gender);
 $user->setSkinType($skinType);
 $user->setLocation($location);
+$_SESSION['age'] = $age;
+$_SESSION['gender'] = $gender;
+$_SESSION['skin_type'] = $skinType;
+$_SESSION['location'] = $location;
 
 // save to database
-if (UserRepository::update($user,$user_id)) {
+if (UserRepository::update($user, $user_id)) {
     http_response_code(200);
 } else {
     http_response_code(500);

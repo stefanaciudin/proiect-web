@@ -16,8 +16,10 @@ class UserRepository
         $stmt->bind_param("sssss", $name, $surname, $username, $email, $password);
         if ($stmt->execute()) {
             // user saved successfully
+            $stmt->close();
             return true;
         } else {
+            $stmt->close();
             return false;
         }
     }
@@ -33,8 +35,10 @@ class UserRepository
         $stmt->bind_param("isisi", $age, $gender, $skin_type, $location, $userId);
         if ($stmt->execute()) {
             error_log("User updated successfully");
+            $stmt->close();
             return true;
         } else {
+            $stmt->close();
             return false;
         }
     }
@@ -46,6 +50,7 @@ class UserRepository
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
+        $stmt->close();
         return $row['max_id'];
     }
 
@@ -96,6 +101,7 @@ class UserRepository
             $user->setUserId($row["user_id"]);
             $users[] = $user;
         }
+        $stmt->close();
         return $users;
     }
 
@@ -119,6 +125,7 @@ class UserRepository
         $user->setGender(self::mapGenderFromDatabase($row['gender']));
         $user->setSkinType(self::mapSkinTypeFromDatabase($row['skintype_id']));
         $user->setLocation($row['location']);
+        $stmt->close();
         return $user;
     }
 
@@ -130,8 +137,10 @@ class UserRepository
 
         if ($stmt->execute()) {
             // user deleted successfully
+            $stmt->close();
             return true;
         } else {
+            $stmt->close();
             return false;
         }
     }

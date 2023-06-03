@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="ro">
 <head>
@@ -15,20 +14,20 @@
         <img src="src/img/logo.png" alt="Logo" width="125" height="100">
     </div>
 
-<div class="topnav" id="myTopnav">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="rutina_ta.html">Rutina Mea</a>
-            <a href="general_products.html">Recomandari Generale</a>
-            <a href="makeup.html">Make Up</a>
-            <a href="login_page.php">Login</a>
-            <a href="register_page.php">Register</a>
-            <a href="profile_page.php">My Account</a>
-            <a href="contact.html">Contact</a>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                <i class="fa fa-bars"></i>
-            </a>
-        </div>
+    <div class="topnav" id="myTopnav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="rutina_ta.php">Rutina Mea</a>
+        <a href="general_products.html">Recomandari Generale</a>
+        <a href="makeup.html">Make Up</a>
+        <a href="login_page.php">Login</a>
+        <a href="register_page.php">Register</a>
+        <a href="profile_page.php">My Account</a>
+        <a href="contact.html">Contact</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
 </header>
 
 <div class="content">
@@ -302,16 +301,16 @@
         <p>Locatie: online</p>
     </div>
 </div>
-    <script>
-        function myFunction() {
-          var x = document.getElementById("myTopnav");
-          if (x.className === "topnav") {
+<script>
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
             x.className += " responsive";
-          } else {
+        } else {
             x.className = "topnav";
-          }
         }
-        </script>
+    }
+</script>
 </body>
 
 </html>
