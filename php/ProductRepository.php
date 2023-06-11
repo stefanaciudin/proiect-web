@@ -4,6 +4,15 @@ include_once 'bd.php';
 
 class ProductRepository
 {
+    /**
+     * @param $skintype_id - the user's skin type
+     * @param $type_id - the product type
+     * @param $age - user's age
+     * @param $is_makeup - whether the user wants makeup products or not
+     * @param $usage_time - when the user wants to use the product
+     * @return array - an array of Product objects, containing the recommended products. Three of them are selected randomly from the database,
+     * according to the user's preferences.
+     */
     public static function getRecProducts($skintype_id, $type_id, $age, $is_makeup, $usage_time): array
     {
         global $conn;
@@ -24,7 +33,6 @@ class ProductRepository
 
         // create an array to store the products
         $products = array();
-
         // fetch the products and create Product objects
         while ($stmt->fetch()) {
             $product = new Product();
@@ -41,13 +49,11 @@ class ProductRepository
             $product->setDescription($description);
             $product->setHowToUse($how_to_use);
             $product->setLink($link);
-
             $products[] = $product;
         }
 
         $stmt->close();
         $conn->close();
-
         return $products;
     }
 }

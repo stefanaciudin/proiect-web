@@ -5,14 +5,19 @@ header("Content-Type: application/json; charset=UTF-8");
 require_once '../php/Product.php';
 require_once '../php/ProductRepository.php';
 require_once '../php/bd.php';
+require_once '../php/UserRepository.php';
 
 session_start();
 
-$skintype_id = 1;
-$type_id = 1;
-$age = 0;
+//get info from session about the user and generate the products accordingly
+$user_id = $_SESSION['user_id'];
+$user = UserRepository::findUserById($user_id);
+$skintype_id = UserRepository::mapSkinTypeToDatabase($user->getSkinType());
+error_log("skintype_id: " . $skintype_id);
+$type_id = $_GET['type_id'];
+$age = UserRepository::mapAgeToDatabase($user->getAge());
 $is_makeup = 0;
-$usage_time = 'oricand';
+$usage_time = $_GET['usage_time'] ?? 'oricand';
 
 $recommendedProducts = ProductRepository::getRecProducts($skintype_id, $type_id, $age, $is_makeup, $usage_time);
 

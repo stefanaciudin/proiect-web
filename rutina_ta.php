@@ -1,6 +1,9 @@
 <!doctype html>
 <html lang="ro">
 <head>
+    <?php
+    session_start();
+    ?>
     <meta charset="UTF-8">
     <title>Rutina ta</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -74,20 +77,20 @@
 
             <h4 class="bold">Produse recomandate</h4>
 
-            <div class="container">
+            <div class="container" id="product-container-1">
 
-                <a href="https://www.sephora.ro/p/squalane-cleanser---gel-de-curatare-pentru-fata-P10014059.html">
-                    <img src="src/img/rutina_1.avif" alt="">
-                    <p>Squalane Cleanser Gel De Curatare Pentru Fata</p>
-                </a>
-                <a href="https://www.sephora.ro/p/anti-blemish-solutions-clinical-clearing-gel----gel-anti-imperfectiuni-P1792004.html">
-                    <img src="src/img/rutina_2.avif" alt="">
-                    <p>Anti-Blemish Solutions Gel De Curatare Pentru Tenul Cu Imperfectiuni</p>
-                </a>
-                <a href="https://www.sephora.ro/p/glycolic-foaming-cleanser---spuma-de-curatare-P4036139.html">
-                    <img src="src/img/rutina_3.avif" alt="">
-                    <p>Glycolic Foaming Cleanser Spuma De Curatare</p>
-                </a>
+                <!--                <a href="https://www.sephora.ro/p/squalane-cleanser---gel-de-curatare-pentru-fata-P10014059.html">-->
+                <!--                    <img src="src/img/rutina_1.avif" alt="">-->
+                <!--                    <p>Squalane Cleanser Gel De Curatare Pentru Fata</p>-->
+                <!--                </a>-->
+                <!--                <a href="https://www.sephora.ro/p/anti-blemish-solutions-clinical-clearing-gel----gel-anti-imperfectiuni-P1792004.html">-->
+                <!--                    <img src="src/img/rutina_2.avif" alt="">-->
+                <!--                    <p>Anti-Blemish Solutions Gel De Curatare Pentru Tenul Cu Imperfectiuni</p>-->
+                <!--                </a>-->
+                <!--                <a href="https://www.sephora.ro/p/glycolic-foaming-cleanser---spuma-de-curatare-P4036139.html">-->
+                <!--                    <img src="src/img/rutina_3.avif" alt="">-->
+                <!--                    <p>Glycolic Foaming Cleanser Spuma De Curatare</p>-->
+                <!--                </a>-->
 
             </div>
         </div>
@@ -115,20 +118,20 @@
 
 
             <h4 class="bold">Produse recomandate</h4>
-            <div class="container">
-
-                <a href="https://www.sephora.ro/p/aha-30--bha-2--peeling-solution---serum-exfoliant-pentru-ten-502423.html">
-                    <img src="src/img/rutina_4.avif" alt="">
-                    <p>AHA 30% + BHA 2% Peeling Solution Serum Exfoliant Pentru Ten</p>
-                </a>
-                <a href="https://www.sephora.ro/p/pore%C2%B7remedy---serum-exfoliant-cu-pha-584218.html">
-                    <img src="src/img/rutina_5.avif" alt="">
-                    <p>Pore·remedy Serum Exfoliant Pentru Ten Cu PHA</p>
-                </a>
-                <a href="https://www.sephora.ro/p/clear-improvement---masca-de-curatare-cu-carbune-activ-466536.html">
-                    <img src="src/img/rutina_6.avif" alt="">
-                    <p>Clear Improvement Masca De Curatare Cu Carbune Activ</p>
-                </a>
+            <div class="container" id="product-container-2">
+                <!---->
+                <!--                <a href="https://www.sephora.ro/p/aha-30--bha-2--peeling-solution---serum-exfoliant-pentru-ten-502423.html">-->
+                <!--                    <img src="src/img/rutina_4.avif" alt="">-->
+                <!--                    <p>AHA 30% + BHA 2% Peeling Solution Serum Exfoliant Pentru Ten</p>-->
+                <!--                </a>-->
+                <!--                <a href="https://www.sephora.ro/p/pore%C2%B7remedy---serum-exfoliant-cu-pha-584218.html">-->
+                <!--                    <img src="src/img/rutina_5.avif" alt="">-->
+                <!--                    <p>Pore·remedy Serum Exfoliant Pentru Ten Cu PHA</p>-->
+                <!--                </a>-->
+                <!--                <a href="https://www.sephora.ro/p/clear-improvement---masca-de-curatare-cu-carbune-activ-466536.html">-->
+                <!--                    <img src="src/img/rutina_6.avif" alt="">-->
+                <!--                    <p>Clear Improvement Masca De Curatare Cu Carbune Activ</p>-->
+                <!--                </a>-->
 
             </div>
         </div>
@@ -158,20 +161,20 @@
                 </div>
             </div>
             <h4 class="bold">Produse recomandate</h4>
-            <div class="container">
-
-                <a href="https://www.sephora.ro/p/just-daily-sun-shield-spf-50----crema-lejera-pentru-hidratare-P10020784.html">
-                    <img src="src/img/rutina_7.avif" alt="">
-                    <p>Just Daily Sun Shield SPF 50+ Crema Lejera Pentru Hidratare</p>
-                </a>
-                <a href="https://www.sephora.ro/p/hydrating-face-sunscreen---crema-cu-protectie-solara-spf-50-pentru-ten-P10026371.html">
-                    <img src="src/img/rutina_8.avif" alt="">
-                    <p>Hydrating Face Sunscreen Crema Cu Protectie Solara SPF 50 Pentru Ten</p>
-                </a>
-                <a href="https://www.sephora.ro/p/mineral-uv-filters-spf15---protectie-solara-P10017418.html">
-                    <img src="src/img/rutina_9.avif" alt="">
-                    <p>Mineral UV Filters SPF15 Protectie Solara</p>
-                </a>
+            <div class="container" id="product-container-3">
+                <!---->
+                <!--                <a href="https://www.sephora.ro/p/just-daily-sun-shield-spf-50----crema-lejera-pentru-hidratare-P10020784.html">-->
+                <!--                    <img src="src/img/rutina_7.avif" alt="">-->
+                <!--                    <p>Just Daily Sun Shield SPF 50+ Crema Lejera Pentru Hidratare</p>-->
+                <!--                </a>-->
+                <!--                <a href="https://www.sephora.ro/p/hydrating-face-sunscreen---crema-cu-protectie-solara-spf-50-pentru-ten-P10026371.html">-->
+                <!--                    <img src="src/img/rutina_8.avif" alt="">-->
+                <!--                    <p>Hydrating Face Sunscreen Crema Cu Protectie Solara SPF 50 Pentru Ten</p>-->
+                <!--                </a>-->
+                <!--                <a href="https://www.sephora.ro/p/mineral-uv-filters-spf15---protectie-solara-P10017418.html">-->
+                <!--                    <img src="src/img/rutina_9.avif" alt="">-->
+                <!--                    <p>Mineral UV Filters SPF15 Protectie Solara</p>-->
+                <!--                </a>-->
 
             </div>
             <br><br>
@@ -198,20 +201,20 @@
             </div>
 
             <h4 class="bold">Produse recomandate</h4>
-            <div class="container">
+            <div class="container" id="product-container-4">
 
-                <a href="https://www.sephora.ro/p/squalane-cleanser---gel-de-curatare-pentru-fata-P10014059.html">
-                    <img src="src/img/rutina_1.avif" alt="">
-                    <p>Squalane Cleanser Gel De Curatare Pentru Fata</p>
-                </a>
-                <a href="https://www.sephora.ro/p/anti-blemish-solutions-clinical-clearing-gel----gel-anti-imperfectiuni-P1792004.html">
-                    <img src="src/img/rutina_2.avif" alt="">
-                    <p>Anti-Blemish Solutions Gel De Curatare Pentru Tenul Cu Imperfectiuni</p>
-                </a>
-                <a href="https://www.sephora.ro/p/glycolic-foaming-cleanser---spuma-de-curatare-P4036139.html">
-                    <img src="src/img/rutina_3.avif" alt="">
-                    <p>Glycolic Foaming Cleanser Spuma De Curatare</p>
-                </a>
+                <!--                <a href="https://www.sephora.ro/p/squalane-cleanser---gel-de-curatare-pentru-fata-P10014059.html">-->
+                <!--                    <img src="src/img/rutina_1.avif" alt="">-->
+                <!--                    <p>Squalane Cleanser Gel De Curatare Pentru Fata</p>-->
+                <!--                </a>-->
+                <!--                <a href="https://www.sephora.ro/p/anti-blemish-solutions-clinical-clearing-gel----gel-anti-imperfectiuni-P1792004.html">-->
+                <!--                    <img src="src/img/rutina_2.avif" alt="">-->
+                <!--                    <p>Anti-Blemish Solutions Gel De Curatare Pentru Tenul Cu Imperfectiuni</p>-->
+                <!--                </a>-->
+                <!--                <a href="https://www.sephora.ro/p/glycolic-foaming-cleanser---spuma-de-curatare-P4036139.html">-->
+                <!--                    <img src="src/img/rutina_3.avif" alt="">-->
+                <!--                    <p>Glycolic Foaming Cleanser Spuma De Curatare</p>-->
+                <!--                </a>-->
 
             </div>
             <br><br>
@@ -232,20 +235,20 @@
 
             </div>
             <h4 class="bold">Produse recomandate</h4>
-            <div class="container">
+            <div class="container" id="product-container-5">
 
-                <a href="https://www.sephora.ro/p/aha-30--bha-2--peeling-solution---serum-exfoliant-pentru-ten-502423.html">
-                    <img src="src/img/rutina_4.avif" alt="">
-                    <p>AHA 30% + BHA 2% Peeling Solution Serum Exfoliant Pentru Ten</p>
-                </a>
-                <a href="https://www.sephora.ro/p/pore%C2%B7remedy---serum-exfoliant-cu-pha-584218.html">
-                    <img src="src/img/rutina_5.avif" alt="">
-                    <p>Pore·remedy Serum Exfoliant Pentru Ten Cu PHA</p>
-                </a>
-                <a href="https://www.sephora.ro/p/clear-improvement---masca-de-curatare-cu-carbune-activ-466536.html">
-                    <img src="src/img/rutina_6.avif" alt="">
-                    <p>Clear Improvement Masca De Curatare Cu Carbune Activ</p>
-                </a>
+                <!--                <a href="https://www.sephora.ro/p/aha-30--bha-2--peeling-solution---serum-exfoliant-pentru-ten-502423.html">-->
+                <!--                    <img src="src/img/rutina_4.avif" alt="">-->
+                <!--                    <p>AHA 30% + BHA 2% Peeling Solution Serum Exfoliant Pentru Ten</p>-->
+                <!--                </a>-->
+                <!--                <a href="https://www.sephora.ro/p/pore%C2%B7remedy---serum-exfoliant-cu-pha-584218.html">-->
+                <!--                    <img src="src/img/rutina_5.avif" alt="">-->
+                <!--                    <p>Pore·remedy Serum Exfoliant Pentru Ten Cu PHA</p>-->
+                <!--                </a>-->
+                <!--                <a href="https://www.sephora.ro/p/clear-improvement---masca-de-curatare-cu-carbune-activ-466536.html">-->
+                <!--                    <img src="src/img/rutina_6.avif" alt="">-->
+                <!--                    <p>Clear Improvement Masca De Curatare Cu Carbune Activ</p>-->
+                <!--                </a>-->
 
             </div>
             <br><br>
@@ -268,21 +271,21 @@
             </div>
 
             <h4 class="bold">Produse recomandate</h4>
-            <div class="container">
+            <div class="container" id="product-container-6">
 
-                <a href="https://www.sephora.ro/p/natural-moisturizing-factors-ha---crema-hidratanta-pentru-fata-502448.html">
-                    <img src="src/img/rutina_10.avif" alt="">
-                    <p>Natural Moisturizing Factors + HA Crema Hidratanta Pentru Fata</p>
-                </a>
-                <a href="https://www.sephora.ro/p/dramatically-different-hydrating-jelly---gel-hidratant-pentru-fata-441485.html">
-                    <img src="src/img/rutina_11.avif" alt="">
-                    <p>Dramatically Different Hydrating Jelly Gel Hidratant Pentru Fata</p>
-
-                </a>
-                <a href="https://www.sephora.ro/p/jet-lag-mask---masca-de-fata-hidratanta-612172.html">
-                    <img src="src/img/rutina_12.avif" alt="">
-                    <p>Jet Lag Mask Masca De Fata Hidratanta</p>
-                </a>
+                <!--                <a href="https://www.sephora.ro/p/natural-moisturizing-factors-ha---crema-hidratanta-pentru-fata-502448.html">-->
+                <!--                    <img src="src/img/rutina_10.avif" alt="">-->
+                <!--                    <p>Natural Moisturizing Factors + HA Crema Hidratanta Pentru Fata</p>-->
+                <!--                </a>-->
+                <!--                <a href="https://www.sephora.ro/p/dramatically-different-hydrating-jelly---gel-hidratant-pentru-fata-441485.html">-->
+                <!--                    <img src="src/img/rutina_11.avif" alt="">-->
+                <!--                    <p>Dramatically Different Hydrating Jelly Gel Hidratant Pentru Fata</p>-->
+                <!---->
+                <!--                </a>-->
+                <!--                <a href="https://www.sephora.ro/p/jet-lag-mask---masca-de-fata-hidratanta-612172.html">-->
+                <!--                    <img src="src/img/rutina_12.avif" alt="">-->
+                <!--                    <p>Jet Lag Mask Masca De Fata Hidratanta</p>-->
+                <!--                </a>-->
 
             </div>
             <br><br>
@@ -302,6 +305,60 @@
     </div>
 </div>
 <script>
+    function createProductElement(product) {
+        const productElement = document.createElement('a');
+        productElement.href = product.link;
+
+        const imgElement = document.createElement('img');
+        imgElement.src = product.image_path;
+        imgElement.alt = '';
+
+        const nameElement = document.createElement('p');
+        nameElement.textContent = product.name;
+
+        productElement.appendChild(imgElement);
+        productElement.appendChild(nameElement);
+
+        return productElement;
+    }
+
+    const containerMap = [
+        {container: 'product-container-1', usageTime: 'oricand', typeId: 1},
+        {container: 'product-container-2', usageTime: 'oricand', typeId: 3},
+        {container: 'product-container-3', usageTime: 'zi', typeId: 8},
+        {container: 'product-container-4', usageTime: 'seara', typeId: 27},
+        {container: 'product-container-5', usageTime: 'seara', typeId: 6},
+        {container: 'product-container-6', usageTime: 'oricand', typeId: 2},
+        //{container: 'product-container-6', usageTime: 'seara', typeId: 7}, //nu exista
+        // Add mappings for the remaining containers, usage times, and type IDs
+    ];
+
+    // Loop through the container map
+    for (const {container, usageTime, typeId} of containerMap) {
+        // Make API calls to retrieve product data for the current container, usage time, and type ID
+        fetch(`http://127.0.0.1:8000/api/get-rec-products.php?type_id=${typeId}&usage_time=${usageTime}`)
+            .then(response => response.json())
+            .then(data => {
+                // Process the received product data and add to container
+                data.forEach(product => {
+                    const productElement = createProductElement(product);
+                    document.getElementById(container).appendChild(productElement);
+                });
+                // Check if all API requests are completed
+                const allRequestsCompleted = containerMap.every(({container}) =>
+                    document.getElementById(container).childElementCount > 0
+                );
+                // Hide the loading message if all API requests are completed
+                if (allRequestsCompleted) {
+                    // Wait for a short delay before hiding the alert
+                    setTimeout(() => {
+                        alert('Rutina ta perfectă este gata. Mulțumim pentru răbdare!');
+                    }, 50);
+                }
+            })
+            .catch(error => console.error(error));
+    }
+
     function myFunction() {
         var x = document.getElementById("myTopnav");
         if (x.className === "topnav") {

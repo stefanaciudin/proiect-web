@@ -156,6 +156,16 @@ class UserRepository
             return 'not-spec';
         }
     }
+    public static function mapAgeToDatabase($ageFromDatabase): int
+    {
+        if ($ageFromDatabase === '18-35') {
+            return 18;
+        } elseif ($ageFromDatabase === '35+') {
+            return 35;
+        } else {
+            return 0;
+        }
+    }
 
 
     private static function mapGenderFromDatabase(mixed $genderFromDatabase): string
@@ -179,4 +189,16 @@ class UserRepository
             default => 'not-spec',
         };
     }
+
+    public static function mapSkinTypeToDatabase(mixed $skinTypeFromDatabase): int
+    {
+        return match ($skinTypeFromDatabase) {
+            'normal' => 2,
+            'oily' => 1,
+            'combination' => 3,
+            'dry' => 4,
+            default => 5,
+        };
+    }
+
 }
