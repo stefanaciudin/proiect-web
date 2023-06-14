@@ -300,7 +300,7 @@
         {container: 'product-container-2', usageTime: 'oricand', typeId: 3},
         {container: 'product-container-3', usageTime: 'zi', typeId: 8},
         {container: 'product-container-4', usageTime: 'seara', typeId: 27},
-        {container: 'product-container-5', usageTime: 'seara', typeId: 6},
+        {container: 'product-container-5', usageTime: 'oricand', typeId: 4},
         {container: 'product-container-6', usageTime: 'oricand', typeId: 2},
         //{container: 'product-container-6', usageTime: 'seara', typeId: 7},
         // Add mappings for the remaining containers, usage times, and type IDs

@@ -56,4 +56,37 @@ class ProductRepository
         $conn->close();
         return $products;
     }
+    public static function findProductById($productId): ?Product
+    {
+        global $conn;
+        $stmt = $conn->prepare("SELECT * FROM products WHERE product_id = ?");
+        $stmt->bind_param("i", $productId);
+        $stmt->execute();
+
+        $stmt->bind_result($product_id, $name, $price, $image_path, $is_makeup, $age, $brand_id, $skintype_id, $type_id, $ingredients, $description, $how_to_use, $link);
+        $stmt->fetch();
+        $stmt->close();
+        $conn->close();
+
+        if (!$product_id) {
+            return null;
+        }
+
+        $product = new Product();
+        $product->setProductId($product_id);
+        $product->setName($name);
+        $product->setPrice($price);
+        $product->setImagePath($image_path);
+        $product->setIsMakeup($is_makeup);
+        $product->setAge($age);
+        $product->setBrandId($brand_id);
+        $product->setSkintypeId($skintype_id);
+        $product->setTypeId($type_id);
+        $product->setIngredients($ingredients);
+        $product->setDescription($description);
+        $product->setHowToUse($how_to_use);
+        $product->setLink($link);
+        //error_log("Returning product: " . $product->getName() . " " . $product->getPrice() . " " . $product->getImagePath() . " " . $product->getIsMakeup() . " " . $product->getAge() . " " . $product->getBrandId() . " " . $product->getSkintypeId() . " " . $product->getTypeId() . " " . $product->getIngredients() . " " . $product->getDescription() . " " . $product->getHowToUse() . " " . $product->getLink());
+        return $product;
+    }
 }
