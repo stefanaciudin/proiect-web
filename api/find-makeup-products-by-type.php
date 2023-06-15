@@ -1,14 +1,17 @@
 <?php
+
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 include_once '../php/ProductRepository.php';
 include 'functions.php';
-if (isset($_GET['brand_name'])) {
-    $brandName = $_GET['brand_name'];
-    $products = ProductRepository::getProductsByBrand($brandName, 1); //return all makeup products
+
+if (isset($_GET['type'])) {
+    $product_type = $_GET['type'];
+    $products = ProductRepository::getProductsByType($product_type, 1); //return all makeup products
 
     if ($products) {
+        $response = array();
         foreach ($products as $product) {
             $productData = getArr($product);
             $response[] = $productData;
@@ -17,12 +20,12 @@ if (isset($_GET['brand_name'])) {
     } else {
         http_response_code(404);
         echo json_encode(
-            array('message' => 'No products found for the given brand.')
+            array('message' => 'No products found for the given type.')
         );
     }
 } else {
     http_response_code(400);
     echo json_encode(
-        array('message' => 'Bad request. Brand name is missing.')
+        array('message' => 'Bad request. Product type is missing.')
     );
 }

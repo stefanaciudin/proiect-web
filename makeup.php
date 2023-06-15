@@ -36,6 +36,16 @@
         <select name="brand" id="brand">
             <!-- Options will be populated dynamically -->
         </select>
+        <p>Tipul produsului:</p>
+        <select name="product_type" id="product_type">
+            <option value="ten">Ten</option>
+            <option value="ochi">Ochi</option>
+            <option value="buze">Buze</option>
+        </select>
+        <p>Utilizarea produsului:</p>
+        <select name="usage_type" id="usage_type">
+            <!-- Options will be populated dynamically -->
+        </select>
     </div>
 
     <div id="content">
@@ -70,8 +80,60 @@
     </div>
 </div>
 <script>
+    // Function to create and append product elements
+    function createProductElements(products) {
+        const productsContainer = document.getElementById('products');
+        productsContainer.innerHTML = '';
+        console.log(products);
+        if (products.message === "No products found for the given brand.") {
+            const message = document.createElement('p');
+            message.textContent = 'Nu există produse de makeup disponibile pentru aceasta categorie. Vă rugăm să alegeți altă categorie.';
+            productsContainer.appendChild(message);
+        } else {
+            products.forEach((product, index) => {
+                const productsContainer = document.getElementById('products');
+                const rowSize = 4; // Numărul de produse pe fiecare rând
+                let row;
+
+                if (index % rowSize === 0) {
+                    // Creează un nou rând pentru produse
+                    row = document.createElement('div');
+                    row.classList.add('product-row');
+                    productsContainer.appendChild(row);
+                } else {
+                    // Selectează ultimul rând creat
+                    row = productsContainer.lastElementChild;
+                }
+                // Create product container
+                const productContainer = document.createElement('div');
+                productContainer.classList.add('product');
+
+                // Create product image
+                const productImageLink = document.createElement('a');
+                productImageLink.href = product.link;
+                const productImage = document.createElement('img');
+                productImage.classList.add('product-image');
+                productImage.src = product.image_path;
+                productImage.alt = product.name;
+                productImageLink.appendChild(productImage);
+                productContainer.appendChild(productImageLink);
+
+                // Create product name
+                const productNameLink = document.createElement('a');
+                productNameLink.href = product.link;
+                const productName = document.createElement('p');
+                productName.textContent = product.name;
+                productNameLink.appendChild(productName);
+                productContainer.appendChild(productNameLink);
+
+                // Append product container to products container
+                row.appendChild(productContainer);
+            });
+        }
+    }
+
     // Fetch product brands and populate the brand menu
-    fetch('http://127.0.0.1:8000/api/find-all-product-brands.php')
+    fetch('http://127.0.0.1:8000/api/find-all-product-brands-with-makeup.php')
         .then(response => response.json())
         .then(data => {
             const brandMenu = document.getElementById('brand');
@@ -83,50 +145,63 @@
                 option.text = brand.brand_name;
                 brandMenu.appendChild(option);
             });
+
+            // Trigger the change event for the brand menu to load products of the first brand
+            brandMenu.dispatchEvent(new Event('change'));
         })
         .catch(error => {
             console.log('Error:', error);
         });
+
+    // Fetch product usage types and populate the usage type menu
+    fetch('http://127.0.0.1:8000/api/find-makeup-usage-types.php')
+        .then(response => response.json())
+        .then(data => {
+            const usageTypeMenu = document.getElementById('usage_type');
+            usageTypeMenu.innerHTML = '';
+
+            data.usage_types.forEach(usageType => {
+                const option = document.createElement('option');
+                option.value = usageType;
+                option.text = usageType;
+                usageTypeMenu.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.log('Error:', error);
+        });
+
+    // Event listener for brand change
     document.getElementById('brand').addEventListener('change', function () {
         const selectedBrand = this.value;
-        console.log("selectedBrand", selectedBrand);
         fetch('http://127.0.0.1:8000/api/find-all-makeup-products-by-brand.php?brand_name=' + encodeURIComponent(selectedBrand))
             .then(response => response.json())
             .then(data => {
-                console.log("data", data);
-                const productsContainer = document.getElementById('products');
-                productsContainer.innerHTML = '';
-                if (data.message=== "No products found for the given brand.") {
-                    const message = document.createElement('p');
-                    message.textContent = 'Nu există produse de makeup de la acest brand în selecția noastră. Încercați un alt brand.';
-                    productsContainer.appendChild(message);
-                } else {
-                    data.forEach(product => {
-                        // Create product container
-                        const productContainer = document.createElement('div');
-                        productContainer.classList.add('product');
-
-                        // Create product image
-                        const productImageLink = document.createElement('a');
-                        productImageLink.href = product.url;
-                        const productImage = document.createElement('img');
-                        productImage.src = product.image_path;
-                        productImage.alt = product.name;
-                        productImageLink.appendChild(productImage);
-                        productContainer.appendChild(productImageLink);
-
-                        // Create product name
-                        const productNameLink = document.createElement('a');
-                        productNameLink.href = product.url;
-                        const productName = document.createElement('p');
-                        productName.textContent = product.name;
-                        productNameLink.appendChild(productName);
-                        productContainer.appendChild(productNameLink);
-
-                        // Append product container to products container
-                        productsContainer.appendChild(productContainer);
-                    });
-                }
+                createProductElements(data);
+            })
+            .catch(error => {
+                console.log('Error:', error);
+            });
+    });
+    // Event listener for product type change
+    document.getElementById('product_type').addEventListener('change', function () {
+        const selectedType = this.value;
+        fetch('http://127.0.0.1:8000/api/find-makeup-products-by-type.php?type=' + encodeURIComponent(selectedType))
+            .then(response => response.json())
+            .then(data => {
+                createProductElements(data);
+            })
+            .catch(error => {
+                console.log('Error:', error);
+            });
+    });
+    // Event listener for usage type change
+    document.getElementById('usage_type').addEventListener('change', function () {
+        const selectedUsageType = this.value;
+        fetch('http://127.0.0.1:8000/api/find-all-makeup-products-by-usage-type.php?usage_type=' + encodeURIComponent(selectedUsageType))
+            .then(response => response.json())
+            .then(data => {
+                createProductElements(data);
             })
             .catch(error => {
                 console.log('Error:', error);
