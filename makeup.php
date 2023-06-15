@@ -84,35 +84,30 @@
     function createProductElements(products) {
         const productsContainer = document.getElementById('products');
         productsContainer.innerHTML = '';
-        console.log(products);
+
         if (products.message === "No products found for the given brand.") {
             const message = document.createElement('p');
-            message.textContent = 'Nu există produse de makeup disponibile pentru aceasta categorie. Vă rugăm să alegeți altă categorie.';
+            message.textContent = 'Nu există produse de makeup disponibile pentru această categorie. Vă rugăm să alegeți altă categorie.';
             productsContainer.appendChild(message);
         } else {
+            let row;
             products.forEach((product, index) => {
-                const productsContainer = document.getElementById('products');
-                const rowSize = 4; // Numărul de produse pe fiecare rând
-                let row;
-
-                if (index % rowSize === 0) {
-                    // Creează un nou rând pentru produse
+                if (index % 4 === 0) {
+                    // Create a new row for products
                     row = document.createElement('div');
-                    row.classList.add('product-row');
+                    row.classList.add('product-row', 'row');
                     productsContainer.appendChild(row);
-                } else {
-                    // Selectează ultimul rând creat
-                    row = productsContainer.lastElementChild;
                 }
+
                 // Create product container
                 const productContainer = document.createElement('div');
-                productContainer.classList.add('product');
+                productContainer.classList.add('product-container');
 
                 // Create product image
                 const productImageLink = document.createElement('a');
                 productImageLink.href = product.link;
                 const productImage = document.createElement('img');
-                productImage.classList.add('product-image');
+                productImage.classList.add('product-img');
                 productImage.src = product.image_path;
                 productImage.alt = product.name;
                 productImageLink.appendChild(productImage);
@@ -122,15 +117,17 @@
                 const productNameLink = document.createElement('a');
                 productNameLink.href = product.link;
                 const productName = document.createElement('p');
+                productName.classList.add('product-name');
                 productName.textContent = product.name;
                 productNameLink.appendChild(productName);
                 productContainer.appendChild(productNameLink);
 
-                // Append product container to products container
+                // Append product container to the current row
                 row.appendChild(productContainer);
             });
         }
     }
+
 
     // Fetch product brands and populate the brand menu
     fetch('http://127.0.0.1:8000/api/find-all-product-brands-with-makeup.php')

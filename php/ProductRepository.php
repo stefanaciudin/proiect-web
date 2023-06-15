@@ -201,7 +201,7 @@ class ProductRepository
     public static function getBrandsForMakeup(): array
     {
         global $conn;
-        $stmt = $conn->prepare("SELECT DISTINCT b.name,b.brand_id FROM products p JOIN brands b on p.brand_id = b.brand_id WHERE p.is_makeup=1");
+        $stmt = $conn->prepare("SELECT DISTINCT b.name,b.brand_id FROM products p JOIN brands b on p.brand_id = b.brand_id WHERE p.is_makeup=1 ORDER BY b.name");
         $stmt->execute();
         $stmt->bind_result($name, $brand_id);
 

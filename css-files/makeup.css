@@ -150,12 +150,11 @@ header {
 
 #products {
     display: flex;
-    justify-content: space-between;
-    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 #products a {
-    width: 20%;
+    flex-basis: 25%;
     padding: 20px;
 }
 
@@ -165,12 +164,6 @@ header {
     border-color: #967388;
     border-width: 2px;
     border-style: solid;
-
-}
-
-.row {
-    display: flex;
-    justify-content: space-between;
 }
 
 #products p {
@@ -178,6 +171,11 @@ header {
     color: #000d33;
     padding: 5px;
     text-decoration: none;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
 }
 
 .footer {
