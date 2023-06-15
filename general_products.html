@@ -5,7 +5,7 @@
     <title>Produse generale</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="general_products.css">
+    <link rel="stylesheet" href="css-files/general_products.css">
 </head>
 <body>
 
@@ -13,23 +13,6 @@
     <div class="logo">
         <img src="src/img/logo.png" alt="Logo" width="125" height="100">
     </div>
-<<<<<<< Updated upstream
-    <div class="topnav" id="myTopnav">
-        <a href="index.html">Home</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="rutina_ta.html">Rutina Mea</a>
-        <a href="general_products.html">Recomandari Generale</a>
-        <a href="#">Make Up</a>
-        <a href="login.html">Login</a>
-        <a href="register.html">Register</a>
-        <a href="profile.html">My Account</a>
-        <a href="#">Contact</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
-        </a>
-    </div>
-=======
 
 <div class="topnav" id="myTopnav">
             <a href="index.html">Home</a>
@@ -45,7 +28,6 @@
                 <i class="fa fa-bars"></i>
             </a>
         </div>
->>>>>>> Stashed changes
 </header>
 <div id="page">
 <div class="left_menu">
@@ -89,7 +71,7 @@
     <p>Pret:</p>
     <select name="pret" id="pret">
         <option value="sub_50">Sub 50 de lei</option>
-        <option value="50_100">50-100</option>
+        <option value="50_100">50-100</option>/* *-------------------------------- */
         <option value="100_200">100-200</option>
         <option value="peste_200">Peste 200</option>
     </select>
@@ -173,5 +155,15 @@
         <p>Locatie: online</p>
     </div>
 </div>
+    <script>
+        function myFunction() {
+          var x = document.getElementById("myTopnav");
+          if (x.className === "topnav") {
+            x.className += " responsive";
+          } else {
+            x.className = "topnav";
+          }
+        }
+        </script>
 </body>
 </html>
