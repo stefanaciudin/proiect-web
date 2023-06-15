@@ -64,6 +64,7 @@ header {
     border-top: 2px white solid;
     border-bottom: 2px white solid;
     flex-direction: column;
+    height: 100vh;
 }
 
 .left_menu p {
@@ -185,7 +186,9 @@ header {
     flex-direction: row;
     justify-content: space-around;
     flex-flow: wrap;
+    position: fixed;
 }
+
 
 .left {
     width: 33%;
