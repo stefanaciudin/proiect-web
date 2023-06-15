@@ -1,0 +1,127 @@
+body {
+  font-family: "Asap", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 0;
+  padding-bottom: 50px;
+}
+
+.form {
+  border-radius: 25px;
+  position: static;
+  width: 20%;
+  margin: 0 auto;
+  padding: 40px;
+  background: #FFFFFF;
+}
+.form input {
+  font-family: "Asap", sans-serif;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  outline: 0;
+  font-size: 15px;
+  text-align: center;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background: #F5F5F5;
+}
+.form .button {
+  font-family: "Asap", sans-serif;
+  font-size: 15px;
+  outline: 0;
+  border: 0;
+  width: 100%;
+  padding: 15px;
+  background: #b88dab;
+  color: #FAFAFA;
+  border-radius: 25px;
+  text-transform: capitalize;
+  text-decoration: none;
+  display: inline-block;
+}
+.form .button:hover {
+  background-color: #967388;
+}
+.form .button a {
+  text-decoration: none;
+}
+.form .message {
+  color: #90A4AE;
+  text-align: center;
+  font-family: "Asap", sans-serif;
+  font-size: 1vw;
+}
+.form .message a {
+  text-decoration: none;
+  color: #b88dab;
+}
+
+.footer {
+  display: flex;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #b88dab;
+  color: white;
+  text-align: center;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-flow: wrap;
+}
+
+.left {
+  width: 33%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.center {
+  width: 33%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.right {
+  width: 33%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 800px) {
+  .center {
+    width: 60%;
+  }
+  .left {
+    width: 60%;
+  }
+  .right {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 18px;
+    min-height: 110vh;
+  }
+  .message b {
+    font-size: 2.8vw;
+  }
+  .form {
+    width: 40%;
+    padding: 10px;
+  }
+  .form input {
+    padding: 5px;
+  }
+  .form .button {
+    padding: 5px;
+  }
+  .logo-image img {
+    max-width: 25%;
+  }
+}/*# sourceMappingURL=login.css.map */
