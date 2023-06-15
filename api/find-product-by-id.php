@@ -12,22 +12,7 @@ if (isset($_GET['id'])) {
     $product = ProductRepository::findProductById($productId);
 
     if ($product) {
-        $response = array(
-            'product_id' => $product->getProductId(),
-            'name' => $product->getName(),
-            'price' => $product->getPrice(),
-            'image_path' => $product->getImagePath(),
-            'is_makeup' => $product->getIsMakeup(),
-            'age' => $product->getAge(),
-            'brand_id' => $product->getBrandId(),
-            'skintype_id' => $product->getSkintypeId(),
-            'type_id' => $product->getTypeId(),
-            'ingredients' => $product->getIngredients(),
-            'description' => $product->getDescription(),
-            'how_to_use' => $product->getHowToUse(),
-            'link' => $product->getLink(),
-            'message' => 'Product found.'
-        );
+        $response = getArr($product);
         echo json_encode($response);
     } else {
         http_response_code(404);

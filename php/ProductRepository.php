@@ -35,20 +35,7 @@ class ProductRepository
         $products = array();
         // fetch the products and create Product objects
         while ($stmt->fetch()) {
-            $product = new Product();
-            $product->setProductId($product_id);
-            $product->setName($name);
-            $product->setPrice($price);
-            $product->setImagePath($image_path);
-            $product->setIsMakeup($is_makeup);
-            $product->setAge($age);
-            $product->setBrandId($brand_id);
-            $product->setSkintypeId($skintype_id);
-            $product->setTypeId($type_id);
-            $product->setIngredients($ingredients);
-            $product->setDescription($description);
-            $product->setHowToUse($how_to_use);
-            $product->setLink($link);
+            $product = self::getProduct($product_id, $name, $price, $image_path, $is_makeup, $age, $brand_id, $skintype_id, $type_id, $ingredients, $description, $how_to_use, $link);
             $products[] = $product;
         }
 
@@ -56,6 +43,7 @@ class ProductRepository
         $conn->close();
         return $products;
     }
+
     public static function findProductById($productId): ?Product
     {
         global $conn;
@@ -72,6 +60,49 @@ class ProductRepository
             return null;
         }
 
+        //error_log("Returning product: " . $product->getName() . " " . $product->getPrice() . " " . $product->getImagePath() . " " . $product->getIsMakeup() . " " . $product->getAge() . " " . $product->getBrandId() . " " . $product->getSkintypeId() . " " . $product->getTypeId() . " " . $product->getIngredients() . " " . $product->getDescription() . " " . $product->getHowToUse() . " " . $product->getLink());
+        return self::getProduct($product_id, $name, $price, $image_path, $is_makeup, $age, $brand_id, $skintype_id, $type_id, $ingredients, $description, $how_to_use, $link);
+    }
+
+    public static function getAllProductBrands(): array
+    {
+        global $conn;
+        $stmt = $conn->prepare("SELECT brand_id, name FROM brands");
+        $stmt->execute();
+        $stmt->bind_result($brandId, $brandName);
+
+        $brands = array();
+        while ($stmt->fetch()) {
+            $brand = array(
+                'brand_id' => $brandId,
+                'brand_name' => $brandName
+            );
+            $brands[] = $brand;
+        }
+
+        $stmt->close();
+        $conn->close();
+        return $brands;
+    }
+
+    /**
+     * @param mixed $product_id
+     * @param mixed $name
+     * @param $price
+     * @param $image_path
+     * @param $is_makeup
+     * @param $age
+     * @param $brand_id
+     * @param $skintype_id
+     * @param $type_id
+     * @param $ingredients
+     * @param $description
+     * @param $how_to_use
+     * @param $link
+     * @return Product
+     */
+    public static function getProduct(mixed $product_id, mixed $name, $price, $image_path, $is_makeup, $age, $brand_id, $skintype_id, $type_id, $ingredients, $description, $how_to_use, $link): Product
+    {
         $product = new Product();
         $product->setProductId($product_id);
         $product->setName($name);
@@ -86,7 +117,28 @@ class ProductRepository
         $product->setDescription($description);
         $product->setHowToUse($how_to_use);
         $product->setLink($link);
-        //error_log("Returning product: " . $product->getName() . " " . $product->getPrice() . " " . $product->getImagePath() . " " . $product->getIsMakeup() . " " . $product->getAge() . " " . $product->getBrandId() . " " . $product->getSkintypeId() . " " . $product->getTypeId() . " " . $product->getIngredients() . " " . $product->getDescription() . " " . $product->getHowToUse() . " " . $product->getLink());
         return $product;
     }
+
+    public static function getProductsByBrand(mixed $brandName, mixed $isMakeup): array
+    {
+        global $conn;
+        $stmt = $conn->prepare("SELECT p.* FROM products p JOIN brands b on p.brand_id = b.brand_id WHERE b.name = ? and p.is_makeup = ?");
+        $stmt->bind_param("si", $brandName,$isMakeup);
+        $stmt->execute();
+
+        $stmt->bind_result($product_id, $name, $price, $image_path, $is_makeup, $age, $brand_id, $skintype_id, $type_id, $ingredients, $description, $how_to_use, $link);
+
+        $products = array();
+        while ($stmt->fetch()) {
+            $product = self::getProduct($product_id, $name, $price, $image_path, $is_makeup, $age, $brand_id, $skintype_id, $type_id, $ingredients, $description, $how_to_use, $link);
+            $products[] = $product;
+        }
+
+        $stmt->close();
+        $conn->close();
+        return $products;
+
+    }
+
 }
