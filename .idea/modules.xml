@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/proiect-web.iml" filepath="$PROJECT_DIR$/.idea/proiect-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/proiect-web-bia-branch.iml" filepath="$PROJECT_DIR$/.idea/proiect-web-bia-branch.iml" />
     </modules>
   </component>
 </project>

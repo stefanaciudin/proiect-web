@@ -105,8 +105,11 @@ header {
 }
 
 .container a {
-  width: 30%;
-  max-height: 500px;
+  border: 2px solid #967388;
+  border-radius: 25px;
+  background-color: white;
+  width: 40%;
+  /*max-height: 560px;*/
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -114,11 +117,12 @@ header {
   justify-content: center;
   text-align: center;
   text-decoration: none;
+  flex-basis: 25%;
 }
 
 .container a img {
-  border: 2px solid #967388;
-  border-radius: 25px;
+  /*border: 2px solid #967388;*/
+  /*border-radius: 25px;*/
   max-height: 300px;
   max-width: 350px;
 }
@@ -230,4 +234,9 @@ header {
     font-size: 22px;
     border-radius: 25px;
   }
+
+  .container a img{
+    max-width: 70%;
+  }
+
 }/*# sourceMappingURL=rutina_ta.css.map */

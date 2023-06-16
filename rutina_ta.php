@@ -254,7 +254,8 @@
         imgElement.alt = '';
 
         const nameElement = document.createElement('p');
-        nameElement.textContent = product.name;
+        nameElement.textContent = product.name + " " +  product.price + " lei";
+
 
         const descriptionElement = document.createElement('p');
         descriptionElement.textContent = product.description;
