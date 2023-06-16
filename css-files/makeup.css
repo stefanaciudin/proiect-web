@@ -1,7 +1,8 @@
-body {
+body, html {
+    height: 100%;
     margin: 0;
     padding: 0;
-}
+  }
 
 .logo {
     display: flex;
@@ -52,6 +53,7 @@ header {
     display: none;
 }
 
+
 .left_menu {
     overflow: hidden;
     display: flex;
@@ -60,12 +62,14 @@ header {
     left: 0;
     top: 20%;
     width: 16%;
+    justify-content: flex-start;
     background-color: #b88dab;
     border-top: 2px white solid;
     border-bottom: 2px white solid;
     flex-direction: column;
-    height: 100vh;
-}
+    min-height: 100vh; /* Înălțimea minimă a meniului este întreaga înălțime a paginii */
+  }
+
 
 .left_menu p {
     color: white;
