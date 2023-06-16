@@ -18,7 +18,7 @@
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="rutina_ta.php">Rutina Mea</a>
-        <a href="general_products.html">Recomandari Generale</a>
+        <a href="general_products.php">Recomandari Generale</a>
         <a href="makeup.php">Make Up</a>
         <a href="login_page.php">Login</a>
         <a href="register_page.php">Register</a>
@@ -80,6 +80,43 @@
     </div>
 </div>
 <script>
+    // Function to fetch data from an API
+    function fetchData(url, propertyName) {
+        return fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                if (propertyName) {
+                    return data[propertyName]; // Return the property value if provided
+                }
+                return data;
+            })
+            .catch(error => console.log('Error:', error));
+    }
+
+    // Function to populate a select menu
+    function populateSelectMenu(menuId, options, propertyName) {
+        const menu = document.getElementById(menuId);
+        menu.innerHTML = '';
+
+        options.forEach(option => {
+            const menuOption = document.createElement('option');
+            menuOption.value = option[propertyName]; // Access the brand name property
+            menuOption.text = option[propertyName];
+            menu.appendChild(menuOption);
+        });
+    }
+
+    // Function to handle brand or usage type change events
+    function handleSelectChange(event, apiUrl, callback) {
+        const selectedValue = event.target.value;
+        const url = `${apiUrl}${encodeURIComponent(selectedValue)}`;
+
+        fetchData(url)
+            .then(data => {
+                callback(data);
+            });
+    }
+
     // Function to create and append product elements
     function createProductElements(products) {
         const productsContainer = document.getElementById('products');
@@ -90,7 +127,7 @@
             message.textContent = 'Nu există produse de makeup disponibile pentru această categorie. Vă rugăm să alegeți altă categorie.';
             productsContainer.appendChild(message);
         } else {
-            products.forEach((product) => {
+            products.forEach(product => {
                 // Create product container
                 const productContainer = document.createElement('div');
                 productContainer.classList.add('product-container');
@@ -118,80 +155,36 @@
     }
 
     // Fetch product brands and populate the brand menu
-    fetch('http://127.0.0.1:8000/api/find-all-product-brands-with-makeup.php')
-        .then(response => response.json())
+    fetchData('http://127.0.0.1:8000/api/find-all-brands-by-product-type.php?product_category=1', 'brands')
         .then(data => {
-            const brandMenu = document.getElementById('brand');
-            brandMenu.innerHTML = '';
-
-            data.brands.forEach(brand => {
-                const option = document.createElement('option');
-                option.value = brand.brand_name; // Set brand name as the option value
-                option.text = brand.brand_name;
-                brandMenu.appendChild(option);
-            });
+            populateSelectMenu('brand', data, 'brand_name'); // Specify the brand_name property
 
             // Trigger the change event for the brand menu to load products of the first brand
-            brandMenu.dispatchEvent(new Event('change'));
-        })
-        .catch(error => {
-            console.log('Error:', error);
+            document.getElementById('brand').dispatchEvent(new Event('change'));
         });
 
     // Fetch product usage types and populate the usage type menu
-    fetch('http://127.0.0.1:8000/api/find-makeup-usage-types.php')
-        .then(response => response.json())
+    fetchData('http://127.0.0.1:8000/api/find-product-usage-types.php?product_category=1')
         .then(data => {
-            const usageTypeMenu = document.getElementById('usage_type');
-            usageTypeMenu.innerHTML = '';
-
-            data.usage_types.forEach(usageType => {
-                const option = document.createElement('option');
-                option.value = usageType;
-                option.text = usageType;
-                usageTypeMenu.appendChild(option);
-            });
-        })
-        .catch(error => {
-            console.log('Error:', error);
+            console.log("here", data);
+            populateSelectMenu('usage_type', data.usage_types, 'usage_type_name');
         });
 
     // Event listener for brand change
-    document.getElementById('brand').addEventListener('change', function () {
-        const selectedBrand = this.value;
-        fetch('http://127.0.0.1:8000/api/find-all-makeup-products-by-brand.php?brand_name=' + encodeURIComponent(selectedBrand))
-            .then(response => response.json())
-            .then(data => {
-                createProductElements(data);
-            })
-            .catch(error => {
-                console.log('Error:', error);
-            });
+    document.getElementById('brand').addEventListener('change', function (event) {
+        handleSelectChange(event, 'http://127.0.0.1:8000/api/find-products-by-brand-and-category.php?product_category=1&brand_name=', createProductElements);
     });
+
     // Event listener for product type change
-    document.getElementById('product_type').addEventListener('change', function () {
-        const selectedType = this.value;
-        fetch('http://127.0.0.1:8000/api/find-makeup-products-by-type.php?type=' + encodeURIComponent(selectedType))
-            .then(response => response.json())
-            .then(data => {
-                createProductElements(data);
-            })
-            .catch(error => {
-                console.log('Error:', error);
-            });
+    document.getElementById('product_type').addEventListener('change', function (event) {
+        handleSelectChange(event, 'http://127.0.0.1:8000/api/find-makeup-products-by-type.php?type=', createProductElements);
     });
+
     // Event listener for usage type change
-    document.getElementById('usage_type').addEventListener('change', function () {
-        const selectedUsageType = this.value;
-        fetch('http://127.0.0.1:8000/api/find-all-makeup-products-by-usage-type.php?usage_type=' + encodeURIComponent(selectedUsageType))
-            .then(response => response.json())
-            .then(data => {
-                createProductElements(data);
-            })
-            .catch(error => {
-                console.log('Error:', error);
-            });
+    document.getElementById('usage_type').addEventListener('change', function (event) {
+        handleSelectChange(event, 'http://127.0.0.1:8000/api/find-products-by-usage-type.php?product_category=1&usage_type=', createProductElements);
     });
+
 
     function myFunction() {
         var x = document.getElementById("myTopnav");

@@ -98,6 +98,44 @@ header {
   top: 20%;
   padding: 10px;
 }
+#products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center the div horizontally */
+}
+
+#products a {
+  border: #967388 2px solid;
+  border-radius: 25px;
+  background-color: white;
+  flex-basis: 25%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+#products a img {
+  /*border-radius: 25px;*/
+  height: 300px;
+  width: auto;
+  /*border-color: #967388;*/
+  /*border-width: 2px;*/
+  /*border-style: solid;*/
+  align-self: center; /* Center the image horizontally */
+}
+
+#products p {
+  text-align: center;
+  color: #000d33;
+  padding: 5px;
+  text-decoration: none;
+  max-width: 200px;
+  word-wrap: break-word;
+  margin: 0 auto;
+}
 
 .container {
   display: flex;
@@ -134,6 +172,7 @@ header {
   flex-direction: row;
   justify-content: space-around;
   flex-flow: wrap;
+  position: fixed;
 }
 
 .left {
@@ -155,14 +194,17 @@ header {
 }
 
 @media screen and (max-width: 800px) {
-  .center {
-    width: 60%;
-  }
-  .left {
-    width: 60%;
-  }
+  /* Remove the width properties from the .center, .left, and .right classes */
+  .center,
+  .left,
   .right {
-    width: 60%;
+    width: auto;
+  }
+
+  #products a img {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto; /* Center the pictures horizontally */
   }
 }
 @media screen and (max-width: 1000px) {
@@ -190,6 +232,9 @@ header {
   }
 }
 @media only screen and (max-width: 700px) {
+  #products a {
+    flex-basis: 100%;
+  }
   .sort_filter {
     display: flex;
     flex-direction: row;

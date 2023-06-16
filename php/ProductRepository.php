@@ -181,15 +181,19 @@ class ProductRepository
         return $products;
     }
 
-    public static function getUsageTypesForMakeup(): array
+    public static function getUsageTypes(mixed $is_makeup): array
     {
         global $conn;
-        $stmt = $conn->prepare("SELECT DISTINCT pt.usage_type FROM products p JOIN product_types pt on p.type_id = pt.type_id WHERE p.is_makeup=1");
+        $stmt = $conn->prepare("SELECT DISTINCT pt.usage_type,pt.type_id FROM products p JOIN product_types pt on p.type_id = pt.type_id WHERE p.is_makeup=?");
+        $stmt->bind_param("i", $is_makeup);
         $stmt->execute();
-        $stmt->bind_result($usage_type);
-
+        $stmt->bind_result($usage_type, $type_id);
         $usageTypes = array();
         while ($stmt->fetch()) {
+            $usage_type = array(
+                'usage_type_name' => $usage_type,
+                'type_id' => $type_id
+            );
             $usageTypes[] = $usage_type;
         }
 
@@ -198,14 +202,13 @@ class ProductRepository
         return $usageTypes;
     }
 
-    public static function getBrandsForMakeup(): array
+    public static function getBrandsForMakeup(mixed $is_makeup): array
     {
         global $conn;
-        $stmt = $conn->prepare("SELECT DISTINCT b.name,b.brand_id FROM products p JOIN brands b on p.brand_id = b.brand_id WHERE p.is_makeup=1 ORDER BY b.name");
+        $stmt = $conn->prepare("SELECT DISTINCT b.name,b.brand_id FROM products p JOIN brands b on p.brand_id = b.brand_id WHERE p.is_makeup=? ORDER BY b.name");
+        $stmt->bind_param("i", $is_makeup);
         $stmt->execute();
         $stmt->bind_result($name, $brand_id);
-
-
         $brands = array();
         while ($stmt->fetch()) {
             $brand = array(

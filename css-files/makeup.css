@@ -159,6 +159,9 @@ header {
 }
 
 #products a {
+    border: #967388 2px solid;
+    border-radius: 25px;
+    background-color: white;
     flex-basis: 25%;
     padding: 20px;
     display: flex;
@@ -169,12 +172,12 @@ header {
 
 
 #products a img {
-    border-radius: 25px;
+    /*border-radius: 25px;*/
     height: 300px;
     width: auto;
-    border-color: #967388;
-    border-width: 2px;
-    border-style: solid;
+    /*border-color: #967388;*/
+    /*border-width: 2px;*/
+    /*border-style: solid;*/
     align-self: center; /* Center the image horizontally */
 }
 
@@ -185,6 +188,7 @@ header {
     text-decoration: none;
     max-width: 200px;
     word-wrap: break-word;
+    margin: 0 auto;
 }
 
 .row {
