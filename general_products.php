@@ -37,7 +37,7 @@
             <option value="ochi">Ochi</option>
             <option value="buze">Buze</option>
         </select>
-        <p>Varsta:</p>
+        <p>Produse de îngrijire pentru:</p>
         <select name="age" id="age">
             <option value="18-35" selected>Ten tânăr: 18-35 de ani</option>
             <option value="35+">Ten matur: peste 35 de ani</option>
@@ -160,7 +160,7 @@
                     // Create product name
                     const productName = document.createElement('p');
                     productName.classList.add('product-name');
-                    productName.textContent = product.name;
+                    productName.textContent = product.name + " - " +  product.price + " lei"
                     productContainer.appendChild(productName);
 
                     // Append product container to the products container
@@ -173,9 +173,8 @@
         fetchData('http://127.0.0.1:8000/api/find-all-brands-by-product-type.php?product_category=1', 'brands')
             .then(data => {
                 populateSelectMenu('brand-makeup', data, 'brand_name'); // Specify the brand_name property
+                document.getElementById('product_type').dispatchEvent(new Event('change'));
 
-                // Trigger the change event for the brand menu to load products of the first brand
-                document.getElementById('brand-makeup').dispatchEvent(new Event('change'));
             });
 
         // Fetch product brands and populate the brand menu
@@ -208,7 +207,6 @@
             handleSelectChange(event, 'http://127.0.0.1:8000/api/find-products-by-brand-and-category.php?product_category=0&brand_name=', createProductElements);
         });
 
-
         // Event listener for product type change
         document.getElementById('product_type').addEventListener('change', function (event) {
             handleSelectChange(event, 'http://127.0.0.1:8000/api/find-makeup-products-by-type.php?type=', createProductElements);
@@ -221,7 +219,79 @@
         // Event listener for usage type change
         document.getElementById('usage_type_skincare').addEventListener('change', function (event) {
             handleSelectChange(event, 'http://127.0.0.1:8000/api/find-products-by-usage-type.php?product_category=0&usage_type=', createProductElements);
+
         });
+
+        // Event listener for age
+        document.getElementById('age').addEventListener('change', function (event) {
+            const selectedOption = event.target.value;
+            let ageValue;
+            if (selectedOption === '18-35') {
+                ageValue = 18;
+            } else if (selectedOption === '35+') {
+                ageValue = 35;
+            } else {
+                ageValue = 0;
+            }
+            const url = `http://127.0.0.1:8000/api/find-products-by-age.php?age=${ageValue}`;
+            console.log(url);
+            handleSelectChange(event, url, createProductElements);
+        });
+
+        // Event listener for skin type
+        document.getElementById('ten').addEventListener('change', function (event) {
+            const selectedOption = event.target.value;
+            let skintypeValue;
+            if (selectedOption === 'ten_normal') {
+                skintypeValue = 2;
+            } else if (selectedOption === 'ten_gras') {
+                skintypeValue = 1;
+            } else if (selectedOption === 'ten_uscat') {
+                skintypeValue = 4;
+            } else {
+                skintypeValue = 3;
+            }
+            const url = `http://127.0.0.1:8000/api/find-products-by-skintype.php?skintype=${skintypeValue}`;
+            console.log(url);
+            handleSelectChange(event, url, createProductElements);
+        });
+
+        // Event listener for price change
+        document.getElementById('pret').addEventListener('change', function (event) {
+            const selectedOption = event.target.value;
+            let minPrice, maxPrice;
+
+            // Set the minimum and maximum price range based on the selected option
+            switch (selectedOption) {
+                case 'sub_50':
+                    minPrice = 0;
+                    maxPrice = 50;
+                    break;
+                case '50_99':
+                    minPrice = 50;
+                    maxPrice = 99;
+                    break;
+                case '100_199':
+                    minPrice = 100;
+                    maxPrice = 199;
+                    break;
+                case 'peste_200':
+                    minPrice = 200;
+                    maxPrice = 10000;
+                    break;
+                default:
+                    minPrice = 0;
+                    maxPrice = 10000;
+                    break;
+            }
+
+            // Construct the URL for the API request with the price range parameters
+            const url = `http://127.0.0.1:8000/api/find-products-by-price.php?min_price=${minPrice}&max_price=${maxPrice}`;
+
+            // Call the handleSelectChange function with the constructed URL and the createProductElements callback
+            handleSelectChange(event, url, createProductElements);
+        });
+
 
         function myFunction() {
             var x = document.getElementById("myTopnav");

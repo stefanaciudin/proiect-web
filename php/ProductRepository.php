@@ -161,6 +161,69 @@ class ProductRepository
         return $products;
     }
 
+    public static function getProductsByAge(mixed $age): array
+    {
+        // get only the first 2 letters of age - the age is sent weird here for some reason
+        $age = substr($age, 0, 2);
+        global $conn;
+        $stmt = $conn->prepare("SELECT * FROM products WHERE (age = ? OR age = 0) AND is_makeup = 0 ORDER BY age DESC");
+        $stmt->bind_param("i", $age);
+        $stmt->execute();
+
+        $stmt->bind_result($product_id, $name, $price, $image_path, $is_makeup, $age, $brand_id, $skintype_id, $type_id, $ingredients, $description, $how_to_use, $link);
+
+        $products = array();
+        while ($stmt->fetch()) {
+            $product = self::getProduct($product_id, $name, $price, $image_path, $is_makeup, $age, $brand_id, $skintype_id, $type_id, $ingredients, $description, $how_to_use, $link);
+            $products[] = $product;
+        }
+
+        $stmt->close();
+        $conn->close();
+        return $products;
+
+    }
+
+    public static function getProductsBySkintype(mixed $skintype_id): array
+    {
+        $skintype_id = substr($skintype_id, 0, 1);
+        global $conn;
+        $stmt = $conn->prepare("SELECT * FROM products WHERE (skintype_id = ? OR skintype_id = 5) AND is_makeup = 0 ORDER BY skintype_id, type_id");
+        $stmt->bind_param("i", $skintype_id);
+        $stmt->execute();
+
+        $stmt->bind_result($product_id, $name, $price, $image_path, $is_makeup, $age, $brand_id, $skintype_id, $type_id, $ingredients, $description, $how_to_use, $link);
+
+        $products = array();
+        while ($stmt->fetch()) {
+            $product = self::getProduct($product_id, $name, $price, $image_path, $is_makeup, $age, $brand_id, $skintype_id, $type_id, $ingredients, $description, $how_to_use, $link);
+            $products[] = $product;
+        }
+
+        $stmt->close();
+        $conn->close();
+        return $products;
+    }
+
+    public static function getProductsByPrice(mixed $min_price, mixed $max_price):array
+    {
+        global $conn;
+        $stmt = $conn->prepare("SELECT * FROM products WHERE price BETWEEN ? AND ? ORDER BY price, is_makeup");
+        $stmt->bind_param("ii", $min_price, $max_price);
+        $stmt->execute();
+
+        $stmt->bind_result($product_id, $name, $price, $image_path, $is_makeup, $age, $brand_id, $skintype_id, $type_id, $ingredients, $description, $how_to_use, $link);
+
+        $products = array();
+        while ($stmt->fetch()) {
+            $product = self::getProduct($product_id, $name, $price, $image_path, $is_makeup, $age, $brand_id, $skintype_id, $type_id, $ingredients, $description, $how_to_use, $link);
+            $products[] = $product;
+        }
+
+        $stmt->close();
+        $conn->close();
+        return $products;
+    }
     public static function getProductsByUsageType(mixed $usage_type, mixed $isMakeup): array
     {
         global $conn;
@@ -223,5 +286,6 @@ class ProductRepository
         return $brands;
 
     }
+
 
 }
