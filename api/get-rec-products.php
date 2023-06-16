@@ -27,6 +27,7 @@ if ($skintype_id) {
     foreach ($recommendedProducts as $product) {
         $productData = array(
             'product_id' => $product->getProductId(),
+            error_log("product_id: " . $product->getProductId()),
             'name' => $product->getName(),
             'price' => $product->getPrice(),
             'image_path' => $product->getImagePath(),

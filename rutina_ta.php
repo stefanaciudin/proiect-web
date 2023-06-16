@@ -25,7 +25,7 @@
         <a href="about.html">About</a>
         <a href="rutina_ta.php">Rutina Mea</a>
         <a href="general_products.html">Recomandari Generale</a>
-        <a href="makeup.html">Make Up</a>
+        <a href="makeup.php">Make Up</a>
         <a href="login_page.php">Login</a>
         <a href="register_page.php">Register</a>
         <a href="profile_page.php">My Account</a>
@@ -256,12 +256,12 @@
         const nameElement = document.createElement('p');
         nameElement.textContent = product.name;
 
-        const how_to_useElement = document.createElement('p');
-        how_to_useElement.textContent = product.how_to_use;
+        const descriptionElement = document.createElement('p');
+        descriptionElement.textContent = product.description;
 
         productElement.appendChild(imgElement);
         productElement.appendChild(nameElement);
-        productElement.appendChild(how_to_useElement); // remove the link from here!!!
+        productElement.appendChild(descriptionElement); // remove the link from here!!!
 
         return productElement;
         /* asta merge dar strica css ul de tot
