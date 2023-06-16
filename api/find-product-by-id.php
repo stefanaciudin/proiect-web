@@ -3,7 +3,7 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 include_once '../php/ProductRepository.php';
-
+include_once 'functions.php';
 // Check if the product ID is provided
 if (isset($_GET['id'])) {
     $productId = $_GET['id'];

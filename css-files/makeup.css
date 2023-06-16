@@ -150,12 +150,11 @@ header {
 
 #products {
     display: flex;
-    justify-content: space-between;
-    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 #products a {
-    width: 20%;
+    flex-basis: 25%;
     padding: 20px;
 }
 
@@ -165,17 +164,18 @@ header {
     border-color: #967388;
     border-width: 2px;
     border-style: solid;
-
 }
-.row {
-    display: flex;
-    justify-content: space-between;
-  }
+
 #products p {
     text-align: center;
     color: #000d33;
     padding: 5px;
     text-decoration: none;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
 }
 
 .footer {
@@ -224,15 +224,16 @@ header {
         width: 60%;
     }
 }
+
 .product-image {
     object-fit: contain;
     height: 100%;
     width: 100%;
     max-height: 200px; /* Înălțimea maximă a imaginii */
     max-width: 200px; /* Lățimea maximă a imaginii */
-  }
+}
 
-  
+
 @media screen and (max-width: 1000px) {
     .topnav a:not(:first-child) {
         display: none;
