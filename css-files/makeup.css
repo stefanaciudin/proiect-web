@@ -155,6 +155,7 @@ header {
 #products {
     display: flex;
     flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 #products a {
@@ -227,6 +228,7 @@ header {
     .right {
         width: 60%;
     }
+
 }
 
 .product-image {
@@ -237,6 +239,9 @@ header {
     max-width: 200px; /* Lățimea maximă a imaginii */
 }
 
+.product-container {
+    margin-right: 10px;
+  }
 
 @media screen and (max-width: 1000px) {
     .topnav a:not(:first-child) {
@@ -267,8 +272,15 @@ header {
         text-align: left;
     }
 }
-
+@media screen and (max-width: 600px) {
+    #products a {
+      flex-basis: 100%;
+    }
+  }
 @media only screen and (max-width: 700px) {
+    #products a {
+        flex-basis: 100%;
+      }
     .sort_filter {
         display: flex;
         flex-direction: row;
