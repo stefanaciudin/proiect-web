@@ -1,4 +1,5 @@
-body {
+body, html {
+    height: 100%;
     margin: 0;
     padding: 0;
 }
@@ -52,6 +53,7 @@ header {
     display: none;
 }
 
+
 .left_menu {
     overflow: hidden;
     display: flex;
@@ -60,12 +62,14 @@ header {
     left: 0;
     top: 20%;
     width: 16%;
+    justify-content: flex-start;
     background-color: #b88dab;
     border-top: 2px white solid;
     border-bottom: 2px white solid;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh; /* Înălțimea minimă a meniului este întreaga înălțime a paginii */
 }
+
 
 .left_menu p {
     color: white;
@@ -151,19 +155,27 @@ header {
 #products {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center; /* Center the div horizontally */
 }
 
 #products a {
     flex-basis: 25%;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
+
 
 #products a img {
     border-radius: 25px;
-    max-width: 100%;
+    height: 300px;
+    width: auto;
     border-color: #967388;
     border-width: 2px;
     border-style: solid;
+    align-self: center; /* Center the image horizontally */
 }
 
 #products p {
@@ -171,6 +183,8 @@ header {
     color: #000d33;
     padding: 5px;
     text-decoration: none;
+    max-width: 200px;
+    word-wrap: break-word;
 }
 
 .row {
@@ -212,16 +226,17 @@ header {
 }
 
 @media screen and (max-width: 800px) {
-    .center {
-        width: 60%;
-    }
-
-    .left {
-        width: 60%;
-    }
-
+    /* Remove the width properties from the .center, .left, and .right classes */
+    .center,
+    .left,
     .right {
-        width: 60%;
+        width: auto;
+    }
+
+    #products a img {
+        max-width: 100%;
+        display: block;
+        margin: 0 auto; /* Center the pictures horizontally */
     }
 }
 
@@ -233,6 +248,9 @@ header {
     max-width: 200px; /* Lățimea maximă a imaginii */
 }
 
+.product-container {
+    margin-right: 10px;
+}
 
 @media screen and (max-width: 1000px) {
     .topnav a:not(:first-child) {
@@ -263,8 +281,15 @@ header {
         text-align: left;
     }
 }
-
+@media screen and (max-width: 600px) {
+    #products a {
+        flex-basis: 100%;
+    }
+}
 @media only screen and (max-width: 700px) {
+    #products a {
+        flex-basis: 100%;
+    }
     .sort_filter {
         display: flex;
         flex-direction: row;

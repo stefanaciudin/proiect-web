@@ -90,15 +90,7 @@
             message.textContent = 'Nu există produse de makeup disponibile pentru această categorie. Vă rugăm să alegeți altă categorie.';
             productsContainer.appendChild(message);
         } else {
-            let row;
-            products.forEach((product, index) => {
-                if (index % 4 === 0) {
-                    // Create a new row for products
-                    row = document.createElement('div');
-                    row.classList.add('product-row', 'row');
-                    productsContainer.appendChild(row);
-                }
-
+            products.forEach((product) => {
                 // Create product container
                 const productContainer = document.createElement('div');
                 productContainer.classList.add('product-container');
@@ -114,20 +106,16 @@
                 productContainer.appendChild(productImageLink);
 
                 // Create product name
-                const productNameLink = document.createElement('a');
-                productNameLink.href = product.link;
                 const productName = document.createElement('p');
                 productName.classList.add('product-name');
                 productName.textContent = product.name;
-                productNameLink.appendChild(productName);
-                productContainer.appendChild(productNameLink);
+                productContainer.appendChild(productName);
 
-                // Append product container to the current row
-                row.appendChild(productContainer);
+                // Append product container to the products container
+                productsContainer.appendChild(productContainer);
             });
         }
     }
-
 
     // Fetch product brands and populate the brand menu
     fetch('http://127.0.0.1:8000/api/find-all-product-brands-with-makeup.php')
