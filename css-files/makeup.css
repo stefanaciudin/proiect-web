@@ -1,75 +1,60 @@
-<<<<<<< Updated upstream
-body {
-  margin: 0;
-  padding: 0;
-=======
 body, html {
     height: 100%;
     margin: 0;
     padding: 0;
->>>>>>> Stashed changes
 }
 
 .logo {
-  display: flex;
-  list-style: none;
-  justify-content: center;
+    display: flex;
+    list-style: none;
+    justify-content: center;
 }
 
 header {
-  position: sticky;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #b88dab;
-  display: flex;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #b88dab;
+    display: flex;
 }
 
 .topnav {
-  overflow: hidden;
-  position: fixed;
-  padding-top: 20px;
-  width: 100%;
-  justify-content: center;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.topnav a {
-  display: inline-block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-.topnav a.active {
-  background-color: #04AA6D;
-  color: white;
-}
-.topnav .icon {
-  display: none;
+    overflow: hidden;
+    position: fixed;
+    padding-top: 20px;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.left_menu {
-<<<<<<< Updated upstream
-  overflow: hidden;
-  display: flex;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  left: 0;
-  top: 20%;
-  width: 16%;
-  background-color: #b88dab;
-  border-top: 2px white solid;
-  border-bottom: 2px white solid;
-  flex-direction: column;
+.topnav a {
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
 }
-=======
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #04AA6D;
+    color: white;
+}
+
+.topnav .icon {
+    display: none;
+}
+
+
+.left_menu {
     overflow: hidden;
     display: flex;
     align-items: flex-start;
@@ -86,84 +71,63 @@ header {
 }
 
 
->>>>>>> Stashed changes
 .left_menu p {
-  color: white;
-  font-size: 20px;
-  margin-left: 5px;
+    color: white;
+    font-size: 20px;
+    margin-left: 5px;
 }
+
 .left_menu select {
-  width: 80%;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 15px;
-  font-family: "Asap", sans-serif;
-  color: #414b50;
-  font-size: 16px;
-  margin-left: 5px;
+    width: 80%;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-family: "Asap", sans-serif;
+    color: #414b50;
+    font-size: 16px;
+    margin-left: 5px;
 }
+
 .left_menu select:focus {
-  outline: none;
-  font-family: "Asap", sans-serif;
+    outline: none;
+    font-family: "Asap", sans-serif;
 }
 
 .sort_filter {
-  display: none;
+    display: none;
 }
 
 #page {
-  display: flex;
-  justify-content: space-around;
-  margin: auto;
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
 }
 
 #content {
-  background: linear-gradient(to bottom, #e3d1dd, white);
-  left: 16%;
-  width: 83%;
-  top: 20%;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
+    background: linear-gradient(to bottom, #e3d1dd, white);
+    left: 16%;
+    width: 83%;
+    top: 20%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
+
 #content #tutoriale {
-  padding: 20px;
+    padding: 20px;
 }
 
 .videos {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.videos iframe {
-  width: 45%;
-  height: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-<<<<<<< Updated upstream
-.container {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
+.videos iframe {
+    width: 45%;
+    height: 300px;
 }
-.container a {
-  width: 20%;
-  padding: 20px;
-  border-color: #967388;
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 25px;
-}
-.container a img {
-  border-radius: 25px;
-  max-width: 100%;
-}
-.container p {
-  text-align: center;
-  color: #000d33;
-  padding: 5px;
-  text-decoration: none;
-=======
+
 /*.container {*/
 /*  display: flex;*/
 /*  justify-content: space-between;*/
@@ -211,7 +175,7 @@ header {
     border-color: #967388;
     border-width: 2px;
     border-style: solid;
-    align-self: center; /* Center the image horizontally */
+    align-self: center; /* Center the image horizontally updated*/
 }
 
 #products p {
@@ -227,76 +191,42 @@ header {
 .row {
     display: flex;
     justify-content: space-between;
->>>>>>> Stashed changes
 }
 
 .footer {
-  display: flex;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: #b88dab;
-  color: white;
-  text-align: center;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-flow: wrap;
+    display: flex;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #b88dab;
+    color: white;
+    text-align: center;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-flow: wrap;
+    position: fixed;
 }
 
+
 .left {
-  width: 33%;
-  height: auto;
-  box-sizing: border-box;
+    width: 33%;
+    height: auto;
+    box-sizing: border-box;
 }
 
 .center {
-  width: 33%;
-  height: auto;
-  box-sizing: border-box;
+    width: 33%;
+    height: auto;
+    box-sizing: border-box;
 }
 
 .right {
-  width: 33%;
-  height: auto;
-  box-sizing: border-box;
+    width: 33%;
+    height: auto;
+    box-sizing: border-box;
 }
 
 @media screen and (max-width: 800px) {
-<<<<<<< Updated upstream
-  .center {
-    width: 60%;
-  }
-  .left {
-    width: 60%;
-  }
-  .right {
-    width: 60%;
-  }
-}
-@media screen and (max-width: 1000px) {
-  .topnav a:not(:first-child) {
-    display: none;
-  }
-  .topnav a.icon {
-    display: block;
-  }
-  .responsive {
-    display: block;
-  }
-  .topnav.responsive {
-    position: relative;
-  }
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-=======
     /* Remove the width properties from the .center, .left, and .right classes */
     .center,
     .left,
@@ -410,48 +340,6 @@ header {
         font-size: 22px;
         border-radius: 25px;
     }
->>>>>>> Stashed changes
 }
-@media only screen and (max-width: 700px) {
-  .sort_filter {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 95%;
-    padding: 5px;
-  }
-  .sort_filter div {
-    border: 2px solid #967388;
-    padding: 10px;
-    font-size: 20px;
-    border-radius: 25px;
-  }
-  .left_menu {
-    display: none;
-  }
-  #content {
-    width: 100%;
-  }
-  #content #tutoriale {
-    width: 95%;
-  }
-  .videos {
-    flex-direction: column;
-  }
-  .videos iframe {
-    width: 90%;
-    padding: 10px;
-  }
-  .container {
-    flex-direction: column-reverse;
-    margin: 50px 0;
-    width: 100%;
-    border-radius: 25px;
-  }
-  .container a {
-    width: 80%;
-    margin: auto;
-    font-size: 22px;
-    border-radius: 25px;
-  }
-}/*# sourceMappingURL=makeup.css.map */
+
+/*# sourceMappingURL=makeup.css.map */
