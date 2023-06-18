@@ -185,7 +185,6 @@
         handleSelectChange(event, 'http://127.0.0.1:8000/api/find-products-by-usage-type.php?product_category=1&usage_type=', createProductElements);
     });
 
-
     function myFunction() {
         var x = document.getElementById("myTopnav");
         if (x.className === "topnav") {

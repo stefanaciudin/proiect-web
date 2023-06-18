@@ -53,6 +53,29 @@ class ProductRepository
         $stmt->close();
     }
 
+    public static function findMostRecProductsByAge($age)
+    {
+        global $conn;
+        $stmt = $conn->prepare("SELECT * FROM products WHERE age = ? ORDER BY times_rec DESC LIMIT 10");
+        $stmt->bind_param("i", $age);
+        $stmt->execute();
+        $stmt->store_result();
+
+        $stmt->bind_result($product_id, $name, $price, $image_path, $is_makeup, $age, $brand_id, $skintype_id, $type_id, $ingredients, $description, $how_to_use, $link, $times_rec);
+
+        // create an array to store the products
+        $products = array();
+        // fetch the products and create Product objects
+        while ($stmt->fetch()) {
+            $product = self::getProduct($product_id, $name, $price, $image_path, $is_makeup, $age, $brand_id, $skintype_id, $type_id, $ingredients, $description, $how_to_use, $link, $times_rec);
+            $products[] = $product;
+        }
+
+        $stmt->close();
+        return $products;
+
+    }
+
     public static function findProductById($productId): ?Product
     {
         global $conn;
