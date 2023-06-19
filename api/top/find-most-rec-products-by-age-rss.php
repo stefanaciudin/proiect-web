@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/rss+xml; charset=utf-8');
 
-require_once '../php/ProductRepository.php';
+require_once '../../php/ProductRepository.php';
 
 if (isset($_GET['age'])) {
     $age = $_GET['age'];

@@ -1,5 +1,5 @@
 <?php
-require_once '../php/ProductRepository.php';
+require_once '../../php/ProductRepository.php';
 header('Content-Type: text/html; charset=utf-8');
 
 if (isset($_GET['age'])) {
@@ -25,7 +25,6 @@ if (isset($_GET['age'])) {
         $html .= '</li>';
     }
     $html .= '</ul>';
-
     $html .= '</body>';
     $html .= '</html>';
 

@@ -101,7 +101,7 @@ header {
 #products {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Center the div horizontally */
+  justify-content: center;
 }
 
 #products a {
@@ -121,9 +121,6 @@ header {
   /*border-radius: 25px;*/
   height: 300px;
   width: auto;
-  /*border-color: #967388;*/
-  /*border-width: 2px;*/
-  /*border-style: solid;*/
   align-self: center; /* Center the image horizontally */
 }
 

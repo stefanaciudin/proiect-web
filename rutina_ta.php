@@ -3,9 +3,6 @@
 <head>
     <?php
     session_start();
-    // !!!! ADD HOW TO USE + PRICE !!!!!
-    // add section for serums + lip products
-    // eventual de inlocuit seara exfolierea cu seruri(avem deja exfoliere dimineata)
     ?>
     <meta charset="UTF-8">
     <title>Rutina ta</title>
@@ -265,35 +262,6 @@
         productElement.appendChild(descriptionElement); // remove the link from here!!!
 
         return productElement;
-        /* asta merge dar strica css ul de tot
-        const productElement = document.createElement('div');
-
-        const imgLinkElement = document.createElement('a');
-        imgLinkElement.href = product.link;
-
-        const imgElement = document.createElement('img');
-        imgElement.src = product.image_path;
-        imgElement.alt = '';
-
-        imgLinkElement.appendChild(imgElement);
-        productElement.appendChild(imgLinkElement);
-
-        const nameLinkElement = document.createElement('a');
-        nameLinkElement.href = product.link;
-
-        const nameElement = document.createElement('p');
-        nameElement.textContent = product.name;
-
-        nameLinkElement.appendChild(nameElement);
-        productElement.appendChild(nameLinkElement);
-
-        const descriptionElement = document.createElement('p');
-        descriptionElement.textContent = product.description;
-
-        productElement.appendChild(descriptionElement);
-
-        return productElement;
-         */
     }
 
     const containerMap = [

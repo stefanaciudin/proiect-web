@@ -53,7 +53,6 @@ header {
     display: none;
 }
 
-
 .left_menu {
     overflow: hidden;
     display: flex;
@@ -156,6 +155,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: center; /* Center the div horizontally */
+    margin-bottom: 50px;
 }
 
 #products a {
@@ -285,15 +285,18 @@ header {
         text-align: left;
     }
 }
+
 @media screen and (max-width: 600px) {
     #products a {
         flex-basis: 100%;
     }
 }
+
 @media only screen and (max-width: 700px) {
     #products a {
         flex-basis: 100%;
     }
+
     .sort_filter {
         display: flex;
         flex-direction: row;
