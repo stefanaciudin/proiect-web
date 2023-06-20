@@ -15,6 +15,7 @@ class Product
     protected mixed $description;
     protected mixed $how_to_use;
     protected mixed $link;
+    protected mixed $times_recommended;
 
     /**
      * @param mixed $product_id
@@ -222,6 +223,22 @@ class Product
     public function setLink(mixed $link): void
     {
         $this->link = $link;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTimesRecommended(): mixed
+    {
+        return $this->times_recommended;
+    }
+
+    /**
+     * @param mixed $times_recommended
+     */
+    public function setTimesRecommended(mixed $times_recommended): void
+    {
+        $this->times_recommended = $times_recommended;
     }
 
 
