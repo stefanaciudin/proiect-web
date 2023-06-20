@@ -98,6 +98,7 @@ header {
   top: 20%;
   padding: 10px;
 }
+
 #products {
   display: flex;
   flex-wrap: wrap;

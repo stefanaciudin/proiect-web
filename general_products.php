@@ -73,6 +73,21 @@
         <select name="usage_type_skincare" id="usage_type_skincare">
             <!-- Options will be populated dynamically -->
         </select>
+        <p>Topul produselor de skincare:</p>
+        <select name="top" id="top">
+            <optgroup label="După vârstă:">
+                <option value="18" selected>Ten tânăr: 18-35 de ani</option>
+                <option value="35">Ten matur: peste 35 de ani</option>
+                <option value="0">Oricare</option>
+            </optgroup>
+            <optgroup label="După preț: ">
+                <option value="sub_50">Sub 50 de lei</option>
+                <option value="50_99">50-99 de lei</option>
+                <option value="100_199">100-199 de lei</option>
+                <option value="peste_200">Peste 200 de lei</option>
+            </optgroup>
+        </select>
+        
     </div>
     <div class="products">
         <div class="sort_filter">

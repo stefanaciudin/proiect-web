@@ -10,18 +10,7 @@ if (isset($_GET['age'])) {
     $pdf->AddPage();
     $pdf->SetFont('Helvetica', 'B', 16);
     $pdf->Cell(0, 10, 'Top Recommended Products by Age', 0, 1, 'C');
-
-    $pdf->SetFont('Helvetica', '', 12);
-
-    foreach ($products as $product) {
-        $pdf->Ln(10);
-        $pdf->Cell(0, 10, 'Product: ' . $product->getName(), 0, 1);
-        $pdf->Cell(0, 10, 'Description: ' . $product->getDescription(), 0, 1);
-        $pdf->Cell(0, 10, 'Link: ' . $product->getLink(), 0, 1);
-    }
-
-// output the PDF as a file
-    $pdf->Output('top_products_by_age.pdf', 'D');
+    createPdf($pdf, $products,"top_products_by_age.pdf");
 } else {
     http_response_code(400);
     echo json_encode(
