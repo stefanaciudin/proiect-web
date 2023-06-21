@@ -71,7 +71,7 @@ class UserRepository
         global $conn;
         $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
         $stmt->bind_param("s", $username);
-        return self::findUser($stmt);
+        return static::findUser($stmt);
     }
 
     public static function findUserById($id): array
@@ -106,14 +106,14 @@ class UserRepository
         global $conn;
         $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
-        return self::findUser($stmt);
+        return static::findUser($stmt);
     }
 
     public static function getAllUsers(): array
     {
         global $conn;
         $stmt = $conn->prepare("SELECT * FROM users");
-        return self::executeAndFetchUsers($stmt);
+        return static::executeAndFetchUsers($stmt);
     }
 
     private static function executeAndFetchUsers(mysqli_stmt $stmt): array
@@ -154,9 +154,9 @@ class UserRepository
             $row["token"]
         );
         $user->setUserId($row["user_id"]);
-        $user->setAge(self::mapAgeFromDatabase($row['age']));
-        $user->setGender(self::mapGenderFromDatabase($row['gender']));
-        $user->setSkinType(self::mapSkinTypeFromDatabase($row['skintype_id']));
+        $user->setAge(static::mapAgeFromDatabase($row['age']));
+        $user->setGender(static::mapGenderFromDatabase($row['gender']));
+        $user->setSkinType(static::mapSkinTypeFromDatabase($row['skintype_id']));
         $user->setLocation($row['location']);
         $stmt->close();
         return $user;

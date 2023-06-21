@@ -35,8 +35,8 @@ class ProductRepository
         $products = array();
         // fetch the products and create Product objects
         while ($stmt->fetch()) {
-            self::updateTimesRec($product_id);
-            $product = self::getProduct($product_id, $name, $price, $image_path, $is_makeup, $age, $brand_id, $skintype_id, $type_id, $ingredients, $description, $how_to_use, $link, $times_rec);
+            static::updateTimesRec($product_id);
+            $product = static::getProduct($product_id, $name, $price, $image_path, $is_makeup, $age, $brand_id, $skintype_id, $type_id, $ingredients, $description, $how_to_use, $link, $times_rec);
             $products[] = $product;
         }
 
@@ -63,7 +63,7 @@ class ProductRepository
         $products = array();
         // fetch the products and create Product objects
         while ($stmt->fetch()) {
-            $product = self::getProduct($product_id, $name, $price, $image_path, $is_makeup, $age, $brand_id, $skintype_id, $type_id, $ingredients, $description, $how_to_use, $link, $times_rec);
+            $product = static::getProduct($product_id, $name, $price, $image_path, $is_makeup, $age, $brand_id, $skintype_id, $type_id, $ingredients, $description, $how_to_use, $link, $times_rec);
             $products[] = $product;
         }
 
@@ -77,7 +77,7 @@ class ProductRepository
         global $conn;
         $stmt = $conn->prepare("SELECT * FROM products WHERE age = ? ORDER BY times_rec DESC LIMIT 10");
         $stmt->bind_param("i", $age);
-        return self::executeAndFetchProducts($stmt);
+        return static::executeAndFetchProducts($stmt);
 
     }
 
@@ -86,7 +86,7 @@ class ProductRepository
         global $conn;
         $stmt = $conn->prepare("SELECT * FROM products WHERE price BETWEEN ? AND ? ORDER BY times_rec DESC LIMIT 10");
         $stmt->bind_param("ii", $min_price, $max_price);
-        return self::executeAndFetchProducts($stmt);
+        return static::executeAndFetchProducts($stmt);
     }
 
     public static function findProductById($productId): ?Product
@@ -105,7 +105,7 @@ class ProductRepository
             return null;
         }
         //error_log("Returning product: " . $product->getName() . " " . $product->getPrice() . " " . $product->getImagePath() . " " . $product->getIsMakeup() . " " . $product->getAge() . " " . $product->getBrandId() . " " . $product->getSkintypeId() . " " . $product->getTypeId() . " " . $product->getIngredients() . " " . $product->getDescription() . " " . $product->getHowToUse() . " " . $product->getLink());
-        return self::getProduct($product_id, $name, $price, $image_path, $is_makeup, $age, $brand_id, $skintype_id, $type_id, $ingredients, $description, $how_to_use, $link, $times_rec);
+        return static::getProduct($product_id, $name, $price, $image_path, $is_makeup, $age, $brand_id, $skintype_id, $type_id, $ingredients, $description, $how_to_use, $link, $times_rec);
     }
 
     public static function getAllProductBrands(): array
@@ -171,7 +171,7 @@ class ProductRepository
         global $conn;
         $stmt = $conn->prepare("SELECT p.* FROM products p JOIN brands b on p.brand_id = b.brand_id WHERE b.name = ? and p.is_makeup = ?");
         $stmt->bind_param("si", $brandName, $isMakeup);
-        return self::executeAndFetchProducts($stmt);
+        return static::executeAndFetchProducts($stmt);
 
     }
 
@@ -182,7 +182,7 @@ class ProductRepository
         global $conn;
         $stmt = $conn->prepare("SELECT p.* FROM products p JOIN product_types pt on p.type_id = pt.type_id WHERE pt.product_type = ? and p.is_makeup=?");
         $stmt->bind_param("si", $product_type, $isMakeup);
-        return self::executeAndFetchProducts($stmt);
+        return static::executeAndFetchProducts($stmt);
     }
 
     public
@@ -193,7 +193,7 @@ class ProductRepository
         global $conn;
         $stmt = $conn->prepare("SELECT * FROM products WHERE (age = ? OR age = 0) AND is_makeup = 0 ORDER BY age DESC");
         $stmt->bind_param("i", $age);
-        return self::executeAndFetchProducts($stmt);
+        return static::executeAndFetchProducts($stmt);
 
     }
 
@@ -204,7 +204,7 @@ class ProductRepository
         global $conn;
         $stmt = $conn->prepare("SELECT * FROM products WHERE (skintype_id = ? OR skintype_id = 5) AND is_makeup = 0 ORDER BY skintype_id, type_id");
         $stmt->bind_param("i", $skintype_id);
-        return self::executeAndFetchProducts($stmt);
+        return static::executeAndFetchProducts($stmt);
     }
 
     public
@@ -213,7 +213,7 @@ class ProductRepository
         global $conn;
         $stmt = $conn->prepare("SELECT * FROM products WHERE price BETWEEN ? AND ? ORDER BY price, is_makeup");
         $stmt->bind_param("ii", $min_price, $max_price);
-        return self::executeAndFetchProducts($stmt);
+        return static::executeAndFetchProducts($stmt);
     }
 
     public
@@ -222,7 +222,7 @@ class ProductRepository
         global $conn;
         $stmt = $conn->prepare("SELECT p.* FROM products p JOIN product_types pt on p.type_id = pt.type_id WHERE pt.usage_type = ? and p.is_makeup=?");
         $stmt->bind_param("si", $usage_type, $isMakeup);
-        return self::executeAndFetchProducts($stmt);
+        return static::executeAndFetchProducts($stmt);
     }
 
     public
