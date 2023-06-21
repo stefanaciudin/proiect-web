@@ -1,5 +1,19 @@
+<?php
+include "php/ProductRepository.php";
+$product = new ProductRepository();
+$products = [];
+
+if(isset($_POST['submit'])){
+    $products = $product->getProductsBySortGeneralProducts();     
+}
+if(isset($_POST['submit_sort'])){
+    $products = $product->getProductsByFilter();     
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Produse generale</title>
@@ -7,95 +21,272 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css-files/general_products.css">
 </head>
+
 <body>
 
-<header>
-    <div class="logo">
-        <img src="src/img/logo.png" alt="Logo" width="125" height="100">
-    </div>
+    <header>
+        <div class="logo">
+            <img src="src/img/logo.png" alt="Logo" width="125" height="100">
+        </div>
 
-    <div class="topnav" id="myTopnav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="rutina_ta.php">Rutina Mea</a>
-        <a href="general_products.php">Recomandari Generale</a>
-        <a href="makeup.php">Make Up</a>
-        <a href="login_page.php">Login</a>
-        <a href="register_page.php">Register</a>
-        <a href="profile_page.php">My Account</a>
-        <a href="contact.html">Contact</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars"></i>
-        </a>
-    </div>
-</header>
-<div id="page">
-    <div class="left_menu">
-        <p>Tipul machiaj:</p>
-        <select name="product_type" id="product_type">
-            <option value="ten">Ten</option>
-            <option value="ochi">Ochi</option>
-            <option value="buze">Buze</option>
-        </select>
-        <p>Produse de îngrijire pentru:</p>
-        <select name="age" id="age">
-            <option value="18-35" selected>Ten tânăr: 18-35 de ani</option>
-            <option value="35+">Ten matur: peste 35 de ani</option>
-            <option value="not-spec">Nu doresc să specific</option>
-        </select>
-        <p>Tip de ten:</p>
-        <select name="ten" id="ten">
-            <option value="ten_normal">Ten normal</option>
-            <option value="ten_mixt">Ten mixt</option>
-            <option value="ten_gras">Ten gras</option>
-            <option value="ten_uscat">Ten uscat</option>
-        </select>
-        <p>Brand produse makeup:</p>
-        <select name="brand-makeup" id="brand-makeup">
-            <!-- Options will be populated dynamically -->
-        </select>
-        <p>Brand produse îngrijirea tenului:</p>
-        <select name="brand-skincare" id="brand-skincare">
-            <!-- Options will be populated dynamically -->
-        </select>
-        <p>Pret:</p>
-        <select name="pret" id="pret">
-            <option value="sub_50">Sub 50 de lei</option>
-            <option value="50_99">50-99 de lei</option>
-            <option value="100_199">100-199 de lei</option>
-            <option value="peste_200">Peste 200 de lei</option>
-        </select>
-        <p>Utilizarea produsului de makeup:</p>
-        <select name="usage_type_makeup" id="usage_type_makeup">
-            <!-- Options will be populated dynamically -->
-        </select>
-        <p>Utilizarea produsului de skincare:</p>
-        <select name="usage_type_skincare" id="usage_type_skincare">
-            <!-- Options will be populated dynamically -->
-        </select>
-        <p>Topul produselor de skincare:</p>
-        <select name="top" id="top">
-            <optgroup label="După vârstă:">
-                <option value="18" selected>Ten tânăr: 18-35 de ani</option>
-                <option value="35">Ten matur: peste 35 de ani</option>
-                <option value="0">Oricare</option>
-            </optgroup>
-            <optgroup label="După preț: ">
+        <div class="topnav" id="myTopnav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="rutina_ta.php">Rutina Mea</a>
+            <a href="general_products.php">Recomandari Generale</a>
+            <a href="makeup.php">Make Up</a>
+            <a href="login_page.php">Login</a>
+            <a href="register_page.php">Register</a>
+            <a href="profile_page.php">My Account</a>
+            <a href="contact.html">Contact</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+    </header>
+    <div id="page">
+        <div class="left_menu">
+            <p>Tipul machiaj:</p>
+            <select name="product_type" id="product_type">
+                <option value="ten">Ten</option>
+                <option value="ochi">Ochi</option>
+                <option value="buze">Buze</option>
+            </select>
+            <p>Produse de îngrijire pentru:</p>
+            <select name="age" id="age">
+                <option value="18-35" selected>Ten tânăr: 18-35 de ani</option>
+                <option value="35+">Ten matur: peste 35 de ani</option>
+                <option value="not-spec">Nu doresc să specific</option>
+            </select>
+            <p>Tip de ten:</p>
+            <select name="ten" id="ten">
+                <option value="ten_normal">Ten normal</option>
+                <option value="ten_mixt">Ten mixt</option>
+                <option value="ten_gras">Ten gras</option>
+                <option value="ten_uscat">Ten uscat</option>
+            </select>
+            <p>Brand produse makeup:</p>
+            <select name="brand-makeup" id="brand-makeup">
+                <!-- Options will be populated dynamically -->
+            </select>
+            <p>Brand produse îngrijirea tenului:</p>
+            <select name="brand-skincare" id="brand-skincare">
+                <!-- Options will be populated dynamically -->
+            </select>
+            <p>Pret:</p>
+            <select name="pret" id="pret">
                 <option value="sub_50">Sub 50 de lei</option>
                 <option value="50_99">50-99 de lei</option>
                 <option value="100_199">100-199 de lei</option>
                 <option value="peste_200">Peste 200 de lei</option>
-            </optgroup>
-        </select>
-        
-    </div>
-    <div class="products">
-        <div class="sort_filter">
-            <div>Sorteaza</div>
-            <div>Filtreaza</div>
+            </select>
+            <p>Utilizarea produsului de makeup:</p>
+            <select name="usage_type_makeup" id="usage_type_makeup">
+                <!-- Options will be populated dynamically -->
+            </select>
+            <p>Utilizarea produsului de skincare:</p>
+            <select name="usage_type_skincare" id="usage_type_skincare">
+                <!-- Options will be populated dynamically -->
+            </select>
+            <p>Topul produselor de skincare:</p>
+            <select name="top" id="top">
+                <optgroup label="După vârstă:">
+                    <option value="18" selected>Ten tânăr: 18-35 de ani</option>
+                    <option value="35">Ten matur: peste 35 de ani</option>
+                    <option value="0">Oricare</option>
+                </optgroup>
+                <optgroup label="După preț: ">
+                    <option value="sub_50">Sub 50 de lei</option>
+                    <option value="50_99">50-99 de lei</option>
+                    <option value="100_199">100-199 de lei</option>
+                    <option value="peste_200">Peste 200 de lei</option>
+                </optgroup>
+            </select>
+
         </div>
-        <div id="products">
-            <!-- Products will be populated dynamically -->
+
+
+        <div class="products">
+            <div class="sort_filter">
+                <button class="button" id="filter">Filtreaza</button>
+                <button class="button" id="sort">Sorteaza</button>
+            </div>
+            <div class = "products_phone" id="products_phone">
+            <?php 
+            if($products != []){
+                foreach ($products as $prod){
+                    echo '<div class="product">';
+                    echo '<a href="'.$prod['link'].'">';
+                    echo '<img src="' . $prod['image_path'] . '" alt="' . $prod['description'] . '">';
+                    echo '<p>' . $prod['name'] . '</p>';
+                    echo '</a>';
+                    echo '</div>';
+                }
+            }else{
+                echo "<p>Nu exista produse pentru filtrele selectate!</p>";
+            }
+            ?>
+        </div>
+            <div id="products" class="desktop_only">
+                <!-- Products will be populated dynamically -->
+            </div>
+
+            <div id="filterModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h1>Filtreaza Produsele Dupa:</h1>
+
+                    <p></p>
+
+                    <form class="form-container" method="POST" action="general_products.php">
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="checkbox1" name="checkboxGroup" value="checkbox1" onchange="toggleDiv('div1', this)">
+                            <label for="checkbox1">Tipul Machiaj</label>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="checkbox2" name="checkboxGroup" value="checkbox2" onchange="toggleDiv('div2', this)">
+                            <label for="checkbox2">Produse de ingrijire pentru ten:</label>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="checkbox3" name="checkboxGroup" value="checkbox3" onchange="toggleDiv('div3', this)">
+                            <label for="checkbox3">Tip ten:</label>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="checkbox3" name="checkboxGroup" value="checkbox4" onchange="toggleDiv('div4', this)">
+                            <label for="checkbox4">Brand produse makeup:</label>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="checkbox3" name="checkboxGroup" value="checkbox5" onchange="toggleDiv('div5', this)">
+                            <label for="checkbox5">Brand produse ingrijirea tenului:</label>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="checkbox3" name="checkboxGroup" value="checkbox6" onchange="toggleDiv('div6', this)">
+                            <label for="checkbox6">Pret:</label>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="checkbox3" name="checkboxGroup" value="checkbox7" onchange="toggleDiv('div7', this)">
+                            <label for="checkbox7">Utilizarea produsului de makeup:</label>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="checkbox3" name="checkboxGroup" value="checkbox8" onchange="toggleDiv('div8', this)">
+                            <label for="checkbox8">Utilizarea produsului de skincare:</label>
+                        </div>
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="checkbox3" name="checkboxGroup" value="checkbox9" onchange="toggleDiv('div9', this)">
+                            <label for="checkbox9">Tipul produsului de skincare:</label>
+                        </div>
+                        <div id="div1" class="hidden">
+
+                            <select id="select_tip_machiaj" name="select_tip_machiaj" class="select_tip_machiaj">
+                                <option value="ten">Ten</option>
+                                <option value="ochi">Ochi</option>
+                                <option value="buze">Buze</option>
+                            </select>
+                        </div>
+                        <div id="div2" class="hidden">
+                            <select name="select_prod_ing" id="select_prod_ing" class="select_prod_ing">
+                                <option value="18" selected>Ten tânăr: 18-35 de ani</option>
+                                <option value="35">Ten matur: peste 35 de ani</option>
+                            </select>
+                        </div>
+                        <div id="div3" class="hidden">
+                            <select name="select_ten_type" id="select_ten_type" class="select_ten_type">
+                                <option value="normal">Ten normal</option>
+                                <option value="mixt">Ten mixt</option>
+                                <option value="gras">Ten gras</option>
+                                <option value="uscat">Ten uscat</option>
+                            </select>
+                        </div>
+                        <div id="div4" class="hidden">
+
+                            <select id="select_brand_makeup" name="select_brand_makeup" class="select_brand_makeup">
+                            <?php
+                            $brands = $product->getMakeupBrands();
+                            foreach ($brands as $brand) {
+                                $id = $brand['brand_id'];
+                                $name = $brand['brand_name'];
+                                echo "<option value='$id'>$name</option>";
+                            }
+                            ?>
+                            </select>
+                        </div>
+                        <div id="div5" class="hidden">
+                            <select name="select_brand_ingrijire" id="select_brand_ingrijire" class="select_brand_ingrijire">
+                                <?php
+                                $brands = $product->getSkincareBrands();
+                                foreach ($brands as $brand) {
+                                    $id = $brand['brand_id'];
+                                    $name = $brand['brand_name'];
+                                    echo "<option value='$id'>$name</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div id="div6" class="hidden">
+                            <select name="select_pret" id="select_pret" class="select_pret">
+                                <option value="0">Sub 50 de lei</option>
+                                <option value="50">50-99 de lei</option>
+                                <option value="100">100-199 de lei</option>
+                                <option value="200">Peste 200 de lei</option>
+                            </select>
+                        </div>
+                        <div id="div7" class="hidden">
+                            <select name="select_utilizare_makeup" id="select_utilizare_makeup" class="select_utilizare_makeup">
+                                <?php
+                                $usage_types = $product->getProductsType(1);
+                                foreach ($usage_types as $usage_type) {
+                                    $id_ten = $usage_type['id_type'];
+                                    $name_ten = $usage_type['name_type'];
+                                    echo "<option value='$id_ten'>$name_ten</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div id="div8" class="hidden">
+                            <select name="select_utilizare_skincare" id="select_utilizare_skincare" class="select_utilizare_skincare">
+                                <?php
+                                $usage_types = $product->getProductsType(0);
+                                foreach ($usage_types as $usage_type) {
+                                    $id_ten = $usage_type['id_type'];
+                                    $name_ten = $usage_type['name_type'];
+                                    echo "<option value='$id_ten'>$name_ten</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div id="div9" class="hidden">
+                            <select name="select_tipul_skincare" id="select_tipul_skincare" class="select_tipul_skincare">
+                            <optgroup label="După vârstă:">
+                                <option value="18" selected>Ten tânăr: 18-35 de ani</option>
+                                <option value="35">Ten matur: peste 35 de ani</option>
+                                <option value="0">Oricare</option>
+                            </optgroup>
+                            <optgroup label="După preț: ">
+                                <option value="0">Sub 50 de lei</option>
+                                <option value="50">50-99 de lei</option>
+                                <option value="100">100-199 de lei</option>
+                                <option value="200">Peste 200 de lei</option>
+                            </optgroup>
+                            </select>
+                        </div>
+                        <input type="submit" class="button" value="Filtreaza" name="submit">
+                    </form>
+                </div>
+            </div>
+            <div id="sortModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <form class="form-container" method="POST" action="general_products.php">
+                        <h1>Sorteaza Produsele</h1>
+                        <select name="select_sort" class="select_sort">
+                            <option value="crescator">Pret crescator</option>
+                            <option value="descrescator">Pret descrescator</option>
+                            <option value="rating">Rating</option>
+                        </select>
+                        <input type="submit" class="button" value="Sorteaza" name="submit_sort">
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     <div class="footer">
@@ -110,6 +301,65 @@
         </div>
     </div>
     <script>
+        function toggleDiv(divId, checkbox) {
+            var div = document.getElementById(divId);
+            var checkboxes = document.getElementsByName("checkboxGroup");
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i] !== checkbox) {
+                    checkboxes[i].checked = false;
+                    document.getElementById("div" + (i + 1)).classList.add('hidden');
+                }
+            }
+            div.classList.toggle('hidden');
+        }
+
+        // Get the modal
+        var filterModal = document.getElementById("filterModal");
+        var sortModal = document.getElementById("sortModal");
+
+        // Get the button that opens the modals
+        var filterBtn = document.getElementById("filter");
+        var sortBtn = document.getElementById("sort");
+
+        // Get the <span> elements that close the modals
+        var closeBtns = document.getElementsByClassName("close");
+
+        // Function to open a modal
+        function openModal(modal) {
+            modal.style.display = "block";
+        }
+
+        // Function to close a modal
+        function closeModal(modal) {
+            modal.style.display = "none";
+        }
+
+        // Event listener for opening the filter modal
+        filterBtn.onclick = function() {
+            openModal(filterModal);
+        };
+
+        // Event listener for opening the sort modal
+        sortBtn.onclick = function() {
+            openModal(sortModal);
+        };
+
+        // Event listener for closing the modals
+        for (var i = 0; i < closeBtns.length; i++) {
+            closeBtns[i].onclick = function() {
+                closeModal(this.parentElement.parentElement);
+            };
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == filterModal) {
+                closeModal(filterModal);
+            }
+            if (event.target == sortModal) {
+                closeModal(sortModal);
+            }
+        };
         // Function to fetch data from an API
         function fetchData(url, propertyName) {
             return fetch(url)
@@ -175,7 +425,7 @@
                     // Create product name
                     const productName = document.createElement('p');
                     productName.classList.add('product-name');
-                    productName.textContent = product.name + " - " +  product.price + " lei"
+                    productName.textContent = product.name + " - " + product.price + " lei"
                     productContainer.appendChild(productName);
 
                     // Append product container to the products container
@@ -213,32 +463,32 @@
             });
 
         // Event listener for brand change
-        document.getElementById('brand-makeup').addEventListener('change', function (event) {
+        document.getElementById('brand-makeup').addEventListener('change', function(event) {
             handleSelectChange(event, 'http://127.0.0.1:8000/api/find-products-by-brand-and-category.php?product_category=1&brand_name=', createProductElements);
         });
 
         // Event listener for brand change
-        document.getElementById('brand-skincare').addEventListener('change', function (event) {
+        document.getElementById('brand-skincare').addEventListener('change', function(event) {
             handleSelectChange(event, 'http://127.0.0.1:8000/api/find-products-by-brand-and-category.php?product_category=0&brand_name=', createProductElements);
         });
 
         // Event listener for product type change
-        document.getElementById('product_type').addEventListener('change', function (event) {
+        document.getElementById('product_type').addEventListener('change', function(event) {
             handleSelectChange(event, 'http://127.0.0.1:8000/api/find-makeup-products-by-type.php?type=', createProductElements);
         });
         // Event listener for usage type change
-        document.getElementById('usage_type_makeup').addEventListener('change', function (event) {
+        document.getElementById('usage_type_makeup').addEventListener('change', function(event) {
             handleSelectChange(event, 'http://127.0.0.1:8000/api/find-products-by-usage-type.php?product_category=1&usage_type=', createProductElements);
         });
 
         // Event listener for usage type change
-        document.getElementById('usage_type_skincare').addEventListener('change', function (event) {
+        document.getElementById('usage_type_skincare').addEventListener('change', function(event) {
             handleSelectChange(event, 'http://127.0.0.1:8000/api/find-products-by-usage-type.php?product_category=0&usage_type=', createProductElements);
 
         });
 
         // Event listener for age
-        document.getElementById('age').addEventListener('change', function (event) {
+        document.getElementById('age').addEventListener('change', function(event) {
             const selectedOption = event.target.value;
             let ageValue;
             if (selectedOption === '18-35') {
@@ -254,7 +504,7 @@
         });
 
         // Event listener for skin type
-        document.getElementById('ten').addEventListener('change', function (event) {
+        document.getElementById('ten').addEventListener('change', function(event) {
             const selectedOption = event.target.value;
             let skintypeValue;
             if (selectedOption === 'ten_normal') {
@@ -272,7 +522,7 @@
         });
 
         // Event listener for price change
-        document.getElementById('pret').addEventListener('change', function (event) {
+        document.getElementById('pret').addEventListener('change', function(event) {
             const selectedOption = event.target.value;
             let minPrice, maxPrice;
 
@@ -318,4 +568,5 @@
         }
     </script>
 </body>
+
 </html>

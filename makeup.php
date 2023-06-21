@@ -132,18 +132,16 @@ if(isset($_POST['submit_sort'])){
                 <div id="div1" class="hidden">
 
                     <select id = "select2" name="select2" class="select_ten">
-
                         <?php
                         $usage_types = $product->getUsageTypeByProductType("ten");                            
                         foreach ($usage_types as $usage_type) {
-                        $id_ten = $usage_type['id_type'];
-                        $name_ten = $usage_type['name_type'];
-                        echo "<option value='$id_ten'>$name_ten</option>";
+                            $id_ten = $usage_type['id_type'];
+                            $name_ten = $usage_type['name_type'];
+                            echo "<option value='$id_ten'>$name_ten</option>";
                         }
                         ?>
                     </select>
                 </div>
-
                 <div id="div2" class="hidden">
                     <select name="select3" id="s3" class="select_ochii">
                         <?php
@@ -156,9 +154,7 @@ if(isset($_POST['submit_sort'])){
                         ?>
                     </select>
                 </div>
-
                 <div id="div3" class="hidden">
-
                     <select name="select4" class="select_buze">
                         <?php
                         $usage_types = $product->getUsageTypeByProductType("buze");                            
@@ -170,10 +166,8 @@ if(isset($_POST['submit_sort'])){
                         ?>
                     </select>
                 </div>
-
                 <input type="submit" class="button" value="Filtreaza" name="submit">
             </form>
-
         </div>
     </div>
     <div id="sortModal" class="modal">
@@ -189,7 +183,6 @@ if(isset($_POST['submit_sort'])){
                 <input type="submit" class="button" value="Sorteaza" name="submit_sort">
             </form>    
         </div>
-
     </div>
 </div>
 <div class="footer">
