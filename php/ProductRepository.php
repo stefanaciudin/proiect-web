@@ -286,6 +286,27 @@ class ProductRepository
 
         return $brands;
     }
+    public function getProductsByBrands(): array 
+    {
+        global $conn;
+        $brand_id = 1;
+        $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products where brand_id =?");
+        $stmt->bind_param("i" ,$brand_id);
+        $stmt->execute();
+        $stmt->bind_result($product_id,$name, $image_path, $description, $link);
+        $results = array();
+        while ($stmt->fetch()) {
+            $makeup = array(
+                'id' => $product_id,
+                'name' => $name,
+                'image_path' => $image_path,
+                'description' => $description,
+                'link' => $link
+            );
+            $results[] = $makeup;
+        }
+        return $results;
+    }
     public function getMakeUpBrands(): array 
     {
         global $conn;

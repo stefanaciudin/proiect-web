@@ -1,7 +1,7 @@
 <?php
 include "php/ProductRepository.php";
 $product = new ProductRepository();
-$products = [];
+$products = $product->getProductsByBrands();
 
 if(isset($_POST['submit'])){
     $products = $product->getProductsBySortGeneralProducts();     
