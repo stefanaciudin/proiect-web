@@ -25,20 +25,31 @@ class UserRepository
         }
     }
 
-    public static function update(User $user, int $userId): bool
+    public static function update(int $userId): bool
     {
         global $conn;
+        $age = $_POST['age'];
+        $gender = $_POST['gender'];
+        $location = $_POST['location'];
+        $skin_type = $_POST['skin_type'];
+        if($skin_type == 'gras'){
+            $id_skin = 1;
+        }else if($skin_type == 'normal'){
+            $id_skin = 2;
+        }else if($skin_type == 'mixt')
+        {
+            $id_skin = 3;
+        }else if($skin_type == 'uscat'){
+            $id_skin = 4;
+        }
         $stmt = $conn->prepare("UPDATE users SET age = ?, gender = ?, skintype_id = ?, location = ? WHERE user_id = ?");
-        $age = $user->getAge();
-        $gender = $user->getGender();
-        $skin_type = $user->getSkinType();
-        $location = $user->getLocation();
-        $stmt->bind_param("isisi", $age, $gender, $skin_type, $location, $userId);
+        $stmt->bind_param("isisi", $age, $gender, $id_skin, $location, $userId);
         if ($stmt->execute()) {
             error_log("User updated successfully");
             $stmt->close();
             return true;
         } else {
+            error_log("User updated error");
             $stmt->close();
             return false;
         }
@@ -60,15 +71,34 @@ class UserRepository
         global $conn;
         $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
         $stmt->bind_param("s", $username);
-        return self::findUser($stmt);
+        return static::findUser($stmt);
     }
 
-    public static function findUserById($id): ?User
+    public static function findUserById($id): array
     {
         global $conn;
-        $stmt = $conn->prepare("SELECT * FROM users WHERE user_id = ?");
+        $stmt = $conn->prepare("SELECT user_id, name, surname, username, email, password, age, skintype_id, gender, location FROM users WHERE user_id = ?");
         $stmt->bind_param("i", $id);
-        return self::findUser($stmt);
+        $stmt->execute();
+        $stmt->bind_result($user_id, $name, $surname, $username, $email, $password, $age, $skintype_id, $gender, $location);
+        while ($stmt->fetch()) {
+            $user = array(
+                'id' => $user_id,
+                'name' => $name,
+                'surname' => $surname,
+                'username' => $username,
+                'email' => $email,
+                'password' => $password,
+                'age' => $age,
+                'skintype_id' => $skintype_id,
+                'gender' => $gender,
+                'location' => $location
+            );
+        }
+        $stmt->close();
+        return $user;
+
+
     }
 
     public static function findByEmail($email): ?User
@@ -76,14 +106,14 @@ class UserRepository
         global $conn;
         $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
-        return self::findUser($stmt);
+        return static::findUser($stmt);
     }
 
     public static function getAllUsers(): array
     {
         global $conn;
         $stmt = $conn->prepare("SELECT * FROM users");
-        return self::executeAndFetchUsers($stmt);
+        return static::executeAndFetchUsers($stmt);
     }
 
     private static function executeAndFetchUsers(mysqli_stmt $stmt): array
@@ -124,9 +154,9 @@ class UserRepository
             $row["token"]
         );
         $user->setUserId($row["user_id"]);
-        $user->setAge(self::mapAgeFromDatabase($row['age']));
-        $user->setGender(self::mapGenderFromDatabase($row['gender']));
-        $user->setSkinType(self::mapSkinTypeFromDatabase($row['skintype_id']));
+        $user->setAge(static::mapAgeFromDatabase($row['age']));
+        $user->setGender(static::mapGenderFromDatabase($row['gender']));
+        $user->setSkinType(static::mapSkinTypeFromDatabase($row['skintype_id']));
         $user->setLocation($row['location']);
         $stmt->close();
         return $user;
@@ -139,7 +169,6 @@ class UserRepository
         $stmt->bind_param("i", $userId);
 
         if ($stmt->execute()) {
-            // user deleted successfully
             $stmt->close();
             return true;
         } else {
@@ -204,5 +233,6 @@ class UserRepository
             default => 5,
         };
     }
+
 
 }

@@ -227,21 +227,6 @@
     </div>
 </div>
 <script>
-    // window.addEventListener('DOMContentLoaded', function () {
-    //     console.error("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-    //     var images = document.querySelectorAll('.container a img');
-    //
-    //     images.forEach(function (image) {
-    //         var aspectRatio = image.naturalWidth / image.naturalHeight;
-    //         var threshold = 1.2; // Adjust the threshold as desired
-    //
-    //         if (Math.abs(1 - aspectRatio) <= threshold) {
-    //             image.classList.add('square');
-    //         } else {
-    //             image.classList.add('rectangle');
-    //         }
-    //     });
-    // });
     function createProductElement(product) {
         const productElement = document.createElement('a');
         productElement.href = product.link;
@@ -259,7 +244,7 @@
 
         productElement.appendChild(imgElement);
         productElement.appendChild(nameElement);
-        productElement.appendChild(descriptionElement); // remove the link from here!!!
+        productElement.appendChild(descriptionElement);
 
         return productElement;
     }
@@ -272,7 +257,6 @@
         {container: 'product-container-5', usageTime: 'oricand', typeId: 4},
         {container: 'product-container-6', usageTime: 'oricand', typeId: 2},
         //{container: 'product-container-6', usageTime: 'seara', typeId: 7},
-        // Add mappings for the remaining containers, usage times, and type IDs
     ];
 
     // Loop through the container map

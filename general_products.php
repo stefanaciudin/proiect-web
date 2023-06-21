@@ -374,7 +374,7 @@ if (isset($_POST['submit_sort'])) {
         };
     }
 
-    // When the user clicks anywhere outside of the modal, close it
+    // When the user clicks anywhere outside the modal, close it
     window.onclick = function (event) {
         if (event.target == filterModal) {
             closeModal(filterModal);
