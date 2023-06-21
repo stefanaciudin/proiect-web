@@ -129,7 +129,7 @@ if (isset($_POST['submit_sort'])) {
                     echo '<div class="product">';
                     echo '<a href="' . $prod['link'] . '">';
                     echo '<img src="' . $prod['image_path'] . '" alt="' . $prod['description'] . '">';
-                    echo '<p>' . $prod['name'] . '</p>';
+                    echo '<p>' . $prod['name'] . ' - ' . $prod['price'] . ' lei' . '</p>';
                     echo '</a>';
                     echo '</div>';
                 }

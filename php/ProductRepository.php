@@ -333,15 +333,16 @@ class ProductRepository
     {
         global $conn;
         $brand_id = 1;
-        $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products where brand_id =?");
+        $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products where brand_id =?");
         $stmt->bind_param("i", $brand_id);
         $stmt->execute();
-        $stmt->bind_result($product_id, $name, $image_path, $description, $link);
+        $stmt->bind_result($product_id, $name, $price, $image_path, $description, $link);
         $results = array();
         while ($stmt->fetch()) {
             $makeup = array(
                 'id' => $product_id,
                 'name' => $name,
+                'price' => $price,
                 'image_path' => $image_path,
                 'description' => $description,
                 'link' => $link
@@ -469,19 +470,20 @@ class ProductRepository
 
         global $conn;
         if ($selectedBox == "") {
-            $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products  WHERE brand_id=?");
+            $stmt = $conn->prepare("SELECT product_id, name, price, image_path, description,link FROM products  WHERE brand_id=?");
             $stmt->bind_param("i", $selectedBrand);
         } else {
-            $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products  WHERE brand_id=? and type_id = ?");
+            $stmt = $conn->prepare("SELECT product_id, name, price, image_path, description,link FROM products  WHERE brand_id=? and type_id = ?");
             $stmt->bind_param("ii", $selectedBrand, $selectedBox);
         }
         $stmt->execute();
-        $stmt->bind_result($product_id, $name, $image_path, $description, $link);
+        $stmt->bind_result($product_id, $name, $price, $image_path, $description, $link);
         $results = array();
         while ($stmt->fetch()) {
             $makeup = array(
                 'id' => $product_id,
                 'name' => $name,
+                'price' => $price,
                 'image_path' => $image_path,
                 'description' => $description,
                 'link' => $link
@@ -500,19 +502,20 @@ class ProductRepository
         $selectedSort = $_POST['select_sort'];
         global $conn;
         if ($selectedSort == "crescator") {
-            $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products WHERE is_makeup=1 ORDER BY price");
+            $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products WHERE is_makeup=1 ORDER BY price");
         } else if ($selectedSort == "descrescator") {
-            $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products WHERE is_makeup=1 ORDER BY price DESC");
+            $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products WHERE is_makeup=1 ORDER BY price DESC");
         } else if ($selectedSort == "rating") {
-            $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products WHERE is_makeup=1 ORDER BY times_rec");
+            $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products WHERE is_makeup=1 ORDER BY times_rec");
         }
         $stmt->execute();
-        $stmt->bind_result($product_id, $name, $image_path, $description, $link);
+        $stmt->bind_result($product_id, $name, $price, $image_path, $description, $link);
         $results = array();
         while ($stmt->fetch()) {
             $makeup = array(
                 'id' => $product_id,
                 'name' => $name,
+                'price' => $price,
                 'image_path' => $image_path,
                 'description' => $description,
                 'link' => $link
@@ -548,87 +551,88 @@ class ProductRepository
         if ($checkbox1) {
             $is_makeup = 1;
             $selectedBox = $_POST['select_tip_machiaj'] ?? "";
-            $stmt = $conn->prepare("SELECT p.product_id, p.name, p.image_path, p.description, p.link FROM products p JOIN product_types pt on p.type_id = pt.type_id where pt.product_type = ? and p.is_makeup = ?");
+            $stmt = $conn->prepare("SELECT p.product_id, p.name, p.price, p.image_path, p.description, p.link FROM products p JOIN product_types pt on p.type_id = pt.type_id where pt.product_type = ? and p.is_makeup = ?");
             $stmt->bind_param("si", $selectedBox, $is_makeup);
         } elseif ($checkbox2) {
             $is_makeup = 0;
             $selectedBox = $_POST['select_prod_ing'] ?? "";
-            $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products WHERE age IN (0, ?) and is_makeup=?");
+            $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products WHERE age IN (0, ?) and is_makeup=?");
             $stmt->bind_param("ii", $selectedBox, $is_makeup);
         } elseif ($checkbox3) {
             $is_makeup = 1;
             $selectedBox = $_POST['select_ten_type'] ?? "";
-            $stmt = $conn->prepare("SELECT p.product_id, p.name, p.image_path, p.description, p.link FROM products p JOIN skintypes s on p.skintype_id = s.skintype_id where s.skin_type = ?");
+            $stmt = $conn->prepare("SELECT p.product_id, p.name, p.price,  p.image_path, p.description, p.link FROM products p JOIN skintypes s on p.skintype_id = s.skintype_id where s.skin_type = ?");
             $stmt->bind_param("s", $selectedBox);
         } elseif ($checkbox4) {
             $is_makeup = 1;
             $selectedBox = $_POST['select_brand_makeup'] ?? "";
-            $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products  WHERE brand_id=? and is_makeup=?");
+            $stmt = $conn->prepare("SELECT product_id, name, price, image_path, description,link FROM products  WHERE brand_id=? and is_makeup=?");
             $stmt->bind_param("ii", $selectedBox, $is_makeup);
         } elseif ($checkbox5) {
             $is_makeup = 0;
             $selectedBox = $_POST['select_brand_ingrijire'] ?? "";
-            $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products  WHERE brand_id=? and is_makeup=?");
+            $stmt = $conn->prepare("SELECT product_id, name, price, image_path, description,link FROM products  WHERE brand_id=? and is_makeup=?");
             $stmt->bind_param("ii", $selectedBox, $is_makeup);
         } elseif ($checkbox6) {
             $selectedBox = $_POST['select_pret'] ?? "";
             if ($selectedBox == 0) {
                 $maximPrice = 50;
-                $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products where price > ? and price < ?");
+                $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products where price > ? and price < ?");
                 $stmt->bind_param("ii", $selectedBox, $maximPrice);
             } else if ($selectedBox == 50) {
                 $maximPrice = 100;
-                $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products where price > ? and price < ?");
+                $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products where price > ? and price < ?");
                 $stmt->bind_param("ii", $selectedBox, $maximPrice);
             } else if ($selectedBox == 100) {
                 $maximPrice = 200;
-                $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products where price > ? and price < ?");
+                $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products where price > ? and price < ?");
                 $stmt->bind_param("ii", $selectedBox, $maximPrice);
             } else {
-                $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products where price > ?");
+                $stmt = $conn->prepare("SELECT product_id,name, price,  image_path, description,link FROM products where price > ?");
                 $stmt->bind_param("i", $selectedBox);
             }
 
         } elseif ($checkbox7) {
             $is_makeup = 1;
             $selectedBox = $_POST['select_utilizare_makeup'] ?? "";
-            $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products where type_id =? and is_makeup=?");
+            $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products where type_id =? and is_makeup=?");
             $stmt->bind_param("ii", $selectedBox, $is_makeup);
         } elseif ($checkbox8) {
             $selectedBox = $_POST['select_utilizare_skincare'] ?? "";
             $is_makeup = 0;
-            $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products where type_id =? and is_makeup=?");
+            $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products where type_id =? and is_makeup=?");
             $stmt->bind_param("ii", $selectedBox, $is_makeup);
         } elseif ($checkbox9) {
             $selectedBox = $_POST['select_tipul_skincare'] ?? "";
             if ($selectedBox == 0) {
                 $maximPrice = 50;
-                $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products where price > ? and price < ?");
+                $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products where price > ? and price < ?");
                 $stmt->bind_param("ii", $selectedBox, $maximPrice);
             } else if ($selectedBox == 50) {
                 $maximPrice = 100;
-                $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products where price > ? and price < ?");
+                $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products where price > ? and price < ?");
                 $stmt->bind_param("ii", $selectedBox, $maximPrice);
             } else if ($selectedBox == 100) {
                 $maximPrice = 200;
-                $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products where price > ? and price < ?");
+                $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products where price > ? and price < ?");
                 $stmt->bind_param("ii", $selectedBox, $maximPrice);
             } else if ($selectedBox == 200) {
-                $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products where price > ?");
+                $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products where price > ?");
                 $stmt->bind_param("i", $selectedBox);
             } else {
                 $is_makeup = 0;
-                $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products WHERE age= ? and is_makeup=?");
+                $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products WHERE age= ? and is_makeup=?");
                 $stmt->bind_param("ii", $selectedBox, $is_makeup);
             }
         }
         $stmt->execute();
-        $stmt->bind_result($product_id, $name, $image_path, $description, $link);
+        $stmt->bind_result($product_id, $name, $price, $image_path, $description, $link);
         $results = array();
         while ($stmt->fetch()) {
             $makeup = array(
                 'id' => $product_id,
                 'name' => $name,
+                'price' => $price,
                 'image_path' => $image_path,
                 'description' => $description,
                 'link' => $link

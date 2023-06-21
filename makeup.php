@@ -1,6 +1,8 @@
 <?php
 include "php/ProductRepository.php";
+include "php/VideoRepository.php";
 $product = new ProductRepository();
+$video = new VideoRepository();
 $products = [];
 
 if (isset($_POST['submit'])) {
@@ -58,7 +60,8 @@ if (isset($_POST['submit_sort'])) {
         <p>Utilizarea produsului:</p>
         <select name="usage_type" id="usage_type">
             <!-- Options will be populated dynamically -->
-        </select>
+        </select>php -S 127.0.0.1:8000
+
     </div>
 
     <div id="content">
@@ -66,16 +69,84 @@ if (isset($_POST['submit_sort'])) {
             <button class="button" id="filter">Filtreaza</button>
             <button class="button" id="sort">Sorteaza</button>
         </div>
-        <div id="tutoriale">
-            <div class="videos">
+
+        <div id="carousel" class="carousel">
+            <button id="prevBtn" class="carousel-btn prev-btn">&lt;</button>
+            <div id="videosContainer" class="videos-container">
                 <iframe src="https://www.youtube.com/embed/sDErfOvnUfg" title="YouTube video player"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen></iframe>
-                <iframe src="https://www.youtube.com/embed/3x6FjMB1EdU" title="YouTube video player"
+                <iframe src="https://www.youtube.com/embed/sDErfOvnUfg" title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/sDErfOvnUfg" title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/sDErfOvnUfg" title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/sDErfOvnUfg" title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/sDErfOvnUfg" title="YouTube video player"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen></iframe>
             </div>
+            <button id="nextBtn" class="carousel-btn next-btn">&gt;</button>
         </div>
+
+        <!--        --><?php
+        //        $occasion = "mireasa";
+        //        $videos = $video->getVideosByOccasion($occasion);
+        //        ?><!-- --><?php
+        //        $occasion = "mireasa";
+        //        $videos = $video->getVideosByOccasion($occasion);
+        //        ?>
+        <!---->
+        <!--        <div id="carousel" class="carousel">-->
+        <!--            <button id="prevBtn" class="carousel-btn prev-btn">&lt;</button>-->
+        <!--            <div id="videosContainer" class="videos-container">-->
+        <!--                --><?php //if (empty($videos)): ?>
+        <!--                    <p>No videos available.</p>-->
+        <!--                --><?php //else: ?>
+        <!--                    --><?php //foreach ($videos as $video): ?>
+        <!--                        <iframe src="--><?php //echo $video['link']; ?><!--" title="YouTube video player"-->
+        <!--                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"-->
+        <!--                                allowfullscreen></iframe>-->
+        <!--                    --><?php //endforeach; ?>
+        <!--                --><?php //endif; ?>
+        <!--            </div>-->
+        <!--            <button id="nextBtn" class="carousel-btn next-btn">&gt;</button>-->
+        <!--        </div>-->
+        <!---->
+        <!--        --><?php
+        //               $occasion = "mireasa";
+        //                $videos = $video->getVideosByOccasion($occasion);
+        //                ?>
+        <!--        <script>-->
+        <!--            function createVideoElement(videos) {-->
+        <!--                const videosContainer = document.getElementById('videosContainer');-->
+        <!--                videosContainer.innerHTML = '';-->
+        <!---->
+        <!--                if (videos.length === 0) {-->
+        <!--                    const message = document.createElement('p');-->
+        <!--                    message.textContent = 'No videos available.';-->
+        <!--                    videosContainer.appendChild(message);-->
+        <!--                } else {-->
+        <!--                    videos.forEach(video => {-->
+        <!--                        // Create video iframe-->
+        <!--                        const videoIframe = document.createElement('iframe');-->
+        <!--                        videoIframe.src = video.link;-->
+        <!--                        videoIframe.title = 'YouTube video player';-->
+        <!--                        videoIframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';-->
+        <!--                        videoIframe.allowFullscreen = true;-->
+        <!--                        videosContainer.appendChild(videoIframe);-->
+        <!--                    });-->
+        <!--                }-->
+        <!--            }-->
+        <!---->
+        <!--        </script>-->
+
 
         <div class="products_phone" id="products_phone">
             <?php
@@ -84,7 +155,7 @@ if (isset($_POST['submit_sort'])) {
                     echo '<div class="product">';
                     echo '<a href="' . $prod['link'] . '">';
                     echo '<img src="' . $prod['image_path'] . '" alt="' . $prod['description'] . '">';
-                    echo '<p>' . $prod['name'] . '</p>';
+                    echo '<p>' . $prod['name'] . ' - ' . $prod['price'] . ' lei' . '</p>';
                     echo '</a>';
                     echo '</div>';
                 }
@@ -374,6 +445,36 @@ if (isset($_POST['submit_sort'])) {
             x.className = "topnav";
         }
     }
+</script>
+
+<script>
+    // Get carousel elements
+    const carousel = document.getElementById('carousel');
+    const videosContainer = document.getElementById('videosContainer');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    // Set initial position of the carousel
+    let currentPosition = 0;
+
+    // Move carousel to the previous position
+    prevBtn.addEventListener('click', () => {
+        currentPosition += 300; // Adjust the value based on the width of the video iframe
+        if (currentPosition > 0) {
+            currentPosition = -(videosContainer.scrollWidth - carousel.offsetWidth);
+        }
+        videosContainer.style.transform = `translateX(${currentPosition}px)`;
+    });
+
+    // Move carousel to the next position
+    nextBtn.addEventListener('click', () => {
+        currentPosition -= 300; // Adjust the value based on the width of the video iframe
+        if (Math.abs(currentPosition) > videosContainer.scrollWidth - carousel.offsetWidth) {
+            currentPosition = 0;
+        }
+        videosContainer.style.transform = `translateX(${currentPosition}px)`;
+    });
+
 </script>
 
 </body>
