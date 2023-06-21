@@ -1,5 +1,5 @@
 <?php
-
+header("Content-Type: application/x-www-form-urlencoded; charset=UTF-8");
 include_once 'bd.php';
 include_once 'UserRepository.php';
 session_start();
@@ -52,6 +52,7 @@ if (UserRepository::save($user)) {
     $_SESSION['user_id'] = UserRepository::returnMaxId();
     $_SESSION['username'] = $user->getUsername();
     $_SESSION['name'] = $user->getName();
+    $_SESSION['token'] = $user->getToken();
     // redirect the user to the profile page
     session_write_close();
     header('Location: ../profile_page.php');
