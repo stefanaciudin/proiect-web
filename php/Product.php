@@ -2,190 +2,167 @@
 
 class Product
 {
-    protected mixed $product_id;
-    protected mixed $name;
-    protected mixed $price;
-    protected mixed $image_path;
-    protected mixed $is_makeup;
-    protected mixed $age;
-    protected mixed $brand_id;
-    protected mixed $skintype_id;
-    protected mixed $type_id;
+    protected int $product_id;
+    protected string $name;
+    protected float $price;
+    protected string $image_path;
+    protected int $is_makeup;
+    protected int $age;
+    protected int $brand_id;
+    protected int $skintype_id;
+    protected int $type_id;
     protected mixed $ingredients;
     protected mixed $description;
     protected mixed $how_to_use;
-    protected mixed $link;
+    protected string $link;
+    protected int $times_recommended;
 
     /**
-     * @param mixed $product_id
+     * @return int
      */
-    public function setProductId(mixed $product_id): void
-    {
-        $this->product_id = $product_id;
-    }
-
-    /**
-     * @param mixed $name
-     */
-    public function setName(mixed $name): void
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * @param mixed $price
-     */
-    public function setPrice(mixed $price): void
-    {
-        $this->price = $price;
-    }
-
-    /**
-     * @param mixed $image_path
-     */
-    public function setImagePath(mixed $image_path): void
-    {
-        $this->image_path = $image_path;
-    }
-
-    /**
-     * @param mixed $is_makeup
-     */
-    public function setIsMakeup(mixed $is_makeup): void
-    {
-        $this->is_makeup = $is_makeup;
-    }
-
-    /**
-     * @param mixed $age
-     */
-    public function setAge(mixed $age): void
-    {
-        $this->age = $age;
-    }
-
-    /**
-     * @param mixed $brand_id
-     */
-    public function setBrandId(mixed $brand_id): void
-    {
-        $this->brand_id = $brand_id;
-    }
-
-    /**
-     * @param mixed $skintype_id
-     */
-    public function setSkintypeId(mixed $skintype_id): void
-    {
-        $this->skintype_id = $skintype_id;
-    }
-
-    /**
-     * @param mixed $type_id
-     */
-    public function setTypeId(mixed $type_id): void
-    {
-        $this->type_id = $type_id;
-    }
-
-    /**
-     * @param mixed $ingredients
-     */
-    public function setIngredients(mixed $ingredients): void
-    {
-        $this->ingredients = $ingredients;
-    }
-
-    /**
-     * @param mixed $description
-     */
-    public function setDescription(mixed $description): void
-    {
-        $this->description = $description;
-    }
-
-    /**
-     * @param mixed $how_to_use
-     */
-    public function setHowToUse(mixed $how_to_use): void
-    {
-        $this->how_to_use = $how_to_use;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getProductId(): mixed
+    public function getProductId(): int
     {
         return $this->product_id;
     }
 
     /**
-     * @return mixed
+     * @param int $product_id
      */
-    public function getName(): mixed
+    public function setProductId(int $product_id): void
+    {
+        $this->product_id = $product_id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
     {
         return $this->name;
     }
 
     /**
-     * @return mixed
+     * @param string $name
      */
-    public function getPrice(): mixed
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPrice(): float
     {
         return $this->price;
     }
 
     /**
-     * @return mixed
+     * @param float $price
      */
-    public function getImagePath(): mixed
+    public function setPrice(float $price): void
+    {
+        $this->price = $price;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImagePath(): string
     {
         return $this->image_path;
     }
 
     /**
-     * @return mixed
+     * @param string $image_path
      */
-    public function getIsMakeup(): mixed
+    public function setImagePath(string $image_path): void
+    {
+        $this->image_path = $image_path;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIsMakeup(): int
     {
         return $this->is_makeup;
     }
 
     /**
-     * @return mixed
+     * @param int $is_makeup
      */
-    public function getAge(): mixed
+    public function setIsMakeup(int $is_makeup): void
+    {
+        $this->is_makeup = $is_makeup;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAge(): int
     {
         return $this->age;
     }
 
     /**
-     * @return mixed
+     * @param int $age
      */
-    public function getBrandId(): mixed
+    public function setAge(int $age): void
+    {
+        $this->age = $age;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBrandId(): int
     {
         return $this->brand_id;
     }
 
     /**
-     * @return mixed
+     * @param int $brand_id
      */
-    public function getSkintypeId(): mixed
+    public function setBrandId(int $brand_id): void
+    {
+        $this->brand_id = $brand_id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSkintypeId(): int
     {
         return $this->skintype_id;
     }
 
     /**
-     * @return mixed
+     * @param int $skintype_id
      */
-    public function getTypeId(): mixed
+    public function setSkintypeId(int $skintype_id): void
+    {
+        $this->skintype_id = $skintype_id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTypeId(): int
     {
         return $this->type_id;
     }
 
     /**
-     * @return mixed
+     * @param int $type_id
+     */
+    public function setTypeId(int $type_id): void
+    {
+        $this->type_id = $type_id;
+    }
+
+    /**
+     * @return string
      */
     public function getIngredients(): mixed
     {
@@ -193,7 +170,15 @@ class Product
     }
 
     /**
-     * @return mixed
+     * @param string $ingredients
+     */
+    public function setIngredients(mixed $ingredients): void
+    {
+        $this->ingredients = $ingredients;
+    }
+
+    /**
+     * @return string
      */
     public function getDescription(): mixed
     {
@@ -201,7 +186,15 @@ class Product
     }
 
     /**
-     * @return mixed
+     * @param string $description
+     */
+    public function setDescription(mixed $description): void
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return string
      */
     public function getHowToUse(): mixed
     {
@@ -209,21 +202,44 @@ class Product
     }
 
     /**
-     * @return mixed
+     * @param string $how_to_use
      */
-    public function getLink(): mixed
+    public function setHowToUse(mixed $how_to_use): void
+    {
+        $this->how_to_use = $how_to_use;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLink(): string
     {
         return $this->link;
     }
 
     /**
-     * @param mixed $link
+     * @param string $link
      */
-    public function setLink(mixed $link): void
+    public function setLink(string $link): void
     {
         $this->link = $link;
     }
 
+    /**
+     * @return int
+     */
+    public function getTimesRecommended(): int
+    {
+        return $this->times_recommended;
+    }
+
+    /**
+     * @param int $times_recommended
+     */
+    public function setTimesRecommended(int $times_recommended): void
+    {
+        $this->times_recommended = $times_recommended;
+    }
 
 
 }

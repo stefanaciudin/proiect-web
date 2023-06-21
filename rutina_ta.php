@@ -3,9 +3,6 @@
 <head>
     <?php
     session_start();
-    // !!!! ADD HOW TO USE + PRICE !!!!!
-    // add section for serums + lip products
-    // eventual de inlocuit seara exfolierea cu seruri(avem deja exfoliere dimineata)
     ?>
     <meta charset="UTF-8">
     <title>Rutina ta</title>
@@ -24,7 +21,7 @@
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="rutina_ta.php">Rutina Mea</a>
-        <a href="general_products.html">Recomandari Generale</a>
+        <a href="general_products.php">Recomandari Generale</a>
         <a href="makeup.php">Make Up</a>
         <a href="login_page.php">Login</a>
         <a href="register_page.php">Register</a>
@@ -230,21 +227,6 @@
     </div>
 </div>
 <script>
-    // window.addEventListener('DOMContentLoaded', function () {
-    //     console.error("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-    //     var images = document.querySelectorAll('.container a img');
-    //
-    //     images.forEach(function (image) {
-    //         var aspectRatio = image.naturalWidth / image.naturalHeight;
-    //         var threshold = 1.2; // Adjust the threshold as desired
-    //
-    //         if (Math.abs(1 - aspectRatio) <= threshold) {
-    //             image.classList.add('square');
-    //         } else {
-    //             image.classList.add('rectangle');
-    //         }
-    //     });
-    // });
     function createProductElement(product) {
         const productElement = document.createElement('a');
         productElement.href = product.link;
@@ -262,38 +244,9 @@
 
         productElement.appendChild(imgElement);
         productElement.appendChild(nameElement);
-        productElement.appendChild(descriptionElement); // remove the link from here!!!
-
-        return productElement;
-        /* asta merge dar strica css ul de tot
-        const productElement = document.createElement('div');
-
-        const imgLinkElement = document.createElement('a');
-        imgLinkElement.href = product.link;
-
-        const imgElement = document.createElement('img');
-        imgElement.src = product.image_path;
-        imgElement.alt = '';
-
-        imgLinkElement.appendChild(imgElement);
-        productElement.appendChild(imgLinkElement);
-
-        const nameLinkElement = document.createElement('a');
-        nameLinkElement.href = product.link;
-
-        const nameElement = document.createElement('p');
-        nameElement.textContent = product.name;
-
-        nameLinkElement.appendChild(nameElement);
-        productElement.appendChild(nameLinkElement);
-
-        const descriptionElement = document.createElement('p');
-        descriptionElement.textContent = product.description;
-
         productElement.appendChild(descriptionElement);
 
         return productElement;
-         */
     }
 
     const containerMap = [
@@ -304,7 +257,6 @@
         {container: 'product-container-5', usageTime: 'oricand', typeId: 4},
         {container: 'product-container-6', usageTime: 'oricand', typeId: 2},
         //{container: 'product-container-6', usageTime: 'seara', typeId: 7},
-        // Add mappings for the remaining containers, usage times, and type IDs
     ];
 
     // Loop through the container map
