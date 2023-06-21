@@ -60,7 +60,8 @@ if (isset($_POST['submit_sort'])) {
         <p>Utilizarea produsului:</p>
         <select name="usage_type" id="usage_type">
             <!-- Options will be populated dynamically -->
-        </select>
+        </select>php -S 127.0.0.1:8000
+
     </div>
 
     <div id="content">
@@ -94,57 +95,57 @@ if (isset($_POST['submit_sort'])) {
             <button id="nextBtn" class="carousel-btn next-btn">&gt;</button>
         </div>
 
-<!--        --><?php
-//        $occasion = "mireasa";
-//        $videos = $video->getVideosByOccasion($occasion);
-//        ?><!-- --><?php
-//        $occasion = "mireasa";
-//        $videos = $video->getVideosByOccasion($occasion);
-//        ?>
-<!---->
-<!--        <div id="carousel" class="carousel">-->
-<!--            <button id="prevBtn" class="carousel-btn prev-btn">&lt;</button>-->
-<!--            <div id="videosContainer" class="videos-container">-->
-<!--                --><?php //if (empty($videos)): ?>
-<!--                    <p>No videos available.</p>-->
-<!--                --><?php //else: ?>
-<!--                    --><?php //foreach ($videos as $video): ?>
-<!--                        <iframe src="--><?php //echo $video['link']; ?><!--" title="YouTube video player"-->
-<!--                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"-->
-<!--                                allowfullscreen></iframe>-->
-<!--                    --><?php //endforeach; ?>
-<!--                --><?php //endif; ?>
-<!--            </div>-->
-<!--            <button id="nextBtn" class="carousel-btn next-btn">&gt;</button>-->
-<!--        </div>-->
-
-<!--        --><?php
-//               $occasion = "mireasa";
-//                $videos = $video->getVideosByOccasion($occasion);
-//                ?><!-->-->
-<!--        <script>-->
-<!--            function createVideoElement(videos) {-->
-<!--                const videosContainer = document.getElementById('videosContainer');-->
-<!--                videosContainer.innerHTML = '';-->
-<!---->
-<!--                if (videos.length === 0) {-->
-<!--                    const message = document.createElement('p');-->
-<!--                    message.textContent = 'No videos available.';-->
-<!--                    videosContainer.appendChild(message);-->
-<!--                } else {-->
-<!--                    videos.forEach(video => {-->
-<!--                        // Create video iframe-->
-<!--                        const videoIframe = document.createElement('iframe');-->
-<!--                        videoIframe.src = video.link;-->
-<!--                        videoIframe.title = 'YouTube video player';-->
-<!--                        videoIframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';-->
-<!--                        videoIframe.allowFullscreen = true;-->
-<!--                        videosContainer.appendChild(videoIframe);-->
-<!--                    });-->
-<!--                }-->
-<!--            }-->
-<!---->
-<!--        </script>-->
+        <!--        --><?php
+        //        $occasion = "mireasa";
+        //        $videos = $video->getVideosByOccasion($occasion);
+        //        ?><!-- --><?php
+        //        $occasion = "mireasa";
+        //        $videos = $video->getVideosByOccasion($occasion);
+        //        ?>
+        <!---->
+        <!--        <div id="carousel" class="carousel">-->
+        <!--            <button id="prevBtn" class="carousel-btn prev-btn">&lt;</button>-->
+        <!--            <div id="videosContainer" class="videos-container">-->
+        <!--                --><?php //if (empty($videos)): ?>
+        <!--                    <p>No videos available.</p>-->
+        <!--                --><?php //else: ?>
+        <!--                    --><?php //foreach ($videos as $video): ?>
+        <!--                        <iframe src="--><?php //echo $video['link']; ?><!--" title="YouTube video player"-->
+        <!--                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"-->
+        <!--                                allowfullscreen></iframe>-->
+        <!--                    --><?php //endforeach; ?>
+        <!--                --><?php //endif; ?>
+        <!--            </div>-->
+        <!--            <button id="nextBtn" class="carousel-btn next-btn">&gt;</button>-->
+        <!--        </div>-->
+        <!---->
+        <!--        --><?php
+        //               $occasion = "mireasa";
+        //                $videos = $video->getVideosByOccasion($occasion);
+        //                ?>
+        <!--        <script>-->
+        <!--            function createVideoElement(videos) {-->
+        <!--                const videosContainer = document.getElementById('videosContainer');-->
+        <!--                videosContainer.innerHTML = '';-->
+        <!---->
+        <!--                if (videos.length === 0) {-->
+        <!--                    const message = document.createElement('p');-->
+        <!--                    message.textContent = 'No videos available.';-->
+        <!--                    videosContainer.appendChild(message);-->
+        <!--                } else {-->
+        <!--                    videos.forEach(video => {-->
+        <!--                        // Create video iframe-->
+        <!--                        const videoIframe = document.createElement('iframe');-->
+        <!--                        videoIframe.src = video.link;-->
+        <!--                        videoIframe.title = 'YouTube video player';-->
+        <!--                        videoIframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';-->
+        <!--                        videoIframe.allowFullscreen = true;-->
+        <!--                        videosContainer.appendChild(videoIframe);-->
+        <!--                    });-->
+        <!--                }-->
+        <!--            }-->
+        <!---->
+        <!--        </script>-->
 
 
         <div class="products_phone" id="products_phone">
@@ -154,7 +155,7 @@ if (isset($_POST['submit_sort'])) {
                     echo '<div class="product">';
                     echo '<a href="' . $prod['link'] . '">';
                     echo '<img src="' . $prod['image_path'] . '" alt="' . $prod['description'] . '">';
-                    echo '<p>' . $prod['name'] . '</p>';
+                    echo '<p>' . $prod['name'] . ' - ' . $prod['price'] . ' lei' . '</p>';
                     echo '</a>';
                     echo '</div>';
                 }
