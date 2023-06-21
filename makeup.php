@@ -3,10 +3,10 @@ include "php/ProductRepository.php";
 $product = new ProductRepository();
 $products = [];
 
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
     $products = $product->getProductsBySort();
 }
-if(isset($_POST['submit_sort'])){
+if (isset($_POST['submit_sort'])) {
     $products = $product->getProductsByFilter();
 }
 
@@ -77,18 +77,18 @@ if(isset($_POST['submit_sort'])){
             </div>
         </div>
 
-        <div class = "products_phone" id="products_phone">
+        <div class="products_phone" id="products_phone">
             <?php
-            if($products != []){
-                foreach ($products as $prod){
+            if ($products != []) {
+                foreach ($products as $prod) {
                     echo '<div class="product">';
-                    echo '<a href="'.$prod['link'].'">';
+                    echo '<a href="' . $prod['link'] . '">';
                     echo '<img src="' . $prod['image_path'] . '" alt="' . $prod['description'] . '">';
                     echo '<p>' . $prod['name'] . '</p>';
                     echo '</a>';
                     echo '</div>';
                 }
-            }else{
+            } else {
                 echo "<p>Nu exista produse pentru filtrele selectate!</p>";
             }
             ?>
@@ -109,7 +109,7 @@ if(isset($_POST['submit_sort'])){
             <form class="form-container" method="POST" action="makeup.php">
                 <select id="s1" name="select1" class="select_brands">
                     <?php
-                    $brands = $product->getAllBrands();
+                    $brands = $product->getMakeUpBrands();
                     foreach ($brands as $brand) {
                         $id = $brand['brand_id'];
                         $name = $brand['brand_name'];
@@ -118,21 +118,23 @@ if(isset($_POST['submit_sort'])){
                     ?>
                 </select>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="checkbox1" name="checkboxGroup" value="checkbox1" onchange="toggleDiv('div1', this)">
+                    <input type="checkbox" id="checkbox1" name="checkboxGroup" value="checkbox1"
+                           onchange="toggleDiv('div1', this)">
                     <label for="checkbox1">Ten</label>
                 </div>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="checkbox2" name="checkboxGroup" value="checkbox2" onchange="toggleDiv('div2', this)">
-                    <label for="checkbox2">Ochii</label>
+                    <input type="checkbox" id="checkbox2" name="checkboxGroup" value="checkbox2"
+                           onchange="toggleDiv('div2', this)">
+                    <label for="checkbox2">Ochi</label>
                 </div>
                 <div class="checkbox-container">
-                    <input type="checkbox" id="checkbox3" name="checkboxGroup" value="checkbox3" onchange="toggleDiv('div3', this)">
+                    <input type="checkbox" id="checkbox3" name="checkboxGroup" value="checkbox3"
+                           onchange="toggleDiv('div3', this)">
                     <label for="checkbox3">Buze</label>
                 </div>
                 <div id="div1" class="hidden">
 
-                    <select id = "select2" name="select2" class="select_ten">
-
+                    <select id="select2" name="select2" class="select_ten">
                         <?php
                         $usage_types = $product->getUsageTypeByProductType("ten");
                         foreach ($usage_types as $usage_type) {
@@ -143,7 +145,6 @@ if(isset($_POST['submit_sort'])){
                         ?>
                     </select>
                 </div>
-
                 <div id="div2" class="hidden">
                     <select name="select3" id="s3" class="select_ochii">
                         <?php
@@ -156,9 +157,7 @@ if(isset($_POST['submit_sort'])){
                         ?>
                     </select>
                 </div>
-
                 <div id="div3" class="hidden">
-
                     <select name="select4" class="select_buze">
                         <?php
                         $usage_types = $product->getUsageTypeByProductType("buze");
@@ -170,10 +169,8 @@ if(isset($_POST['submit_sort'])){
                         ?>
                     </select>
                 </div>
-
                 <input type="submit" class="button" value="Filtreaza" name="submit">
             </form>
-
         </div>
     </div>
     <div id="sortModal" class="modal">
@@ -181,7 +178,7 @@ if(isset($_POST['submit_sort'])){
             <span class="close">&times;</span>
             <form class="form-container" method="POST" action="makeup.php">
                 <h1>Sorteaza Produsele</h1>
-                <select name="select_sort" class= "select_sort">
+                <select name="select_sort" class="select_sort">
                     <option value="crescator">Pret crescator</option>
                     <option value="descrescator">Pret descrescator</option>
                     <option value="rating">Rating</option>
@@ -189,7 +186,6 @@ if(isset($_POST['submit_sort'])){
                 <input type="submit" class="button" value="Sorteaza" name="submit_sort">
             </form>
         </div>
-
     </div>
 </div>
 <div class="footer">
@@ -265,7 +261,6 @@ if(isset($_POST['submit_sort'])){
     };
 
 
-
     // Function to fetch data from an API
     function fetchData(url, propertyName) {
         return fetch(url)
@@ -331,7 +326,7 @@ if(isset($_POST['submit_sort'])){
                 // Create product name
                 const productName = document.createElement('p');
                 productName.classList.add('product-name');
-                productName.textContent = product.name;
+                productName.textContent = product.name + " - " + product.price + " lei"
                 productContainer.appendChild(productName);
 
                 // Append product container to the products container

@@ -12,55 +12,55 @@
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     border: 2px solid pink;
     border-radius: 10px;
-}
-
-.modal h1 {
+  }
+  
+  .modal h1 {
     text-align: center; /* Centrare text */
-}
-/* Modal Content */
-.modal-content {
+  }
+  /* Modal Content */
+  .modal-content {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-}
-
-/* The Close Button */
-.close {
+  }
+  
+  /* The Close Button */
+  .close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
+  }
+  
+  .close:hover,
+  .close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
-}
-.form-container {
+  }
+  .form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+  }
 
-.form-container select {
+  .form-container select {
     margin-bottom: 10px;
-}
-.modal-content .h1{
+  }
+  .modal-content .h1{
     text-align: center;
-}
-.hidden {
+  }
+  .hidden {
     display: none;
-}
-.checkbox-container {
+  }
+  .checkbox-container {
     display: inline-block;
     margin-right: 10px;
-}
+  }
 
-.button {
+  .button {
     display: inline-block;
     border-radius: 4px;
     background-color: #a46e94;
@@ -72,20 +72,20 @@
     border: none;
     cursor: pointer;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
-}
-.button:hover {
+  }
+  .button:hover {
     background-color: #412c3b;
-}
-.select_sort,
-.select_brands,
-.select_ten,
-.select_buze,
-.select_ochii {
+  }
+    .select_sort,
+    .select_brands,
+    .select_ten,
+    .select_buze,
+    .select_ochii {
     border: 2px solid #967388;
     border-radius: 10px;
     padding: 5px;
     outline: none;
-}
+    }
 /* Stiluri generale */
 
 /* Ascunde initial clasa products_phone pe dispozitive desktop */
@@ -93,10 +93,10 @@
     #products {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: center; 
         margin-bottom: 50px;
     }
-
+    
     #products a {
         border: #967388 2px solid;
         border-radius: 25px;
@@ -108,14 +108,14 @@
         align-items: center;
         justify-content: center;
     }
-
-
+    
+    
     #products a img {
         height: 300px;
         width: auto;
-        align-self: center;
+        align-self: center; 
     }
-
+    
     #products p {
         text-align: center;
         color: #000d33;
@@ -127,26 +127,26 @@
     }
     #products_phone {
         display: none;
-    }
-}
-
-/* Stilurile pentru mobil */
-@media (max-width: 767px) {
+      }
+  }
+  
+  /* Stilurile pentru mobil */
+  @media (max-width: 767px) {
     #products {
-        display: none;
+      display: none;
     }
-
+  
     #products_phone {
-        display: block;
-        margin-bottom: 50px;
+      display: block;
+      margin-bottom: 50px;
     }
     .products_phone {
         display: flex;
         justify-content: center;
         align-items: center;
-    }
-
-    .product {
+      }
+      
+      .product {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -154,27 +154,27 @@
         border-radius: 10px;
         margin: 10px;
         padding: 10px;
-    }
-
-    .product img {
+      }
+      
+      .product img {
         width: auto;
         height: 200px;
         object-fit: cover;
         border: 2px solid #967388;
         border-radius: 10px;
-    }
-
-    .product p {
+      }           
+      
+      .product p {
         margin-top: 10px;
         text-decoration: underline;
-    }
-
-    .product p a {
+      }
+      
+      .product p a {
         color: black;
         text-decoration: none;
-    }
-
-}
+      }
+      
+  }
 
 
 
@@ -343,7 +343,7 @@ header {
 /* #products {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: center; 
     margin-bottom: 50px;
 }
 
@@ -363,7 +363,7 @@ header {
 #products a img {
     height: 300px;
     width: auto;
-    align-self: center;
+    align-self: center; 
 }
 
 #products p {
@@ -427,15 +427,15 @@ header {
         display: block;
         margin: 0 auto;
     }  */
-    /* Afișează clasa products_phone pe dispozitive mobile */
-    .products_phone {
-        display: block;
-    }
-
-    /* Ascunde clasa desktop_only pe dispozitive mobile */
-    .desktop_only {
-        display: none;
-    }
+        /* Afișează clasa products_phone pe dispozitive mobile */
+        .products_phone {
+            display: block;
+        }
+    
+        /* Ascunde clasa desktop_only pe dispozitive mobile */
+        .desktop_only {
+            display: none;
+        }
 }
 
 .product-image {
@@ -484,15 +484,15 @@ header {
     /* #products a {
         flex-basis: 100%;
     } */
-    /* Afișează clasa products_phone pe dispozitive mobile */
-    .products_phone {
-        display: block;
-    }
-
-    /* Ascunde clasa desktop_only pe dispozitive mobile */
-    .desktop_only {
-        display: none;
-    }
+        /* Afișează clasa products_phone pe dispozitive mobile */
+        .products_phone {
+            display: block;
+        }
+    
+        /* Ascunde clasa desktop_only pe dispozitive mobile */
+        .desktop_only {
+            display: none;
+        }
 }
 
 @media only screen and (max-width: 700px) {

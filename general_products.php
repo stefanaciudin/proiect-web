@@ -3,16 +3,17 @@ include "php/ProductRepository.php";
 $product = new ProductRepository();
 $products = $product->getProductsByBrands();
 
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
     $products = $product->getProductsBySortGeneralProducts();
 }
-if(isset($_POST['submit_sort'])){
+if (isset($_POST['submit_sort'])) {
     $products = $product->getProductsByFilter();
 }
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Produse generale</title>
@@ -20,6 +21,7 @@ if(isset($_POST['submit_sort'])){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css-files/general_products.css">
 </head>
+
 <body>
 
 <header>
@@ -113,28 +115,275 @@ if(isset($_POST['submit_sort'])){
         <button id="generateBtn" class="center-button">Generate</button>
 
     </div>
+
+
     <div class="products">
         <div class="sort_filter">
-            <div>Sorteaza</div>
-            <div>Filtreaza</div>
+            <button class="button" id="filter">Filtreaza</button>
+            <button class="button" id="sort">Sorteaza</button>
         </div>
-        <div id="products">
+        <div class="products_phone" id="products_phone">
+            <?php
+            if ($products != []) {
+                foreach ($products as $prod) {
+                    echo '<div class="product">';
+                    echo '<a href="' . $prod['link'] . '">';
+                    echo '<img src="' . $prod['image_path'] . '" alt="' . $prod['description'] . '">';
+                    echo '<p>' . $prod['name'] . '</p>';
+                    echo '</a>';
+                    echo '</div>';
+                }
+            } else {
+                echo "<p>Nu exista produse pentru filtrele selectate!</p>";
+            }
+            ?>
+        </div>
+        <div id="products" class="desktop_only">
             <!-- Products will be populated dynamically -->
         </div>
-    </div>
-    <div class="footer">
-        <div class="left">
-            <p>Phone: 076755775</p>
+
+        <div id="filterModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h1>Filtreaza Produsele Dupa:</h1>
+
+                <p></p>
+
+                <form class="form-container" method="POST" action="general_products.php">
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="checkbox1" name="checkboxGroup" value="checkbox1"
+                               onchange="toggleDiv('div1', this)">
+                        <label for="checkbox1">Tipul Machiaj</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="checkbox2" name="checkboxGroup" value="checkbox2"
+                               onchange="toggleDiv('div2', this)">
+                        <label for="checkbox2">Produse de ingrijire pentru ten:</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="checkbox3" name="checkboxGroup" value="checkbox3"
+                               onchange="toggleDiv('div3', this)">
+                        <label for="checkbox3">Tip ten:</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="checkbox3" name="checkboxGroup" value="checkbox4"
+                               onchange="toggleDiv('div4', this)">
+                        <label for="checkbox4">Brand produse makeup:</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="checkbox3" name="checkboxGroup" value="checkbox5"
+                               onchange="toggleDiv('div5', this)">
+                        <label for="checkbox5">Brand produse ingrijirea tenului:</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="checkbox3" name="checkboxGroup" value="checkbox6"
+                               onchange="toggleDiv('div6', this)">
+                        <label for="checkbox6">Pret:</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="checkbox3" name="checkboxGroup" value="checkbox7"
+                               onchange="toggleDiv('div7', this)">
+                        <label for="checkbox7">Utilizarea produsului de makeup:</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="checkbox3" name="checkboxGroup" value="checkbox8"
+                               onchange="toggleDiv('div8', this)">
+                        <label for="checkbox8">Utilizarea produsului de skincare:</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="checkbox3" name="checkboxGroup" value="checkbox9"
+                               onchange="toggleDiv('div9', this)">
+                        <label for="checkbox9">Tipul produsului de skincare:</label>
+                    </div>
+                    <div id="div1" class="hidden">
+
+                        <select id="select_tip_machiaj" name="select_tip_machiaj" class="select_tip_machiaj">
+                            <option value="ten">Ten</option>
+                            <option value="ochi">Ochi</option>
+                            <option value="buze">Buze</option>
+                        </select>
+                    </div>
+                    <div id="div2" class="hidden">
+                        <select name="select_prod_ing" id="select_prod_ing" class="select_prod_ing">
+                            <option value="18" selected>Ten tânăr: 18-35 de ani</option>
+                            <option value="35">Ten matur: peste 35 de ani</option>
+                        </select>
+                    </div>
+                    <div id="div3" class="hidden">
+                        <select name="select_ten_type" id="select_ten_type" class="select_ten_type">
+                            <option value="normal">Ten normal</option>
+                            <option value="mixt">Ten mixt</option>
+                            <option value="gras">Ten gras</option>
+                            <option value="uscat">Ten uscat</option>
+                        </select>
+                    </div>
+                    <div id="div4" class="hidden">
+
+                        <select id="select_brand_makeup" name="select_brand_makeup" class="select_brand_makeup">
+                            <?php
+                            $brands = $product->getMakeupBrands();
+                            foreach ($brands as $brand) {
+                                $id = $brand['brand_id'];
+                                $name = $brand['brand_name'];
+                                echo "<option value='$id'>$name</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div id="div5" class="hidden">
+                        <select name="select_brand_ingrijire" id="select_brand_ingrijire"
+                                class="select_brand_ingrijire">
+                            <?php
+                            $brands = $product->getSkincareBrands();
+                            foreach ($brands as $brand) {
+                                $id = $brand['brand_id'];
+                                $name = $brand['brand_name'];
+                                echo "<option value='$id'>$name</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div id="div6" class="hidden">
+                        <select name="select_pret" id="select_pret" class="select_pret">
+                            <option value="0">Sub 50 de lei</option>
+                            <option value="50">50-99 de lei</option>
+                            <option value="100">100-199 de lei</option>
+                            <option value="200">Peste 200 de lei</option>
+                        </select>
+                    </div>
+                    <div id="div7" class="hidden">
+                        <select name="select_utilizare_makeup" id="select_utilizare_makeup"
+                                class="select_utilizare_makeup">
+                            <?php
+                            $usage_types = $product->getProductsType(1);
+                            foreach ($usage_types as $usage_type) {
+                                $id_ten = $usage_type['id_type'];
+                                $name_ten = $usage_type['name_type'];
+                                echo "<option value='$id_ten'>$name_ten</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div id="div8" class="hidden">
+                        <select name="select_utilizare_skincare" id="select_utilizare_skincare"
+                                class="select_utilizare_skincare">
+                            <?php
+                            $usage_types = $product->getProductsType(0);
+                            foreach ($usage_types as $usage_type) {
+                                $id_ten = $usage_type['id_type'];
+                                $name_ten = $usage_type['name_type'];
+                                echo "<option value='$id_ten'>$name_ten</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div id="div9" class="hidden">
+                        <select name="select_tipul_skincare" id="select_tipul_skincare" class="select_tipul_skincare">
+                            <optgroup label="După vârstă:">
+                                <option value="18" selected>Ten tânăr: 18-35 de ani</option>
+                                <option value="35">Ten matur: peste 35 de ani</option>
+                                <option value="0">Oricare</option>
+                            </optgroup>
+                            <optgroup label="După preț: ">
+                                <option value="0">Sub 50 de lei</option>
+                                <option value="50">50-99 de lei</option>
+                                <option value="100">100-199 de lei</option>
+                                <option value="200">Peste 200 de lei</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <input type="submit" class="button" value="Filtreaza" name="submit">
+                </form>
+            </div>
         </div>
-        <div class="center">
-            <p>Email: web@gmail.com</p>
-        </div>
-        <div class="right">
-            <p>Locatie: online</p>
+        <div id="sortModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <form class="form-container" method="POST" action="general_products.php">
+                    <h1>Sorteaza Produsele</h1>
+                    <select name="select_sort" class="select_sort">
+                        <option value="crescator">Pret crescator</option>
+                        <option value="descrescator">Pret descrescator</option>
+                        <option value="rating">Rating</option>
+                    </select>
+                    <input type="submit" class="button" value="Sorteaza" name="submit_sort">
+                </form>
+            </div>
         </div>
     </div>
 </div>
+<div class="footer">
+    <div class="left">
+        <p>Phone: 076755775</p>
+    </div>
+    <div class="center">
+        <p>Email: web@gmail.com</p>
+    </div>
+    <div class="right">
+        <p>Locatie: online</p>
+    </div>
+</div>
 <script>
+    function toggleDiv(divId, checkbox) {
+        var div = document.getElementById(divId);
+        var checkboxes = document.getElementsByName("checkboxGroup");
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i] !== checkbox) {
+                checkboxes[i].checked = false;
+                document.getElementById("div" + (i + 1)).classList.add('hidden');
+            }
+        }
+        div.classList.toggle('hidden');
+    }
+
+    // Get the modal
+    var filterModal = document.getElementById("filterModal");
+    var sortModal = document.getElementById("sortModal");
+
+    // Get the button that opens the modals
+    var filterBtn = document.getElementById("filter");
+    var sortBtn = document.getElementById("sort");
+
+    // Get the <span> elements that close the modals
+    var closeBtns = document.getElementsByClassName("close");
+
+    // Function to open a modal
+    function openModal(modal) {
+        modal.style.display = "block";
+    }
+
+    // Function to close a modal
+    function closeModal(modal) {
+        modal.style.display = "none";
+    }
+
+    // Event listener for opening the filter modal
+    filterBtn.onclick = function () {
+        openModal(filterModal);
+    };
+
+    // Event listener for opening the sort modal
+    sortBtn.onclick = function () {
+        openModal(sortModal);
+    };
+
+    // Event listener for closing the modals
+    for (var i = 0; i < closeBtns.length; i++) {
+        closeBtns[i].onclick = function () {
+            closeModal(this.parentElement.parentElement);
+        };
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == filterModal) {
+            closeModal(filterModal);
+        }
+        if (event.target == sortModal) {
+            closeModal(sortModal);
+        }
+    };
+
     // Function to fetch data from an API
     function fetchData(url, propertyName) {
         return fetch(url)
@@ -317,15 +566,6 @@ if(isset($_POST['submit_sort'])){
         handleSelectChange(event, 'http://127.0.0.1:8000/api/find-products-by-usage-type.php?product_category=0&usage_type=', createProductElements);
 
     });
-    document.getElementById('generateBtn').addEventListener('click', function () {
-        var topValue = document.getElementById('top').value;
-        var formatValue = document.getElementById('format').value;
-
-        // Perform the desired action based on the selected values
-        generateTop(topValue, formatValue);
-    });
-
-
 
     // Event listener for age
     document.getElementById('age').addEventListener('change', function (event) {
@@ -397,6 +637,14 @@ if(isset($_POST['submit_sort'])){
         handleSelectChange(event, url, createProductElements);
     });
 
+    document.getElementById('generateBtn').addEventListener('click', function () {
+        var topValue = document.getElementById('top').value;
+        var formatValue = document.getElementById('format').value;
+
+        // Perform the desired action based on the selected values
+        generateTop(topValue, formatValue);
+    });
+
 
     function myFunction() {
         var x = document.getElementById("myTopnav");
@@ -407,4 +655,6 @@ if(isset($_POST['submit_sort'])){
         }
     }
 </script>
+</body>
+
 </html>
