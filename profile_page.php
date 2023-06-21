@@ -31,7 +31,7 @@ if (isset($_POST['logout'])) {
 }
 
 if(isset($_SESSION['user'])) {
-    $user = $userRepository->findUserById($_SESSION['user_id']);;
+    $user = $userRepository->findUserById($_SESSION['user_id']);
 }
 
 $token = bin2hex(random_bytes(50));
@@ -126,7 +126,7 @@ $_SESSION['form-token'] = $token;
                 <option value="australia" <?php if (isset($user['location']) && $user['location'] == 'australia') echo 'selected'; ?>>Australia</option>
                 <option value="antarctica" <?php if (isset($user['location']) && $user['location'] == 'antarctica') echo 'selected'; ?>>Antarctica</option>
             </select>
-               <input type="hiden" value="<?php echo $token; ?>" name="token" />
+               <input type="hidden" value="<?php echo $token; ?>" name="token" />
             <p>
                 <input type="submit" class="button" value="Save" name="save">
             </p>
