@@ -31,7 +31,7 @@ if (isset($_POST['logout'])) {
 }
 
 if(isset($_SESSION['user'])) {
-    $user = $userRepository->findUserById($_SESSION['user_id']);;
+    $user = $userRepository->findUserById($_SESSION['user_id']);
 }
 
 $token = bin2hex(random_bytes(50));
