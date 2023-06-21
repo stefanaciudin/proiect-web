@@ -9,6 +9,8 @@ $surname = $_POST['lastname'];
 $username = $_POST['username'];
 $email = $_POST['email'];
 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+$token = bin2hex(random_bytes(50));
+error_log("Token:" . $token);
 
 // validate email input
 // did that in the html page, but I'll keep it here, for some reason I can send
@@ -41,7 +43,7 @@ if (UserRepository::findByUsername($username)) {
     exit();
 }
 
-$user = new User($name, $surname, $username, $email, $password);
+$user = new User($name, $surname, $username, $email, $password, $token);
 
 // save the user to the database
 

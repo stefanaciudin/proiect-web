@@ -13,15 +13,18 @@ class User
     protected mixed $gender = 0;
     protected mixed $skin_type = 2;
     protected mixed $location = 0;
+    protected mixed $token;
 
 
-    public function __construct($name, $surname, $username, $email, $password)
+    public function __construct($name, $surname, $username, $email, $password, $token)
     {
         $this->name = $name;
         $this->username = $username;
         $this->surname = $surname;
         $this->email = $email;
         $this->password = $password;
+        $this->token = $token;
+        error_log("User created successfully, token: $token");
     }
 
     /**
@@ -188,5 +191,15 @@ class User
     public function __toString(): string
     {
         return "User: " . $this->name . " " . $this->surname . " " . $this->username . " " . $this->email . " " . $this->password;
+    }
+
+    public function getToken(): mixed
+    {
+        return $this->token;
+    }
+
+    public function setToken(mixed $token): void
+    {
+        $this->token = $token;
     }
 }

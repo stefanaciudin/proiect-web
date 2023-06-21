@@ -7,13 +7,14 @@ class UserRepository
     public static function save(User $user): bool
     {
         global $conn;
-        $stmt = $conn->prepare("INSERT INTO users (name, surname, username, email, password) VALUES (?, ?, ?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO users (name, surname, username, email, password, token) VALUES (?, ?, ?, ?, ?, ?)");
         $name = $user->getName();
         $surname = $user->getSurname();
         $username = $user->getUsername();
         $email = $user->getEmail();
         $password = $user->getPassword();
-        $stmt->bind_param("sssss", $name, $surname, $username, $email, $password);
+        $token = $user->getToken();
+        $stmt->bind_param("ssssss", $name, $surname, $username, $email, $password, $token);
         if ($stmt->execute()) {
             // user saved successfully
             $stmt->close();
@@ -96,7 +97,8 @@ class UserRepository
                 $row["surname"],
                 $row["username"],
                 $row["email"],
-                $row["password"]
+                $row["password"],
+                $row["token"]
             );
             $user->setUserId($row["user_id"]);
             $users[] = $user;
@@ -118,7 +120,8 @@ class UserRepository
             $row["surname"],
             $row["username"],
             $row["email"],
-            $row["password"]
+            $row["password"],
+            $row["token"]
         );
         $user->setUserId($row["user_id"]);
         $user->setAge(self::mapAgeFromDatabase($row['age']));
@@ -156,6 +159,7 @@ class UserRepository
             return 'not-spec';
         }
     }
+
     public static function mapAgeToDatabase($ageFromDatabase): int
     {
         if ($ageFromDatabase === '18-35') {

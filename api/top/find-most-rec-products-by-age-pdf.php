@@ -2,6 +2,7 @@
 require_once '../../php/ProductRepository.php';
 require ('fpdf.php');
 require ('helveticab.php');
+require_once '../functions.php';
 if (isset($_GET['age'])) {
     $age = $_GET['age'];
 // Get the top recommended products by age
