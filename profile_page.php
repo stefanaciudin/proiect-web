@@ -14,16 +14,29 @@ if (isset($_POST['logout'])) {
     header('Location: login_page.php');
     exit();
 }else if(isset($_POST['save'])){
-    $userRepository->update($_SESSION['user_id']);
+    $token = $_POST['token'];
+    if($token == $_SESSION['form-token']) {
+        $_SESSION['form-token'] = '';
+        $userRepository->update($_SESSION['user_id']);
+
+    } else {
+        header('Location: login_page.php');
+        exit();
+    }
+   
 }else if (isset($_POST['delete'])){
     $userRepository->deleteUser($_SESSION['user_id']);
     header('Location: login_page.php');
     exit();
 }
 
-if(isset($_SESSION['user_id'])){
-    $user = $userRepository->findUserById($_SESSION['user_id']);
+if(isset($_SESSION['user'])) {
+    $user = $userRepository->findUserById($_SESSION['user_id']);;
 }
+
+$token = bin2hex(random_bytes(50));
+$_SESSION['form-token'] = $token;
+
 ?>
 
 <head>
@@ -79,40 +92,41 @@ if(isset($_SESSION['user_id'])){
                 <label class="message" for="age"><b>Vârstă:</b></label>
             </p>
             <select name="age" id="age">
-                <option value="18" <?php if (isset($user['age']) == '18') echo 'selected'; ?>>Ten tânăr: 18-35 de ani</option>
-                <option value="35" <?php if (isset($user['age']) == '35') echo 'selected'; ?>>Ten matur: peste 35 de ani</option>
-                <option value="0" <?php if (isset($user['age']) == '0') echo 'selected'; ?>>Nu doresc să specific</option>
+                <option value="18" <?php if (isset($user['age']) && $user['age'] == '18') echo 'selected'; ?>>Ten tânăr: 18-35 de ani</option>
+                <option value="35" <?php if (isset($user['age']) && $user['age'] == '35') echo 'selected'; ?>>Ten matur: peste 35 de ani</option>
+                <option value="0" <?php if (isset($user['age']) && $user['age'] == '0') echo 'selected'; ?>>Nu doresc să specific</option>
             </select>
 
             <p>
                 <label class="message" for="gender"><b>Gen:</b></label>
             </p>
             <select name="gender" id="gender">
-                <option value="f"  <?php if (isset($user['gender']) == 'f') echo 'selected'; ?>>Feminin</option>
-                <option value="m"  <?php if (isset($user['gender']) == 'm') echo 'selected'; ?>>Masculin</option>
-                <option value="not-spec"  <?php if (isset($user['gender']) == 'not-spec') echo 'selected'; ?>>Nu doresc să specific</option>
+                <option value="f"  <?php if (isset($user['gender']) && $user['gender'] == 'f') echo 'selected'; ?>>Feminin</option>
+                <option value="m"  <?php if (isset($user['gender']) && $user['gender'] == 'm') echo 'selected'; ?>>Masculin</option>
+                <option value="not-spec"  <?php if (isset($user['gender']) && $user['gender'] == 'not-spec') echo 'selected'; ?>>Nu doresc să specific</option>
             </select>
             <p>
                 <label class="message" for="skin_type"><b>Tip de ten:</b></label>
             </p>
             <select name="skin_type" id="skin_type">
-                <option value="gras" <?php if (isset($user['skintype_id']) == 1) echo 'selected'; ?>>Ten gras</option>
-                <option value="normal" <?php if (isset($user['skintype_id']) == 2) echo 'selected'; ?>>Ten normal</option>
-                <option value="uscat" <?php if (isset($user['skintype_id']) == 4) echo 'selected'; ?>>Ten uscat</option>
-                <option value="mixt" <?php if (isset($user['skintype_id']) == 3) echo 'selected'; ?>>Ten mixt</option>
+                <option value="gras" <?php if (isset($user['skintype_id']) && $user['skintype_id'] == 1) echo 'selected'; ?>>Ten gras</option>
+                <option value="normal" <?php if (isset($user['skintype_id']) && $user['skintype_id'] == 2) echo 'selected'; ?>>Ten normal</option>
+                <option value="uscat" <?php if (isset($user['skintype_id']) && $user['skintype_id'] == 4) echo 'selected'; ?>>Ten uscat</option>
+                <option value="mixt" <?php if (isset($user['skintype_id']) && $user['skintype_id'] == 3) echo 'selected'; ?>>Ten mixt</option>
             </select>
             <p>
                 <label class="message" for="location"><b>Locație:</b></label>
             </p>
             <select name="location" id="location">
-                <option value="europe" <?php if (isset($user['location']) == 'europe') echo 'selected'; ?>>Europa</option>
-                <option value="asia" <?php if (isset($user['location']) == 'asia') echo 'selected'; ?>>Asia</option>
-                <option value="africa" <?php if (isset($user['location']) == 'africa') echo 'selected'; ?>>Africa</option>
-                <option value="north_america" <?php if (isset($user['location']) == 'north_america') echo 'selected'; ?>>America de nord</option>
-                <option value="south_america" <?php if (isset($user['location']) == 'south_america') echo 'selected'; ?>>America de sud</option>
-                <option value="australia" <?php if (isset($user['location']) == 'australia') echo 'selected'; ?>>Australia</option>
-                <option value="antarctica" <?php if (isset($user['location']) == 'antarctica') echo 'selected'; ?>>Antarctica</option>
+                <option value="europe" <?php if (isset($user['location']) && $user['location'] == 'europe') echo 'selected'; ?>>Europa</option>
+                <option value="asia" <?php if (isset($user['location']) && $user['location'] == 'asia') echo 'selected'; ?>>Asia</option>
+                <option value="africa" <?php if (isset($user['location']) && $user['location'] == 'africa') echo 'selected'; ?>>Africa</option>
+                <option value="north_america" <?php if (isset($user['location']) && $user['location'] == 'north_america') echo 'selected'; ?>>America de nord</option>
+                <option value="south_america" <?php if (isset($user['location']) && $user['location'] == 'south_america') echo 'selected'; ?>>America de sud</option>
+                <option value="australia" <?php if (isset($user['location']) && $user['location'] == 'australia') echo 'selected'; ?>>Australia</option>
+                <option value="antarctica" <?php if (isset($user['location']) && $user['location'] == 'antarctica') echo 'selected'; ?>>Antarctica</option>
             </select>
+               <input type="hiden" value="<?php echo $token; ?>" name="token" />
             <p>
                 <input type="submit" class="button" value="Save" name="save">
             </p>

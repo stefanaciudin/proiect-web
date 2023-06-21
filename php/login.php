@@ -19,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['username'] = $user->getUsername();
         $_SESSION['name'] = $user->getName();
         $_SESSION['token'] = $user->getToken();
+        $_SESSION['user'] = UserRepository::findUserById($_SESSION['user_id']);
         session_write_close();
         header('Location: ../profile_page.php');
     } else {
