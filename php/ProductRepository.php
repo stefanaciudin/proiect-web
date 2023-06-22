@@ -44,6 +44,10 @@ class ProductRepository
         return $products;
     }
 
+    /**
+     * @param $productId - the product id for which the update needs to be done
+     * @return void - updates the times_rec field in the database for the given product
+     */
     public static function updateTimesRec($productId): void
     {
         global $conn;
@@ -53,6 +57,10 @@ class ProductRepository
         $stmt->close();
     }
 
+    /**
+     * @param mysqli_stmt $stmt
+     * @return array - an array of Product objects, containing the products fetched from the database
+     */
     public static function executeAndFetchProducts(mysqli_stmt $stmt): array
     {
         $stmt->execute();
@@ -72,6 +80,10 @@ class ProductRepository
 
     }
 
+    /**
+     * @param $age - the age for the user request
+     * @return array - an array of Product objects, with the most recommended products for the given age
+     */
     public static function findMostRecProductsByAge($age): array
     {
         global $conn;
@@ -81,6 +93,11 @@ class ProductRepository
 
     }
 
+    /**
+     * @param mixed $min_price - the minimum price for the user request
+     * @param mixed $max_price - the maximum price for the user request
+     * @return array - an array of Product objects, with the most recommended products for the given price range
+     */
     public static function findMostRecProductsByPrice(mixed $min_price, mixed $max_price): array
     {
         global $conn;
@@ -88,6 +105,11 @@ class ProductRepository
         $stmt->bind_param("ii", $min_price, $max_price);
         return static::executeAndFetchProducts($stmt);
     }
+
+    /**
+     * @param $productId - the product id that is being searched for
+     * @return Product|null - the product with the given id, or null if it doesn't exist
+     */
 
     public static function findProductById($productId): ?Product
     {
@@ -104,10 +126,12 @@ class ProductRepository
         if (!$product_id) {
             return null;
         }
-        //error_log("Returning product: " . $product->getName() . " " . $product->getPrice() . " " . $product->getImagePath() . " " . $product->getIsMakeup() . " " . $product->getAge() . " " . $product->getBrandId() . " " . $product->getSkintypeId() . " " . $product->getTypeId() . " " . $product->getIngredients() . " " . $product->getDescription() . " " . $product->getHowToUse() . " " . $product->getLink());
         return static::getProduct($product_id, $name, $price, $image_path, $is_makeup, $age, $brand_id, $skintype_id, $type_id, $ingredients, $description, $how_to_use, $link, $times_rec);
     }
 
+    /**
+     * @return array - an array of brands, that contains all product brands from the database
+     */
     public static function getAllProductBrands(): array
     {
         global $conn;
@@ -144,7 +168,7 @@ class ProductRepository
      * @param $how_to_use
      * @param $link
      * @param $times_rec
-     * @return Product
+     * @return Product - a product object with all of its information available in the database
      */
     public static function getProduct(mixed $product_id, mixed $name, $price, $image_path, $is_makeup, $age, $brand_id, $skintype_id, $type_id, $ingredients, $description, $how_to_use, $link, $times_rec): Product
     {
@@ -166,6 +190,12 @@ class ProductRepository
         return $product;
     }
 
+    /**
+     * @param mixed $brandName - the brand name for the user request
+     * @param mixed $isMakeup - whether the user is looking for makeup or skincare products
+     * @return array - an array of Product objects, with all products from the given brand
+     */
+
     public static function getProductsByBrand(mixed $brandName, mixed $isMakeup): array
     {
         global $conn;
@@ -175,9 +205,13 @@ class ProductRepository
 
     }
 
+    /**
+     * @param mixed $product_type - the product type for the user request
+     * @param mixed $isMakeup - whether the user is looking for makeup or skincare products
+     * @return array - an array of Product objects, with all products from the given type
+     */
 
-    public
-    static function getProductsByType(mixed $product_type, mixed $isMakeup): array
+    public static function getProductsByType(mixed $product_type, mixed $isMakeup): array
     {
         global $conn;
         $stmt = $conn->prepare("SELECT p.* FROM products p JOIN product_types pt on p.type_id = pt.type_id WHERE pt.product_type = ? and p.is_makeup=?");
@@ -185,8 +219,11 @@ class ProductRepository
         return static::executeAndFetchProducts($stmt);
     }
 
-    public
-    static function getProductsByAge(mixed $age): array
+    /**
+     * @param mixed $age - the age for the user request
+     * @return array - an array of Product objects, with all products for the given age
+     */
+    public static function getProductsByAge(mixed $age): array
     {
         // get only the first 2 letters of age - the age is sent weird here for some reason
         $age = substr($age, 0, 2);
@@ -197,8 +234,12 @@ class ProductRepository
 
     }
 
-    public
-    static function getProductsBySkintype(mixed $skintype_id): array
+    /**
+     * @param mixed $skintype_id - the skintype for the user request
+     * @return array - an array of Product objects, with all products for the given skintype
+     */
+
+    public static function getProductsBySkintype(mixed $skintype_id): array
     {
         $skintype_id = substr($skintype_id, 0, 1);
         global $conn;
@@ -207,8 +248,12 @@ class ProductRepository
         return static::executeAndFetchProducts($stmt);
     }
 
-    public
-    static function getProductsByPrice(mixed $min_price, mixed $max_price): array
+    /**
+     * @param mixed $min_price - the minimum price for the user request
+     * @param mixed $max_price - the maximum price for the user request
+     * @return array - an array of Product objects, with all products for the given price range
+     */
+    public static function getProductsByPrice(mixed $min_price, mixed $max_price): array
     {
         global $conn;
         $stmt = $conn->prepare("SELECT * FROM products WHERE price BETWEEN ? AND ? ORDER BY price, is_makeup");
@@ -216,8 +261,13 @@ class ProductRepository
         return static::executeAndFetchProducts($stmt);
     }
 
-    public
-    static function getProductsByUsageType(mixed $usage_type, mixed $isMakeup): array
+    /**
+     * @param mixed $usage_type - the usage type for the user request
+     * @param mixed $isMakeup - whether the user is looking for makeup or skincare products
+     * @return array - an array of Product objects, with all products for the given usage type
+     */
+
+    public static function getProductsByUsageType(mixed $usage_type, mixed $isMakeup): array
     {
         global $conn;
         $stmt = $conn->prepare("SELECT p.* FROM products p JOIN product_types pt on p.type_id = pt.type_id WHERE pt.usage_type = ? and p.is_makeup=?");
@@ -225,8 +275,11 @@ class ProductRepository
         return static::executeAndFetchProducts($stmt);
     }
 
-    public
-    static function getUsageTypes(mixed $is_makeup): array
+    /**
+     * @param mixed $is_makeup - whether the user is looking for makeup or skincare products
+     * @return array - an array of Product objects, with all products for the given is_makeup
+     */
+    public static function getUsageTypes(mixed $is_makeup): array
     {
         global $conn;
         $stmt = $conn->prepare("SELECT DISTINCT pt.usage_type,pt.type_id FROM products p JOIN product_types pt on p.type_id = pt.type_id WHERE p.is_makeup=?");
@@ -247,8 +300,11 @@ class ProductRepository
         return $usageTypes;
     }
 
-    public
-    static function getBrandsForMakeup(mixed $is_makeup): array
+    /**
+     * @param mixed $is_makeup - whether the user is looking for makeup or skincare products
+     * @return array - an array of Product objects, with all products that are makeup or not, per user request
+     */
+    public static function getBrandsForMakeup(mixed $is_makeup): array
     {
         global $conn;
         $stmt = $conn->prepare("SELECT DISTINCT b.name,b.brand_id FROM products p JOIN brands b on p.brand_id = b.brand_id WHERE p.is_makeup=? ORDER BY b.name");
@@ -270,37 +326,23 @@ class ProductRepository
 
     }
 
-    public function getAllBrands(): array
-    {
-        global $conn;
-        $stmt = $conn->prepare("SELECT name, brand_id FROM brands ORDER BY name");
-        $stmt->execute();
-        $stmt->bind_result($name, $brand_id);
-        $brands = array();
-        while ($stmt->fetch()) {
-            $brand = array(
-                'brand_id' => $brand_id,
-                'brand_name' => $name
-            );
-            $brands[] = $brand;
-        }
-
-        return $brands;
-    }
-
+    /**
+     * @return array - an array of product brands
+     */
     public function getProductsByBrands(): array
     {
         global $conn;
         $brand_id = 1;
-        $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products where brand_id =?");
+        $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products where brand_id =?");
         $stmt->bind_param("i", $brand_id);
         $stmt->execute();
-        $stmt->bind_result($product_id, $name, $image_path, $description, $link);
+        $stmt->bind_result($product_id, $name, $price, $image_path, $description, $link);
         $results = array();
         while ($stmt->fetch()) {
             $makeup = array(
                 'id' => $product_id,
                 'name' => $name,
+                'price' => $price,
                 'image_path' => $image_path,
                 'description' => $description,
                 'link' => $link
@@ -310,6 +352,9 @@ class ProductRepository
         return $results;
     }
 
+    /**
+     * @return array - an array of brands with makeup products
+     */
     public function getMakeUpBrands(): array
     {
         global $conn;
@@ -327,6 +372,10 @@ class ProductRepository
 
         return $brands;
     }
+
+    /**
+     * @return array - an array of brands with skincare products
+     */
 
     public function getSkincareBrands(): array
     {
@@ -346,6 +395,10 @@ class ProductRepository
         return $brands;
     }
 
+    /**
+     * @param $isMakeup - whether the user is looking for makeup or skincare products
+     * @return array - an array of usage types
+     */
     public static function getProductsType($isMakeup): array
     {
         global $conn;
@@ -366,10 +419,14 @@ class ProductRepository
 
     }
 
+    /**
+     * @param $product_type - the kind of product the user is looking for
+     * @return array - an array of usage types by product type
+     */
     public static function getUsageTypeByProductType($product_type): array
     {
         global $conn;
-        $stmt = $conn->prepare("SELECT distinct usage_type,type_id FROM product_types  WHERE product_type=? ORDER BY usage_type");
+        $stmt = $conn->prepare("SELECT distinct usage_type,product_types.type_id FROM  product_types join products p on product_types.type_id = p.type_id  WHERE product_type=? and p.is_makeup=1 ORDER BY usage_type");
         $stmt->bind_param("s", $product_type);
         $stmt->execute();
         $stmt->bind_result($usage_type, $type_id);
@@ -386,11 +443,15 @@ class ProductRepository
 
     }
 
+    /**
+     * @return array - an array of products, with all products that are makeup or not, per user request. The products are sorted.
+     * The method was created to be used in the mobile version of the app.
+     */
     public static function getProductsBySort(): array
     {
         $selectedBox = "";
         $selectedBrand = $_POST['select1'];
-        $checkboxes = isset($_POST['checkboxGroup']) ? $_POST['checkboxGroup'] : array();
+        $checkboxes = $_POST['checkboxGroup'] ?? array();
         if (!is_array($checkboxes)) {
             $checkboxes = [$checkboxes];
         }
@@ -399,29 +460,30 @@ class ProductRepository
         $checkbox3 = in_array('checkbox3', $checkboxes);
 
         if ($checkbox1) {
-            $selectedBox = isset($_POST['select2']) ? $_POST['select2'] : "";
+            $selectedBox = $_POST['select2'] ?? "";
         } elseif ($checkbox2) {
-            $selectedBox = isset($_POST['select3']) ? $_POST['select3'] : "";
+            $selectedBox = $_POST['select3'] ?? "";
         } elseif ($checkbox3) {
-            $selectedBox = isset($_POST['select4']) ? $_POST['select4'] : "";
+            $selectedBox = $_POST['select4'] ?? "";
         }
 
 
         global $conn;
         if ($selectedBox == "") {
-            $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products  WHERE brand_id=?");
+            $stmt = $conn->prepare("SELECT product_id, name, price, image_path, description,link FROM products  WHERE brand_id=?");
             $stmt->bind_param("i", $selectedBrand);
         } else {
-            $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products  WHERE brand_id=? and type_id = ?");
+            $stmt = $conn->prepare("SELECT product_id, name, price, image_path, description,link FROM products  WHERE brand_id=? and type_id = ?");
             $stmt->bind_param("ii", $selectedBrand, $selectedBox);
         }
         $stmt->execute();
-        $stmt->bind_result($product_id, $name, $image_path, $description, $link);
+        $stmt->bind_result($product_id, $name, $price, $image_path, $description, $link);
         $results = array();
         while ($stmt->fetch()) {
             $makeup = array(
                 'id' => $product_id,
                 'name' => $name,
+                'price' => $price,
                 'image_path' => $image_path,
                 'description' => $description,
                 'link' => $link
@@ -430,25 +492,30 @@ class ProductRepository
         }
         return $results;
     }
+
+    /**
+     * @return array - an array of filtered products by user requests. Made for the mobile version of the app.
+     */
 
     public static function getProductsByFilter(): array
     {
         $selectedSort = $_POST['select_sort'];
         global $conn;
         if ($selectedSort == "crescator") {
-            $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products WHERE is_makeup=1 ORDER BY price");
+            $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products WHERE is_makeup=1 ORDER BY price");
         } else if ($selectedSort == "descrescator") {
-            $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products WHERE is_makeup=1 ORDER BY price DESC");
+            $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products WHERE is_makeup=1 ORDER BY price DESC");
         } else if ($selectedSort == "rating") {
-            $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products WHERE is_makeup=1 ORDER BY times_rec");
+            $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products WHERE is_makeup=1 ORDER BY times_rec");
         }
         $stmt->execute();
-        $stmt->bind_result($product_id, $name, $image_path, $description, $link);
+        $stmt->bind_result($product_id, $name, $price, $image_path, $description, $link);
         $results = array();
         while ($stmt->fetch()) {
             $makeup = array(
                 'id' => $product_id,
                 'name' => $name,
+                'price' => $price,
                 'image_path' => $image_path,
                 'description' => $description,
                 'link' => $link
@@ -460,10 +527,14 @@ class ProductRepository
         return $results;
     }
 
+    /**
+     * @return array - an array of sorted products by general products. Made for the mobile version of the app.
+     */
+
     public static function getProductsBySortGeneralProducts(): array
     {
         $selectedBox = "";
-        $checkboxes = isset($_POST['checkboxGroup']) ? $_POST['checkboxGroup'] : array();
+        $checkboxes = $_POST['checkboxGroup'] ?? array();
         if (!is_array($checkboxes)) {
             $checkboxes = [$checkboxes];
         }
@@ -479,90 +550,89 @@ class ProductRepository
         global $conn;
         if ($checkbox1) {
             $is_makeup = 1;
-            $selectedBox = isset($_POST['select_tip_machiaj']) ? $_POST['select_tip_machiaj'] : "";
-            $stmt = $conn->prepare("SELECT p.product_id, p.name, p.image_path, p.description, p.link FROM products p JOIN product_types pt on p.type_id = pt.type_id where pt.product_type = ? and p.is_makeup = ?");
+            $selectedBox = $_POST['select_tip_machiaj'] ?? "";
+            $stmt = $conn->prepare("SELECT p.product_id, p.name, p.price, p.image_path, p.description, p.link FROM products p JOIN product_types pt on p.type_id = pt.type_id where pt.product_type = ? and p.is_makeup = ?");
             $stmt->bind_param("si", $selectedBox, $is_makeup);
         } elseif ($checkbox2) {
             $is_makeup = 0;
-            $selectedBox = isset($_POST['select_prod_ing']) ? $_POST['select_prod_ing'] : "";
-            $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products WHERE age IN (0, ?) and is_makeup=?");
+            $selectedBox = $_POST['select_prod_ing'] ?? "";
+            $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products WHERE age IN (0, ?) and is_makeup=?");
             $stmt->bind_param("ii", $selectedBox, $is_makeup);
         } elseif ($checkbox3) {
             $is_makeup = 1;
-            $selectedBox = isset($_POST['select_ten_type']) ? $_POST['select_ten_type'] : "";
-            $stmt = $conn->prepare("SELECT p.product_id, p.name, p.image_path, p.description, p.link FROM products p JOIN skintypes s on p.skintype_id = s.skintype_id where s.skin_type = ?");
+            $selectedBox = $_POST['select_ten_type'] ?? "";
+            $stmt = $conn->prepare("SELECT p.product_id, p.name, p.price,  p.image_path, p.description, p.link FROM products p JOIN skintypes s on p.skintype_id = s.skintype_id where s.skin_type = ?");
             $stmt->bind_param("s", $selectedBox);
         } elseif ($checkbox4) {
             $is_makeup = 1;
-            $selectedBox = isset($_POST['select_brand_makeup']) ? $_POST['select_brand_makeup'] : "";
-            $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products  WHERE brand_id=? and is_makeup=?");
+            $selectedBox = $_POST['select_brand_makeup'] ?? "";
+            $stmt = $conn->prepare("SELECT product_id, name, price, image_path, description,link FROM products  WHERE brand_id=? and is_makeup=?");
             $stmt->bind_param("ii", $selectedBox, $is_makeup);
         } elseif ($checkbox5) {
             $is_makeup = 0;
-            $selectedBox = isset($_POST['select_brand_ingrijire']) ? $_POST['select_brand_ingrijire'] : "";
-            $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products  WHERE brand_id=? and is_makeup=?");
+            $selectedBox = $_POST['select_brand_ingrijire'] ?? "";
+            $stmt = $conn->prepare("SELECT product_id, name, price, image_path, description,link FROM products  WHERE brand_id=? and is_makeup=?");
             $stmt->bind_param("ii", $selectedBox, $is_makeup);
         } elseif ($checkbox6) {
-            $selectedBox = isset($_POST['select_pret']) ? $_POST['select_pret'] : "";
+            $selectedBox = $_POST['select_pret'] ?? "";
             if ($selectedBox == 0) {
                 $maximPrice = 50;
-                $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products where price > ? and price < ?");
+                $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products where price > ? and price < ?");
                 $stmt->bind_param("ii", $selectedBox, $maximPrice);
             } else if ($selectedBox == 50) {
                 $maximPrice = 100;
-                $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products where price > ? and price < ?");
+                $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products where price > ? and price < ?");
                 $stmt->bind_param("ii", $selectedBox, $maximPrice);
             } else if ($selectedBox == 100) {
                 $maximPrice = 200;
-                $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products where price > ? and price < ?");
+                $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products where price > ? and price < ?");
                 $stmt->bind_param("ii", $selectedBox, $maximPrice);
             } else {
-                $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products where price > ?");
+                $stmt = $conn->prepare("SELECT product_id,name, price,  image_path, description,link FROM products where price > ?");
                 $stmt->bind_param("i", $selectedBox);
             }
 
         } elseif ($checkbox7) {
             $is_makeup = 1;
-            $selectedBox = isset($_POST['select_utilizare_makeup']) ? $_POST['select_utilizare_makeup'] : "";
-            $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products where type_id =? and is_makeup=?");
+            $selectedBox = $_POST['select_utilizare_makeup'] ?? "";
+            $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products where type_id =? and is_makeup=?");
             $stmt->bind_param("ii", $selectedBox, $is_makeup);
         } elseif ($checkbox8) {
-            $selectedBox = isset($_POST['select_utilizare_skincare']) ? $_POST['select_utilizare_skincare'] : "";
+            $selectedBox = $_POST['select_utilizare_skincare'] ?? "";
             $is_makeup = 0;
-            $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products where type_id =? and is_makeup=?");
+            $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products where type_id =? and is_makeup=?");
             $stmt->bind_param("ii", $selectedBox, $is_makeup);
         } elseif ($checkbox9) {
-            $selectedBox = isset($_POST['select_tipul_skincare']) ? $_POST['select_tipul_skincare'] : "";
+            $selectedBox = $_POST['select_tipul_skincare'] ?? "";
             if ($selectedBox == 0) {
                 $maximPrice = 50;
-                $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products where price > ? and price < ?");
+                $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products where price > ? and price < ?");
                 $stmt->bind_param("ii", $selectedBox, $maximPrice);
             } else if ($selectedBox == 50) {
                 $maximPrice = 100;
-                $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products where price > ? and price < ?");
+                $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products where price > ? and price < ?");
                 $stmt->bind_param("ii", $selectedBox, $maximPrice);
             } else if ($selectedBox == 100) {
                 $maximPrice = 200;
-                $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products where price > ? and price < ?");
+                $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products where price > ? and price < ?");
                 $stmt->bind_param("ii", $selectedBox, $maximPrice);
             } else if ($selectedBox == 200) {
-                $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products where price > ?");
+                $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products where price > ?");
                 $stmt->bind_param("i", $selectedBox);
             } else {
                 $is_makeup = 0;
-                $stmt = $conn->prepare("SELECT product_id,name, image_path, description,link FROM products WHERE age= ? and is_makeup=?");
+                $stmt = $conn->prepare("SELECT product_id,name, price, image_path, description,link FROM products WHERE age= ? and is_makeup=?");
                 $stmt->bind_param("ii", $selectedBox, $is_makeup);
             }
         }
-
-
         $stmt->execute();
-        $stmt->bind_result($product_id, $name, $image_path, $description, $link);
+        $stmt->bind_result($product_id, $name, $price, $image_path, $description, $link);
         $results = array();
         while ($stmt->fetch()) {
             $makeup = array(
                 'id' => $product_id,
                 'name' => $name,
+                'price' => $price,
                 'image_path' => $image_path,
                 'description' => $description,
                 'link' => $link

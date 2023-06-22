@@ -5,7 +5,10 @@ include_once 'bd.php';
 
 class VideoRepository
 {
-    //get all videos for a given occasion
+    /**
+     * @param $occasion - the occasion for which the videos are searched
+     * @return array - an array of Video objects
+     */
     public static function getVideosByOccasion($occasion): array
     {
         global $conn;

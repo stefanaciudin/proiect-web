@@ -3,59 +3,57 @@
 class Video
 {
 
-    protected mixed $video_id;
-    protected mixed $link;
-    protected mixed $occasion;
+    protected int $video_id;
+    protected string $link;
+    protected string $occasion;
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getVideoId(): mixed
+    public function getVideoId(): int
     {
         return $this->video_id;
     }
 
     /**
-     * @param mixed $video_id
+     * @param int $video_id
      */
-    public function setVideoId(mixed $video_id): void
+    public function setVideoId(int $video_id): void
     {
         $this->video_id = $video_id;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getLink(): mixed
+    public function getLink(): string
     {
         return $this->link;
     }
 
     /**
-     * @param mixed $link
+     * @param string $link
      */
-    public function setLink(mixed $link): void
+    public function setLink(string $link): void
     {
         $this->link = $link;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getOccasion(): mixed
+    public function getOccasion(): string
     {
         return $this->occasion;
     }
 
     /**
-     * @param mixed $occasion
+     * @param string $occasion
      */
-    public function setOccasion(mixed $occasion): void
+    public function setOccasion(string $occasion): void
     {
         $this->occasion = $occasion;
     }
-
-
 
 
 }

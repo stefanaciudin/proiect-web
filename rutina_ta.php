@@ -12,7 +12,7 @@
     $products_5 = [];
     $products_6 = [];
     $userRepository = new UserRepository();
-    if(isset($_SESSION['user_id'])){
+    if (isset($_SESSION['user_id'])) {
         $user = $userRepository->findUserById($_SESSION['user_id']);
         $products_1 = $userRepository->findByUsageType($_SESSION['user_id'], 1, 'oricand');
         $products_2 = $userRepository->findByUsageType($_SESSION['user_id'], 3, 'oricand');
@@ -95,18 +95,9 @@
             </div>
 
             <h4 class="bold">Produse recomandate</h4>
-            <div class="morning-products-container" id="product-container-1">
+            <div class="container" id="product-container-1">
                 <?php
-                if ($products_1 != []) {
-                    foreach ($products_1 as $prod) {
-                        echo '<div class="item">';
-                        echo '<a href="' . $prod['link'] . '">';
-                        echo '<img src="' . $prod['image_path'] . '" alt="' . $prod['how_to_use'] . '">';
-                        echo '<p>' . $prod['name'] . '</p>';
-                        echo '</a>';
-                        echo '</div>';
-                    }
-                }
+                showProducts($products_1);
                 ?>
             </div>
         </div>
@@ -134,19 +125,9 @@
 
 
             <h4 class="bold">Produse recomandate</h4>
-            <div class="container product-container" id="product-container-2">
-                <?php             
-                    if ($products_2 != []) {
-                    foreach ($products_2 as $prod) {
-                        echo '<div class="item">';
-                        echo '<a href="' . $prod['link'] . '">';
-                        echo '<img src="' . $prod['image_path'] . '" alt="' . $prod['how_to_use'] . '">';
-                        echo '<p>' . $prod['name'] . '</p>';
-                        echo '<p>' . $prod['how_to_use'] . '</p>';
-                        echo '</a>';
-                        echo '</div>';
-                    }
-                } 
+            <div class="container" id="product-container-2">
+                <?php
+                showProducts($products_2);
                 ?>
             </div>
         </div>
@@ -176,23 +157,14 @@
                 </div>
             </div>
             <h4 class="bold">Produse recomandate</h4>
-            <div class="container product-container" id="product-container-3">
-                <?php             
-                    if ($products_3 != []) {
-                    foreach ($products_3 as $prod) {
-                        echo '<div class="item">';
-                        echo '<a href="' . $prod['link'] . '">';
-                        echo '<img src="' . $prod['image_path'] . '" alt="' . $prod['how_to_use'] . '">';
-                        echo '<p>' . $prod['name'] . '</p>';
-                        echo '</a>';
-                        echo '</div>';
-                    }
-                } 
+            <div class="container" id="product-container-3">
+                <?php
+                showProducts($products_3);
                 ?>
             </div>
             <br><br>
         </div>
-    </div>           
+    </div>
     <div id="seara">
         <h2 class="second-text">Seara</h2>
         <div class="lista">
@@ -213,18 +185,9 @@
             </div>
 
             <h4 class="bold">Produse recomandate</h4>
-            <div class="container product-container" id="product-container-4">
-                <?php             
-                    if ($products_4 != []) {
-                    foreach ($products_4 as $prod) {
-                        echo '<div class="item">';
-                        echo '<a href="' . $prod['link'] . '">';
-                        echo '<img src="' . $prod['image_path'] . '" alt="' . $prod['how_to_use'] . '">';
-                        echo '<p>' . $prod['name'] . '</p>';
-                        echo '</a>';
-                        echo '</div>';
-                    }
-                } 
+            <div class="container" id="product-container-4">
+                <?php
+                showProducts($products_4);
                 ?>
             </div>
             <br><br>
@@ -245,18 +208,9 @@
 
             </div>
             <h4 class="bold">Produse recomandate</h4>
-            <div class="container product-container" id="product-container-5">
-                <?php             
-                    if ($products_5 != []) {
-                    foreach ($products_5 as $prod) {
-                        echo '<div class="item">';
-                        echo '<a href="' . $prod['link'] . '">';
-                        echo '<img src="' . $prod['image_path'] . '" alt="' . $prod['how_to_use'] . '">';
-                        echo '<p>' . $prod['name'] . '</p>';
-                        echo '</a>';
-                        echo '</div>';
-                    }
-                } 
+            <div class="container" id="product-container-5">
+                <?php
+                showProducts($products_5);
                 ?>
             </div>
             <br><br>
@@ -279,26 +233,35 @@
             </div>
 
             <h4 class="bold">Produse recomandate</h4>
-            <div class="container product-container" id="product-container-6">
-                <?php             
+            <div class="container" id="product-container-6">
+                <?php
+                function showProducts(array $products_6): void
+                {
                     if ($products_6 != []) {
-                    foreach ($products_6 as $prod) {
-                        echo '<div class="item">';
-                        echo '<a href="' . $prod['link'] . '">';
-                        echo '<img src="' . $prod['image_path'] . '" alt="' . $prod['how_to_use'] . '">';
-                        echo '<p>' . $prod['name'] . '</p>';
-                        echo '</a>';
-                        echo '</div>';
+                        foreach ($products_6 as $prod) {
+                            echo '<div class="product">';
+                            echo '<a href="' . $prod['link'] . '">';
+                            // Image element
+                            echo '<img src="' . $prod['image_path'] . '" alt="">';
+                            // Product name and price
+                            echo '<p><b>' . $prod['name'] . ' - ' . $prod['price'] . ' lei' . '</p></b>';
+                            // Description
+                            echo '<p>' . $prod['how_to_use'] . '</p>';
+                            echo '</a>';
+                            echo '</div>';
+                        }
                     }
-                } 
+                }
+
+                showProducts($products_6);
                 ?>
             </div>
             <br><br>
         </div>
     </div>
 </div>
-            
-        
+
+
 <div class="footer">
     <div class="left">
         <p>Phone: 076755775</p>

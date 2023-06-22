@@ -40,7 +40,7 @@ class UserRepository
         {
             $id_skin = 3;
         }else if($skin_type == 'uscat'){
-            $id_skin = 4; 
+            $id_skin = 4;
         }
         $stmt = $conn->prepare("UPDATE users SET age = ?, gender = ?, skintype_id = ?, location = ? WHERE user_id = ?");
         $stmt->bind_param("isisi", $age, $gender, $id_skin, $location, $userId);
@@ -103,7 +103,7 @@ class UserRepository
     public static function findByUsageType(int $id, int $type_id, string $usage_type): array
     {
         global $conn;
-        $stmt = $conn->prepare("SELECT p.name, p.how_to_use, p.image_path, p.link
+        $stmt = $conn->prepare("SELECT p.name, p.how_to_use, p.image_path, p.link, p.price
         FROM products AS p
                  JOIN users AS u ON (p.age = u.age OR p.age = 0) AND (p.skintype_id = u.skintype_id OR p.skintype_id=5)
                  JOIN product_types AS pt ON p.type_id = pt.type_id
@@ -114,14 +114,15 @@ class UserRepository
         LIMIT 3;");
         $stmt->bind_param("isi", $type_id, $usage_type, $id);
         $stmt->execute();
-        $stmt->bind_result($name, $how_to_use, $image_path, $link);
+        $stmt->bind_result($name, $how_to_use, $image_path, $link, $price);
         $products = [];
         while ($stmt->fetch()) {
             $prod = array(
                 'name' => $name,
                 'how_to_use' => $how_to_use,
                 'image_path' => $image_path,
-                'link' => $link
+                'link' => $link,
+                'price' => $price
             );
             $products[] = $prod;
         }
@@ -263,5 +264,5 @@ class UserRepository
         };
     }
 
-   
+
 }

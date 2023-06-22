@@ -11,6 +11,7 @@ session_start();
 
 //get info from session about the user and generate the products accordingly
 $user_id = $_SESSION['user_id'];
+error_log("user_id: " . $user_id);
 $user = UserRepository::findUserById($user_id);
 $skintype_id = UserRepository::mapSkinTypeToDatabase($user->getSkinType());
 error_log("skintype_id: " . $skintype_id);
