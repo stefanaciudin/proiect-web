@@ -76,7 +76,7 @@ if (isset($_POST['submit_sort'])) {
         <p>Utilizarea produsului:</p>
         <select name="usage_type" id="usage_type">
             <!-- Options will be populated dynamically -->
-        </select>php -S 127.0.0.1:8000
+        </select>
 
     </div>
 
