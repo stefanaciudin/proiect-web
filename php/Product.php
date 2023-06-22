@@ -18,11 +18,27 @@ class Product
     protected int $times_recommended;
 
     /**
+     * @return int
+     */
+    public function getProductId(): int
+    {
+        return $this->product_id;
+    }
+
+    /**
      * @param int $product_id
      */
     public function setProductId(int $product_id): void
     {
         $this->product_id = $product_id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
     }
 
     /**
@@ -34,6 +50,14 @@ class Product
     }
 
     /**
+     * @return float
+     */
+    public function getPrice(): float
+    {
+        return $this->price;
+    }
+
+    /**
      * @param float $price
      */
     public function setPrice(float $price): void
@@ -41,6 +65,13 @@ class Product
         $this->price = $price;
     }
 
+    /**
+     * @return string
+     */
+    public function getImagePath(): string
+    {
+        return $this->image_path;
+    }
 
     /**
      * @param string $image_path
@@ -51,6 +82,14 @@ class Product
     }
 
     /**
+     * @return int
+     */
+    public function getIsMakeup(): int
+    {
+        return $this->is_makeup;
+    }
+
+    /**
      * @param int $is_makeup
      */
     public function setIsMakeup(int $is_makeup): void
@@ -58,9 +97,28 @@ class Product
         $this->is_makeup = $is_makeup;
     }
 
+    /**
+     * @return int
+     */
+    public function getAge(): int
+    {
+        return $this->age;
+    }
+
+    /**
+     * @param int $age
+     */
     public function setAge(int $age): void
     {
         $this->age = $age;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBrandId(): int
+    {
+        return $this->brand_id;
     }
 
     /**
@@ -71,6 +129,13 @@ class Product
         $this->brand_id = $brand_id;
     }
 
+    /**
+     * @return int
+     */
+    public function getSkintypeId(): int
+    {
+        return $this->skintype_id;
+    }
 
     /**
      * @param int $skintype_id
@@ -78,6 +143,14 @@ class Product
     public function setSkintypeId(int $skintype_id): void
     {
         $this->skintype_id = $skintype_id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTypeId(): int
+    {
+        return $this->type_id;
     }
 
     /**
@@ -89,11 +162,27 @@ class Product
     }
 
     /**
+     * @return string
+     */
+    public function getIngredients(): mixed
+    {
+        return $this->ingredients;
+    }
+
+    /**
      * @param string $ingredients
      */
     public function setIngredients(mixed $ingredients): void
     {
         $this->ingredients = $ingredients;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription(): mixed
+    {
+        return $this->description;
     }
 
     /**
@@ -105,6 +194,14 @@ class Product
     }
 
     /**
+     * @return string
+     */
+    public function getHowToUse(): mixed
+    {
+        return $this->how_to_use;
+    }
+
+    /**
      * @param string $how_to_use
      */
     public function setHowToUse(mixed $how_to_use): void
@@ -112,6 +209,13 @@ class Product
         $this->how_to_use = $how_to_use;
     }
 
+    /**
+     * @return string
+     */
+    public function getLink(): string
+    {
+        return $this->link;
+    }
 
     /**
      * @param string $link
@@ -119,6 +223,14 @@ class Product
     public function setLink(string $link): void
     {
         $this->link = $link;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTimesRecommended(): int
+    {
+        return $this->times_recommended;
     }
 
     /**
