@@ -86,10 +86,12 @@ if (isset($_POST['submit_sort'])) {
                 <button class="button" id="sort">Sorteaza</button>
             </div>
             <form action="makeup.php" method="POST">
-                <input type="submit" class="button" value="Machiaj de zi" name="submit_zi">
-                <input type="submit" class="button" value="Machiaj de seara" name="submit_seara">
-                <input type="submit" class="button" value="Machiaj de eveniment" name="submit_eveniment">
-                <input type="submit" class="button" value="Machiaj de mireasa" name="submit_mireasa">
+                <div class = "button_makup">
+                    <input type="submit" class="button" value="Machiaj de zi" name="submit_zi">
+                    <input type="submit" class="button" value="Machiaj de seara" name="submit_seara">
+                    <input type="submit" class="button" value="Machiaj de eveniment" name="submit_eveniment">
+                    <input type="submit" class="button" value="Machiaj de mireasa" name="submit_mireasa">
+                </div>
             </form>
             <div id="carousel" class="carousel">
                 <button id="prevBtn" class="carousel-btn prev-btn">&lt;</button>
