@@ -1,15 +1,140 @@
-$color_1: #f2f2f2;
-$color_2: black;
-$color_3: white;
-$color_4: #414b50;
-$color_5: #000d33;
+$color_1: #aaaaaa;
+$color_2: #000;
+$color_3: #fff;
+$color_4: #f2f2f2;
+$color_5: black;
+$color_6: white;
+$color_7: #414b50;
 $font-family_1: "Asap", sans-serif;
-$background-color_1: #b88dab;
-$background-color_2: #ddd;
-$background-color_3: #04AA6D;
-$background-color_4: #d0c3c5;
-$border-color_1: #967388;
+$background-color_1: rgb(0,0,0);
+$background-color_2: rgba(0,0,0,0.4);
+$background-color_3: #fefefe;
+$background-color_4: #a46e94;
+$background-color_5: #412c3b;
+$background-color_6: #b88dab;
+$background-color_7: #ddd;
+$background-color_8: #04AA6D;
+$background-color_9: white;
+
+/*# sourceMappingURL=makeup.css.map */
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	padding-top: 100px;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: $background-color_1;
+	background-color: $background-color_2;
+	border: 2px solid pink;
+	border-radius: 10px;
+	h1 {
+		text-align: center;
+	}
+}
+.modal-content {
+	background-color: $background-color_3;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
+	.h1 {
+		text-align: center;
+	}
+}
+.close {
+	color: $color_1;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+	&:hover {
+		color: $color_2;
+		text-decoration: none;
+		cursor: pointer;
+	}
+	&:focus {
+		color: $color_2;
+		text-decoration: none;
+		cursor: pointer;
+	}
+}
+.form-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	select {
+		margin-bottom: 10px;
+	}
+}
+.hidden {
+	display: none;
+}
+.checkbox-container {
+	display: inline-block;
+	margin-right: 10px;
+}
+.button {
+	display: inline-block;
+	border-radius: 4px;
+	background-color: $background-color_4;
+	color: $color_3;
+	text-align: center;
+	font-size: 16px;
+	padding: 10px 20px;
+	text-decoration: none;
+	border: none;
+	cursor: pointer;
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+	&:hover {
+		background-color: $background-color_5;
+	}
+}
+.select_sort {
+	border: 2px solid #967388;
+	border-radius: 10px;
+	padding: 5px;
+	outline: none;
+}
+.select_brands {
+	border: 2px solid #967388;
+	border-radius: 10px;
+	padding: 5px;
+	outline: none;
+}
+.select_ten {
+	border: 2px solid #967388;
+	border-radius: 10px;
+	padding: 5px;
+	outline: none;
+}
+.select_buze {
+	border: 2px solid #967388;
+	border-radius: 10px;
+	padding: 5px;
+	outline: none;
+}
+.select_ochii {
+	border: 2px solid #967388;
+	border-radius: 10px;
+	padding: 5px;
+	outline: none;
+}
+.select_video {
+	border: 2px solid #967388;
+	border-radius: 10px;
+	padding: 5px;
+	outline: none;
+}
 body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+html {
+	height: 100%;
 	margin: 0;
 	padding: 0;
 }
@@ -23,11 +148,12 @@ header {
 	top: 0;
 	left: 0;
 	width: 100%;
-	background-color: $background-color_1;
+	background-color: $background-color_6;
 	display: flex;
 }
 .topnav {
 	overflow: hidden;
+	z-index: 9999;
 	position: fixed;
 	padding-top: 20px;
 	width: 100%;
@@ -37,19 +163,19 @@ header {
 	flex-wrap: wrap;
 	a {
 		display: inline-block;
-		color: $color_1;
+		color: $color_4;
 		text-align: center;
 		padding: 14px 16px;
 		text-decoration: none;
 		font-size: 17px;
 		&:hover {
-			background-color: $background-color_2;
-			color: $color_2;
+			background-color: $background-color_7;
+			color: $color_5;
 		}
 	}
 	a.active {
-		background-color: $background-color_3;
-		color: $color_3;
+		background-color: $background-color_8;
+		color: $color_6;
 	}
 	.icon {
 		display: none;
@@ -63,12 +189,14 @@ header {
 	left: 0;
 	top: 20%;
 	width: 16%;
-	background-color: $background-color_1;
+	justify-content: flex-start;
+	background-color: $background-color_6;
 	border-top: 2px white solid;
 	border-bottom: 2px white solid;
 	flex-direction: column;
+	min-height: 100vh;
 	p {
-		color: $color_3;
+		color: $color_6;
 		font-size: 20px;
 		margin-left: 5px;
 	}
@@ -78,7 +206,7 @@ header {
 		padding: 10px 15px;
 		border-radius: 15px;
 		font-family: $font-family_1;
-		color: $color_4;
+		color: $color_7;
 		font-size: 16px;
 		margin-left: 5px;
 		&:focus {
@@ -94,62 +222,80 @@ header {
 	display: flex;
 	justify-content: space-around;
 	margin: auto;
+	position: static;
 }
 #content {
-	background-color: $background-color_4;
+	background: linear-gradient(to bottom, #e3d1dd, white);
 	left: 16%;
 	width: 83%;
 	top: 20%;
 	padding: 10px;
 	display: flex;
 	flex-direction: column;
-	#tutoriale {
-		padding: 20px;
-	}
+	position: static;
 }
-.videos {
+.carousel {
+	position: static;
+	width: 100%;
+	overflow: hidden;
+}
+.carousel-btn {
+	position: static;
+	top: 50%;
+	transform: translateY(-50%);
+	border: none;
+	cursor: pointer;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: white;
+	font-size: 24px;
+	z-index: 2;
 	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
+	align-items: center;
+	justify-content: center;
+}
+.prev-btn {
+	position: absolute;
+}
+.next-btn {
+	position: absolute;
+	top: 50%;
+	right: 20px;
+	transform: translateY(-50%);
+}
+.videos-container {
+	display: flex;
+	width: max-content;
+	transition: transform 0.3s ease-in-out;
+	margin-bottom: 20px;
+	position: static;
 	iframe {
-		width: 45%;
+		width: 500px;
 		height: 300px;
+		margin-right: 20px;
+		position: static;
 	}
 }
-.container {
+.video_mobile {
+	display: none;
+}
+.row {
 	display: flex;
 	justify-content: space-between;
-	flex-direction: row;
-	a {
-		width: 20%;
-		padding: 20px;
-		border-color: $border-color_1;
-		border-width: 2px;
-		border-style: solid;
-		border-radius: 25px;
-		img {
-			border-radius: 25px;
-			max-width: 100%;
-		}
-	}
-	p {
-		text-align: center;
-		color: $color_5;
-		padding: 5px;
-		text-decoration: none;
-	}
 }
 .footer {
 	display: flex;
 	left: 0;
 	bottom: 0;
 	width: 100%;
-	background-color: $background-color_1;
-	color: $color_3;
+	background-color: $background-color_6;
+	color: $color_6;
 	text-align: center;
 	flex-direction: row;
 	justify-content: space-around;
 	flex-flow: wrap;
+	position: fixed;
 }
 .left {
 	width: 33%;
@@ -166,16 +312,15 @@ header {
 	height: auto;
 	box-sizing: border-box;
 }
-@media screen and (max-width: 800px) {
-	.center {
-		width: 60%;
-	}
-	.left {
-		width: 60%;
-	}
-	.right {
-		width: 60%;
-	}
+.product-image {
+	object-fit: contain;
+	height: 100%;
+	width: 100%;
+	max-height: 200px;
+	max-width: 200px;
+}
+.product-container {
+	margin-right: 10px;
 }
 @media screen and (max-width: 1000px) {
 	.topnav {
@@ -205,7 +350,116 @@ header {
 		}
 	}
 }
+@media screen and (max-width: 800px) {
+	.center {
+		width: auto;
+	}
+	.left {
+		width: auto;
+	}
+	.right {
+		width: auto;
+	}
+	.products_phone {
+		display: block;
+	}
+	.desktop_only {
+		display: none;
+	}
+}
+@media (min-width: 768px) {
+	#products {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		margin-bottom: 50px;
+		a {
+			border: #967388 2px solid;
+			border-radius: 25px;
+			background-color: $background-color_9;
+			flex-basis: 25%;
+			padding: 20px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			text-decoration: none;
+			height: 350px;
+			margin: 10px;
+			img {
+				padding: 10px;
+				height: 270px;
+				width: auto;
+				align-self: center;
+			}
+			p {
+				text-align: center;
+				color: $color_5;
+				padding: 5px;
+				text-decoration: none;
+				max-width: 200px;
+				word-wrap: break-word;
+				margin: 0 auto;
+			}
+		}
+	}
+	#products_phone {
+		display: none;
+	}
+}
+@media (max-width: 767px) {
+	#products {
+		display: none;
+	}
+	#products_phone {
+		display: block;
+		margin-bottom: 50px;
+	}
+	.products_phone {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.product {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		border-radius: 10px;
+		padding: 10px;
+		margin: 50px 0;
+		width: 90%;
+		a {
+			width: 90%;
+			height: 40%;
+			margin: auto;
+			font-size: 22px;
+			border: 2px solid #967388;
+			border-radius: 15%;
+			background-color: $background-color_9;
+			img {
+				padding: 5px;
+				max-width: 80%;
+				height: 250px;
+			}
+			p {
+				margin-top: 10px;
+				color: $color_5;
+				text-decoration: none;
+			}
+		}
+	}
+}
 @media only screen and (max-width: 700px) {
+	#products {
+		a {
+			flex-basis: 100%;
+		}
+	}
+	.button_makup {
+		display: none;
+	}
 	.sort_filter {
 		display: flex;
 		flex-direction: row;
@@ -246,5 +500,17 @@ header {
 			font-size: 22px;
 			border-radius: 25px;
 		}
+	}
+	.products_phone {
+		display: block;
+	}
+	.desktop_only {
+		display: none;
+	}
+	.carousel {
+		display: none;
+	}
+	.video_mobile {
+		display: block;
 	}
 }
