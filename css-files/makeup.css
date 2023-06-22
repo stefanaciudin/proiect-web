@@ -1,3 +1,93 @@
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    border: 2px solid pink;
+    border-radius: 10px;
+}
+
+.modal h1 {
+    text-align: center; /* Centrare text */
+}
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-container select {
+    margin-bottom: 10px;
+}
+.modal-content .h1{
+    text-align: center;
+}
+.hidden {
+    display: none;
+}
+.checkbox-container {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #a46e94;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+}
+.button:hover {
+    background-color: #412c3b;
+}
+.select_sort,
+.select_brands,
+.select_ten,
+.select_buze,
+.select_ochii,
+.select_video {
+    border: 2px solid #967388;
+    border-radius: 10px;
+    padding: 5px;
+    outline: none;
+}
+
 body, html {
     height: 100%;
     margin: 0;
@@ -156,106 +246,10 @@ header {
     margin-right: 20px;
 }
 
-.video_mobile {
+.video_mobile{
     display: none;
 }
 
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0); /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-    border: 2px solid pink;
-    border-radius: 10px;
-}
-
-.modal h1 {
-    text-align: center; /* Centrare text */
-}
-
-/* Modal Content */
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
-
-/* The Close Button */
-.close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.form-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.form-container select {
-    margin-bottom: 10px;
-}
-
-.modal-content .h1 {
-    text-align: center;
-}
-
-.hidden {
-    display: none;
-}
-
-.checkbox-container {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.button {
-    display: inline-block;
-    border-radius: 4px;
-    background-color: #a46e94;
-    color: #fff;
-    text-align: center;
-    font-size: 16px;
-    padding: 10px 20px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
-}
-
-.button:hover {
-    background-color: #412c3b;
-}
-
-.select_sort,
-.select_brands,
-.select_ten,
-.select_buze,
-.select_ochii,
-.select_video {
-    border: 2px solid #967388;
-    border-radius: 10px;
-    padding: 5px;
-    outline: none;
-}
 
 .row {
     display: flex;
@@ -295,54 +289,6 @@ header {
     box-sizing: border-box;
 }
 
-/* Stiluri generale */
-
-/* Ascunde initial clasa products_phone pe dispozitive desktop */
-@media (min-width: 768px) {
-    #products {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-bottom: 50px;
-    }
-
-    #products a {
-        border: #967388 2px solid;
-        border-radius: 25px;
-        background-color: white;
-        flex-basis: 25%;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        text-decoration: none;
-        height: 350px;
-        margin: 10px;
-    }
-
-    #products a img {
-        padding: 10px;
-        height: 270px;
-        width: auto;
-        align-self: center;
-    }
-
-    #products a p {
-        text-align: center;
-        color: black;
-        padding: 5px;
-        text-decoration: none;
-        max-width: 200px;
-        word-wrap: break-word;
-        margin: 0 auto;
-    }
-
-    #products_phone {
-        display: none;
-    }
-}
 
 .product-image {
     object-fit: contain;
@@ -355,7 +301,6 @@ header {
 .product-container {
     margin-right: 10px;
 }
-
 
 @media screen and (max-width: 1000px) {
     .topnav a:not(:first-child) {
@@ -406,8 +351,56 @@ header {
     }
 }
 
+/* Ascunde initial clasa products_phone pe dispozitive desktop */
+@media (min-width: 768px) {
+    #products {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 50px;
+    }
+
+    #products a {
+        border: #967388 2px solid;
+        border-radius: 25px;
+        background-color: white;
+        flex-basis: 25%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        text-decoration: none;
+        height: 350px;
+        margin: 10px;
+    }
+
+    #products a img {
+        padding: 10px;
+        height: 270px;
+        width: auto;
+        align-self: center;
+    }
+
+    #products a p {
+        text-align: center;
+        color: black;
+        padding: 5px;
+        text-decoration: none;
+        max-width: 200px;
+        word-wrap: break-word;
+        margin: 0 auto;
+    }
+
+    #products_phone {
+        display: none;
+    }
+}
+
 /* Stilurile pentru mobil */
 @media (max-width: 767px) {
+
     #products {
         display: none;
     }
@@ -416,7 +409,6 @@ header {
         display: block;
         margin-bottom: 50px;
     }
-
     .products_phone {
         display: flex;
         justify-content: center;
@@ -448,11 +440,13 @@ header {
         padding: 5px;
         max-width: 80%;
         height: 250px;
-
     }
 
     .product a p {
         margin-top: 10px;
+    }
+
+    .product a p  {
         color: black;
         text-decoration: none;
     }
@@ -460,14 +454,12 @@ header {
 }
 
 @media only screen and (max-width: 700px) {
-    .carousel {
-        display: none;
-    }
-
     #products a {
         flex-basis: 100%;
     }
-
+    .button_makup {
+        display: none;
+    }
     .sort_filter {
         display: flex;
         flex-direction: row;
@@ -517,14 +509,7 @@ header {
         font-size: 22px;
         border-radius: 25px;
     }
-}
 
-@media screen and (max-width: 500px) {
-    .carousel {
-        display: none;
-    }
-
-    /* Afișează clasa products_phone pe dispozitive mobile */
     .products_phone {
         display: block;
     }
@@ -534,18 +519,13 @@ header {
         display: none;
     }
 
-
-}
-
-/* Media query for mobile devices */
-@media screen and (max-width: 480px) {
-    .carousel {
+    .carousel{
         display: none;
     }
-
-    .video_mobile {
+    .video_mobile{
         display: block;
     }
 }
+
 
 /*# sourceMappingURL=makeup.css.map */

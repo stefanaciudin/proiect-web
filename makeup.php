@@ -5,14 +5,28 @@ $product = new ProductRepository();
 $video = new VideoRepository();
 $products = [];
 $products = $product->getProductsByBrands();
+$videos = [];
+$videos = $video->getVideosByOccasionArray("zi");
 
-
+if(isset($_POST['submit_zi'])){
+    $videos = $video->getVideosByOccasionArray("zi");
+}
+if(isset($_POST['submit_seara'])){
+    $videos = $video->getVideosByOccasionArray("seara");
+}
+if(isset($_POST['submit_eveniment'])){
+    $videos = $video->getVideosByOccasionArray("eveniment");
+}
+if(isset($_POST['submit_mireasa'])){
+    $videos = $video->getVideosByOccasionArray("mireasa");
+}
 if (isset($_POST['submit'])) {
     $products = $product->getProductsBySort();
 }
 if (isset($_POST['submit_sort'])) {
     $products = $product->getProductsByFilter();
 }
+
 
 ?>
 <!doctype html>
@@ -71,79 +85,27 @@ if (isset($_POST['submit_sort'])) {
             <button class="button" id="filter">Filtreaza</button>
             <button class="button" id="sort">Sorteaza</button>
         </div>
+        <form action="makeup.php" method="POST">
+            <div class = "button_makup">
+                <input type="submit" class="button" value="Machiaj de zi" name="submit_zi">
+                <input type="submit" class="button" value="Machiaj de seara" name="submit_seara">
+                <input type="submit" class="button" value="Machiaj de eveniment" name="submit_eveniment">
+                <input type="submit" class="button" value="Machiaj de mireasa" name="submit_mireasa">
+            </div>
+        </form>
         <div id="carousel" class="carousel">
             <button id="prevBtn" class="carousel-btn prev-btn">&lt;</button>
             <div id="videosContainer" class="videos-container">
-                <iframe src="https://www.youtube.com/embed/sDErfOvnUfg" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                <iframe src="https://www.youtube.com/embed/sDErfOvnUfg" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                <iframe src="https://www.youtube.com/embed/sDErfOvnUfg" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                <iframe src="https://www.youtube.com/embed/sDErfOvnUfg" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                <iframe src="https://www.youtube.com/embed/sDErfOvnUfg" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                <iframe src="https://www.youtube.com/embed/sDErfOvnUfg" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <?php
+                if ($videos != []) {
+                    foreach ($videos as $prod) {
+                        echo '<iframe src="'.$prod['link'].'" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+                    }
+                }
+                ?>
             </div>
             <button id="nextBtn" class="carousel-btn next-btn">&gt;</button>
         </div>
-
-        <!--        --><?php
-        //        $occasion = "mireasa";
-        //        $videos = $video->getVideosByOccasion($occasion);
-        //
-        ?><!-- --><?php
-        //        $occasion = "mireasa";
-        //        $videos = $video->getVideosByOccasion($occasion);
-        //
-        ?>
-        <!---->
-        <!--        <div id="carousel" class="carousel">-->
-        <!--            <button id="prevBtn" class="carousel-btn prev-btn">&lt;</button>-->
-        <!--            <div id="videosContainer" class="videos-container">-->
-        <!--                --><?php //if (empty($videos)):
-        ?>
-        <!--                    <p>No videos available.</p>-->
-        <!--                --><?php //else:
-        ?>
-        <!--                    --><?php //foreach ($videos as $video):
-        ?>
-        <!--                        <iframe src="--><?php //echo $video['link'];
-        ?><!--" title="YouTube video player"-->
-        <!--                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"-->
-        <!--                                allowfullscreen></iframe>-->
-        <!--                    --><?php //endforeach;
-        ?>
-        <!--                --><?php //endif;
-        ?>
-        <!--            </div>-->
-        <!--            <button id="nextBtn" class="carousel-btn next-btn">&gt;</button>-->
-        <!--        </div>-->
-        <!---->
-        <!--        --><?php
-        //               $occasion = "mireasa";
-        //                $videos = $video->getVideosByOccasion($occasion);
-        //
-        ?>
-        <!--        <script>-->
-        <!--            function createVideoElement(videos) {-->
-        <!--                const videosContainer = document.getElementById('videosContainer');-->
-        <!--                videosContainer.innerHTML = '';-->
-        <!---->
-        <!--                if (videos.length === 0) {-->
-        <!--                    const message = document.createElement('p');-->
-        <!--                    message.textContent = 'No videos available.';-->
-        <!--                    videosContainer.appendChild(message);-->
-        <!--                } else {-->
-        <!--                    videos.forEach(video => {-->
-        <!--                        // Create video iframe-->
-        <!--                        const videoIframe = document.createElement('iframe');-->
-        <!--                        videoIframe.src = video.link;-->
-        <!--                        videoIframe.title = 'YouTube video player';-->
-        <!--                        videoIframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';-->
-        <!--                        videoIframe.allowFullscreen = true;-->
-        <!--                        videosContainer.appendChild(videoIframe);-->
-        <!--                    });-->
-        <!--                }-->
-        <!--            }-->
-        <!---->
-        <!--        </script>-->
 
         <div class="products_phone" id="products_phone">
             <?php
@@ -158,7 +120,7 @@ if (isset($_POST['submit_sort'])) {
                         echo '</div>';
                     }elseif(isset($prod['occasion'])){
                         echo '<div class="product">';
-                        echo '<iframe src="'.$prod['link'].'" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+                        echo '<iframe width="400" height="315" src="'.$prod['link'].'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
                         echo '</div>';
                     }
 
@@ -214,7 +176,7 @@ if (isset($_POST['submit_sort'])) {
                 <div id="div4" class="hidden">
                     <select id="select5" name="select5" class="select_video">
                         <option value="zi">Machiaj de zi</option>
-                        <option value="evenimet">Machiaj de eveniment</option>
+                        <option value="eveniment">Machiaj de eveniment</option>
                         <option value="mireasa">Machiaj de mireasa</option>
                         <option value="seara">Machiaj de seara</option>
                     </select>
