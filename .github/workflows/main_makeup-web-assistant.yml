@@ -56,5 +56,5 @@ jobs:
         with:
           app-name: 'makeup-web-assistant'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_EE89FBB92CC3402A86E134E27CF8C6CA }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7C5B1BAFA49C49079124F7C993702335 }}
           package: .
