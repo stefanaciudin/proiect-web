@@ -392,7 +392,7 @@ if (isset($_POST['submit_sort'])) {
     }
 
     // Fetch product brands and populate the brand menu
-    fetchData('https://makeup-web-assistant.azurewebsites.net/api/find-all-brands-by-product-type.php?product_category=1', 'brands')
+    fetchData('http://34.175.252.199/api/find-all-brands-by-product-type.php?product_category=1', 'brands')
         .then(data => {
             populateSelectMenu('brand', data, 'brand_name'); // Specify the brand_name property
 
@@ -401,7 +401,7 @@ if (isset($_POST['submit_sort'])) {
         });
 
     // Fetch product usage types and populate the usage type menu
-    fetchData('https://makeup-web-assistant.azurewebsites.net/api/find-product-usage-types.php?product_category=1')
+    fetchData('http://34.175.252.199/api/find-product-usage-types.php?product_category=1')
         .then(data => {
             console.log("here", data);
             populateSelectMenu('usage_type', data.usage_types, 'usage_type_name');
@@ -409,17 +409,17 @@ if (isset($_POST['submit_sort'])) {
 
     // Event listener for brand change
     document.getElementById('brand').addEventListener('change', function(event) {
-        handleSelectChange(event, 'https://makeup-web-assistant.azurewebsites.net/api/find-products-by-brand-and-category.php?product_category=1&brand_name=', createProductElements);
+        handleSelectChange(event, 'http://34.175.252.199/api/find-products-by-brand-and-category.php?product_category=1&brand_name=', createProductElements);
     });
 
     // Event listener for product type change
     document.getElementById('product_type').addEventListener('change', function(event) {
-        handleSelectChange(event, 'https://makeup-web-assistant.azurewebsites.net/api/find-makeup-products-by-type.php?type=', createProductElements);
+        handleSelectChange(event, 'http://34.175.252.199/api/find-makeup-products-by-type.php?type=', createProductElements);
     });
 
     // Event listener for usage type change
     document.getElementById('usage_type').addEventListener('change', function(event) {
-        handleSelectChange(event, 'https://makeup-web-assistant.azurewebsites.net/api/find-products-by-usage-type.php?product_category=1&usage_type=', createProductElements);
+        handleSelectChange(event, 'http://34.175.252.199/api/find-products-by-usage-type.php?product_category=1&usage_type=', createProductElements);
     });
 
     function myFunction() {
