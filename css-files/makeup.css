@@ -1,198 +1,3 @@
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    border: 2px solid pink;
-    border-radius: 10px;
-  }
-  
-  .modal h1 {
-    text-align: center; /* Centrare text */
-  }
-  /* Modal Content */
-  .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-  }
-  
-  /* The Close Button */
-  .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  .form-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .form-container select {
-    margin-bottom: 10px;
-  }
-  .modal-content .h1{
-    text-align: center;
-  }
-  .hidden {
-    display: none;
-  }
-  .checkbox-container {
-    display: inline-block;
-    margin-right: 10px;
-  }
-
-  .button {
-    display: inline-block;
-    border-radius: 4px;
-    background-color: #a46e94;
-    color: #fff;
-    text-align: center;
-    font-size: 16px;
-    padding: 10px 20px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
-  }
-  .button:hover {
-    background-color: #412c3b;
-  }
-    .select_sort,
-    .select_brands,
-    .select_ten,
-    .select_buze,
-    .select_ochii {
-    border: 2px solid #967388;
-    border-radius: 10px;
-    padding: 5px;
-    outline: none;
-    }
-/* Stiluri generale */
-
-/* Ascunde initial clasa products_phone pe dispozitive desktop */
-@media (min-width: 768px) {
-    #products {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center; 
-        margin-bottom: 50px;
-    }
-    
-    #products a {
-        border: #967388 2px solid;
-        border-radius: 25px;
-        background-color: white;
-        flex-basis: 25%;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        text-decoration: none;
-        height: 350px;
-        margin: 10px;
-    }
-
-    #products a img {
-        padding: 10px;
-        height: 270px;
-        width: auto;
-        align-self: center; 
-    }
-    
-    #products a p {
-        text-align: center;
-        color: black;
-        padding: 5px;
-        text-decoration: none;
-        max-width: 200px;
-        word-wrap: break-word;
-        margin: 0 auto;
-    }
-
-    #products_phone {
-        display: none;
-      }
-  }
-  
-  /* Stilurile pentru mobil */
-  @media (max-width: 767px) {
-    #products {
-      display: none;
-    }
-  
-    #products_phone {
-      display: block;
-      margin-bottom: 50px;
-    }
-    .products_phone {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      
-      .product {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        border-radius: 10px;
-        padding: 10px;
-          margin: 50px 0;
-          width: 90%;
-      }
-
-      .product a {
-          width: 90%;
-          height: 40%;
-          margin: auto;
-          font-size: 22px;
-          border: 2px solid #967388;
-          border-radius: 15%;
-          background-color: white;
-      }
-
-      .product a img {
-          padding: 5px;
-          max-width: 80%;
-        height: 250px;
-
-        /*border: 2px solid #967388;*/
-        /*border-radius: 10px;*/
-      }           
-      
-      .product a p {
-        margin-top: 10px;
-      }
-      
-      .product a p  {
-        color: black;
-        text-decoration: none;
-      }
-      
-  }
-
-
 body, html {
     height: 100%;
     margin: 0;
@@ -351,72 +156,106 @@ header {
     margin-right: 20px;
 }
 
-/* Media query for mobile devices */
-@media screen and (max-width: 480px) {
-    .carousel{
-        visibility: hidden;
-    }
+.video_mobile {
+    display: none;
 }
 
-/*.container {*/
-/*  display: flex;*/
-/*  justify-content: space-between;*/
-/*  flex-direction: row;*/
-/*}*/
-/*.container a {*/
-/*  width: 20%;*/
-/*  padding: 20px;*/
-/*  border-color: #967388;*/
-/*  border-width: 2px;*/
-/*  border-style: solid;*/
-/*  border-radius: 25px;*/
-/*}*/
-/*.container a img {*/
-/*  border-radius: 25px;*/
-/*  max-width: 100%;*/
-/*}*/
-/*.container p {*/
-/*  text-align: center;*/
-/*  color: #000d33;*/
-/*  padding: 5px;*/
-/*  text-decoration: none;*/
-/*}*/
-
-/* #products {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; 
-    margin-bottom: 50px;
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    border: 2px solid pink;
+    border-radius: 10px;
 }
 
-#products a {
-    border: #967388 2px solid;
-    border-radius: 25px;
-    background-color: white;
-    flex-basis: 25%;
+.modal h1 {
+    text-align: center; /* Centrare text */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
     padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
-
-#products a img {
-    height: 300px;
-    width: auto;
-    align-self: center; 
+.form-container select {
+    margin-bottom: 10px;
 }
 
-#products p {
+.modal-content .h1 {
     text-align: center;
-    color: #000d33;
-    padding: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+.checkbox-container {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #a46e94;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    padding: 10px 20px;
     text-decoration: none;
-    max-width: 200px;
-    word-wrap: break-word;
-    margin: 0 auto;
-} */
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+.button:hover {
+    background-color: #412c3b;
+}
+
+.select_sort,
+.select_brands,
+.select_ten,
+.select_buze,
+.select_ochii,
+.select_video {
+    border: 2px solid #967388;
+    border-radius: 10px;
+    padding: 5px;
+    outline: none;
+}
 
 .row {
     display: flex;
@@ -456,28 +295,53 @@ header {
     box-sizing: border-box;
 }
 
-@media screen and (max-width: 800px) {
-    /* Remove the width properties from the .center, .left, and .right classes */
-    .center,
-    .left,
-    .right {
-        width: auto;
+/* Stiluri generale */
+
+/* Ascunde initial clasa products_phone pe dispozitive desktop */
+@media (min-width: 768px) {
+    #products {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 50px;
     }
 
-    /* #products a img {
-        max-width: 100%;
-        display: block;
+    #products a {
+        border: #967388 2px solid;
+        border-radius: 25px;
+        background-color: white;
+        flex-basis: 25%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        text-decoration: none;
+        height: 350px;
+        margin: 10px;
+    }
+
+    #products a img {
+        padding: 10px;
+        height: 270px;
+        width: auto;
+        align-self: center;
+    }
+
+    #products a p {
+        text-align: center;
+        color: black;
+        padding: 5px;
+        text-decoration: none;
+        max-width: 200px;
+        word-wrap: break-word;
         margin: 0 auto;
-    }  */
-        /* Afișează clasa products_phone pe dispozitive mobile */
-        .products_phone {
-            display: block;
-        }
-    
-        /* Ascunde clasa desktop_only pe dispozitive mobile */
-        .desktop_only {
-            display: none;
-        }
+    }
+
+    #products_phone {
+        display: none;
+    }
 }
 
 .product-image {
@@ -491,6 +355,7 @@ header {
 .product-container {
     margin-right: 10px;
 }
+
 
 @media screen and (max-width: 1000px) {
     .topnav a:not(:first-child) {
@@ -522,22 +387,83 @@ header {
     }
 }
 
-@media screen and (max-width: 600px) {
-    /* #products a {
-        flex-basis: 100%;
-    } */
-        /* Afișează clasa products_phone pe dispozitive mobile */
-        .products_phone {
-            display: block;
-        }
-    
-        /* Ascunde clasa desktop_only pe dispozitive mobile */
-        .desktop_only {
-            display: none;
-        }
+@media screen and (max-width: 800px) {
+    /* Remove the width properties from the .center, .left, and .right classes */
+    .center,
+    .left,
+    .right {
+        width: auto;
+    }
+
+    /* Afișează clasa products_phone pe dispozitive mobile */
+    .products_phone {
+        display: block;
+    }
+
+    /* Ascunde clasa desktop_only pe dispozitive mobile */
+    .desktop_only {
+        display: none;
+    }
+}
+
+/* Stilurile pentru mobil */
+@media (max-width: 767px) {
+    #products {
+        display: none;
+    }
+
+    #products_phone {
+        display: block;
+        margin-bottom: 50px;
+    }
+
+    .products_phone {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .product {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 50px 0;
+        width: 90%;
+    }
+
+    .product a {
+        width: 90%;
+        height: 40%;
+        margin: auto;
+        font-size: 22px;
+        border: 2px solid #967388;
+        border-radius: 15%;
+        background-color: white;
+    }
+
+    .product a img {
+        padding: 5px;
+        max-width: 80%;
+        height: 250px;
+
+    }
+
+    .product a p {
+        margin-top: 10px;
+        color: black;
+        text-decoration: none;
+    }
+
 }
 
 @media only screen and (max-width: 700px) {
+    .carousel {
+        display: none;
+    }
+
     #products a {
         flex-basis: 100%;
     }
@@ -590,6 +516,35 @@ header {
         margin: auto;
         font-size: 22px;
         border-radius: 25px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .carousel {
+        display: none;
+    }
+
+    /* Afișează clasa products_phone pe dispozitive mobile */
+    .products_phone {
+        display: block;
+    }
+
+    /* Ascunde clasa desktop_only pe dispozitive mobile */
+    .desktop_only {
+        display: none;
+    }
+
+
+}
+
+/* Media query for mobile devices */
+@media screen and (max-width: 480px) {
+    .carousel {
+        display: none;
+    }
+
+    .video_mobile {
+        display: block;
     }
 }
 
