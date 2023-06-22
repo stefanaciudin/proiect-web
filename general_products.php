@@ -443,14 +443,14 @@ if (isset($_POST['submit_sort'])) {
                 productImage.classList.add('product-img');
                 productImage.src = product.image_path;
                 productImage.alt = product.name;
-                productImageLink.appendChild(productImage);
-                productContainer.appendChild(productImageLink);
 
-                // Create product name
                 const productName = document.createElement('p');
                 productName.classList.add('product-name');
                 productName.textContent = product.name + " - " + product.price + " lei"
-                productContainer.appendChild(productName);
+
+                productImageLink.appendChild(productImage);
+                productImageLink.appendChild(productName);
+                productContainer.appendChild(productImageLink);
 
                 // Append product container to the products container
                 productsContainer.appendChild(productContainer);
