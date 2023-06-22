@@ -107,24 +107,29 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        text-align: center;
+        text-decoration: none;
+        height: 350px;
+        margin: 10px;
     }
-    
-    
+
     #products a img {
-        height: 300px;
+        padding: 10px;
+        height: 270px;
         width: auto;
         align-self: center; 
     }
     
-    #products p {
+    #products a p {
         text-align: center;
-        color: #000d33;
+        color: black;
         padding: 5px;
         text-decoration: none;
         max-width: 200px;
         word-wrap: break-word;
         margin: 0 auto;
     }
+
     #products_phone {
         display: none;
       }
@@ -152,39 +157,40 @@
         align-items: center;
         text-align: center;
         border-radius: 10px;
-        margin: 10px;
         padding: 10px;
+          margin: 50px 0;
+          width: 90%;
       }
-      
-      .product img {
-        width: auto;
-        height: 200px;
-        object-fit: cover;
-        border: 2px solid #967388;
-        border-radius: 10px;
+
+      .product a {
+          width: 90%;
+          height: 40%;
+          margin: auto;
+          font-size: 22px;
+          border: 2px solid #967388;
+          border-radius: 15%;
+          background-color: white;
+      }
+
+      .product a img {
+          padding: 5px;
+          max-width: 80%;
+        height: 250px;
+
+        /*border: 2px solid #967388;*/
+        /*border-radius: 10px;*/
       }           
       
-      .product p {
+      .product a p {
         margin-top: 10px;
-        text-decoration: underline;
       }
       
-      .product p a {
+      .product a p  {
         color: black;
         text-decoration: none;
       }
       
   }
-
-
-
-
-
-
-
-
-
-
 
 
 body, html {
@@ -301,19 +307,55 @@ header {
     flex-direction: column;
 }
 
-#content #tutoriale {
-    padding: 20px;
+.carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
 }
 
-.videos {
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: white;
+    font-size: 24px;
+    z-index: 2;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
 }
 
-.videos iframe {
-    width: 45%;
-    height: 300px;
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.videos-container {
+    display: flex;
+    width: max-content;
+    transition: transform 0.3s ease-in-out;
+    margin-bottom: 20px;
+}
+
+.videos-container iframe {
+    width: 500px; /* Modified to fit the container width */
+    height: 300px; /* Adjusts height based on aspect ratio */
+    margin-right: 20px;
+}
+
+/* Media query for mobile devices */
+@media screen and (max-width: 480px) {
+    .carousel{
+        visibility: hidden;
+    }
 }
 
 /*.container {*/
