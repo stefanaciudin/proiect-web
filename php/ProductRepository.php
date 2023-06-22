@@ -458,6 +458,8 @@ class ProductRepository
         $checkbox1 = in_array('checkbox1', $checkboxes);
         $checkbox2 = in_array('checkbox2', $checkboxes);
         $checkbox3 = in_array('checkbox3', $checkboxes);
+        $checkbox4 = in_array('checkbox4', $checkboxes);
+
 
         if ($checkbox1) {
             $selectedBox = $_POST['select2'] ?? "";
@@ -465,6 +467,15 @@ class ProductRepository
             $selectedBox = $_POST['select3'] ?? "";
         } elseif ($checkbox3) {
             $selectedBox = $_POST['select4'] ?? "";
+        }elseif($checkbox4){
+            $selectedBox = $_POST['select5'] ?? "";
+            global $conn;
+        
+            $videoR = new VideoRepository(); 
+            $video = $videoR->getVideosByOccasionArray($selectedBox);  
+            return $video;
+
+
         }
 
 

@@ -80,7 +80,8 @@
     .select_brands,
     .select_ten,
     .select_buze,
-    .select_ochii {
+    .select_ochii,
+    .select_video {
     border: 2px solid #967388;
     border-radius: 10px;
     padding: 5px;
@@ -350,11 +351,16 @@ header {
     height: 300px; /* Adjusts height based on aspect ratio */
     margin-right: 20px;
 }
-
+.video_mobile{
+    display: none;
+}
 /* Media query for mobile devices */
 @media screen and (max-width: 480px) {
     .carousel{
-        visibility: hidden;
+        display: none;
+    }
+    .video_mobile{
+        display: block;
     }
 }
 
