@@ -158,7 +158,7 @@ if (isset($_POST['submit_sort'])) {
                             echo '</div>';
                         }elseif(isset($prod['occasion'])){
                             echo '<div class="product">';
-                            echo '<iframe src="'.$prod['link'].'" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+                            echo '<iframe width="400" height="315" src="'.$prod['link'].'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
                             echo '</div>';
                         }
 
@@ -214,7 +214,7 @@ if (isset($_POST['submit_sort'])) {
                     <div id="div4" class="hidden">
                         <select id="select5" name="select5" class="select_video">
                             <option value="zi">Machiaj de zi</option>
-                            <option value="evenimet">Machiaj de eveniment</option>
+                            <option value="eveniment">Machiaj de eveniment</option>
                             <option value="mireasa">Machiaj de mireasa</option>
                             <option value="seara">Machiaj de seara</option>
                         </select>
