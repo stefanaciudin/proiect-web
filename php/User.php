@@ -3,119 +3,126 @@
 
 class User
 {
-    protected mixed $user_id;
-    protected mixed $name;
-    protected mixed $surname;
-    protected mixed $username;
-    protected mixed $email;
-    protected mixed $password;
+    protected int $user_id;
+    protected string $name;
+    protected string $surname;
+    protected string $username;
+    protected string $email;
+    protected string $password;
     protected mixed $age = 0;
-    protected mixed $gender = 0;
+    protected string $gender;
     protected mixed $skin_type = 2;
-    protected mixed $location = 0;
+    protected string $location;
+    protected string $token;
 
 
-    public function __construct($name, $surname, $username, $email, $password)
+    public function __construct($name, $surname, $username, $email, $password, $token)
     {
         $this->name = $name;
         $this->username = $username;
         $this->surname = $surname;
         $this->email = $email;
         $this->password = $password;
+        $this->token = $token;
+    }
+
+    public function __toString(): string
+    {
+        return "User: " . $this->name . " " . $this->surname . " " . $this->username . " " . $this->email . " " . $this->password;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getUserId(): mixed
+    public function getUserId(): int
     {
         return $this->user_id;
     }
 
     /**
-     * @param mixed $user_id
+     * @param int $user_id
      */
-    public function setUserId(mixed $user_id): void
+    public function setUserId(int $user_id): void
     {
         $this->user_id = $user_id;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getName(): mixed
+    public function getName(): string
     {
         return $this->name;
     }
 
     /**
-     * @param mixed $name
+     * @param string $name
      */
-    public function setName(mixed $name): void
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getSurname(): mixed
+    public function getSurname(): string
     {
         return $this->surname;
     }
 
     /**
-     * @param mixed $surname
+     * @param string $surname
      */
-    public function setSurname(mixed $surname): void
+    public function setSurname(string $surname): void
     {
         $this->surname = $surname;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getUsername(): mixed
+    public function getUsername(): string
     {
         return $this->username;
     }
 
     /**
-     * @param mixed $username
+     * @param string $username
      */
-    public function setUsername(mixed $username): void
+    public function setUsername(string $username): void
     {
         $this->username = $username;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getEmail(): mixed
+    public function getEmail(): string
     {
         return $this->email;
     }
 
     /**
-     * @param mixed $email
+     * @param string $email
      */
-    public function setEmail(mixed $email): void
+    public function setEmail(string $email): void
     {
         $this->email = $email;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getPassword(): mixed
+    public function getPassword(): string
     {
         return $this->password;
     }
 
     /**
-     * @param mixed $password
+     * @param string $password
      */
-    public function setPassword(mixed $password): void
+    public function setPassword(string $password): void
     {
         $this->password = $password;
     }
@@ -137,17 +144,17 @@ class User
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getGender(): mixed
+    public function getGender(): string
     {
         return $this->gender;
     }
 
     /**
-     * @param mixed $gender
+     * @param string $gender
      */
-    public function setGender(mixed $gender): void
+    public function setGender(string $gender): void
     {
         $this->gender = $gender;
     }
@@ -169,24 +176,35 @@ class User
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getLocation(): mixed
+    public function getLocation(): string
     {
         return $this->location;
     }
 
     /**
-     * @param mixed $location
+     * @param string $location
      */
-    public function setLocation(mixed $location): void
+    public function setLocation(string $location): void
     {
         $this->location = $location;
     }
 
-
-    public function __toString(): string
+    /**
+     * @return string
+     */
+    public function getToken(): string
     {
-        return "User: " . $this->name . " " . $this->surname . " " . $this->username . " " . $this->email . " " . $this->password;
+        return $this->token;
     }
+
+    /**
+     * @param string $token
+     */
+    public function setToken(string $token): void
+    {
+        $this->token = $token;
+    }
+
 }

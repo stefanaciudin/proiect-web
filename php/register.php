@@ -1,5 +1,5 @@
 <?php
-
+header("Content-Type: application/x-www-form-urlencoded; charset=UTF-8");
 include_once 'bd.php';
 include_once 'UserRepository.php';
 session_start();
@@ -9,6 +9,8 @@ $surname = $_POST['lastname'];
 $username = $_POST['username'];
 $email = $_POST['email'];
 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+$token = bin2hex(random_bytes(50));
+error_log("Token:" . $token);
 
 // validate email input
 // did that in the html page, but I'll keep it here, for some reason I can send
@@ -41,7 +43,7 @@ if (UserRepository::findByUsername($username)) {
     exit();
 }
 
-$user = new User($name, $surname, $username, $email, $password);
+$user = new User($name, $surname, $username, $email, $password, $token);
 
 // save the user to the database
 
@@ -50,6 +52,7 @@ if (UserRepository::save($user)) {
     $_SESSION['user_id'] = UserRepository::returnMaxId();
     $_SESSION['username'] = $user->getUsername();
     $_SESSION['name'] = $user->getName();
+    $_SESSION['token'] = $user->getToken();
     // redirect the user to the profile page
     session_write_close();
     header('Location: ../profile_page.php');

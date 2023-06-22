@@ -2,10 +2,26 @@
 <html lang="ro">
 <head>
     <?php
+    include "php/UserRepository.php";
     session_start();
-    // !!!! ADD HOW TO USE + PRICE !!!!!
-    // add section for serums + lip products
-    // eventual de inlocuit seara exfolierea cu seruri(avem deja exfoliere dimineata)
+    $user = [];
+    $products_1 = [];
+    $products_2 = [];
+    $products_3 = [];
+    $products_4 = [];
+    $products_5 = [];
+    $products_6 = [];
+    $userRepository = new UserRepository();
+    if (isset($_SESSION['user_id'])) {
+        $user = $userRepository->findUserById($_SESSION['user_id']);
+        $products_1 = $userRepository->findByUsageType($_SESSION['user_id'], 1, 'oricand');
+        $products_2 = $userRepository->findByUsageType($_SESSION['user_id'], 3, 'oricand');
+        $products_3 = $userRepository->findByUsageType($_SESSION['user_id'], 8, 'zi');
+        $products_4 = $userRepository->findByUsageType($_SESSION['user_id'], 27, 'seara');
+        $products_5 = $userRepository->findByUsageType($_SESSION['user_id'], 4, 'oricand');
+        $products_6 = $userRepository->findByUsageType($_SESSION['user_id'], 2, 'oricand');
+
+    }
     ?>
     <meta charset="UTF-8">
     <title>Rutina ta</title>
@@ -24,7 +40,7 @@
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="rutina_ta.php">Rutina Mea</a>
-        <a href="general_products.html">Recomandari Generale</a>
+        <a href="general_products.php">Recomandari Generale</a>
         <a href="makeup.php">Make Up</a>
         <a href="login_page.php">Login</a>
         <a href="register_page.php">Register</a>
@@ -79,9 +95,10 @@
             </div>
 
             <h4 class="bold">Produse recomandate</h4>
-
             <div class="container" id="product-container-1">
-
+                <?php
+                showProducts($products_1);
+                ?>
             </div>
         </div>
 
@@ -109,7 +126,9 @@
 
             <h4 class="bold">Produse recomandate</h4>
             <div class="container" id="product-container-2">
-
+                <?php
+                showProducts($products_2);
+                ?>
             </div>
         </div>
 
@@ -139,12 +158,13 @@
             </div>
             <h4 class="bold">Produse recomandate</h4>
             <div class="container" id="product-container-3">
-
+                <?php
+                showProducts($products_3);
+                ?>
             </div>
             <br><br>
         </div>
     </div>
-
     <div id="seara">
         <h2 class="second-text">Seara</h2>
         <div class="lista">
@@ -166,7 +186,9 @@
 
             <h4 class="bold">Produse recomandate</h4>
             <div class="container" id="product-container-4">
-
+                <?php
+                showProducts($products_4);
+                ?>
             </div>
             <br><br>
         </div>
@@ -187,7 +209,9 @@
             </div>
             <h4 class="bold">Produse recomandate</h4>
             <div class="container" id="product-container-5">
-
+                <?php
+                showProducts($products_5);
+                ?>
             </div>
             <br><br>
         </div>
@@ -210,13 +234,33 @@
 
             <h4 class="bold">Produse recomandate</h4>
             <div class="container" id="product-container-6">
+                <?php
+                function showProducts(array $products_6): void
+                {
+                    if ($products_6 != []) {
+                        foreach ($products_6 as $prod) {
+                            echo '<div class="product">';
+                            echo '<a href="' . $prod['link'] . '">';
+                            // Image element
+                            echo '<img src="' . $prod['image_path'] . '" alt="">';
+                            // Product name and price
+                            echo '<p><b>' . $prod['name'] . ' - ' . $prod['price'] . ' lei' . '</p></b>';
+                            // Description
+                            echo '<p>' . $prod['how_to_use'] . '</p>';
+                            echo '</a>';
+                            echo '</div>';
+                        }
+                    }
+                }
 
-
+                showProducts($products_6);
+                ?>
             </div>
             <br><br>
         </div>
     </div>
 </div>
+
 
 <div class="footer">
     <div class="left">
@@ -230,108 +274,6 @@
     </div>
 </div>
 <script>
-    // window.addEventListener('DOMContentLoaded', function () {
-    //     console.error("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-    //     var images = document.querySelectorAll('.container a img');
-    //
-    //     images.forEach(function (image) {
-    //         var aspectRatio = image.naturalWidth / image.naturalHeight;
-    //         var threshold = 1.2; // Adjust the threshold as desired
-    //
-    //         if (Math.abs(1 - aspectRatio) <= threshold) {
-    //             image.classList.add('square');
-    //         } else {
-    //             image.classList.add('rectangle');
-    //         }
-    //     });
-    // });
-    function createProductElement(product) {
-        const productElement = document.createElement('a');
-        productElement.href = product.link;
-
-        const imgElement = document.createElement('img');
-        imgElement.src = product.image_path;
-        imgElement.alt = '';
-
-        const nameElement = document.createElement('p');
-        nameElement.textContent = product.name;
-
-        const descriptionElement = document.createElement('p');
-        descriptionElement.textContent = product.description;
-
-        productElement.appendChild(imgElement);
-        productElement.appendChild(nameElement);
-        productElement.appendChild(descriptionElement); // remove the link from here!!!
-
-        return productElement;
-        /* asta merge dar strica css ul de tot
-        const productElement = document.createElement('div');
-
-        const imgLinkElement = document.createElement('a');
-        imgLinkElement.href = product.link;
-
-        const imgElement = document.createElement('img');
-        imgElement.src = product.image_path;
-        imgElement.alt = '';
-
-        imgLinkElement.appendChild(imgElement);
-        productElement.appendChild(imgLinkElement);
-
-        const nameLinkElement = document.createElement('a');
-        nameLinkElement.href = product.link;
-
-        const nameElement = document.createElement('p');
-        nameElement.textContent = product.name;
-
-        nameLinkElement.appendChild(nameElement);
-        productElement.appendChild(nameLinkElement);
-
-        const descriptionElement = document.createElement('p');
-        descriptionElement.textContent = product.description;
-
-        productElement.appendChild(descriptionElement);
-
-        return productElement;
-         */
-    }
-
-    const containerMap = [
-        {container: 'product-container-1', usageTime: 'oricand', typeId: 1},
-        {container: 'product-container-2', usageTime: 'oricand', typeId: 3},
-        {container: 'product-container-3', usageTime: 'zi', typeId: 8},
-        {container: 'product-container-4', usageTime: 'seara', typeId: 27},
-        {container: 'product-container-5', usageTime: 'oricand', typeId: 4},
-        {container: 'product-container-6', usageTime: 'oricand', typeId: 2},
-        //{container: 'product-container-6', usageTime: 'seara', typeId: 7},
-        // Add mappings for the remaining containers, usage times, and type IDs
-    ];
-
-    // Loop through the container map
-    for (const {container, usageTime, typeId} of containerMap) {
-        // Make API calls to retrieve product data for the current container, usage time, and type ID
-        fetch(`http://127.0.0.1:8000/api/get-rec-products.php?type_id=${typeId}&usage_time=${usageTime}`)
-            .then(response => response.json())
-            .then(data => {
-                // Process the received product data and add to container
-                data.forEach(product => {
-                    const productElement = createProductElement(product);
-                    document.getElementById(container).appendChild(productElement);
-                });
-                // Check if all API requests are completed
-                const allRequestsCompleted = containerMap.every(({container}) =>
-                    document.getElementById(container).childElementCount > 0
-                );
-                // Hide the loading message if all API requests are completed
-                if (allRequestsCompleted) {
-                    // Wait for a short delay before hiding the alert
-                    setTimeout(() => {
-                        alert('Rutina ta perfectă este gata. Mulțumim pentru răbdare!');
-                    }, 50);
-                }
-            })
-            .catch(error => console.error(error));
-    }
-
     function myFunction() {
         var x = document.getElementById("myTopnav");
         if (x.className === "topnav") {
@@ -340,8 +282,6 @@
             x.className = "topnav";
         }
     }
-
-
 </script>
 </body>
 

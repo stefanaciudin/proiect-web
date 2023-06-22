@@ -1,4 +1,11 @@
 @import "https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap";
+
+body{
+  height: 900px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 select {
   width: 100%;
   border: none;
