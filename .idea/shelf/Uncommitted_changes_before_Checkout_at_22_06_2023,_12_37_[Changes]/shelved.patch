@@ -1,0 +1,1119 @@
+Index: css-files/rutina_ta.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>body {\n  margin: 0;\n  padding: 0;\n  background: linear-gradient(to bottom, #e3d1dd, white);\n  min-height: 100vh;\n}\n\n.logo {\n  display: flex;\n  list-style: none;\n  justify-content: center;\n}\n\nheader {\n  position: sticky;\n  top: 0;\n  left: 0;\n  width: 100%;\n  background-color: #b88dab;\n  display: flex;\n}\n\n.topnav {\n  overflow: hidden;\n  position: fixed;\n  padding-top: 20px;\n  width: 100%;\n  justify-content: center;\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n}\n.topnav a {\n  display: inline-block;\n  color: #f2f2f2;\n  text-align: center;\n  padding: 14px 16px;\n  text-decoration: none;\n  font-size: 17px;\n}\n.topnav a:hover {\n  background-color: #ddd;\n  color: black;\n}\n.topnav a.active {\n  background-color: #04AA6D;\n  color: white;\n}\n.topnav .icon {\n  display: none;\n}\n\n* {\n  max-width: 100%;\n}\n\n.content {\n  margin: auto;\n  width: 80%;\n  padding: 20px;\n}\n\n.first-text {\n  font-weight: bold;\n  font-size: 40px;\n}\n\n#introduction {\n  font-size: 18px;\n  display: flex;\n  justify-content: center;\n  text-align: center;\n  flex-direction: column;\n  border-radius: 25px;\n}\n\n.second-text {\n  max-width: 100%;\n  font-weight: bold;\n  font-size: 30px;\n}\n\n.model_style_1 {\n  display: flex;\n  justify-content: space-around;\n  flex-direction: row;\n  border-radius: 25px;\n}\n.model_style_1 .second-photo {\n  max-width: 100%;\n  width: 60%;\n  border-radius: 25px;\n  border: 2px solid #967388;\n}\n.model_style_1 .text {\n  text-align: center;\n  align-self: center;\n  padding: 10px;\n}\n\n.container {\n  display: flex;\n  justify-content: space-between;\n  flex-direction: row;\n}\n\n.container a {\n  width: 30%;\n  max-height: 500px;\n  padding: 20px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  text-align: center;\n  text-decoration: none;\n}\n\n.container a img {\n  border: 2px solid #967388;\n  border-radius: 25px;\n  max-height: 300px;\n  max-width: 350px;\n}\n\n.container p {\n  color: black;\n  padding: 5px;\n}\n\n.bold {\n  font-weight: bold;\n  font-size: 20px;\n}\n\n.footer {\n  display: flex;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  background-color: #b88dab;\n  color: white;\n  text-align: center;\n  flex-direction: row;\n  justify-content: space-around;\n  flex-flow: wrap;\n}\n\n.left {\n  width: 33%;\n  height: auto;\n  box-sizing: border-box;\n}\n\n.center {\n  width: 33%;\n  height: auto;\n  box-sizing: border-box;\n}\n\n.right {\n  width: 33%;\n  height: auto;\n  box-sizing: border-box;\n}\n\n@media screen and (max-width: 800px) {\n  .center {\n    width: 60%;\n  }\n  .left {\n    width: 60%;\n  }\n  .right {\n    width: 60%;\n  }\n}\n@media screen and (max-width: 1000px) {\n  .topnav a:not(:first-child) {\n    display: none;\n  }\n  .topnav a.icon {\n    display: block;\n  }\n  .responsive {\n    display: block;\n  }\n  .topnav.responsive {\n    position: relative;\n  }\n  .topnav.responsive .icon {\n    position: absolute;\n    right: 0;\n    top: 0;\n  }\n  .topnav.responsive a {\n    float: none;\n    display: block;\n    text-align: left;\n  }\n}\n@media only screen and (max-width: 700px) {\n  #introduction {\n    font-size: 24px;\n  }\n  .bold {\n    font-weight: bold;\n    font-size: 24px;\n  }\n  .model_style_1 {\n    flex-direction: column;\n  }\n  .model_style_1 .second-photo {\n    width: 90%;\n    border: 2px solid #967388;\n    margin: auto;\n  }\n  .model_style_1 p {\n    font-size: 22px;\n  }\n  .container {\n    flex-direction: column-reverse;\n    margin: 50px 0;\n    width: 90%;\n    border-radius: 25px;\n  }\n  .container a {\n    width: 80%;\n    margin: auto;\n    font-size: 22px;\n    border-radius: 25px;\n  }\n}/*# sourceMappingURL=rutina_ta.css.map */
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/css-files/rutina_ta.css b/css-files/rutina_ta.css
+--- a/css-files/rutina_ta.css	(revision 395b40c6c742f2ac27a18c210baadd69e46f05b9)
++++ b/css-files/rutina_ta.css	(date 1687426616731)
+@@ -1,233 +1,276 @@
+ body {
+-  margin: 0;
+-  padding: 0;
+-  background: linear-gradient(to bottom, #e3d1dd, white);
+-  min-height: 100vh;
++    margin: 0;
++    padding: 0;
++    background: linear-gradient(to bottom, #e3d1dd, white);
++    min-height: 100vh;
+ }
+ 
+ .logo {
+-  display: flex;
+-  list-style: none;
+-  justify-content: center;
++    display: flex;
++    list-style: none;
++    justify-content: center;
+ }
+ 
+ header {
+-  position: sticky;
+-  top: 0;
+-  left: 0;
+-  width: 100%;
+-  background-color: #b88dab;
+-  display: flex;
++    position: sticky;
++    top: 0;
++    left: 0;
++    width: 100%;
++    background-color: #b88dab;
++    display: flex;
+ }
+ 
+ .topnav {
+-  overflow: hidden;
+-  position: fixed;
+-  padding-top: 20px;
+-  width: 100%;
+-  justify-content: center;
+-  display: flex;
+-  align-items: center;
+-  flex-wrap: wrap;
++    overflow: hidden;
++    position: fixed;
++    padding-top: 20px;
++    width: 100%;
++    justify-content: center;
++    display: flex;
++    align-items: center;
++    flex-wrap: wrap;
+ }
++
+ .topnav a {
+-  display: inline-block;
+-  color: #f2f2f2;
+-  text-align: center;
+-  padding: 14px 16px;
+-  text-decoration: none;
+-  font-size: 17px;
++    display: inline-block;
++    color: #f2f2f2;
++    text-align: center;
++    padding: 14px 16px;
++    text-decoration: none;
++    font-size: 17px;
+ }
++
+ .topnav a:hover {
+-  background-color: #ddd;
+-  color: black;
++    background-color: #ddd;
++    color: black;
+ }
++
+ .topnav a.active {
+-  background-color: #04AA6D;
+-  color: white;
++    background-color: #04AA6D;
++    color: white;
+ }
++
+ .topnav .icon {
+-  display: none;
++    display: none;
+ }
+ 
+ * {
+-  max-width: 100%;
++    max-width: 100%;
+ }
+ 
+ .content {
+-  margin: auto;
+-  width: 80%;
+-  padding: 20px;
++    margin: auto;
++    width: 80%;
++    padding: 20px;
+ }
+ 
+ .first-text {
+-  font-weight: bold;
+-  font-size: 40px;
++    font-weight: bold;
++    font-size: 40px;
+ }
+ 
+ #introduction {
+-  font-size: 18px;
+-  display: flex;
+-  justify-content: center;
+-  text-align: center;
+-  flex-direction: column;
+-  border-radius: 25px;
++    font-size: 18px;
++    display: flex;
++    justify-content: center;
++    text-align: center;
++    flex-direction: column;
++    border-radius: 25px;
+ }
+ 
++#introduction img {
++    max-width: 100%;
++    width: 60%;
++    border-radius: 25px;
++    border: 2px solid #967388;
++    /* center the image */
++    align-self: center;
++}
++
+ .second-text {
+-  max-width: 100%;
+-  font-weight: bold;
+-  font-size: 30px;
++    max-width: 100%;
++    font-weight: bold;
++    font-size: 30px;
+ }
+ 
+ .model_style_1 {
+-  display: flex;
+-  justify-content: space-around;
+-  flex-direction: row;
+-  border-radius: 25px;
++    display: flex;
++    justify-content: space-around;
++    flex-direction: row;
++    border-radius: 25px;
+ }
++
+ .model_style_1 .second-photo {
+-  max-width: 100%;
+-  width: 60%;
+-  border-radius: 25px;
+-  border: 2px solid #967388;
++    max-width: 100%;
++    width: 60%;
++    border-radius: 25px;
++    border: 2px solid #967388;
+ }
++
+ .model_style_1 .text {
+-  text-align: center;
+-  align-self: center;
+-  padding: 10px;
++    text-align: center;
++    align-self: center;
++    padding: 10px;
+ }
+ 
+ .container {
+-  display: flex;
+-  justify-content: space-between;
+-  flex-direction: row;
++    display: flex;
++    justify-content: space-between;
++    flex-direction: row;
++    margin-bottom: 20px;
+ }
+ 
+ .container a {
+-  width: 30%;
+-  max-height: 500px;
+-  padding: 20px;
+-  display: flex;
+-  flex-direction: column;
+-  align-items: center;
+-  justify-content: center;
+-  text-align: center;
+-  text-decoration: none;
++    border: 2px solid #967388;
++    border-radius: 25px;
++    background-color: white;
++    width: 350px;
++    height: 550px;
++    padding: 20px;
++    display: flex;
++    flex-direction: column;
++    align-items: center;
++    justify-content: center;
++    text-align: center;
++    text-decoration: none;
++    flex-basis: 25%;
+ }
+ 
+ .container a img {
+-  border: 2px solid #967388;
+-  border-radius: 25px;
+-  max-height: 300px;
+-  max-width: 350px;
++    /*border: 2px solid #967388;*/
++    /*border-radius: 25px;*/
++    max-height: 300px;
++    max-width: 350px;
+ }
+ 
+ .container p {
+-  color: black;
+-  padding: 5px;
++    color: black;
++    padding: 5px;
+ }
+ 
+ .bold {
+-  font-weight: bold;
+-  font-size: 20px;
++    font-weight: bold;
++    font-size: 20px;
+ }
+ 
+ .footer {
+-  display: flex;
+-  left: 0;
+-  bottom: 0;
+-  width: 100%;
+-  background-color: #b88dab;
+-  color: white;
+-  text-align: center;
+-  flex-direction: row;
+-  justify-content: space-around;
+-  flex-flow: wrap;
++    display: flex;
++    left: 0;
++    bottom: 0;
++    width: 100%;
++    background-color: #b88dab;
++    color: white;
++    text-align: center;
++    flex-direction: row;
++    justify-content: space-around;
++    flex-flow: wrap;
+ }
+ 
+ .left {
+-  width: 33%;
+-  height: auto;
+-  box-sizing: border-box;
++    width: 33%;
++    height: auto;
++    box-sizing: border-box;
+ }
+ 
+ .center {
+-  width: 33%;
+-  height: auto;
+-  box-sizing: border-box;
++    width: 33%;
++    height: auto;
++    box-sizing: border-box;
+ }
+ 
+ .right {
+-  width: 33%;
+-  height: auto;
+-  box-sizing: border-box;
++    width: 33%;
++    height: auto;
++    box-sizing: border-box;
+ }
+ 
+ @media screen and (max-width: 800px) {
+-  .center {
+-    width: 60%;
+-  }
+-  .left {
+-    width: 60%;
+-  }
+-  .right {
+-    width: 60%;
+-  }
++    .center {
++        width: 60%;
++    }
++
++    .left {
++        width: 60%;
++    }
++
++    .right {
++        width: 60%;
++    }
+ }
++
+ @media screen and (max-width: 1000px) {
+-  .topnav a:not(:first-child) {
+-    display: none;
+-  }
+-  .topnav a.icon {
+-    display: block;
+-  }
+-  .responsive {
+-    display: block;
+-  }
+-  .topnav.responsive {
+-    position: relative;
+-  }
+-  .topnav.responsive .icon {
+-    position: absolute;
+-    right: 0;
+-    top: 0;
+-  }
+-  .topnav.responsive a {
+-    float: none;
+-    display: block;
+-    text-align: left;
+-  }
++    .topnav a:not(:first-child) {
++        display: none;
++    }
++
++    .topnav a.icon {
++        display: block;
++    }
++
++    .responsive {
++        display: block;
++    }
++
++    .topnav.responsive {
++        position: relative;
++    }
++
++    .topnav.responsive .icon {
++        position: absolute;
++        right: 0;
++        top: 0;
++    }
++
++    .topnav.responsive a {
++        float: none;
++        display: block;
++        text-align: left;
++    }
+ }
++
+ @media only screen and (max-width: 700px) {
+-  #introduction {
+-    font-size: 24px;
+-  }
+-  .bold {
+-    font-weight: bold;
+-    font-size: 24px;
+-  }
+-  .model_style_1 {
+-    flex-direction: column;
+-  }
+-  .model_style_1 .second-photo {
+-    width: 90%;
+-    border: 2px solid #967388;
+-    margin: auto;
+-  }
+-  .model_style_1 p {
+-    font-size: 22px;
+-  }
+-  .container {
+-    flex-direction: column-reverse;
+-    margin: 50px 0;
+-    width: 90%;
+-    border-radius: 25px;
+-  }
+-  .container a {
+-    width: 80%;
+-    margin: auto;
+-    font-size: 22px;
+-    border-radius: 25px;
+-  }
+-}/*# sourceMappingURL=rutina_ta.css.map */
+\ No newline at end of file
++    #introduction {
++        font-size: 24px;
++    }
++
++    .bold {
++        font-weight: bold;
++        font-size: 24px;
++    }
++
++    .model_style_1 {
++        flex-direction: column;
++    }
++
++    .model_style_1 .second-photo {
++        width: 90%;
++        border: 2px solid #967388;
++        margin: auto;
++    }
++
++    .model_style_1 p {
++        font-size: 22px;
++    }
++
++    .container {
++        flex-direction: column-reverse;
++        margin: 50px 0;
++        width: 90%;
++        border-radius: 25px;
++    }
++
++    .container a {
++        width: 80%;
++        height: 40%;
++        margin: auto;
++        font-size: 22px;
++        border-radius: 25px;
++    }
++
++    .container a img {
++        max-width: 70%;
++    }
++
++}
++
++/*# sourceMappingURL=rutina_ta.css.map */
+\ No newline at end of file
+Index: general_products.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/general_products.php b/general_products.php
+new file mode 100644
+--- /dev/null	(date 1687426616731)
++++ b/general_products.php	(date 1687426616731)
+@@ -0,0 +1,660 @@
++<?php
++include "php/ProductRepository.php";
++$product = new ProductRepository();
++$products = $product->getProductsByBrands();
++
++if (isset($_POST['submit'])) {
++    $products = $product->getProductsBySortGeneralProducts();
++}
++if (isset($_POST['submit_sort'])) {
++    $products = $product->getProductsByFilter();
++}
++
++?>
++<!DOCTYPE html>
++<html lang="en">
++
++<head>
++    <meta charset="UTF-8">
++    <title>Produse generale</title>
++    <meta name="viewport" content="width=device-width, initial-scale=1.0">
++    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
++    <link rel="stylesheet" href="css-files/general_products.css">
++</head>
++
++<body>
++
++<header>
++    <div class="logo">
++        <img src="src/img/logo.png" alt="Logo" width="125" height="100">
++    </div>
++
++    <div class="topnav" id="myTopnav">
++        <a href="index.html">Home</a>
++        <a href="about.html">About</a>
++        <a href="rutina_ta.php">Rutina Mea</a>
++        <a href="general_products.php">Recomandari Generale</a>
++        <a href="makeup.php">Make Up</a>
++        <a href="login_page.php">Login</a>
++        <a href="register_page.php">Register</a>
++        <a href="profile_page.php">My Account</a>
++        <a href="contact.html">Contact</a>
++        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
++            <i class="fa fa-bars"></i>
++        </a>
++    </div>
++</header>
++<div id="page">
++    <div class="left_menu">
++        <p>Tipul machiaj:</p>
++        <select name="product_type" id="product_type">
++            <option value="ten">Ten</option>
++            <option value="ochi">Ochi</option>
++            <option value="buze">Buze</option>
++        </select>
++        <p>Produse de îngrijire pentru:</p>
++        <select name="age" id="age">
++            <option value="18-35" selected>Ten tânăr: 18-35 de ani</option>
++            <option value="35+">Ten matur: peste 35 de ani</option>
++            <option value="not-spec">Nu doresc să specific</option>
++        </select>
++        <p>Tip de ten:</p>
++        <select name="ten" id="ten">
++            <option value="ten_normal">Ten normal</option>
++            <option value="ten_mixt">Ten mixt</option>
++            <option value="ten_gras">Ten gras</option>
++            <option value="ten_uscat">Ten uscat</option>
++        </select>
++        <p>Brand produse makeup:</p>
++        <select name="brand-makeup" id="brand-makeup">
++            <!-- Options will be populated dynamically -->
++        </select>
++        <p>Brand produse îngrijirea tenului:</p>
++        <select name="brand-skincare" id="brand-skincare">
++            <!-- Options will be populated dynamically -->
++        </select>
++        <p>Pret:</p>
++        <select name="pret" id="pret">
++            <option value="sub_50">Sub 50 de lei</option>
++            <option value="50_99">50-99 de lei</option>
++            <option value="100_199">100-199 de lei</option>
++            <option value="peste_200">Peste 200 de lei</option>
++        </select>
++        <p>Utilizarea produsului de makeup:</p>
++        <select name="usage_type_makeup" id="usage_type_makeup">
++            <!-- Options will be populated dynamically -->
++        </select>
++        <p>Utilizarea produsului de skincare:</p>
++        <select name="usage_type_skincare" id="usage_type_skincare">
++            <!-- Options will be populated dynamically -->
++        </select>
++        <p>Topul produselor de skincare:</p>
++        <div>
++            <select name="top" id="top">
++                <optgroup label="După vârstă:">
++                    <option value="18" selected>Ten tânăr: 18-35 de ani</option>
++                    <option value="35">Ten matur: peste 35 de ani</option>
++                    <option value="0">Oricare</option>
++                </optgroup>
++                <optgroup label="După preț: ">
++                    <option value="sub_50">Sub 50 de lei</option>
++                    <option value="50_99">50-99 de lei</option>
++                    <option value="100_199">100-199 de lei</option>
++                    <option value="peste_200">Peste 200 de lei</option>
++                </optgroup>
++            </select>
++        </div>
++
++        <div style="margin-top: 10px;">
++            <select name="format" id="format">
++                <option value="rss">RSS</option>
++                <option value="html">HTML</option>
++                <option value="pdf">PDF</option>
++            </select>
++        </div>
++        <button id="generateBtn" class="center-button">Generate</button>
++
++    </div>
++
++
++    <div class="products">
++        <div class="sort_filter">
++            <button class="button" id="filter">Filtreaza</button>
++            <button class="button" id="sort">Sorteaza</button>
++        </div>
++        <div class="products_phone" id="products_phone">
++            <?php
++            if ($products != []) {
++                foreach ($products as $prod) {
++                    echo '<div class="product">';
++                    echo '<a href="' . $prod['link'] . '">';
++                    echo '<img src="' . $prod['image_path'] . '" alt="' . $prod['description'] . '">';
++                    echo '<p>' . $prod['name'] . ' - ' . $prod['price'] . ' lei' . '</p>';
++                    echo '</a>';
++                    echo '</div>';
++                }
++            } else {
++                echo "<p>Nu exista produse pentru filtrele selectate!</p>";
++            }
++            ?>
++        </div>
++        <div id="products" class="desktop_only">
++            <!-- Products will be populated dynamically -->
++        </div>
++
++        <div id="filterModal" class="modal">
++            <div class="modal-content">
++                <span class="close">&times;</span>
++                <h1>Filtreaza Produsele Dupa:</h1>
++
++                <p></p>
++
++                <form class="form-container" method="POST" action="general_products.php">
++                    <div class="checkbox-container">
++                        <input type="checkbox" id="checkbox1" name="checkboxGroup" value="checkbox1"
++                               onchange="toggleDiv('div1', this)">
++                        <label for="checkbox1">Tipul Machiaj</label>
++                    </div>
++                    <div class="checkbox-container">
++                        <input type="checkbox" id="checkbox2" name="checkboxGroup" value="checkbox2"
++                               onchange="toggleDiv('div2', this)">
++                        <label for="checkbox2">Produse de ingrijire pentru ten:</label>
++                    </div>
++                    <div class="checkbox-container">
++                        <input type="checkbox" id="checkbox3" name="checkboxGroup" value="checkbox3"
++                               onchange="toggleDiv('div3', this)">
++                        <label for="checkbox3">Tip ten:</label>
++                    </div>
++                    <div class="checkbox-container">
++                        <input type="checkbox" id="checkbox3" name="checkboxGroup" value="checkbox4"
++                               onchange="toggleDiv('div4', this)">
++                        <label for="checkbox4">Brand produse makeup:</label>
++                    </div>
++                    <div class="checkbox-container">
++                        <input type="checkbox" id="checkbox3" name="checkboxGroup" value="checkbox5"
++                               onchange="toggleDiv('div5', this)">
++                        <label for="checkbox5">Brand produse ingrijirea tenului:</label>
++                    </div>
++                    <div class="checkbox-container">
++                        <input type="checkbox" id="checkbox3" name="checkboxGroup" value="checkbox6"
++                               onchange="toggleDiv('div6', this)">
++                        <label for="checkbox6">Pret:</label>
++                    </div>
++                    <div class="checkbox-container">
++                        <input type="checkbox" id="checkbox3" name="checkboxGroup" value="checkbox7"
++                               onchange="toggleDiv('div7', this)">
++                        <label for="checkbox7">Utilizarea produsului de makeup:</label>
++                    </div>
++                    <div class="checkbox-container">
++                        <input type="checkbox" id="checkbox3" name="checkboxGroup" value="checkbox8"
++                               onchange="toggleDiv('div8', this)">
++                        <label for="checkbox8">Utilizarea produsului de skincare:</label>
++                    </div>
++                    <div class="checkbox-container">
++                        <input type="checkbox" id="checkbox3" name="checkboxGroup" value="checkbox9"
++                               onchange="toggleDiv('div9', this)">
++                        <label for="checkbox9">Tipul produsului de skincare:</label>
++                    </div>
++                    <div id="div1" class="hidden">
++
++                        <select id="select_tip_machiaj" name="select_tip_machiaj" class="select_tip_machiaj">
++                            <option value="ten">Ten</option>
++                            <option value="ochi">Ochi</option>
++                            <option value="buze">Buze</option>
++                        </select>
++                    </div>
++                    <div id="div2" class="hidden">
++                        <select name="select_prod_ing" id="select_prod_ing" class="select_prod_ing">
++                            <option value="18" selected>Ten tânăr: 18-35 de ani</option>
++                            <option value="35">Ten matur: peste 35 de ani</option>
++                        </select>
++                    </div>
++                    <div id="div3" class="hidden">
++                        <select name="select_ten_type" id="select_ten_type" class="select_ten_type">
++                            <option value="normal">Ten normal</option>
++                            <option value="mixt">Ten mixt</option>
++                            <option value="gras">Ten gras</option>
++                            <option value="uscat">Ten uscat</option>
++                        </select>
++                    </div>
++                    <div id="div4" class="hidden">
++
++                        <select id="select_brand_makeup" name="select_brand_makeup" class="select_brand_makeup">
++                            <?php
++                            $brands = $product->getMakeupBrands();
++                            foreach ($brands as $brand) {
++                                $id = $brand['brand_id'];
++                                $name = $brand['brand_name'];
++                                echo "<option value='$id'>$name</option>";
++                            }
++                            ?>
++                        </select>
++                    </div>
++                    <div id="div5" class="hidden">
++                        <select name="select_brand_ingrijire" id="select_brand_ingrijire"
++                                class="select_brand_ingrijire">
++                            <?php
++                            $brands = $product->getSkincareBrands();
++                            foreach ($brands as $brand) {
++                                $id = $brand['brand_id'];
++                                $name = $brand['brand_name'];
++                                echo "<option value='$id'>$name</option>";
++                            }
++                            ?>
++                        </select>
++                    </div>
++                    <div id="div6" class="hidden">
++                        <select name="select_pret" id="select_pret" class="select_pret">
++                            <option value="0">Sub 50 de lei</option>
++                            <option value="50">50-99 de lei</option>
++                            <option value="100">100-199 de lei</option>
++                            <option value="200">Peste 200 de lei</option>
++                        </select>
++                    </div>
++                    <div id="div7" class="hidden">
++                        <select name="select_utilizare_makeup" id="select_utilizare_makeup"
++                                class="select_utilizare_makeup">
++                            <?php
++                            $usage_types = $product->getProductsType(1);
++                            foreach ($usage_types as $usage_type) {
++                                $id_ten = $usage_type['id_type'];
++                                $name_ten = $usage_type['name_type'];
++                                echo "<option value='$id_ten'>$name_ten</option>";
++                            }
++                            ?>
++                        </select>
++                    </div>
++                    <div id="div8" class="hidden">
++                        <select name="select_utilizare_skincare" id="select_utilizare_skincare"
++                                class="select_utilizare_skincare">
++                            <?php
++                            $usage_types = $product->getProductsType(0);
++                            foreach ($usage_types as $usage_type) {
++                                $id_ten = $usage_type['id_type'];
++                                $name_ten = $usage_type['name_type'];
++                                echo "<option value='$id_ten'>$name_ten</option>";
++                            }
++                            ?>
++                        </select>
++                    </div>
++                    <div id="div9" class="hidden">
++                        <select name="select_tipul_skincare" id="select_tipul_skincare" class="select_tipul_skincare">
++                            <optgroup label="După vârstă:">
++                                <option value="18" selected>Ten tânăr: 18-35 de ani</option>
++                                <option value="35">Ten matur: peste 35 de ani</option>
++                                <option value="0">Oricare</option>
++                            </optgroup>
++                            <optgroup label="După preț: ">
++                                <option value="0">Sub 50 de lei</option>
++                                <option value="50">50-99 de lei</option>
++                                <option value="100">100-199 de lei</option>
++                                <option value="200">Peste 200 de lei</option>
++                            </optgroup>
++                        </select>
++                    </div>
++                    <input type="submit" class="button" value="Filtreaza" name="submit">
++                </form>
++            </div>
++        </div>
++        <div id="sortModal" class="modal">
++            <div class="modal-content">
++                <span class="close">&times;</span>
++                <form class="form-container" method="POST" action="general_products.php">
++                    <h1>Sorteaza Produsele</h1>
++                    <select name="select_sort" class="select_sort">
++                        <option value="crescator">Pret crescator</option>
++                        <option value="descrescator">Pret descrescator</option>
++                        <option value="rating">Rating</option>
++                    </select>
++                    <input type="submit" class="button" value="Sorteaza" name="submit_sort">
++                </form>
++            </div>
++        </div>
++    </div>
++</div>
++<div class="footer">
++    <div class="left">
++        <p>Phone: 076755775</p>
++    </div>
++    <div class="center">
++        <p>Email: web@gmail.com</p>
++    </div>
++    <div class="right">
++        <p>Locatie: online</p>
++    </div>
++</div>
++<script>
++    function toggleDiv(divId, checkbox) {
++        var div = document.getElementById(divId);
++        var checkboxes = document.getElementsByName("checkboxGroup");
++        for (var i = 0; i < checkboxes.length; i++) {
++            if (checkboxes[i] !== checkbox) {
++                checkboxes[i].checked = false;
++                document.getElementById("div" + (i + 1)).classList.add('hidden');
++            }
++        }
++        div.classList.toggle('hidden');
++    }
++
++    // Get the modal
++    var filterModal = document.getElementById("filterModal");
++    var sortModal = document.getElementById("sortModal");
++
++    // Get the button that opens the modals
++    var filterBtn = document.getElementById("filter");
++    var sortBtn = document.getElementById("sort");
++
++    // Get the <span> elements that close the modals
++    var closeBtns = document.getElementsByClassName("close");
++
++    // Function to open a modal
++    function openModal(modal) {
++        modal.style.display = "block";
++    }
++
++    // Function to close a modal
++    function closeModal(modal) {
++        modal.style.display = "none";
++    }
++
++    // Event listener for opening the filter modal
++    filterBtn.onclick = function () {
++        openModal(filterModal);
++    };
++
++    // Event listener for opening the sort modal
++    sortBtn.onclick = function () {
++        openModal(sortModal);
++    };
++
++    // Event listener for closing the modals
++    for (var i = 0; i < closeBtns.length; i++) {
++        closeBtns[i].onclick = function () {
++            closeModal(this.parentElement.parentElement);
++        };
++    }
++
++    // When the user clicks anywhere outside the modal, close it
++    window.onclick = function (event) {
++        if (event.target == filterModal) {
++            closeModal(filterModal);
++        }
++        if (event.target == sortModal) {
++            closeModal(sortModal);
++        }
++    };
++
++    // Function to fetch data from an API
++    function fetchData(url, propertyName) {
++        return fetch(url)
++            .then(response => response.json())
++            .then(data => {
++                if (propertyName) {
++                    return data[propertyName]; // Return the property value if provided
++                }
++                return data;
++            })
++            .catch(error => console.log('Error:', error));
++    }
++
++    // Function to populate a select menu
++    function populateSelectMenu(menuId, options, propertyName) {
++        const menu = document.getElementById(menuId);
++        menu.innerHTML = '';
++
++        options.forEach(option => {
++            const menuOption = document.createElement('option');
++            menuOption.value = option[propertyName]; // Access the brand name property
++            menuOption.text = option[propertyName];
++            menu.appendChild(menuOption);
++        });
++    }
++
++    // Function to handle brand or usage type change events
++    function handleSelectChange(event, apiUrl, callback) {
++        const selectedValue = event.target.value;
++        const url = `${apiUrl}${encodeURIComponent(selectedValue)}`;
++
++        fetchData(url)
++            .then(data => {
++                callback(data);
++            });
++    }
++
++    // Function to create and append product elements
++    function createProductElements(products) {
++        const productsContainer = document.getElementById('products');
++        productsContainer.innerHTML = '';
++
++        if (products.message === "No products found for the given brand.") {
++            const message = document.createElement('p');
++            message.textContent = 'Nu există produse de makeup disponibile pentru această categorie. Vă rugăm să alegeți altă categorie.';
++            productsContainer.appendChild(message);
++        } else {
++            products.forEach(product => {
++                // Create product container
++                const productContainer = document.createElement('div');
++                productContainer.classList.add('product-container');
++
++                // Create product image
++                const productImageLink = document.createElement('a');
++                productImageLink.href = product.link;
++                const productImage = document.createElement('img');
++                productImage.classList.add('product-img');
++                productImage.src = product.image_path;
++                productImage.alt = product.name;
++
++                const productName = document.createElement('p');
++                productName.classList.add('product-name');
++                productName.textContent = product.name + " - " + product.price + " lei"
++
++                productImageLink.appendChild(productImage);
++                productImageLink.appendChild(productName);
++                productContainer.appendChild(productImageLink);
++
++                // Append product container to the products container
++                productsContainer.appendChild(productContainer);
++            });
++        }
++    }
++
++    function generateTop(topValue, formatValue) {
++        var endpoint = '';
++        if (formatValue === 'rss') {
++            if (topValue === '18') {
++                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-age-rss.php?age=18';
++            } else if (topValue === '35') {
++                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-age-rss.php?age=35';
++            } else if (topValue === '0') {
++                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-age-rss.php?age=0';
++            } else if (topValue === 'sub_50') {
++                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-price-rss.php?min_price=0&max_price=50';
++            } else if (topValue === '50_99') {
++                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-price-rss.php?min_price=50&max_price=99';
++            } else if (topValue === '100_199') {
++                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-price-rss.php?min_price=100&max_price=199';
++            } else if (topValue === 'peste_200') {
++                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-price-rss.php?min_price=200&max_price=99999';
++            }
++        } else if (formatValue === 'html') {
++            if (topValue === '18') {
++                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-age-html.php?age=18';
++            } else if (topValue === '35') {
++                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-age-html.php?age=35';
++            } else if (topValue === '0') {
++                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-age-html.php?age=0';
++            } else if (topValue === 'sub_50') {
++                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-price-html.php?min_price=0&max_price=50';
++            } else if (topValue === '50_99') {
++                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-price-html.php?min_price=50&max_price=99';
++            } else if (topValue === '100_199') {
++                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-price-html.php?min_price=100&max_price=199';
++            } else if (topValue === 'peste_200') {
++                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-price-html.php?min_price=200&max_price=99999';
++            }
++        } else if (formatValue === 'pdf') {
++            if (topValue === '18') {
++                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-age-pdf.php?age=18';
++            } else if (topValue === '35') {
++                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-age-pdf.php?age=35';
++            } else if (topValue === '0') {
++                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-age-pdf.php?age=0';
++            } else if (topValue === 'sub_50') {
++                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-price-pdf.php?min_price=0&max_price=50';
++            } else if (topValue === '50_99') {
++                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-price-pdf.php?min_price=50&max_price=99';
++            } else if (topValue === '100_199') {
++                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-price-pdf.php?min_price=100&max_price=199';
++            } else if (topValue === 'peste_200') {
++                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-price-pdf.php?min_price=200&max_price=99999';
++            }
++        }
++
++        // Open the generated endpoint in a new window or tab
++        window.open(endpoint, '_blank');
++    }
++
++    // Fetch product brands and populate the brand menu
++    fetchData('http://127.0.0.1:8000/api/find-all-brands-by-product-type.php?product_category=1', 'brands')
++        .then(data => {
++            populateSelectMenu('brand-makeup', data, 'brand_name'); // Specify the brand_name property
++            document.getElementById('product_type').dispatchEvent(new Event('change'));
++
++        });
++
++    // Fetch product brands and populate the brand menu
++    fetchData('http://127.0.0.1:8000/api/find-all-brands-by-product-type.php?product_category=0', 'brands')
++        .then(data => {
++            populateSelectMenu('brand-skincare', data, 'brand_name'); // Specify the brand_name property
++        });
++
++
++    fetchData('http://127.0.0.1:8000/api/find-product-usage-types.php?product_category=1')
++        .then(data => {
++            console.log("here", data);
++            populateSelectMenu('usage_type_makeup', data.usage_types, 'usage_type_name');
++
++        });
++
++    fetchData('http://127.0.0.1:8000/api/find-product-usage-types.php?product_category=0')
++        .then(data => {
++            console.log("here", data);
++            populateSelectMenu('usage_type_skincare', data.usage_types, 'usage_type_name');
++        });
++
++    // Event listener for brand change
++    document.getElementById('brand-makeup').addEventListener('change', function (event) {
++        handleSelectChange(event, 'http://127.0.0.1:8000/api/find-products-by-brand-and-category.php?product_category=1&brand_name=', createProductElements);
++    });
++
++    // Event listener for brand change
++    document.getElementById('brand-skincare').addEventListener('change', function (event) {
++        handleSelectChange(event, 'http://127.0.0.1:8000/api/find-products-by-brand-and-category.php?product_category=0&brand_name=', createProductElements);
++    });
++
++    // Event listener for product type change
++    document.getElementById('product_type').addEventListener('change', function (event) {
++        handleSelectChange(event, 'http://127.0.0.1:8000/api/find-makeup-products-by-type.php?type=', createProductElements);
++    });
++    // Event listener for usage type change
++    document.getElementById('usage_type_makeup').addEventListener('change', function (event) {
++        handleSelectChange(event, 'http://127.0.0.1:8000/api/find-products-by-usage-type.php?product_category=1&usage_type=', createProductElements);
++    });
++
++    // Event listener for usage type change
++    document.getElementById('usage_type_skincare').addEventListener('change', function (event) {
++        handleSelectChange(event, 'http://127.0.0.1:8000/api/find-products-by-usage-type.php?product_category=0&usage_type=', createProductElements);
++
++    });
++
++    // Event listener for age
++    document.getElementById('age').addEventListener('change', function (event) {
++        const selectedOption = event.target.value;
++        let ageValue;
++        if (selectedOption === '18-35') {
++            ageValue = 18;
++        } else if (selectedOption === '35+') {
++            ageValue = 35;
++        } else {
++            ageValue = 0;
++        }
++        const url = `http://127.0.0.1:8000/api/find-products-by-age.php?age=${ageValue}`;
++        console.log(url);
++        handleSelectChange(event, url, createProductElements);
++    });
++
++    // Event listener for skin type
++    document.getElementById('ten').addEventListener('change', function (event) {
++        const selectedOption = event.target.value;
++        let skintypeValue;
++        if (selectedOption === 'ten_normal') {
++            skintypeValue = 2;
++        } else if (selectedOption === 'ten_gras') {
++            skintypeValue = 1;
++        } else if (selectedOption === 'ten_uscat') {
++            skintypeValue = 4;
++        } else {
++            skintypeValue = 3;
++        }
++        const url = `http://127.0.0.1:8000/api/find-products-by-skintype.php?skintype=${skintypeValue}`;
++        console.log(url);
++        handleSelectChange(event, url, createProductElements);
++    });
++
++    // Event listener for price change
++    document.getElementById('pret').addEventListener('change', function (event) {
++        const selectedOption = event.target.value;
++        let minPrice, maxPrice;
++
++        // Set the minimum and maximum price range based on the selected option
++        switch (selectedOption) {
++            case 'sub_50':
++                minPrice = 0;
++                maxPrice = 50;
++                break;
++            case '50_99':
++                minPrice = 50;
++                maxPrice = 99;
++                break;
++            case '100_199':
++                minPrice = 100;
++                maxPrice = 199;
++                break;
++            case 'peste_200':
++                minPrice = 200;
++                maxPrice = 10000;
++                break;
++            default:
++                minPrice = 0;
++                maxPrice = 10000;
++                break;
++        }
++
++        // Construct the URL for the API request with the price range parameters
++        const url = `http://127.0.0.1:8000/api/find-products-by-price.php?min_price=${minPrice}&max_price=${maxPrice}`;
++
++        // Call the handleSelectChange function with the constructed URL and the createProductElements callback
++        handleSelectChange(event, url, createProductElements);
++    });
++
++    document.getElementById('generateBtn').addEventListener('click', function () {
++        var topValue = document.getElementById('top').value;
++        var formatValue = document.getElementById('format').value;
++
++        // Perform the desired action based on the selected values
++        generateTop(topValue, formatValue);
++    });
++
++
++    function myFunction() {
++        var x = document.getElementById("myTopnav");
++        if (x.className === "topnav") {
++            x.className += " responsive";
++        } else {
++            x.className = "topnav";
++        }
++    }
++</script>
++</body>
++
++</html>
+\ No newline at end of file
