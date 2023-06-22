@@ -212,7 +212,7 @@ header {
 }
 
 .carousel-btn {
-    position: absolute;
+    position: static;
     top: 50%;
     transform: translateY(-50%);
     border: none;
@@ -229,11 +229,15 @@ header {
 }
 
 .prev-btn {
-    left: 10px;
+    position: absolute;
 }
 
 .next-btn {
-    right: 10px;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    
 }
 
 .videos-container {
