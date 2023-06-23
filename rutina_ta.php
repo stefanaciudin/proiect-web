@@ -274,80 +274,6 @@
     </div>
 </div>
 <script>
-    // window.addEventListener('DOMContentLoaded', function () {
-    //     console.error("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-    //     var images = document.querySelectorAll('.container a img');
-    //
-    //     images.forEach(function (image) {
-    //         var aspectRatio = image.naturalWidth / image.naturalHeight;
-    //         var threshold = 1.2; // Adjust the threshold as desired
-    //
-    //         if (Math.abs(1 - aspectRatio) <= threshold) {
-    //             image.classList.add('square');
-    //         } else {
-    //             image.classList.add('rectangle');
-    //         }
-    //     });
-    // });
-    // function createProductElement(product) {
-    //     const productElement = document.createElement('a');
-    //     productElement.href = product.link;
-
-    //     const imgElement = document.createElement('img');
-    //     imgElement.src = product.image_path;
-    //     imgElement.alt = '';
-
-    //     const nameElement = document.createElement('p');
-    //     nameElement.textContent = product.name + " " +  product.price + " lei";
-
-
-    //     const descriptionElement = document.createElement('p');
-    //     descriptionElement.textContent = product.description;
-
-    //     productElement.appendChild(imgElement);
-    //     productElement.appendChild(nameElement);
-    //     productElement.appendChild(descriptionElement); // remove the link from here!!!
-
-    //     return productElement;
-    // }
-
-    // const containerMap = [
-    //     {container: 'product-container-1', usageTime: 'oricand', typeId: 1},
-    //     {container: 'product-container-2', usageTime: 'oricand', typeId: 3},
-    //     {container: 'product-container-3', usageTime: 'zi', typeId: 8},
-    //     {container: 'product-container-4', usageTime: 'seara', typeId: 27},
-    //     {container: 'product-container-5', usageTime: 'oricand', typeId: 4},
-    //     {container: 'product-container-6', usageTime: 'oricand', typeId: 2},
-    //     //{container: 'product-container-6', usageTime: 'seara', typeId: 7},
-    //     // Add mappings for the remaining containers, usage times, and type IDs
-    // ];
-
-    // // Loop through the container map
-    // for (const {container, usageTime, typeId} of containerMap) {
-    //     // Make API calls to retrieve product data for the current container, usage time, and type ID
-    //     fetch(`http://127.0.0.1:8000/api/get-rec-products.php?type_id=${typeId}&usage_time=${usageTime}`)
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             // Process the received product data and add to container
-    //             data.forEach(product => {
-    //                 const productElement = createProductElement(product);
-    //                 document.getElementById(container).appendChild(productElement);
-    //             });
-    //             // Check if all API requests are completed
-    //             const allRequestsCompleted = containerMap.every(({container}) =>
-    //                 document.getElementById(container).childElementCount > 0
-    //             );
-    //             // Hide the loading message if all API requests are completed
-    //             if (allRequestsCompleted) {
-    //                 // Wait for a short delay before hiding the alert
-    //                 setTimeout(() => {
-    //                     alert('Rutina ta perfectă este gata. Mulțumim pentru răbdare!');
-    //                 }, 50);
-    //             }
-    //         })
-    //         .catch(error => console.error(error));
-    // }
-
     function myFunction() {
         var x = document.getElementById("myTopnav");
         if (x.className === "topnav") {
@@ -356,8 +282,6 @@
             x.className = "topnav";
         }
     }
-
-
 </script>
 </body>
 

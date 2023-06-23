@@ -470,15 +470,9 @@ class ProductRepository
         }elseif($checkbox4){
             $selectedBox = $_POST['select5'] ?? "";
             global $conn;
-<<<<<<< Updated upstream
-
-            $videoR = new VideoRepository();
-            $video = $videoR->getVideosByOccasionArray($selectedBox);
-=======
         
             $videoR = new VideoRepository(); 
             $video = $videoR->getVideosByOccasionArray($selectedBox);  
->>>>>>> Stashed changes
             return $video;
 
 

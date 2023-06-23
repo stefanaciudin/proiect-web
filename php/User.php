@@ -12,7 +12,7 @@ class User
     protected mixed $age = 0;
     protected string $gender;
     protected mixed $skin_type = 2;
-    protected string $location;
+    protected mixed $location;
     protected string $token;
 
 
@@ -178,7 +178,7 @@ class User
     /**
      * @return string
      */
-    public function getLocation(): string
+    public function getLocation(): mixed
     {
         return $this->location;
     }
@@ -186,7 +186,7 @@ class User
     /**
      * @param string $location
      */
-    public function setLocation(string $location): void
+    public function setLocation(mixed $location): void
     {
         $this->location = $location;
     }
