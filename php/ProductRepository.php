@@ -470,9 +470,15 @@ class ProductRepository
         }elseif($checkbox4){
             $selectedBox = $_POST['select5'] ?? "";
             global $conn;
+<<<<<<< Updated upstream
 
             $videoR = new VideoRepository();
             $video = $videoR->getVideosByOccasionArray($selectedBox);
+=======
+        
+            $videoR = new VideoRepository(); 
+            $video = $videoR->getVideosByOccasionArray($selectedBox);  
+>>>>>>> Stashed changes
             return $video;
 
 
@@ -503,6 +509,7 @@ class ProductRepository
         }
         return $results;
     }
+
 
     /**
      * @return array - an array of filtered products by user requests. Made for the mobile version of the app.

@@ -140,88 +140,88 @@ if (isset($_POST['submit_sort'])) {
     </div>
 
     <div id="filterModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h1>Filtreaza Produsele</h1>
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h1>Filtreaza Produsele</h1>
 
-            <p></p>
+                <p></p>
 
-            <form class="form-container" method="POST" action="makeup.php">
-                <div class="checkbox-container">
-                    <input type="checkbox" id="checkbox4" name="checkboxGroup" value="checkbox4" onchange="toggleDiv('div4', this)">
-                    <label for="checkbox4">Selecteaza tipul de tutorial de machiaj:</label>
-                </div>
-                <select id="s1" name="select1" class="select_brands">
-                    <?php
-                    $brands = $product->getMakeUpBrands();
-                    foreach ($brands as $brand) {
-                        $id = $brand['brand_id'];
-                        $name = $brand['brand_name'];
-                        echo "<option value='$id'>$name</option>";
-                    }
-                    ?>
-                </select>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="checkbox1" name="checkboxGroup" value="checkbox1" onchange="toggleDiv('div1', this)">
-                    <label for="checkbox1">Ten</label>
-                </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="checkbox2" name="checkboxGroup" value="checkbox2" onchange="toggleDiv('div2', this)">
-                    <label for="checkbox2">Ochi</label>
-                </div>
-                <div class="checkbox-container">
-                    <input type="checkbox" id="checkbox3" name="checkboxGroup" value="checkbox3" onchange="toggleDiv('div3', this)">
-                    <label for="checkbox3">Buze</label>
-                </div>
-                <div id="div4" class="hidden">
-                    <select id="select5" name="select5" class="select_video">
-                        <option value="zi">Machiaj de zi</option>
-                        <option value="eveniment">Machiaj de eveniment</option>
-                        <option value="mireasa">Machiaj de mireasa</option>
-                        <option value="seara">Machiaj de seara</option>
-                    </select>
-                </div>
-                <div id="div1" class="hidden">
-
-                    <select id="select2" name="select2" class="select_ten">
+                <form class="form-container" method="POST" action="makeup.php">
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="checkbox4" name="checkboxGroup" value="checkbox4" onchange="toggleDiv('div4', this)">
+                        <label for="checkbox4">Selecteaza tipul de tutorial de machiaj:</label>
+                    </div>
+                    <select id="s1" name="select1" class="select_brands">
                         <?php
-                        $usage_types = $product->getUsageTypeByProductType("ten");
-                        foreach ($usage_types as $usage_type) {
-                            $id_ten = $usage_type['id_type'];
-                            $name_ten = $usage_type['name_type'];
-                            echo "<option value='$id_ten'>$name_ten</option>";
+                        $brands = $product->getMakeUpBrands();
+                        foreach ($brands as $brand) {
+                            $id = $brand['brand_id'];
+                            $name = $brand['brand_name'];
+                            echo "<option value='$id'>$name</option>";
                         }
                         ?>
                     </select>
-                </div>
-                <div id="div2" class="hidden">
-                    <select name="select3" id="s3" class="select_ochii">
-                        <?php
-                        $usage_types = $product->getUsageTypeByProductType("ochi");
-                        foreach ($usage_types as $usage_type) {
-                            $id_ten = $usage_type['id_type'];
-                            $name_ten = $usage_type['name_type'];
-                            echo "<option value='$id_ten'>$name_ten</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
-                <div id="div3" class="hidden">
-                    <select name="select4" class="select_buze">
-                        <?php
-                        $usage_types = $product->getUsageTypeByProductType("buze");
-                        foreach ($usage_types as $usage_type) {
-                            $id_ten = $usage_type['id_type'];
-                            $name_ten = $usage_type['name_type'];
-                            echo "<option value='$id_ten'>$name_ten</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
-                <input type="submit" class="button" value="Filtreaza" name="submit">
-            </form>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="checkbox1" name="checkboxGroup" value="checkbox1" onchange="toggleDiv('div1', this)">
+                        <label for="checkbox1">Ten</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="checkbox2" name="checkboxGroup" value="checkbox2" onchange="toggleDiv('div2', this)">
+                        <label for="checkbox2">Ochi</label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="checkbox3" name="checkboxGroup" value="checkbox3" onchange="toggleDiv('div3', this)">
+                        <label for="checkbox3">Buze</label>
+                    </div>
+                    <div id="div4" class="hidden">
+                        <select id="select5" name="select5" class="select_video">
+                            <option value="zi">Machiaj de zi</option>
+                            <option value="eveniment">Machiaj de eveniment</option>
+                            <option value="mireasa">Machiaj de mireasa</option>
+                            <option value="seara">Machiaj de seara</option>
+                        </select>
+                    </div>
+                    <div id="div1" class="hidden">
+
+                        <select id="select2" name="select2" class="select_ten">
+                            <?php
+                            $usage_types = $product->getUsageTypeByProductType("ten");
+                            foreach ($usage_types as $usage_type) {
+                                $id_ten = $usage_type['id_type'];
+                                $name_ten = $usage_type['name_type'];
+                                echo "<option value='$id_ten'>$name_ten</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div id="div2" class="hidden">
+                        <select name="select3" id="s3" class="select_ochii">
+                            <?php
+                            $usage_types = $product->getUsageTypeByProductType("ochi");
+                            foreach ($usage_types as $usage_type) {
+                                $id_ten = $usage_type['id_type'];
+                                $name_ten = $usage_type['name_type'];
+                                echo "<option value='$id_ten'>$name_ten</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div id="div3" class="hidden">
+                        <select name="select4" id= "select4"class="select_buze">
+                            <?php
+                            $usage_types = $product->getUsageTypeByProductType("buze");
+                            foreach ($usage_types as $usage_type) {
+                                $id_ten = $usage_type['id_type'];
+                                $name_ten = $usage_type['name_type'];
+                                echo "<option value='$id_ten'>$name_ten</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <input type="submit" class="button" value="Filtreaza" name="submit">
+                </form>
+            </div>
         </div>
-    </div>
     <div id="sortModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -249,66 +249,69 @@ if (isset($_POST['submit_sort'])) {
     </div>
 </div>
 <script>
-    function toggleDiv(divId, checkbox) {
-        var div = document.getElementById(divId);
-        var checkboxes = document.getElementsByName("checkboxGroup");
-        for (var i = 0; i < checkboxes.length; i++) {
-            if (checkboxes[i] !== checkbox) {
+        function toggleDiv(divId, checkbox) {
+            var div = document.getElementById(divId);
+            var checkboxes = document.getElementsByName("checkboxGroup");
+
+            // Dezactivează celelalte casete de bifat și ascunde selecturile corespunzătoare
+            for (var i = 0; i < checkboxes.length; i++) {
                 checkboxes[i].checked = false;
                 document.getElementById("div" + (i + 1)).classList.add('hidden');
             }
+
+            // Activează caseta de bifat curentă și afișează selectul corespunzător
+            checkbox.checked = true;
+            div.classList.remove('hidden');
         }
-        div.classList.toggle('hidden');
-    }
 
-    // Get the modal
-    var filterModal = document.getElementById("filterModal");
-    var sortModal = document.getElementById("sortModal");
 
-    // Get the button that opens the modals
-    var filterBtn = document.getElementById("filter");
-    var sortBtn = document.getElementById("sort");
+        // Get the modal
+        var filterModal = document.getElementById("filterModal");
+        var sortModal = document.getElementById("sortModal");
 
-    // Get the <span> elements that close the modals
-    var closeBtns = document.getElementsByClassName("close");
+        // Get the button that opens the modals
+        var filterBtn = document.getElementById("filter");
+        var sortBtn = document.getElementById("sort");
 
-    // Function to open a modal
-    function openModal(modal) {
-        modal.style.display = "block";
-    }
+        // Get the <span> elements that close the modals
+        var closeBtns = document.getElementsByClassName("close");
 
-    // Function to close a modal
-    function closeModal(modal) {
-        modal.style.display = "none";
-    }
+        // Function to open a modal
+        function openModal(modal) {
+            modal.style.display = "block";
+        }
 
-    // Event listener for opening the filter modal
-    filterBtn.onclick = function() {
-        openModal(filterModal);
-    };
+        // Function to close a modal
+        function closeModal(modal) {
+            modal.style.display = "none";
+        }
 
-    // Event listener for opening the sort modal
-    sortBtn.onclick = function() {
-        openModal(sortModal);
-    };
-
-    // Event listener for closing the modals
-    for (var i = 0; i < closeBtns.length; i++) {
-        closeBtns[i].onclick = function() {
-            closeModal(this.parentElement.parentElement);
+        // Event listener for opening the filter modal
+        filterBtn.onclick = function() {
+            openModal(filterModal);
         };
-    }
 
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == filterModal) {
-            closeModal(filterModal);
-        }
-        if (event.target == sortModal) {
-            closeModal(sortModal);
-        }
-    };
+        // Event listener for opening the sort modal
+        sortBtn.onclick = function() {
+            openModal(sortModal);
+        };
 
+        // Event listener for closing the modals
+        for (var i = 0; i < closeBtns.length; i++) {
+            closeBtns[i].onclick = function() {
+                closeModal(this.parentElement.parentElement);
+            };
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == filterModal) {
+                closeModal(filterModal);
+            }
+            if (event.target == sortModal) {
+                closeModal(sortModal);
+            }
+        };
 
     // Function to fetch data from an API
     function fetchData(url, propertyName) {
