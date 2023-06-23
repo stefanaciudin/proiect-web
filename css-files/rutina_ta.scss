@@ -4,13 +4,13 @@ $color_3: white;
 $background-color_1: #b88dab;
 $background-color_2: #ddd;
 $background-color_3: #04AA6D;
-$background-color_4: #d0c3c5;
+$background-color_4: white;
+
+/*# sourceMappingURL=rutina_ta.css.map */
 body {
 	margin: 0;
 	padding: 0;
-	background-color: $background-color_4;
-	margin: 0;
-	padding: 0;
+	background: linear-gradient(to bottom, #e3d1dd, white);
 	min-height: 100vh;
 }
 .logo {
@@ -74,6 +74,13 @@ header {
 	text-align: center;
 	flex-direction: column;
 	border-radius: 25px;
+	img {
+		max-width: 100%;
+		width: 60%;
+		border-radius: 25px;
+		border: 2px solid #967388;
+		align-self: center;
+	}
 }
 .second-text {
 	max-width: 100%;
@@ -101,20 +108,29 @@ header {
 	display: flex;
 	justify-content: space-between;
 	flex-direction: row;
+	margin-bottom: 20px;
 	a {
-		width: 30%;
+		border: 2px solid #967388;
+		border-radius: 25px;
+		background-color: $background-color_4;
+		width: 350px;
+		height: 550px;
 		padding: 20px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		text-decoration: none;
+		flex-basis: 25%;
 		img {
-			border: 2px solid #967388;
-			border-radius: 25px;
-			max-height: 100%;
+			max-height: 300px;
+			max-width: 350px;
 		}
 	}
 	p {
-		text-align: center;
 		color: $color_2;
 		padding: 5px;
-		text-decoration: none;
 	}
 }
 .bold {
@@ -213,9 +229,13 @@ header {
 		border-radius: 25px;
 		a {
 			width: 80%;
+			height: 40%;
 			margin: auto;
 			font-size: 22px;
 			border-radius: 25px;
+			img {
+				max-width: 70%;
+			}
 		}
 	}
 }

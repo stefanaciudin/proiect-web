@@ -41,105 +41,105 @@ if (isset($_POST['submit_sort'])) {
 </head>
 
 <body>
-    <header>
-        <div class="logo">
-            <img src="src/img/logo.png" alt="Logo" width="125" height="100">
-        </div>
-        <div class="topnav" id="myTopnav">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="rutina_ta.php">Rutina Mea</a>
-            <a href="general_products.php">Recomandari Generale</a>
-            <a href="makeup.php">Make Up</a>
-            <a href="login_page.php">Login</a>
-            <a href="register_page.php">Register</a>
-            <a href="profile_page.php">My Account</a>
-            <a href="contact.html">Contact</a>
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                <i class="fa fa-bars"></i>
-            </a>
-        </div>
-    </header>
+<header>
+    <div class="logo">
+        <img src="src/img/logo.png" alt="Logo" width="125" height="100">
+    </div>
+    <div class="topnav" id="myTopnav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="rutina_ta.php">Rutina Mea</a>
+        <a href="general_products.php">Recomandari Generale</a>
+        <a href="makeup.php">Make Up</a>
+        <a href="login_page.php">Login</a>
+        <a href="register_page.php">Register</a>
+        <a href="profile_page.php">My Account</a>
+        <a href="contact.html">Contact</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+</header>
 
-    <div id="page">
-        <div class="left_menu" id="my_left_menu">
-            <p>Brand:</p>
-            <select name="brand" id="brand">
-                <!-- Options will be populated dynamically -->
-            </select>
-            <p>Tipul produsului:</p>
-            <select name="product_type" id="product_type">
-                <option value="ten">Ten</option>
-                <option value="ochi">Ochi</option>
-                <option value="buze">Buze</option>
-            </select>
-            <p>Utilizarea produsului:</p>
-            <select name="usage_type" id="usage_type">
-                <!-- Options will be populated dynamically -->
-            </select>php -S 127.0.0.1:8000
+<div id="page">
+    <div class="left_menu" id="my_left_menu">
+        <p>Brand:</p>
+        <select name="brand" id="brand">
+            <!-- Options will be populated dynamically -->
+        </select>
+        <p>Tipul produsului:</p>
+        <select name="product_type" id="product_type">
+            <option value="ten">Ten</option>
+            <option value="ochi">Ochi</option>
+            <option value="buze">Buze</option>
+        </select>
+        <p>Utilizarea produsului:</p>
+        <select name="usage_type" id="usage_type">
+            <!-- Options will be populated dynamically -->
+        </select>
 
+    </div>
+
+    <div id="content">
+        <div class="sort_filter">
+            <button class="button" id="filter">Filtreaza</button>
+            <button class="button" id="sort">Sorteaza</button>
         </div>
-
-        <div id="content">
-            <div class="sort_filter">
-                <button class="button" id="filter">Filtreaza</button>
-                <button class="button" id="sort">Sorteaza</button>
+        <form action="makeup.php" method="POST">
+            <div class = "button_makup">
+                <input type="submit" class="button" value="Machiaj de zi" name="submit_zi">
+                <input type="submit" class="button" value="Machiaj de seara" name="submit_seara">
+                <input type="submit" class="button" value="Machiaj de eveniment" name="submit_eveniment">
+                <input type="submit" class="button" value="Machiaj de mireasa" name="submit_mireasa">
             </div>
-            <form action="makeup.php" method="POST">
-                <div class = "button_makup">
-                    <input type="submit" class="button" value="Machiaj de zi" name="submit_zi">
-                    <input type="submit" class="button" value="Machiaj de seara" name="submit_seara">
-                    <input type="submit" class="button" value="Machiaj de eveniment" name="submit_eveniment">
-                    <input type="submit" class="button" value="Machiaj de mireasa" name="submit_mireasa">
-                </div>
-            </form>
-            <div id="carousel" class="carousel">
-                <button id="prevBtn" class="carousel-btn prev-btn">&lt;</button>
-                <div id="videosContainer" class="videos-container">
-                    <?php              
-                    if ($videos != []) {
-                        foreach ($videos as $prod) {                        
-                            echo '<iframe src="'.$prod['link'].'" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';                       
-                        }
-                    } 
-                    ?>
-                </div>
-                <button id="nextBtn" class="carousel-btn next-btn">&gt;</button>
-            </div>
-
-            <div class="products_phone" id="products_phone">
+        </form>
+        <div id="carousel" class="carousel">
+            <button id="prevBtn" class="carousel-btn prev-btn">&lt;</button>
+            <div id="videosContainer" class="videos-container">
                 <?php
-                if ($products != []) {
-                    foreach ($products as $prod) {
-                        if(isset($prod['name'])){
-                            echo '<div class="product">';
-                            echo '<a href="' . $prod['link'] . '">';
-                            echo '<img src="' . $prod['image_path'] . '" alt="' . $prod['description'] . '">';
-                            echo '<p>' . $prod['name'] . ' - ' . $prod['price'] . ' lei' . '</p>';
-                            echo '</a>';
-                            echo '</div>';
-                        }elseif(isset($prod['occasion'])){
-                            echo '<div class="product">';
-                            echo '<iframe width="400" height="315" src="'.$prod['link'].'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
-                            echo '</div>';
-                        }
-
+                if ($videos != []) {
+                    foreach ($videos as $prod) {
+                        echo '<iframe src="'.$prod['link'].'" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
                     }
-                } else {
-                    echo "<p>Nu exista produse pentru filtrele selectate!</p>";
                 }
                 ?>
             </div>
-            <!-- <div class="video_mobile">
-
-            </div> -->
-
-            <div id="products" class="desktop_only">
-                <!-- Products will be populated dynamically -->
-            </div>
+            <button id="nextBtn" class="carousel-btn next-btn">&gt;</button>
         </div>
 
-        <div id="filterModal" class="modal">
+        <div class="products_phone" id="products_phone">
+            <?php
+            if ($products != []) {
+                foreach ($products as $prod) {
+                    if(isset($prod['name'])){
+                        echo '<div class="product">';
+                        echo '<a href="' . $prod['link'] . '">';
+                        echo '<img src="' . $prod['image_path'] . '" alt="' . $prod['description'] . '">';
+                        echo '<p>' . $prod['name'] . ' - ' . $prod['price'] . ' lei' . '</p>';
+                        echo '</a>';
+                        echo '</div>';
+                    }elseif(isset($prod['occasion'])){
+                        echo '<div class="product">';
+                        echo '<iframe width="400" height="315" src="'.$prod['link'].'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+                        echo '</div>';
+                    }
+
+                }
+            } else {
+                echo "<p>Nu exista produse pentru filtrele selectate!</p>";
+            }
+            ?>
+        </div>
+        <!-- <div class="video_mobile">
+
+        </div> -->
+
+        <div id="products" class="desktop_only">
+            <!-- Products will be populated dynamically -->
+        </div>
+    </div>
+
+    <div id="filterModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <h1>Filtreaza Produsele</h1>
@@ -207,7 +207,7 @@ if (isset($_POST['submit_sort'])) {
                         </select>
                     </div>
                     <div id="div3" class="hidden">
-                        <select name="select4" class="select_buze">
+                        <select name="select4" id= "select4"class="select_buze">
                             <?php
                             $usage_types = $product->getUsageTypeByProductType("buze");
                             foreach ($usage_types as $usage_type) {
@@ -222,44 +222,48 @@ if (isset($_POST['submit_sort'])) {
                 </form>
             </div>
         </div>
-        <div id="sortModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <form class="form-container" method="POST" action="makeup.php">
-                    <h1>Sorteaza Produsele</h1>
-                    <select name="select_sort" class="select_sort">
-                        <option value="crescator">Pret crescator</option>
-                        <option value="descrescator">Pret descrescator</option>
-                        <option value="rating">Rating</option>
-                    </select>
-                    <input type="submit" class="button" value="Sorteaza" name="submit_sort">
-                </form>
-            </div>
+    <div id="sortModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form class="form-container" method="POST" action="makeup.php">
+                <h1>Sorteaza Produsele</h1>
+                <select name="select_sort" class="select_sort">
+                    <option value="crescator">Pret crescator</option>
+                    <option value="descrescator">Pret descrescator</option>
+                    <option value="rating">Rating</option>
+                </select>
+                <input type="submit" class="button" value="Sorteaza" name="submit_sort">
+            </form>
         </div>
     </div>
-    <div class="footer">
-        <div class="left">
-            <p>Phone: 076755775</p>
-        </div>
-        <div class="center">
-            <p>Email: web@gmail.com</p>
-        </div>
-        <div class="right">
-            <p>Locatie: online</p>
-        </div>
+</div>
+<div class="footer">
+    <div class="left">
+        <p>Phone: 076755775</p>
     </div>
-    <script>
+    <div class="center">
+        <p>Email: web@gmail.com</p>
+    </div>
+    <div class="right">
+        <p>Locatie: online</p>
+    </div>
+</div>
+<script>
         function toggleDiv(divId, checkbox) {
             var div = document.getElementById(divId);
             var checkboxes = document.getElementsByName("checkboxGroup");
+
+            // Dezactivează celelalte casete de bifat și ascunde selecturile corespunzătoare
             for (var i = 0; i < checkboxes.length; i++) {
-                if (checkboxes[i] !== checkbox) {
-                    checkboxes[i].checked = false;
-                    document.getElementById("div" + (i + 1)).classList.add('hidden');
-                }
+                checkboxes[i].checked = false;
+                document.getElementById("div" + (i + 1)).classList.add('hidden');
             }
-            div.classList.toggle('hidden');
+
+            // Activează caseta de bifat curentă și afișează selectul corespunzător
+            checkbox.checked = true;
+            div.classList.remove('hidden');
         }
+
 
         // Get the modal
         var filterModal = document.getElementById("filterModal");
@@ -309,157 +313,156 @@ if (isset($_POST['submit_sort'])) {
             }
         };
 
-
-        // Function to fetch data from an API
-        function fetchData(url, propertyName) {
-            return fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    if (propertyName) {
-                        return data[propertyName]; // Return the property value if provided
-                    }
-                    return data;
-                })
-                .catch(error => console.log('Error:', error));
-        }
-
-        // Function to populate a select menu
-        function populateSelectMenu(menuId, options, propertyName) {
-            const menu = document.getElementById(menuId);
-            menu.innerHTML = '';
-
-            options.forEach(option => {
-                const menuOption = document.createElement('option');
-                menuOption.value = option[propertyName]; // Access the brand name property
-                menuOption.text = option[propertyName];
-                menu.appendChild(menuOption);
-            });
-        }
-
-        // Function to handle brand or usage type change events
-        function handleSelectChange(event, apiUrl, callback) {
-            const selectedValue = event.target.value;
-            const url = `${apiUrl}${encodeURIComponent(selectedValue)}`;
-
-            fetchData(url)
-                .then(data => {
-                    callback(data);
-                });
-        }
-
-        // Function to create and append product elements
-        function createProductElements(products) {
-            const productsContainer = document.getElementById('products');
-            productsContainer.innerHTML = '';
-
-            if (products.message === "No products found for the given brand.") {
-                const message = document.createElement('p');
-                message.textContent = 'Nu există produse de makeup disponibile pentru această categorie. Vă rugăm să alegeți altă categorie.';
-                productsContainer.appendChild(message);
-            } else {
-                products.forEach(product => {
-                    // Create product container
-                    const productContainer = document.createElement('div');
-                    productContainer.classList.add('product-container');
-
-                    // Create product image
-                    const productImageLink = document.createElement('a');
-                    productImageLink.href = product.link;
-                    const productImage = document.createElement('img');
-                    productImage.classList.add('product-img');
-                    productImage.src = product.image_path;
-                    productImage.alt = product.name;
-
-                    const productName = document.createElement('p');
-                    productName.classList.add('product-name');
-                    productName.textContent = product.name + " - " + product.price + " lei"
-
-
-                    productImageLink.appendChild(productImage);
-                    productImageLink.appendChild(productName);
-                    productContainer.appendChild(productImageLink);
-
-                    // Create product name
-                    // const productName = document.createElement('p');
-                    // productName.classList.add('product-name');
-                    // productName.textContent = product.name + " - " + product.price + " lei"
-                    // productContainer.appendChild(productName);
-
-                    // Append product container to the products container
-                    productsContainer.appendChild(productContainer);
-                });
-            }
-        }
-
-        // Fetch product brands and populate the brand menu
-        fetchData('http://127.0.0.1:8000/api/find-all-brands-by-product-type.php?product_category=1', 'brands')
+    // Function to fetch data from an API
+    function fetchData(url, propertyName) {
+        return fetch(url)
+            .then(response => response.json())
             .then(data => {
-                populateSelectMenu('brand', data, 'brand_name'); // Specify the brand_name property
+                if (propertyName) {
+                    return data[propertyName]; // Return the property value if provided
+                }
+                return data;
+            })
+            .catch(error => console.log('Error:', error));
+    }
 
-                // Trigger the change event for the brand menu to load products of the first brand
-                document.getElementById('brand').dispatchEvent(new Event('change'));
-            });
+    // Function to populate a select menu
+    function populateSelectMenu(menuId, options, propertyName) {
+        const menu = document.getElementById(menuId);
+        menu.innerHTML = '';
 
-        // Fetch product usage types and populate the usage type menu
-        fetchData('http://127.0.0.1:8000/api/find-product-usage-types.php?product_category=1')
+        options.forEach(option => {
+            const menuOption = document.createElement('option');
+            menuOption.value = option[propertyName]; // Access the brand name property
+            menuOption.text = option[propertyName];
+            menu.appendChild(menuOption);
+        });
+    }
+
+    // Function to handle brand or usage type change events
+    function handleSelectChange(event, apiUrl, callback) {
+        const selectedValue = event.target.value;
+        const url = `${apiUrl}${encodeURIComponent(selectedValue)}`;
+
+        fetchData(url)
             .then(data => {
-                console.log("here", data);
-                populateSelectMenu('usage_type', data.usage_types, 'usage_type_name');
+                callback(data);
             });
+    }
 
-        // Event listener for brand change
-        document.getElementById('brand').addEventListener('change', function(event) {
-            handleSelectChange(event, 'http://127.0.0.1:8000/api/find-products-by-brand-and-category.php?product_category=1&brand_name=', createProductElements);
-        });
+    // Function to create and append product elements
+    function createProductElements(products) {
+        const productsContainer = document.getElementById('products');
+        productsContainer.innerHTML = '';
 
-        // Event listener for product type change
-        document.getElementById('product_type').addEventListener('change', function(event) {
-            handleSelectChange(event, 'http://127.0.0.1:8000/api/find-makeup-products-by-type.php?type=', createProductElements);
-        });
+        if (products.message === "No products found for the given brand.") {
+            const message = document.createElement('p');
+            message.textContent = 'Nu există produse de makeup disponibile pentru această categorie. Vă rugăm să alegeți altă categorie.';
+            productsContainer.appendChild(message);
+        } else {
+            products.forEach(product => {
+                // Create product container
+                const productContainer = document.createElement('div');
+                productContainer.classList.add('product-container');
 
-        // Event listener for usage type change
-        document.getElementById('usage_type').addEventListener('change', function(event) {
-            handleSelectChange(event, 'http://127.0.0.1:8000/api/find-products-by-usage-type.php?product_category=1&usage_type=', createProductElements);
-        });
+                // Create product image
+                const productImageLink = document.createElement('a');
+                productImageLink.href = product.link;
+                const productImage = document.createElement('img');
+                productImage.classList.add('product-img');
+                productImage.src = product.image_path;
+                productImage.alt = product.name;
 
-        function myFunction() {
-            var x = document.getElementById("myTopnav");
-            if (x.className === "topnav") {
-                x.className += " responsive";
-            } else {
-                x.className = "topnav";
-            }
+                const productName = document.createElement('p');
+                productName.classList.add('product-name');
+                productName.textContent = product.name + " - " + product.price + " lei"
+
+
+                productImageLink.appendChild(productImage);
+                productImageLink.appendChild(productName);
+                productContainer.appendChild(productImageLink);
+
+                // Create product name
+                // const productName = document.createElement('p');
+                // productName.classList.add('product-name');
+                // productName.textContent = product.name + " - " + product.price + " lei"
+                // productContainer.appendChild(productName);
+
+                // Append product container to the products container
+                productsContainer.appendChild(productContainer);
+            });
         }
-    </script>
+    }
 
-    <script>
-        // Get carousel elements
-        const carousel = document.getElementById('carousel');
-        const videosContainer = document.getElementById('videosContainer');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
+    // Fetch product brands and populate the brand menu
+    fetchData('http://127.0.0.1:8000/api/find-all-brands-by-product-type.php?product_category=1', 'brands')
+        .then(data => {
+            populateSelectMenu('brand', data, 'brand_name'); // Specify the brand_name property
 
-        // Set initial position of the carousel
-        let currentPosition = 0;
-
-        // Move carousel to the previous position
-        prevBtn.addEventListener('click', () => {
-            currentPosition += 300; // Adjust the value based on the width of the video iframe
-            if (currentPosition > 0) {
-                currentPosition = -(videosContainer.scrollWidth - carousel.offsetWidth);
-            }
-            videosContainer.style.transform = `translateX(${currentPosition}px)`;
+            // Trigger the change event for the brand menu to load products of the first brand
+            document.getElementById('brand').dispatchEvent(new Event('change'));
         });
 
-        // Move carousel to the next position
-        nextBtn.addEventListener('click', () => {
-            currentPosition -= 300; // Adjust the value based on the width of the video iframe
-            if (Math.abs(currentPosition) > videosContainer.scrollWidth - carousel.offsetWidth) {
-                currentPosition = 0;
-            }
-            videosContainer.style.transform = `translateX(${currentPosition}px)`;
+    // Fetch product usage types and populate the usage type menu
+    fetchData('http://127.0.0.1:8000/api/find-product-usage-types.php?product_category=1')
+        .then(data => {
+            console.log("here", data);
+            populateSelectMenu('usage_type', data.usage_types, 'usage_type_name');
         });
-    </script>
+
+    // Event listener for brand change
+    document.getElementById('brand').addEventListener('change', function(event) {
+        handleSelectChange(event, 'http://127.0.0.1:8000/api/find-products-by-brand-and-category.php?product_category=1&brand_name=', createProductElements);
+    });
+
+    // Event listener for product type change
+    document.getElementById('product_type').addEventListener('change', function(event) {
+        handleSelectChange(event, 'http://127.0.0.1:8000/api/find-makeup-products-by-type.php?type=', createProductElements);
+    });
+
+    // Event listener for usage type change
+    document.getElementById('usage_type').addEventListener('change', function(event) {
+        handleSelectChange(event, 'http://127.0.0.1:8000/api/find-products-by-usage-type.php?product_category=1&usage_type=', createProductElements);
+    });
+
+    function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+            x.className += " responsive";
+        } else {
+            x.className = "topnav";
+        }
+    }
+</script>
+
+<script>
+    // Get carousel elements
+    const carousel = document.getElementById('carousel');
+    const videosContainer = document.getElementById('videosContainer');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    // Set initial position of the carousel
+    let currentPosition = 0;
+
+    // Move carousel to the previous position
+    prevBtn.addEventListener('click', () => {
+        currentPosition += 300; // Adjust the value based on the width of the video iframe
+        if (currentPosition > 0) {
+            currentPosition = -(videosContainer.scrollWidth - carousel.offsetWidth);
+        }
+        videosContainer.style.transform = `translateX(${currentPosition}px)`;
+    });
+
+    // Move carousel to the next position
+    nextBtn.addEventListener('click', () => {
+        currentPosition -= 300; // Adjust the value based on the width of the video iframe
+        if (Math.abs(currentPosition) > videosContainer.scrollWidth - carousel.offsetWidth) {
+            currentPosition = 0;
+        }
+        videosContainer.style.transform = `translateX(${currentPosition}px)`;
+    });
+</script>
 
 </body>
 

@@ -504,6 +504,7 @@ class ProductRepository
         return $results;
     }
 
+
     /**
      * @return array - an array of filtered products by user requests. Made for the mobile version of the app.
      */

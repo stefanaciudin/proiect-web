@@ -452,12 +452,6 @@ if (isset($_POST['submit_sort'])) {
                 productImageLink.appendChild(productName);
                 productContainer.appendChild(productImageLink);
 
-                // Create product name
-                // const productName = document.createElement('p');
-                // productName.classList.add('product-name');
-                // productName.textContent = product.name + " - " + product.price + " lei"
-                // productContainer.appendChild(productName);
-
                 // Append product container to the products container
                 productsContainer.appendChild(productContainer);
             });
