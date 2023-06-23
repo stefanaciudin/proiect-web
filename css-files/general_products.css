@@ -104,7 +104,8 @@
 .select_pret,
 .select_utilizare_makeup,
 .select_utilizare_skincare,
-.select_tipul_skincare {
+.select_tipul_skincare,
+.select_sort {
   border: 2px solid #967388;
   border-radius: 10px;
   padding: 5px;
