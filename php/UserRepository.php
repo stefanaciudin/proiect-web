@@ -1,6 +1,7 @@
 <?php
-include_once 'User.php';
-include_once 'bd.php';
+include 'User.php';
+include 'bd.php';
+
 
 class UserRepository
 {
@@ -27,6 +28,26 @@ class UserRepository
             $stmt->close();
             return false;
         }
+    }
+    public static function getAllUsers(): array
+    {
+        global $conn;
+        $stmt = $conn->prepare("SELECT user_id, name, surname, username, email FROM users ORDER BY name LIMIT 10");
+        $stmt->execute();
+        $stmt->bind_result($user_id, $name, $surname, $username, $email);
+
+        $users = array();
+        while ($stmt->fetch()) {
+            $user = array(
+                'user_id' => $user_id,
+                'name' => $name,
+                'surname' => $surname,
+                'username' => $username,
+                'email' => $email
+            );
+            $users[] = $user;
+        }
+        return $users;
     }
 
     /**
@@ -96,10 +117,10 @@ class UserRepository
     public static function findUserById($id): array
     {
         global $conn;
-        $stmt = $conn->prepare("SELECT user_id, name, surname, username, email, password, age, skintype_id, gender, location FROM users WHERE user_id = ?");
+        $stmt = $conn->prepare("SELECT user_id, name, surname, username, email, password, age, skintype_id, gender, location, admin FROM users WHERE user_id = ?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
-        $stmt->bind_result($user_id, $name, $surname, $username, $email, $password, $age, $skintype_id, $gender, $location);
+        $stmt->bind_result($user_id, $name, $surname, $username, $email, $password, $age, $skintype_id, $gender, $location, $admin);
         while ($stmt->fetch()) {
             $user = array(
                 'id' => $user_id,
@@ -111,7 +132,8 @@ class UserRepository
                 'age' => $age,
                 'skintype_id' => $skintype_id,
                 'gender' => $gender,
-                'location' => $location
+                'location' => $location,
+                'admin' => $admin
             );
         }
         $stmt->close();
@@ -188,13 +210,15 @@ class UserRepository
             $row["username"],
             $row["email"],
             $row["password"],
-            $row["token"]
+            $row["token"],
+            $row["admin"]
         );
         $user->setUserId($row["user_id"]);
         $user->setAge(static::mapAgeFromDatabase($row['age']));
         $user->setGender(static::mapGenderFromDatabase($row['gender']));
         $user->setSkinType(static::mapSkinTypeFromDatabase($row['skintype_id']));
         $user->setLocation($row['location']);
+        $user->setAdmin($row['admin']);
         $stmt->close();
         return $user;
     }
@@ -208,15 +232,9 @@ class UserRepository
         global $conn;
         $stmt = $conn->prepare("DELETE FROM users WHERE user_id = ?");
         $stmt->bind_param("i", $userId);
-
-        if ($stmt->execute()) {
-            $stmt->close();
-            return true;
-        } else {
-            $stmt->close();
-            return false;
-        }
+        return $stmt->execute();
     }
+    
 
     /**
      * @param $ageFromDatabase - age extracted from database
@@ -235,10 +253,10 @@ class UserRepository
     }
 
     /**
-     * @param mixed $genderFromDatabase - gender from database
+     * @param  $genderFromDatabase - gender from database
      * @return string - gender for form usage
      */
-    private static function mapGenderFromDatabase(mixed $genderFromDatabase): string
+    private static function mapGenderFromDatabase( $genderFromDatabase): string
     {
         if ($genderFromDatabase === 'm') {
             return 'masc';
@@ -250,19 +268,23 @@ class UserRepository
     }
 
     /**
-     * @param mixed $skinTypeFromDatabase - skintype from database
+     * @param  $skinTypeFromDatabase - skintype from database
      * @return string - actual skintype
      */
 
-    private static function mapSkinTypeFromDatabase(mixed $skinTypeFromDatabase): string
+    private static function mapSkinTypeFromDatabase( $skinTypeFromDatabase): string
     {
-        return match ($skinTypeFromDatabase) {
-            2 => 'normal',
-            1 => 'oily',
-            3 => 'combination',
-            4 => 'dry',
-            default => 'not-spec',
-        };
+        if($skinTypeFromDatabase)
+        {
+            return match ($skinTypeFromDatabase) {
+                2 => 'normal',
+                1 => 'oily',
+                3 => 'combination',
+                4 => 'dry',
+                default => 'not-spec',
+            }; 
+        }
+        return 'not-spec';
     }
 
 }

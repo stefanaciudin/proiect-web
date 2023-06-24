@@ -1,5 +1,5 @@
 <?php
-function getArr(mixed $product): array
+function getArr( $product): array
 {
     return array(
         'product_id' => $product->getProductId(),

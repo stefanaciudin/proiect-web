@@ -20,13 +20,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['name'] = $user->getName();
         $_SESSION['token'] = $user->getToken();
         $_SESSION['user'] = UserRepository::findUserById($_SESSION['user_id']);
-        session_write_close();
+        if($_SESSION['user']['admin']){
+            header('Location: ../admin/index.php');
+            exit();
+        }
+        
         header('Location: ../profile_page.php');
+        exit();
     } else {
         $_SESSION['error_message'] = 'Username sau parolă incorecte';
         error_log($_SESSION['error_message']);
         session_write_close();
         header('Location: ../login_page.php');
+        exit();
     }
-    exit();
+
 }

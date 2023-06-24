@@ -1,11 +1,16 @@
 <?php
-$user='databaseAdmin';
-$pass='Parola1234Server';
+$servername = "localhost";
+$dbname = "makeupapp_database_web";
+$username = "makeupapp_makeupapp";
+$password = "Makeupapp21!";
+
 $conn = mysqli_init();
-mysqli_ssl_set($conn, NULL, NULL, "DigiCertGlobalRootCA.crt.pem", NULL, NULL);
-mysqli_real_connect($conn, 'coolmakeupserver.mysql.database.azure.com', $user, $pass, 'database_web', 3306, MYSQLI_CLIENT_SSL,MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);
+mysqli_real_connect($conn, $servername, $username, $password, $dbname);
+
 // if ($conn->connect_error) {
-//    echo "Connection failed: " . $conn->connect_error;
+//     die('Connection failed: ' . $conn->connect_error);
 // } else {
-//    echo "Successfully connected to DB ";
+//     echo 'Successfully connected to the database.';
 // }
+
+?>

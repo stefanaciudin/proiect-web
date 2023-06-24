@@ -1,12 +1,13 @@
 <?php
-include_once 'bd.php';
-include_once 'UserRepository.php';
+include_once './php/bd.php';
+include_once './php/UserRepository.php';
 session_start();
 
 $name = $_POST['firstname'];
 $surname = $_POST['lastname'];
 $username = $_POST['username'];
 $email = $_POST['email'];
+$admin = $_POST['is_admin'];
 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 $token = bin2hex(random_bytes(50));
 error_log("Token:" . $token);
@@ -42,7 +43,7 @@ if (UserRepository::findByUsername($username)) {
     exit();
 }
 
-$user = new User($name, $surname, $username, $email, $password, $token);
+$user = new User($name, $surname, $username, $email, $password, $token, $admin);
 
 // save the user to the database
 
@@ -54,12 +55,12 @@ if (UserRepository::save($user)) {
     $_SESSION['token'] = $user->getToken();
     // redirect the user to the profile page
     session_write_close();
-    header('Location: ../profile_page.php');
+    header('Location: ../utilizatori.php');
 } else {
     $error_message = 'Error while saving user';
     $_SESSION['error_message'] = $error_message;
     error_log($error_message);
     session_write_close();
-    header('Location: ../register_page.php');
+    header('Location: ../adauga_utilizator.php');
     exit();
 }

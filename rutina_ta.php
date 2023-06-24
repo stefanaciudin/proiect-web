@@ -1,9 +1,12 @@
+<?php 
+include './php/UserRepository.php';
+session_start();
+
+?>
 <!doctype html>
 <html lang="ro">
 <head>
     <?php
-    include "php/UserRepository.php";
-    session_start();
     $user = [];
     $products_1 = [];
     $products_2 = [];

@@ -1,22 +1,22 @@
 <?php
 
-
 class User
 {
-    protected int $user_id;
-    protected string $name;
-    protected string $surname;
-    protected string $username;
-    protected string $email;
-    protected string $password;
-    protected mixed $age = 0;
-    protected string $gender;
-    protected mixed $skin_type = 2;
-    protected mixed $location;
-    protected string $token;
+    public $user_id;
+    public $name;
+    public $surname;
+    public $username;
+    public $email;
+    public $password;
+    public $age = 0;
+    public $gender;
+    public $skin_type = 2;
+    public $location;
+    public $token;
+    public $admin = 0;
 
 
-    public function __construct($name, $surname, $username, $email, $password, $token)
+    public function __construct($name, $surname, $username, $email, $password, $token, $admin)
     {
         $this->name = $name;
         $this->username = $username;
@@ -24,6 +24,7 @@ class User
         $this->email = $email;
         $this->password = $password;
         $this->token = $token;
+        $this->admin = $admin;
     }
 
     public function __toString(): string
@@ -128,17 +129,17 @@ class User
     }
 
     /**
-     * @return mixed
+     * @return 
      */
-    public function getAge(): mixed
+    public function getAge() 
     {
         return $this->age;
     }
 
     /**
-     * @param mixed $age
+     * @param $age
      */
-    public function setAge(mixed $age): void
+    public function setAge($age): void
     {
         $this->age = $age;
     }
@@ -160,17 +161,17 @@ class User
     }
 
     /**
-     * @return mixed
+     * @return 
      */
-    public function getSkinType(): mixed
+    public function getSkinType()
     {
         return $this->skin_type;
     }
 
     /**
-     * @param mixed $skin_type
+     * @param  $skin_type
      */
-    public function setSkinType(mixed $skin_type): void
+    public function setSkinType( $skin_type): void
     {
         $this->skin_type = $skin_type;
     }
@@ -178,7 +179,7 @@ class User
     /**
      * @return string
      */
-    public function getLocation(): mixed
+    public function getLocation()
     {
         return $this->location;
     }
@@ -186,7 +187,7 @@ class User
     /**
      * @param string $location
      */
-    public function setLocation(mixed $location): void
+    public function setLocation( $location): void
     {
         $this->location = $location;
     }
@@ -207,4 +208,11 @@ class User
         $this->token = $token;
     }
 
+        /**
+     * @param int $admin
+     */
+    public function setAdmin(int $admin): void
+    {
+        $this->admin = $admin;
+    }
 }

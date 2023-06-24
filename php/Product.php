@@ -1,21 +1,20 @@
 <?php
-
 class Product
 {
-    protected int $product_id;
-    protected string $name;
-    protected float $price;
-    protected string $image_path;
-    protected int $is_makeup;
-    protected int $age;
-    protected int $brand_id;
-    protected int $skintype_id;
-    protected int $type_id;
-    protected mixed $ingredients;
-    protected mixed $description;
-    protected mixed $how_to_use;
-    protected string $link;
-    protected int $times_recommended;
+    public $product_id;
+    public $name;
+    public $price;
+    public $image_path;
+    public $is_makeup;
+    public $age;
+    public $brand_id;
+    public $skintype_id;
+    public $type_id;
+    public $ingredients;
+    public $description;
+    public $how_to_use;
+    public $link;
+    public $times_recommended;
 
     /**
      * @return int
@@ -164,7 +163,7 @@ class Product
     /**
      * @return string
      */
-    public function getIngredients(): mixed
+    public function getIngredients()
     {
         return $this->ingredients;
     }
@@ -172,7 +171,7 @@ class Product
     /**
      * @param string $ingredients
      */
-    public function setIngredients(mixed $ingredients): void
+    public function setIngredients( $ingredients): void
     {
         $this->ingredients = $ingredients;
     }
@@ -180,7 +179,7 @@ class Product
     /**
      * @return string
      */
-    public function getDescription(): mixed
+    public function getDescription()
     {
         return $this->description;
     }
@@ -188,7 +187,7 @@ class Product
     /**
      * @param string $description
      */
-    public function setDescription(mixed $description): void
+    public function setDescription( $description): void
     {
         $this->description = $description;
     }
@@ -196,7 +195,7 @@ class Product
     /**
      * @return string
      */
-    public function getHowToUse(): mixed
+    public function getHowToUse()
     {
         return $this->how_to_use;
     }
@@ -204,7 +203,7 @@ class Product
     /**
      * @param string $how_to_use
      */
-    public function setHowToUse(mixed $how_to_use): void
+    public function setHowToUse( $how_to_use): void
     {
         $this->how_to_use = $how_to_use;
     }

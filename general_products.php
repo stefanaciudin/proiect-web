@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "php/ProductRepository.php";
 $product = new ProductRepository();
 $products = $product->getProductsByBrands();
@@ -462,51 +463,51 @@ if (isset($_POST['submit_sort'])) {
         var endpoint = '';
         if (formatValue === 'rss') {
             if (topValue === '18') {
-                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-age-rss.php?age=18';
+                endpoint = 'https://makeupapp.ro/api/top/find-most-rec-products-by-age-rss.php?age=18';
             } else if (topValue === '35') {
-                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-age-rss.php?age=35';
+                endpoint = 'https://makeupapp.ro/api/top/find-most-rec-products-by-age-rss.php?age=35';
             } else if (topValue === '0') {
-                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-age-rss.php?age=0';
+                endpoint = 'https://makeupapp.ro/api/top/find-most-rec-products-by-age-rss.php?age=0';
             } else if (topValue === 'sub_50') {
-                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-price-rss.php?min_price=0&max_price=50';
+                endpoint = 'https://makeupapp.ro/api/top/find-most-rec-products-by-price-rss.php?min_price=0&max_price=50';
             } else if (topValue === '50_99') {
-                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-price-rss.php?min_price=50&max_price=99';
+                endpoint = 'https://makeupapp.ro/api/top/find-most-rec-products-by-price-rss.php?min_price=50&max_price=99';
             } else if (topValue === '100_199') {
-                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-price-rss.php?min_price=100&max_price=199';
+                endpoint = 'https://makeupapp.ro/api/top/find-most-rec-products-by-price-rss.php?min_price=100&max_price=199';
             } else if (topValue === 'peste_200') {
-                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-price-rss.php?min_price=200&max_price=99999';
+                endpoint = 'https://makeupapp.ro/api/top/find-most-rec-products-by-price-rss.php?min_price=200&max_price=99999';
             }
         } else if (formatValue === 'html') {
             if (topValue === '18') {
-                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-age-html.php?age=18';
+                endpoint = 'https://makeupapp.ro/api/top/find-most-rec-products-by-age-html.php?age=18';
             } else if (topValue === '35') {
-                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-age-html.php?age=35';
+                endpoint = 'https://makeupapp.ro/api/top/find-most-rec-products-by-age-html.php?age=35';
             } else if (topValue === '0') {
-                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-age-html.php?age=0';
+                endpoint = 'https://makeupapp.ro/api/top/find-most-rec-products-by-age-html.php?age=0';
             } else if (topValue === 'sub_50') {
-                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-price-html.php?min_price=0&max_price=50';
+                endpoint = 'https://makeupapp.ro/api/top/find-most-rec-products-by-price-html.php?min_price=0&max_price=50';
             } else if (topValue === '50_99') {
-                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-price-html.php?min_price=50&max_price=99';
+                endpoint = 'https://makeupapp.ro/api/top/find-most-rec-products-by-price-html.php?min_price=50&max_price=99';
             } else if (topValue === '100_199') {
-                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-price-html.php?min_price=100&max_price=199';
+                endpoint = 'https://makeupapp.ro/api/top/find-most-rec-products-by-price-html.php?min_price=100&max_price=199';
             } else if (topValue === 'peste_200') {
-                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-price-html.php?min_price=200&max_price=99999';
+                endpoint = 'https://makeupapp.ro/api/top/find-most-rec-products-by-price-html.php?min_price=200&max_price=99999';
             }
         } else if (formatValue === 'pdf') {
             if (topValue === '18') {
-                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-age-pdf.php?age=18';
+                endpoint = 'https://makeupapp.ro/api/top/find-most-rec-products-by-age-pdf.php?age=18';
             } else if (topValue === '35') {
-                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-age-pdf.php?age=35';
+                endpoint = 'https://makeupapp.ro/api/top/find-most-rec-products-by-age-pdf.php?age=35';
             } else if (topValue === '0') {
-                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-age-pdf.php?age=0';
+                endpoint = 'https://makeupapp.ro/api/top/find-most-rec-products-by-age-pdf.php?age=0';
             } else if (topValue === 'sub_50') {
-                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-price-pdf.php?min_price=0&max_price=50';
+                endpoint = 'https://makeupapp.ro/api/top/find-most-rec-products-by-price-pdf.php?min_price=0&max_price=50';
             } else if (topValue === '50_99') {
-                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-price-pdf.php?min_price=50&max_price=99';
+                endpoint = 'https://makeupapp.ro/api/top/find-most-rec-products-by-price-pdf.php?min_price=50&max_price=99';
             } else if (topValue === '100_199') {
-                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-price-pdf.php?min_price=100&max_price=199';
+                endpoint = 'https://makeupapp.ro/api/top/find-most-rec-products-by-price-pdf.php?min_price=100&max_price=199';
             } else if (topValue === 'peste_200') {
-                endpoint = 'http://127.0.0.1:8000/api/top/find-most-rec-products-by-price-pdf.php?min_price=200&max_price=99999';
+                endpoint = 'https://makeupapp.ro/api/top/find-most-rec-products-by-price-pdf.php?min_price=200&max_price=99999';
             }
         }
 
@@ -515,7 +516,7 @@ if (isset($_POST['submit_sort'])) {
     }
 
     // Fetch product brands and populate the brand menu
-    fetchData('http://127.0.0.1:8000/api/find-all-brands-by-product-type.php?product_category=1', 'brands')
+    fetchData('https://makeupapp.ro/api/find-all-brands-by-product-type.php?product_category=1', 'brands')
         .then(data => {
             populateSelectMenu('brand-makeup', data, 'brand_name'); // Specify the brand_name property
             document.getElementById('product_type').dispatchEvent(new Event('change'));
@@ -523,20 +524,20 @@ if (isset($_POST['submit_sort'])) {
         });
 
     // Fetch product brands and populate the brand menu
-    fetchData('http://127.0.0.1:8000/api/find-all-brands-by-product-type.php?product_category=0', 'brands')
+    fetchData('https://makeupapp.ro/api/find-all-brands-by-product-type.php?product_category=0', 'brands')
         .then(data => {
             populateSelectMenu('brand-skincare', data, 'brand_name'); // Specify the brand_name property
         });
 
 
-    fetchData('http://127.0.0.1:8000/api/find-product-usage-types.php?product_category=1')
+    fetchData('https://makeupapp.ro/api/find-product-usage-types.php?product_category=1')
         .then(data => {
             console.log("here", data);
             populateSelectMenu('usage_type_makeup', data.usage_types, 'usage_type_name');
 
         });
 
-    fetchData('http://127.0.0.1:8000/api/find-product-usage-types.php?product_category=0')
+    fetchData('https://makeupapp.ro/api/find-product-usage-types.php?product_category=0')
         .then(data => {
             console.log("here", data);
             populateSelectMenu('usage_type_skincare', data.usage_types, 'usage_type_name');
@@ -544,26 +545,26 @@ if (isset($_POST['submit_sort'])) {
 
     // Event listener for brand change
     document.getElementById('brand-makeup').addEventListener('change', function (event) {
-        handleSelectChange(event, 'http://127.0.0.1:8000/api/find-products-by-brand-and-category.php?product_category=1&brand_name=', createProductElements);
+        handleSelectChange(event, 'https://makeupapp.ro/api/find-products-by-brand-and-category.php?product_category=1&brand_name=', createProductElements);
     });
 
     // Event listener for brand change
     document.getElementById('brand-skincare').addEventListener('change', function (event) {
-        handleSelectChange(event, 'http://127.0.0.1:8000/api/find-products-by-brand-and-category.php?product_category=0&brand_name=', createProductElements);
+        handleSelectChange(event, 'https://makeupapp.ro/api/find-products-by-brand-and-category.php?product_category=0&brand_name=', createProductElements);
     });
 
     // Event listener for product type change
     document.getElementById('product_type').addEventListener('change', function (event) {
-        handleSelectChange(event, 'http://127.0.0.1:8000/api/find-makeup-products-by-type.php?type=', createProductElements);
+        handleSelectChange(event, 'https://makeupapp.ro/api/find-makeup-products-by-type.php?type=', createProductElements);
     });
     // Event listener for usage type change
     document.getElementById('usage_type_makeup').addEventListener('change', function (event) {
-        handleSelectChange(event, 'http://127.0.0.1:8000/api/find-products-by-usage-type.php?product_category=1&usage_type=', createProductElements);
+        handleSelectChange(event, 'https://makeupapp.ro/api/find-products-by-usage-type.php?product_category=1&usage_type=', createProductElements);
     });
 
     // Event listener for usage type change
     document.getElementById('usage_type_skincare').addEventListener('change', function (event) {
-        handleSelectChange(event, 'http://127.0.0.1:8000/api/find-products-by-usage-type.php?product_category=0&usage_type=', createProductElements);
+        handleSelectChange(event, 'https://makeupapp.ro/api/find-products-by-usage-type.php?product_category=0&usage_type=', createProductElements);
 
     });
 
@@ -578,7 +579,7 @@ if (isset($_POST['submit_sort'])) {
         } else {
             ageValue = 0;
         }
-        const url = `http://127.0.0.1:8000/api/find-products-by-age.php?age=${ageValue}`;
+        const url = `https://makeupapp.ro/api/find-products-by-age.php?age=${ageValue}`;
         console.log(url);
         handleSelectChange(event, url, createProductElements);
     });
@@ -596,7 +597,7 @@ if (isset($_POST['submit_sort'])) {
         } else {
             skintypeValue = 3;
         }
-        const url = `http://127.0.0.1:8000/api/find-products-by-skintype.php?skintype=${skintypeValue}`;
+        const url = `https://makeupapp.ro/api/find-products-by-skintype.php?skintype=${skintypeValue}`;
         console.log(url);
         handleSelectChange(event, url, createProductElements);
     });
@@ -631,7 +632,7 @@ if (isset($_POST['submit_sort'])) {
         }
 
         // Construct the URL for the API request with the price range parameters
-        const url = `http://127.0.0.1:8000/api/find-products-by-price.php?min_price=${minPrice}&max_price=${maxPrice}`;
+        const url = `https://makeupapp.ro/api/find-products-by-price.php?min_price=${minPrice}&max_price=${maxPrice}`;
 
         // Call the handleSelectChange function with the constructed URL and the createProductElements callback
         handleSelectChange(event, url, createProductElements);

@@ -94,11 +94,11 @@ class ProductRepository
     }
 
     /**
-     * @param mixed $min_price - the minimum price for the user request
-     * @param mixed $max_price - the maximum price for the user request
+     * @param  $min_price - the minimum price for the user request
+     * @param  $max_price - the maximum price for the user request
      * @return array - an array of Product objects, with the most recommended products for the given price range
      */
-    public static function findMostRecProductsByPrice(mixed $min_price, mixed $max_price): array
+    public static function findMostRecProductsByPrice( $min_price,  $max_price): array
     {
         global $conn;
         $stmt = $conn->prepare("SELECT * FROM products WHERE price BETWEEN ? AND ? ORDER BY times_rec DESC LIMIT 10");
@@ -148,14 +148,44 @@ class ProductRepository
             $brands[] = $brand;
         }
 
-        $stmt->close();
-        $conn->close();
         return $brands;
     }
 
+    public static function getAllProducts(): array
+    {
+        global $conn;
+        $stmt = $conn->prepare("SELECT product_id, name, price FROM products ORDER BY name");
+        $stmt->execute();
+        $stmt->bind_result($product_id, $name, $price);
+
+        $products = array();
+        while ($stmt->fetch()) {
+            $product = array(
+                'product_id' => $product_id,
+                'name' => $name,
+                'price' => $price
+            );
+            $products[] = $product;
+        }
+
+        return $products;
+    }
+
+     /**
+     * @param int $prodId - the product id to be deleted
+     * @return bool - if the product was deleted successfully or not
+     */
+    public static function delete(int $prodId): bool
+    {
+        global $conn;
+        $stmt = $conn->prepare("DELETE FROM products WHERE product_id = ?");
+        $stmt->bind_param("i", $prodId);
+        return $stmt->execute();
+    }
+
     /**
-     * @param mixed $product_id
-     * @param mixed $name
+     * @param  $product_id
+     * @param  $name
      * @param $price
      * @param $image_path
      * @param $is_makeup
@@ -170,7 +200,7 @@ class ProductRepository
      * @param $times_rec
      * @return Product - a product object with all of its information available in the database
      */
-    public static function getProduct(mixed $product_id, mixed $name, $price, $image_path, $is_makeup, $age, $brand_id, $skintype_id, $type_id, $ingredients, $description, $how_to_use, $link, $times_rec): Product
+    public static function getProduct( $product_id,  $name, $price, $image_path, $is_makeup, $age, $brand_id, $skintype_id, $type_id, $ingredients, $description, $how_to_use, $link, $times_rec): Product
     {
         $product = new Product();
         $product->setProductId($product_id);
@@ -191,12 +221,12 @@ class ProductRepository
     }
 
     /**
-     * @param mixed $brandName - the brand name for the user request
-     * @param mixed $isMakeup - whether the user is looking for makeup or skincare products
+     * @param  $brandName - the brand name for the user request
+     * @param  $isMakeup - whether the user is looking for makeup or skincare products
      * @return array - an array of Product objects, with all products from the given brand
      */
 
-    public static function getProductsByBrand(mixed $brandName, mixed $isMakeup): array
+    public static function getProductsByBrand( $brandName,  $isMakeup): array
     {
         global $conn;
         $stmt = $conn->prepare("SELECT p.* FROM products p JOIN brands b on p.brand_id = b.brand_id WHERE b.name = ? and p.is_makeup = ?");
@@ -206,12 +236,12 @@ class ProductRepository
     }
 
     /**
-     * @param mixed $product_type - the product type for the user request
-     * @param mixed $isMakeup - whether the user is looking for makeup or skincare products
+     * @param  $product_type - the product type for the user request
+     * @param  $isMakeup - whether the user is looking for makeup or skincare products
      * @return array - an array of Product objects, with all products from the given type
      */
 
-    public static function getProductsByType(mixed $product_type, mixed $isMakeup): array
+    public static function getProductsByType( $product_type,  $isMakeup): array
     {
         global $conn;
         $stmt = $conn->prepare("SELECT p.* FROM products p JOIN product_types pt on p.type_id = pt.type_id WHERE pt.product_type = ? and p.is_makeup=?");
@@ -220,10 +250,10 @@ class ProductRepository
     }
 
     /**
-     * @param mixed $age - the age for the user request
+     * @param  $age - the age for the user request
      * @return array - an array of Product objects, with all products for the given age
      */
-    public static function getProductsByAge(mixed $age): array
+    public static function getProductsByAge( $age): array
     {
         // get only the first 2 letters of age - the age is sent weird here for some reason
         $age = substr($age, 0, 2);
@@ -235,11 +265,11 @@ class ProductRepository
     }
 
     /**
-     * @param mixed $skintype_id - the skintype for the user request
+     * @param  $skintype_id - the skintype for the user request
      * @return array - an array of Product objects, with all products for the given skintype
      */
 
-    public static function getProductsBySkintype(mixed $skintype_id): array
+    public static function getProductsBySkintype( $skintype_id): array
     {
         $skintype_id = substr($skintype_id, 0, 1);
         global $conn;
@@ -249,11 +279,11 @@ class ProductRepository
     }
 
     /**
-     * @param mixed $min_price - the minimum price for the user request
-     * @param mixed $max_price - the maximum price for the user request
+     * @param  $min_price - the minimum price for the user request
+     * @param  $max_price - the maximum price for the user request
      * @return array - an array of Product objects, with all products for the given price range
      */
-    public static function getProductsByPrice(mixed $min_price, mixed $max_price): array
+    public static function getProductsByPrice( $min_price,  $max_price): array
     {
         global $conn;
         $stmt = $conn->prepare("SELECT * FROM products WHERE price BETWEEN ? AND ? ORDER BY price, is_makeup");
@@ -262,12 +292,12 @@ class ProductRepository
     }
 
     /**
-     * @param mixed $usage_type - the usage type for the user request
-     * @param mixed $isMakeup - whether the user is looking for makeup or skincare products
+     * @param  $usage_type - the usage type for the user request
+     * @param  $isMakeup - whether the user is looking for makeup or skincare products
      * @return array - an array of Product objects, with all products for the given usage type
      */
 
-    public static function getProductsByUsageType(mixed $usage_type, mixed $isMakeup): array
+    public static function getProductsByUsageType( $usage_type,  $isMakeup): array
     {
         global $conn;
         $stmt = $conn->prepare("SELECT p.* FROM products p JOIN product_types pt on p.type_id = pt.type_id WHERE pt.usage_type = ? and p.is_makeup=?");
@@ -276,10 +306,10 @@ class ProductRepository
     }
 
     /**
-     * @param mixed $is_makeup - whether the user is looking for makeup or skincare products
+     * @param  $is_makeup - whether the user is looking for makeup or skincare products
      * @return array - an array of Product objects, with all products for the given is_makeup
      */
-    public static function getUsageTypes(mixed $is_makeup): array
+    public static function getUsageTypes( $is_makeup): array
     {
         global $conn;
         $stmt = $conn->prepare("SELECT DISTINCT pt.usage_type,pt.type_id FROM products p JOIN product_types pt on p.type_id = pt.type_id WHERE p.is_makeup=?");
@@ -301,10 +331,10 @@ class ProductRepository
     }
 
     /**
-     * @param mixed $is_makeup - whether the user is looking for makeup or skincare products
+     * @param  $is_makeup - whether the user is looking for makeup or skincare products
      * @return array - an array of Product objects, with all products that are makeup or not, per user request
      */
-    public static function getBrandsForMakeup(mixed $is_makeup): array
+    public static function getBrandsForMakeup( $is_makeup): array
     {
         global $conn;
         $stmt = $conn->prepare("SELECT DISTINCT b.name,b.brand_id FROM products p JOIN brands b on p.brand_id = b.brand_id WHERE p.is_makeup=? ORDER BY b.name");
@@ -394,7 +424,49 @@ class ProductRepository
 
         return $brands;
     }
+    /**
+     * @return array - an array of skincare with skincare products
+     */
 
+     public function getAllSkincare(): array
+     {
+         global $conn;
+         $stmt = $conn->prepare("SELECT skintype_id, skin_type FROM skintypes;");
+         $stmt->execute();
+         $stmt->bind_result($skintype_id, $skin_type);
+         $brands = array();
+         while ($stmt->fetch()) {
+             $brand = array(
+                 'skintype_id' => $skintype_id,
+                 'skin_type' => $skin_type
+             );
+             $brands[] = $brand;
+         }
+ 
+         return $brands;
+     }
+
+    /**
+     * @return array - an array of products_type with skincare products
+     */
+
+     public function getAllProductsType(): array
+     {
+         global $conn;
+         $stmt = $conn->prepare("SELECT type_id, usage_type FROM product_types");
+         $stmt->execute();
+         $stmt->bind_result($type_id, $usage_type);
+         $brands = array();
+         while ($stmt->fetch()) {
+             $brand = array(
+                 'type_id' => $type_id,
+                 'usage_type' => $usage_type
+             );
+             $brands[] = $brand;
+         }
+ 
+         return $brands;
+     }
     /**
      * @param $isMakeup - whether the user is looking for makeup or skincare products
      * @return array - an array of usage types
@@ -653,4 +725,55 @@ class ProductRepository
         }
         return $results;
     }
+
+    public function upload_file($file = null, $folder = "src/img")
+    {
+        if ($file === null) {
+            $file = $_FILES['image'];
+        }
+
+        $server_path = '/home/makeupapp/public_html';
+        $target_dir = $server_path . "/" . $folder . "/";
+                
+        if (!file_exists($target_dir)) {
+            mkdir($target_dir, 0777, true);
+        }
+
+        $target_file = $target_dir . basename($file["name"]);
+        $file_extension = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        $file["name"] = basename($file["name"]);
+        $target_file = $target_dir . basename($file["name"]);
+        move_uploaded_file($file["tmp_name"], $target_file);
+
+        $file_path = "/" . $folder . "/" . $file["name"];
+        return $file_path;
+    }
+
+    public function saveProduct(){        
+        $name = $_POST['name'];
+        $price = $_POST['price'];
+        $age = $_POST['age'];
+        $link = $_POST['link'];
+        $brand_id = $_POST['brand_id'];
+        $skintype_id = $_POST['skintype_id'];
+        $type_id = $_POST['type_id'];
+        $times_rec = $_POST['times_rec'];
+        $description = $_POST['description'];
+        $ingredients = $_POST['ingredients'];
+        $how_to_use = $_POST['how_to_use'];
+        $is_makeup = $_POST['is_makeup'];
+        $image_path = $this->upload_file();
+        global $conn;
+        $stmt = $conn->prepare("INSERT INTO products (name, price, image_path, is_makeup, age, brand_id, skintype_id, type_id, ingredients, description, how_to_use, link, times_rec) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssiiiiissssi", $name, $price, $image_path, $is_makeup, $age, $brand_id, $skintype_id, $type_id, $ingredients, $description, $how_to_use, $link, $times_rec);
+        if ($stmt->execute()) {
+            $stmt->close();
+            return true;
+        } else {
+            $stmt->close();
+            return false;
+        }
+
+    }
+
 }

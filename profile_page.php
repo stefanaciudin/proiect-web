@@ -1,17 +1,17 @@
 <?php
 include "php/UserRepository.php";
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <?php
-session_start();
 $user = [];
 $userRepository = new UserRepository();
 if (isset($_POST['logout'])) {
     session_unset();
     session_destroy();
-    header('Location: login_page.php');
+    echo '<meta http-equiv="refresh" content="0; url=https://makeupapp.ro/login_page.php">';
     exit();
 } else if (isset($_POST['save'])) {
     $token = $_POST['token'];
@@ -65,6 +65,10 @@ $_SESSION['form-token'] = $token;
         <a href="register_page.php">Register</a>
         <a href="profile_page.php">My Account</a>
         <a href="contact.html">Contact</a>
+        <?php if (isset($_SESSION['user']['admin']) && $_SESSION['user']['admin'] == 1) {
+            echo '<a href="/admin/index.php">Admin</a>';
+        }
+        ?>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i>
         </a>
