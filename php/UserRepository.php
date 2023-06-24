@@ -121,6 +121,7 @@ class UserRepository
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $stmt->bind_result($user_id, $name, $surname, $username, $email, $password, $age, $skintype_id, $gender, $location, $admin);
+        $user =[];
         while ($stmt->fetch()) {
             $user = array(
                 'id' => $user_id,
@@ -138,7 +139,6 @@ class UserRepository
         }
         $stmt->close();
         return $user;
-
 
     }
 
